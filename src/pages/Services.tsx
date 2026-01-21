@@ -13,7 +13,8 @@ import {
   UserCheck,
   GraduationCap,
   Building,
-  ArrowRight
+  ArrowRight,
+  CheckCircle2
 } from "lucide-react";
 import heroImage from "@/assets/teacher-classroom.jpg";
 
@@ -21,53 +22,70 @@ const services = [
   {
     icon: Users,
     title: "Customized Professional Learning",
-    description: "We design and deliver professional learning tailored to your district's goals, culture, and educator needs. Whether focused on instructional strategies, leadership development, or systemic change, ACES creates engaging, job-embedded learning experiences that make an immediate and lasting impact. Our specialists use research-based designs that empower educators to apply new strategies in the classroom and sustain improvement over time."
+    description: "We design and deliver professional learning tailored to your district's goals, culture, and educator needs. Whether focused on instructional strategies, leadership development, or systemic change, ACES creates engaging, job-embedded learning experiences that make an immediate and lasting impact.",
+    color: "from-aces-blue to-aces-secondary-blue"
   },
   {
     icon: Brain,
     title: "Center for Artificial Intelligence",
-    description: "The ACES Center for Artificial Intelligence positions educators and leaders at the forefront of AI-driven innovation. Through professional learning, research partnerships, and product development, we help schools navigate the opportunities and challenges of AI responsibly and ethically. Our programs build AI fluency for teachers, leaders, students, and families, ensuring that every learner is prepared to thrive in an AI-driven world."
+    description: "The ACES Center for Artificial Intelligence positions educators and leaders at the forefront of AI-driven innovation. Through professional learning, research partnerships, and product development, we help schools navigate the opportunities and challenges of AI responsibly and ethically.",
+    color: "from-aces-green to-aces-secondary-green"
   },
   {
     icon: Layers,
-    title: "Curriculum Writing Facilitation & Implementation Support",
-    description: "ACES partners with districts to lead and support curriculum writing teams, guiding educators through a clear, standards-aligned process that results in high-quality curriculum tailored to student needs. Our facilitators use backward design principles to build authentic performance tasks, deepen teacher understanding of standards, and strengthen instructional practice. Beyond writing, we provide ongoing professional learning and coaching to ensure successful implementation and continuous improvement of curriculum."
+    title: "Curriculum Writing & Implementation",
+    description: "ACES partners with districts to lead and support curriculum writing teams, guiding educators through a clear, standards-aligned process that results in high-quality curriculum tailored to student needs.",
+    color: "from-aces-blue to-aces-navy"
   },
   {
     icon: Headphones,
-    title: "Train-the-Trainer for Leaders & Teachers",
-    description: "We help districts build internal capacity with our Train-the-Trainer model. ACES equips district and teacher leaders with the tools, strategies, and resources they need to deliver effective professional learning to peers. This model promotes sustainability, ensuring professional learning continues to impact classrooms long after the initial training."
+    title: "Train-the-Trainer Programs",
+    description: "We help districts build internal capacity with our Train-the-Trainer model. ACES equips district and teacher leaders with the tools, strategies, and resources they need to deliver effective professional learning to peers.",
+    color: "from-aces-secondary-blue to-aces-blue"
   },
   {
     icon: Target,
     title: "Instructional Coaching",
-    description: "Our instructional coaching services support a culture of continuous growth by providing educators with just-in-time feedback, collaborative reflection, and guided practice. Skilled in multiple coaching models, ACES coaches foster cognitive shifts through planning, modeling, and reflective dialogue. By strengthening teachers' instructional decision-making and problem-solving, coaching leads to improved classroom practice and stronger student outcomes."
+    description: "Our instructional coaching services support a culture of continuous growth by providing educators with just-in-time feedback, collaborative reflection, and guided practice.",
+    color: "from-aces-green to-aces-blue"
   },
   {
     icon: ClipboardCheck,
-    title: "Curriculum Audits & Management Plans",
-    description: "ACES conducts comprehensive curriculum audits that examine standards alignment, rigor, equity, and accessibility across your curriculum. We provide clear, actionable recommendations to strengthen coherence and impact. To support long-term improvement, we also help districts design curriculum management plans that establish structures, timelines, and accountability measures for ongoing curriculum development and review."
+    title: "Curriculum Audits & Management",
+    description: "ACES conducts comprehensive curriculum audits that examine standards alignment, rigor, equity, and accessibility across your curriculum with clear, actionable recommendations.",
+    color: "from-aces-navy to-aces-blue"
   },
   {
     icon: Baby,
     title: "Early Childhood Services",
-    description: "Our early childhood services are grounded in child development and play-based learning. ACES supports early educators and leaders with coaching, curriculum support, and classroom environment design aligned with the CT ELDS, CT DOTS, and the Pyramid Model. We also provide family engagement strategies and School Readiness program support, ensuring birth-to-grade-3 learners experience developmentally appropriate, high-quality education."
+    description: "Our early childhood services are grounded in child development and play-based learning. ACES supports early educators and leaders with coaching, curriculum support, and classroom environment design.",
+    color: "from-aces-secondary-green to-aces-green"
   },
   {
     icon: UserCheck,
-    title: "Professional Support for Paraeducators",
-    description: "ACES provides paraeducators with the knowledge and skills needed to effectively support classroom instruction. Our programs include ParaPro test preparation, skill-building workshops, and customized training aligned to district needs. These services equip paraeducators to confidently support student learning and contribute to a strong instructional team."
+    title: "Paraeducator Support",
+    description: "ACES provides paraeducators with the knowledge and skills needed to effectively support classroom instruction, including ParaPro test preparation and customized training.",
+    color: "from-aces-blue to-aces-green"
   },
   {
     icon: GraduationCap,
     title: "Alternate Routes to Certification",
-    description: "To help address educator shortages, ACES offers State Board–approved Alternative Route to Certification (ARC) programs in high-need areas such as Library Media and Teaching English Learners. These programs combine coursework, field experience, and mentoring, enabling participants to earn certification while continuing to work in schools. Our ARC pathways prepare professionals to transition into teaching with the skills, knowledge, and support needed for success."
+    description: "To help address educator shortages, ACES offers State Board–approved Alternative Route to Certification (ARC) programs in high-need areas such as Library Media and Teaching English Learners.",
+    color: "from-aces-secondary-blue to-aces-secondary-green"
   },
   {
     icon: Building,
     title: "Product Development",
-    description: "In partnership with educators and innovators, ACES designs practical tools and resources to meet the evolving needs of schools. From classroom workbooks to AI-powered platforms, our products are built by educators, for educators. We collaborate with districts to co-create solutions that are both research-based and grounded in real-world classroom practice."
+    description: "In partnership with educators and innovators, ACES designs practical tools and resources to meet the evolving needs of schools. From classroom workbooks to AI-powered platforms.",
+    color: "from-aces-navy to-aces-green"
   }
+];
+
+const highlights = [
+  "Research-Based Approaches",
+  "Customized Solutions",
+  "Sustainable Impact",
+  "Expert Facilitators"
 ];
 
 export default function Services() {
@@ -76,42 +94,103 @@ export default function Services() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative pt-20 min-h-[60vh] flex items-center">
+      <section className="relative pt-20 min-h-[70vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
             src={heroImage} 
             alt="Educators collaborating" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-aces-navy/95 via-aces-navy/80 to-aces-navy/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-aces-navy/60 to-transparent" />
         </div>
         
-        <div className="relative container mx-auto px-4 py-20">
+        {/* Decorative elements */}
+        <div className="absolute top-1/4 right-10 w-72 h-72 bg-aces-green/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-aces-blue/10 rounded-full blur-3xl" />
+        
+        <div className="relative container mx-auto px-4 py-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-xl"
+            transition={{ duration: 0.7 }}
+            className="max-w-2xl"
           >
-            <p className="text-sm font-semibold text-aces-blue mb-3">Our Services</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-aces-navy mb-6 uppercase tracking-tight">
-              Building Capacity,<br />Driving Impact
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+            >
+              <span className="w-2 h-2 bg-aces-green rounded-full animate-pulse" />
+              <span className="text-sm text-white/90 font-medium">Professional Development Services</span>
+            </motion.div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6 leading-tight">
+              Building Capacity,<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-aces-green via-white to-aces-secondary-blue">
+                Driving Impact
+              </span>
             </h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Innovating today, transforming tomorrow.
+            
+            <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
+              Innovating today, transforming tomorrow. Partner with ACES for research-based professional learning that makes a lasting difference.
             </p>
-            <Button size="lg" className="bg-aces-blue hover:bg-aces-blue/90 text-white">
-              Contact Us
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            
+            <div className="flex flex-wrap gap-4 mb-10">
+              {highlights.map((item, i) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + i * 0.1 }}
+                  className="flex items-center gap-2 text-white/90 text-sm"
+                >
+                  <CheckCircle2 className="w-4 h-4 text-aces-green" />
+                  {item}
+                </motion.div>
+              ))}
+            </div>
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap gap-4"
+            >
+              <Button size="lg" className="bg-aces-green hover:bg-aces-green/90 text-white shadow-lg shadow-aces-green/25">
+                Contact Us
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
+                View Our Work
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-24 bg-gradient-to-b from-secondary/30 to-background relative">
+        <div className="absolute inset-0 dot-pattern opacity-50" />
+        
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block text-sm font-semibold text-aces-blue uppercase tracking-wider mb-3">What We Offer</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
+              Our Services
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive professional development solutions designed to empower educators and transform schools.
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -119,17 +198,56 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="text-center"
+                className="group relative bg-white rounded-2xl p-8 border border-border hover:border-aces-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full border-2 border-aces-blue/30 flex items-center justify-center">
-                  <service.icon className="w-7 h-7 text-aces-blue" />
+                {/* Gradient accent */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                
+                {/* Icon */}
+                <div className={`w-14 h-14 mb-6 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg`}>
+                  <service.icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-lg font-bold font-heading text-aces-navy mb-4 uppercase tracking-wide">
+                
+                <h3 className="text-lg font-bold font-heading text-aces-navy mb-3 group-hover:text-aces-blue transition-colors">
                   {service.title}
                 </h3>
+                
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {service.description}
                 </p>
+                
+                <motion.div 
+                  className="mt-6 flex items-center text-aces-blue font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                  whileHover={{ x: 5 }}
+                >
+                  Learn More <ArrowRight className="ml-2 w-4 h-4" />
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 section-brand">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: "500+", label: "Districts Served" },
+              { value: "10K+", label: "Educators Trained" },
+              { value: "25+", label: "Years Experience" },
+              { value: "98%", label: "Satisfaction Rate" }
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-3xl md:text-4xl font-bold font-heading text-white mb-2">{stat.value}</div>
+                <div className="text-white/70 text-sm">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -137,7 +255,7 @@ export default function Services() {
       </section>
 
       {/* From the Field Section */}
-      <section className="py-20 bg-secondary/50">
+      <section className="py-24 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-12 items-start">
             <motion.div
@@ -145,7 +263,8 @@ export default function Services() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold font-heading text-aces-navy mb-6 uppercase">
+              <span className="inline-block text-sm font-semibold text-aces-green uppercase tracking-wider mb-3">Insights</span>
+              <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-6">
                 From the Field
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
@@ -153,8 +272,9 @@ export default function Services() {
                 learning specialists share strategies, success stories, and emerging trends to 
                 help educators lead with impact.
               </p>
-              <Button className="bg-aces-blue hover:bg-aces-blue/90 text-white">
-                Our Blog
+              <Button className="gradient-aces text-white btn-glow">
+                Visit Our Blog
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </motion.div>
 
@@ -163,16 +283,18 @@ export default function Services() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-background rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-lg transition-shadow cursor-pointer group"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl transition-all duration-300 cursor-pointer group"
               >
-                <div className="aspect-video bg-gradient-to-br from-amber-100 to-orange-100 relative">
-                  <div className="absolute top-4 left-4 bg-white rounded-lg px-3 py-1 shadow-sm">
-                    <p className="text-aces-blue font-bold text-lg">20</p>
-                    <p className="text-xs text-muted-foreground">Nov</p>
+                <div className="aspect-video bg-gradient-to-br from-amber-100 via-orange-50 to-amber-200 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiIGZpbGw9IiMwOTU3OEIiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9nPjwvc3ZnPg==')] opacity-50" />
+                  <div className="absolute top-4 left-4 bg-white rounded-xl px-4 py-2 shadow-lg">
+                    <p className="text-aces-blue font-bold text-xl leading-none">20</p>
+                    <p className="text-xs text-muted-foreground font-medium">Nov</p>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="font-semibold font-heading text-aces-navy group-hover:text-aces-blue transition-colors">
+                  <span className="inline-block text-xs font-semibold text-aces-green uppercase tracking-wider mb-2">Coaching</span>
+                  <h3 className="font-semibold font-heading text-aces-navy group-hover:text-aces-blue transition-colors leading-snug">
                     Coaching Saved the Classroom: How One District Improved Teacher Retention in Year 1
                   </h3>
                 </div>
@@ -183,16 +305,18 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="bg-background rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-lg transition-shadow cursor-pointer group"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl transition-all duration-300 cursor-pointer group"
               >
-                <div className="aspect-video bg-gradient-to-br from-slate-200 to-blue-100 relative">
-                  <div className="absolute top-4 left-4 bg-aces-blue rounded-lg px-3 py-1 shadow-sm">
-                    <p className="text-white font-bold text-lg">19</p>
-                    <p className="text-xs text-white/80">Nov</p>
+                <div className="aspect-video bg-gradient-to-br from-slate-200 via-blue-50 to-slate-100 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiIGZpbGw9IiMwOTU3OEIiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9nPjwvc3ZnPg==')] opacity-50" />
+                  <div className="absolute top-4 left-4 bg-aces-blue rounded-xl px-4 py-2 shadow-lg">
+                    <p className="text-white font-bold text-xl leading-none">19</p>
+                    <p className="text-xs text-white/80 font-medium">Nov</p>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="font-semibold font-heading text-aces-navy group-hover:text-aces-blue transition-colors">
+                  <span className="inline-block text-xs font-semibold text-aces-blue uppercase tracking-wider mb-2">Policy</span>
+                  <h3 className="font-semibold font-heading text-aces-navy group-hover:text-aces-blue transition-colors leading-snug">
                     The Hidden Line Item: 3 Legislative Changes That Could Shrink or Stretch Your PD Budget
                   </h3>
                 </div>
@@ -203,24 +327,33 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-aces-blue to-aces-navy">
-        <div className="container mx-auto px-4">
+      <section className="py-24 section-brand relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-aces-green/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-aces-blue/20 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-4">
-              Ready to Get Started?
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white mb-6">
+              Ready to Transform Your District?
             </h2>
-            <p className="text-white/80 text-lg mb-8">
-              Let's work together to build capacity and drive lasting impact in your district.
+            <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed">
+              Let's work together to build capacity and drive lasting impact. Our team is ready to customize a solution for your needs.
             </p>
-            <Button size="lg" className="bg-white text-aces-blue hover:bg-white/90">
-              Contact Us Today
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button size="lg" className="bg-white text-aces-navy hover:bg-white/90 shadow-xl px-8">
+                Contact Us Today
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                Schedule a Consultation
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
