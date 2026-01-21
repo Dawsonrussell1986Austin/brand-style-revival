@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import AICenter from "./pages/AICenter";
 import Services from "./pages/Services";
 import Events from "./pages/Events";
+import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/ai-center" element={<AICenter />} />
           <Route path="/services" element={<Services />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/resources" element={<Resources />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
