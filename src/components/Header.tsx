@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import acesLogo from "@/assets/aces-logo.webp";
 
 const navItems = [
   { label: "AI Center", href: "/ai-center", highlight: true },
@@ -35,18 +36,12 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/" className="group flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl gradient-aces flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-              <span className="text-lg font-heading font-bold text-white">A</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-heading font-bold text-foreground">
-                ACES
-              </span>
-              <span className="text-[10px] text-muted-foreground tracking-wide uppercase">
-                Professional Development
-              </span>
-            </div>
+          <a href="/" className="group flex items-center">
+            <img 
+              src={acesLogo} 
+              alt="ACES Professional Development & School Improvement" 
+              className="h-12 md:h-14 w-auto"
+            />
           </a>
 
           {/* Desktop Navigation */}
