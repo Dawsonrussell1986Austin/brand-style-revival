@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,32 +6,35 @@
 
 @layer base {
   :root {
-    /* ACES Brand Colors */
-    --aces-blue: 202 88% 29%;
-    --aces-navy: 202 54% 13%;
-    --aces-green: 166 100% 25%;
-    --aces-secondary-blue: 186 63% 42%;
-    --aces-gray: 210 20% 96%;
-    --aces-secondary-green: 157 60% 45%;
+    /* ACES Brand Colors - From Brand Guidelines */
+    /* Primary: ACES Blue #09578B, Navy #112532, Green #007F61 */
+    /* Secondary: #2399A4, #DDE2E5, #5FAD56 */
     
-    /* Light Theme - Clean & Professional */
+    --aces-blue: 202 88% 29%;      /* #09578B */
+    --aces-navy: 204 52% 13%;      /* #112532 */
+    --aces-green: 166 100% 25%;    /* #007F61 */
+    --aces-secondary-blue: 184 63% 39%;  /* #2399A4 */
+    --aces-gray: 210 14% 89%;      /* #DDE2E5 */
+    --aces-secondary-green: 114 35% 51%; /* #5FAD56 */
+    
+    /* Light Theme */
     --background: 0 0% 100%;
-    --foreground: 202 54% 13%;
+    --foreground: 204 52% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 202 54% 13%;
+    --card-foreground: 204 52% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 202 54% 13%;
+    --popover-foreground: 204 52% 13%;
 
     --primary: 202 88% 29%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 202 54% 13%;
+    --secondary: 210 14% 95%;
+    --secondary-foreground: 204 52% 13%;
 
-    --muted: 210 20% 96%;
-    --muted-foreground: 202 30% 45%;
+    --muted: 210 14% 95%;
+    --muted-foreground: 204 30% 45%;
 
     --accent: 166 100% 25%;
     --accent-foreground: 0 0% 100%;
@@ -39,19 +42,19 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
+    --border: 210 14% 89%;
+    --input: 210 14% 89%;
     --ring: 202 88% 29%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 202 54% 13%;
+    --sidebar-foreground: 204 52% 13%;
     --sidebar-primary: 202 88% 29%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 20% 96%;
-    --sidebar-accent-foreground: 202 54% 13%;
-    --sidebar-border: 210 20% 90%;
+    --sidebar-accent: 210 14% 95%;
+    --sidebar-accent-foreground: 204 52% 13%;
+    --sidebar-border: 210 14% 89%;
     --sidebar-ring: 202 88% 29%;
   }
 }
@@ -90,35 +93,35 @@
   /* Card Styles */
   .card-elevated {
     background: hsl(0 0% 100%);
-    border: 1px solid hsl(210 20% 92%);
+    border: 1px solid hsl(210 14% 89%);
     box-shadow: 
-      0 1px 2px hsla(202, 54%, 13%, 0.04),
-      0 4px 12px hsla(202, 54%, 13%, 0.06);
+      0 1px 2px hsla(204, 52%, 13%, 0.04),
+      0 4px 12px hsla(204, 52%, 13%, 0.06);
   }
   
   .card-elevated:hover {
     border-color: hsl(202 88% 29% / 0.3);
     box-shadow: 
-      0 4px 12px hsla(202, 54%, 13%, 0.08),
-      0 12px 32px hsla(202, 54%, 13%, 0.1);
+      0 4px 12px hsla(204, 52%, 13%, 0.08),
+      0 12px 32px hsla(204, 52%, 13%, 0.1);
   }
   
   .card-feature {
-    background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
-    border: 1px solid hsl(210 20% 90%);
-    box-shadow: 0 4px 20px hsla(202, 54%, 13%, 0.08);
+    background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 14% 98%) 100%);
+    border: 1px solid hsl(210 14% 89%);
+    box-shadow: 0 4px 20px hsla(204, 52%, 13%, 0.08);
   }
   
   /* Section backgrounds */
   .section-alt {
-    background: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(0 0% 100%) 100%);
+    background: linear-gradient(180deg, hsl(210 14% 97%) 0%, hsl(0 0% 100%) 100%);
   }
   
   .section-brand {
-    background: linear-gradient(135deg, hsl(202 54% 13%) 0%, hsl(202 88% 20%) 100%);
+    background: linear-gradient(135deg, hsl(204 52% 13%) 0%, hsl(202 88% 22%) 100%);
   }
   
-  /* Button glow */
+  /* Button styles */
   .btn-glow {
     position: relative;
     transition: all 0.3s ease;
@@ -137,8 +140,8 @@
   }
   
   .dot-pattern {
-    background-image: radial-gradient(hsl(202 88% 29% / 0.08) 1px, transparent 1px);
-    background-size: 20px 20px;
+    background-image: radial-gradient(hsl(202 88% 29% / 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }
 

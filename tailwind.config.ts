@@ -19,8 +19,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui", "sans-serif"],
-        heading: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
+        // Brand fonts: Roboto Slab + Source Sans Pro
+        sans: ["Source Sans 3", "Source Sans Pro", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["Roboto Slab", "ui-serif", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -66,21 +67,20 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // ACES Brand Colors from guidelines
         aces: {
-          blue: "hsl(var(--aces-blue))",
-          navy: "hsl(var(--aces-navy))",
-          green: "hsl(var(--aces-green))",
-          "secondary-blue": "hsl(var(--aces-secondary-blue))",
-          gray: "hsl(var(--aces-gray))",
-          "secondary-green": "hsl(var(--aces-secondary-green))",
+          blue: "hsl(var(--aces-blue))",           // #09578B
+          navy: "hsl(var(--aces-navy))",           // #112532
+          green: "hsl(var(--aces-green))",         // #007F61
+          "secondary-blue": "hsl(var(--aces-secondary-blue))",  // #2399A4
+          gray: "hsl(var(--aces-gray))",           // #DDE2E5
+          "secondary-green": "hsl(var(--aces-secondary-green))", // #5FAD56
         },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        "2xl": "1.5rem",
-        "3xl": "2rem",
       },
       keyframes: {
         "accordion-down": {
@@ -95,29 +95,11 @@ export default {
           from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        scaleIn: {
-          from: { opacity: "0", transform: "scale(0.95)" },
-          to: { opacity: "1", transform: "scale(1)" },
-        },
-        slideInLeft: {
-          from: { opacity: "0", transform: "translateX(-30px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
-        },
-        slideInRight: {
-          from: { opacity: "0", transform: "translateX(30px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fadeIn 0.6s ease-out forwards",
-        "scale-in": "scaleIn 0.5s ease-out forwards",
-        "slide-in-left": "slideInLeft 0.6s ease-out forwards",
-        "slide-in-right": "slideInRight 0.6s ease-out forwards",
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
     },
   },
