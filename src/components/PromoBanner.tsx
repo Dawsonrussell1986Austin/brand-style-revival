@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Headphones, Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
+import airpodsImage from "@/assets/airpods-giveaway.webp";
 
 export function PromoBanner() {
   return (
@@ -17,8 +18,12 @@ export function PromoBanner() {
           
           <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-5">
-              <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center animate-float">
-                <Headphones className="w-8 h-8 text-white" />
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white/10 flex items-center justify-center p-2 animate-float">
+                <img 
+                  src={airpodsImage} 
+                  alt="AirPods Pro 3" 
+                  className="w-full h-full object-contain drop-shadow-lg"
+                />
               </div>
               <div className="text-center md:text-left">
                 <div className="flex items-center gap-2 text-white/80 text-sm mb-1">
