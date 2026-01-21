@@ -1,4 +1,5 @@
 import { Instagram, Linkedin, Twitter, Youtube, MapPin, Clock, Phone, Mail } from "lucide-react";
+import acesLogo from "@/assets/aces-logo.webp";
 
 const footerLinks = {
   services: ["AI Integration", "Instructional Coaching", "Curriculum Development", "School Improvement", "Leadership Development"],
@@ -20,14 +21,12 @@ export function Footer() {
         <div className="grid lg:grid-cols-12 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-11 h-11 rounded-xl gradient-aces flex items-center justify-center">
-                <span className="text-lg font-heading font-bold text-white">A</span>
-              </div>
-              <div>
-                <span className="text-lg font-heading font-bold text-foreground">ACES</span>
-                <p className="text-xs text-muted-foreground">Professional Development & School Improvement</p>
-              </div>
+            <div className="mb-5">
+              <img 
+                src={acesLogo} 
+                alt="ACES Professional Development & School Improvement" 
+                className="h-16 w-auto"
+              />
             </div>
             <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
               Transforming education through innovation, collaboration, and excellence.
