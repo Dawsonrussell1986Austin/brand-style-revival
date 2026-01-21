@@ -6,7 +6,7 @@ import acesLogo from "@/assets/aces-logo.webp";
 
 const navItems = [
   { label: "AI Center", href: "/ai-center", highlight: true },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Events", href: "/#events" },
   { label: "Resources", href: "/#resources" },
   { label: "About", href: "/#about" },
