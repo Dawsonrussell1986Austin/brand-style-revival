@@ -4,11 +4,11 @@ import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { label: "AI Center", href: "#ai-center", highlight: true },
-  { label: "Services", href: "#services" },
-  { label: "Events", href: "#events" },
-  { label: "Resources", href: "#resources" },
-  { label: "About", href: "#about" },
+  { label: "AI Center", href: "/ai-center", highlight: true },
+  { label: "Services", href: "/#services" },
+  { label: "Events", href: "/#events" },
+  { label: "Resources", href: "/#resources" },
+  { label: "About", href: "/#about" },
 ];
 
 export function Header() {
