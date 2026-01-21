@@ -50,7 +50,9 @@ const pillars = [
       "Vibe Coding environments",
       "Adaptive assessment tools",
       "Content creation assistants"
-    ]
+    ],
+    hasDetailedContent: true,
+    contentKey: "innovativeTools"
   },
   {
     icon: Shield,
@@ -62,7 +64,8 @@ const pillars = [
       "Bias detection and mitigation",
       "Research partnerships"
     ],
-    hasDetailedContent: true
+    hasDetailedContent: true,
+    contentKey: "researchEthics"
   }
 ];
 
@@ -124,6 +127,53 @@ const researchEthicsContent = {
           title: "Community Engagement Platforms",
           description: "Podcasts, communications, and workshops to build shared understanding and trust."
         }
+      ]
+    }
+  ]
+};
+
+const innovativeToolsContent = {
+  intro: "Pillar II focuses on designing and scaling AI-powered tools that directly respond to real challenges in schools and classrooms. Unlike generic EdTech solutions, the ACES Center for AI develops products co-designed with educators, ensuring every tool is practical, ethical, and grounded in authentic classroom needs. By building innovative platforms for lesson design, assessment, adaptive learning, and school operations, Pillar II aims to reduce educator workload, increase personalization, and expand access to high-quality learning opportunities.",
+  vision: "This work is anchored in the Innovation Lab, where educators collaborate with AI specialists, UX designers, and developers to test and refine prototypes in controlled \"sandbox\" environments before scaling them across districts. Through pilot partnerships, educator feedback cycles, and strategic EdTech collaborations, the Center ensures that each product is safe, effective, and ready to improve teaching and learning at scale.",
+  categories: [
+    {
+      title: "Innovation & Development Infrastructure",
+      items: [
+        { title: "Educator Co-Design Process", description: "Formalized structures that center educator voice in every stage of product development." },
+        { title: "Innovation Sandbox", description: "Safe, small-scale pilot environments where districts test tools before broader adoption." },
+        { title: "Strategic EdTech Partnerships", description: "Collaborations with industry leaders to accelerate development and ensure interoperability." }
+      ]
+    },
+    {
+      title: "Instructional Products for Educators",
+      items: [
+        { title: "AI Curriculum Writing Assistant", description: "Generates standards-aligned units, lessons, and assessments." },
+        { title: "Lesson Planning Studio", description: "Collaborative platform for AI-enhanced lesson and unit design." },
+        { title: "Assessment Generator", description: "Creates formative and summative assessments with scaffolds and multiple solution pathways." }
+      ]
+    },
+    {
+      title: "Family & Community Engagement Tools",
+      items: [
+        { title: "AI Chatbots for Families", description: "Multilingual communication tools for real-time engagement with schools." },
+        { title: "Family Communication Dashboard", description: "Central hub for translated updates, school-home communication, and resource sharing." }
+      ]
+    },
+    {
+      title: "Leadership & Operations Tools",
+      items: [
+        { title: "AI Data Dashboard for Leaders", description: "Decision-support system for analyzing student outcomes, resource allocation, and trends." },
+        { title: "AI-Powered Operations Tools", description: "Automates scheduling, communication, and non-instructional tasks to free leaders for strategic work." },
+        { title: "Workflow Optimization Suite", description: "Reduces administrative burden and increases efficiency across school operations." }
+      ]
+    },
+    {
+      title: "Supports for Paraeducators & Specialists",
+      items: [
+        { title: "ParaPro Exam Support Platform", description: "AI-assisted preparation for paraeducator certification." },
+        { title: "AI Productivity Suite", description: "Recordkeeping, translation, scheduling, and communication tools designed for support staff." },
+        { title: "Accessibility Tools", description: "AI-driven accommodations and modifications for diverse learning needs." },
+        { title: "Role-Specific Applications", description: "Tailored AI tools for librarians, counselors, specialists, and office staff." }
       ]
     }
   ]
@@ -286,57 +336,104 @@ export default function AICenter() {
                     <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
                       <DialogHeader>
                         <DialogTitle className="text-2xl font-heading text-aces-navy flex items-center gap-3">
-                          <Shield className="w-6 h-6 text-aces-blue" />
-                          Research & Ethical Standards
+                          <pillar.icon className="w-6 h-6 text-aces-blue" />
+                          {pillar.contentKey === "innovativeTools" ? "Innovative AI-Tools Solutions" : "Research & Ethical Standards"}
                         </DialogTitle>
                       </DialogHeader>
-                      <div className="space-y-8 mt-4">
-                        {/* Introduction */}
-                        <div className="space-y-4">
-                          <p className="text-muted-foreground leading-relaxed">
-                            {researchEthicsContent.intro}
-                          </p>
-                          <p className="text-muted-foreground leading-relaxed">
-                            {researchEthicsContent.vision}
-                          </p>
-                        </div>
+                      
+                      {pillar.contentKey === "innovativeTools" ? (
+                        <div className="space-y-8 mt-4">
+                          {/* Introduction */}
+                          <div className="space-y-4">
+                            <p className="text-muted-foreground leading-relaxed">
+                              {innovativeToolsContent.intro}
+                            </p>
+                            <p className="text-muted-foreground leading-relaxed">
+                              {innovativeToolsContent.vision}
+                            </p>
+                          </div>
 
-                        {/* Key Supports */}
-                        <div>
-                          <h3 className="text-xl font-bold font-heading text-aces-navy mb-6">
-                            Pillar III Research & Ethical Standards: Key Supports
-                          </h3>
-                          <div className="grid md:grid-cols-2 gap-6">
-                            {researchEthicsContent.supports.map((support) => (
-                              <div
-                                key={support.audience}
-                                className="bg-secondary/50 rounded-xl p-6 border border-border"
-                              >
-                                <div className="flex items-center gap-3 mb-4">
-                                  <div className="w-10 h-10 bg-aces-green/10 rounded-lg flex items-center justify-center">
-                                    <support.icon className="w-5 h-5 text-aces-green" />
-                                  </div>
-                                  <h4 className="font-semibold font-heading text-aces-navy">
-                                    For {support.audience}
+                          {/* Categories */}
+                          <div>
+                            <h3 className="text-xl font-bold font-heading text-aces-navy mb-6">
+                              Pillar II Innovative Tools for Educators: Key Supports
+                            </h3>
+                            <div className="space-y-6">
+                              {innovativeToolsContent.categories.map((category) => (
+                                <div
+                                  key={category.title}
+                                  className="bg-secondary/50 rounded-xl p-6 border border-border"
+                                >
+                                  <h4 className="font-semibold font-heading text-aces-navy mb-4 flex items-center gap-2">
+                                    <Wrench className="w-5 h-5 text-aces-blue" />
+                                    {category.title}
                                   </h4>
+                                  <div className="grid md:grid-cols-2 gap-4">
+                                    {category.items.map((item) => (
+                                      <div key={item.title} className="bg-background rounded-lg p-4 border border-border">
+                                        <p className="font-medium text-foreground mb-1">
+                                          {item.title}
+                                        </p>
+                                        <p className="text-sm text-muted-foreground">
+                                          {item.description}
+                                        </p>
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
-                                <ul className="space-y-4">
-                                  {support.items.map((item) => (
-                                    <li key={item.title}>
-                                      <p className="font-medium text-foreground mb-1">
-                                        {item.title}
-                                      </p>
-                                      <p className="text-sm text-muted-foreground">
-                                        {item.description}
-                                      </p>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      ) : (
+                        <div className="space-y-8 mt-4">
+                          {/* Introduction */}
+                          <div className="space-y-4">
+                            <p className="text-muted-foreground leading-relaxed">
+                              {researchEthicsContent.intro}
+                            </p>
+                            <p className="text-muted-foreground leading-relaxed">
+                              {researchEthicsContent.vision}
+                            </p>
+                          </div>
+
+                          {/* Key Supports */}
+                          <div>
+                            <h3 className="text-xl font-bold font-heading text-aces-navy mb-6">
+                              Pillar III Research & Ethical Standards: Key Supports
+                            </h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              {researchEthicsContent.supports.map((support) => (
+                                <div
+                                  key={support.audience}
+                                  className="bg-secondary/50 rounded-xl p-6 border border-border"
+                                >
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-10 h-10 bg-aces-green/10 rounded-lg flex items-center justify-center">
+                                      <support.icon className="w-5 h-5 text-aces-green" />
+                                    </div>
+                                    <h4 className="font-semibold font-heading text-aces-navy">
+                                      For {support.audience}
+                                    </h4>
+                                  </div>
+                                  <ul className="space-y-4">
+                                    {support.items.map((item) => (
+                                      <li key={item.title}>
+                                        <p className="font-medium text-foreground mb-1">
+                                          {item.title}
+                                        </p>
+                                        <p className="text-sm text-muted-foreground">
+                                          {item.description}
+                                        </p>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </DialogContent>
                   </Dialog>
                 )}
