@@ -56,9 +56,11 @@ export function Header() {
                 {item.label}
               </a>
             ))}
-            <Button className="ml-4 gradient-aces text-white font-semibold px-6 rounded-full btn-glow">
-              Contact
-            </Button>
+            <a href="/contact">
+              <Button className="ml-4 gradient-aces text-white font-semibold px-6 rounded-full btn-glow">
+                Contact
+              </Button>
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -97,9 +99,11 @@ export function Header() {
                   </a>
                 ))}
                 <div className="pt-2 px-4">
-                  <Button className="w-full gradient-aces text-white font-semibold rounded-full">
-                    Contact
-                  </Button>
+                  <a href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                    <Button className="w-full gradient-aces text-white font-semibold rounded-full">
+                      Contact
+                    </Button>
+                  </a>
                 </div>
               </div>
             </motion.nav>
