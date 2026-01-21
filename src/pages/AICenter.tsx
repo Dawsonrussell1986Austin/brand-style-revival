@@ -328,7 +328,7 @@ export default function AICenter() {
                 {pillar.hasDetailedContent && (
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button variant="outline" className="w-full border-aces-blue text-aces-blue hover:bg-aces-blue/5">
+                      <Button variant="outline" className="w-full border-aces-blue text-aces-blue hover:bg-aces-blue hover:text-white transition-colors">
                         Read Full Details
                         <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
