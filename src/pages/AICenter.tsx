@@ -39,7 +39,9 @@ const pillars = [
       "AI literacy training",
       "Classroom integration strategies",
       "Ongoing mentorship and support"
-    ]
+    ],
+    hasDetailedContent: true,
+    contentKey: "aiReadyEducators"
   },
   {
     icon: Wrench,
@@ -68,6 +70,52 @@ const pillars = [
     contentKey: "researchEthics"
   }
 ];
+
+const aiReadyEducatorsContent = {
+  intro: "Pillar I focuses on preparing educators, leaders, students, and families to become AI-fluent and confident in using artificial intelligence responsibly, ethically, and creatively. The goal is to ensure that every level of the school community — from the classroom to the district office to families at home — has the knowledge, skills, and tools needed to integrate AI in meaningful ways. This work builds capacity across roles, fosters collaboration, and establishes a foundation for innovation that enhances teaching, learning, and leadership.",
+  vision: "By equipping educators with practical strategies, leaders with policy and decision-making frameworks, students with AI literacy skills, and families with resources to support learning at home, Pillar I creates a holistic ecosystem where AI strengthens—not replaces—human connection and professional expertise.",
+  supports: [
+    {
+      audience: "District & School Leaders",
+      icon: Building2,
+      items: [
+        { title: "AI Leadership Academy", description: "Cohort-based program introducing leaders to AI strategy, ethics, and adoption planning." },
+        { title: "Executive Briefings", description: "High-level updates on AI trends and their implications for policy, operations, and instruction." },
+        { title: "Policy & Planning Workshops", description: "Support for districts in creating AI adoption roadmaps, communication strategies, and equity-driven implementation plans." },
+        { title: "Data-Informed Decision-Making Seminars", description: "Guidance on leveraging AI analytics for strategic planning and improved outcomes." }
+      ]
+    },
+    {
+      audience: "Teachers & Instructional Staff",
+      icon: UserCheck,
+      items: [
+        { title: "AI Literacy for Educators Course", description: "Foundational professional learning on AI concepts, ethics, and classroom applications." },
+        { title: "Content-Specific Workshops", description: "Strategies for integrating AI into ELA, Math, Science, Social Studies, Arts, and CTE classrooms." },
+        { title: "AI-Powered Lesson Design Studio", description: "Hands-on labs where educators design lessons and units enhanced with AI tools." },
+        { title: "Embedded Coaching Cycles", description: "Ongoing coaching support to ensure successful classroom implementation." },
+        { title: "Micro-Credentials & Badges", description: "Recognition for educators demonstrating competency in AI integration and ethics." },
+        { title: "Role-Specific Workbooks", description: "Practical guides offering curated prompts and examples tailored for teachers, leaders, and paraeducators." }
+      ]
+    },
+    {
+      audience: "Paraeducators & Support Staff",
+      icon: UserCog,
+      items: [
+        { title: "AI for Instructional Support Workshops", description: "Training on using AI to adapt materials, generate accommodations, and support student learning." },
+        { title: "Role-Specific Short Courses", description: "Modules designed for librarians, counselors, office staff, and specialists." }
+      ]
+    },
+    {
+      audience: "Students & Families",
+      icon: Heart,
+      items: [
+        { title: "AI Literacy Curriculum Modules (K–12)", description: "Age-appropriate lessons that build understanding of AI fundamentals, ethics, and creativity." },
+        { title: "Family Workshops & Toolkits", description: "Sessions and resources to help families use AI in daily life (e.g., resumes, homework support, budgeting) and to understand its role in schools." },
+        { title: "Student AI Projects & Showcases", description: "Opportunities for students to design and present AI applications that demonstrate creativity and problem-solving." }
+      ]
+    }
+  ]
+};
 
 const researchEthicsContent = {
   intro: "Pillar III ensures that AI integration in schools is safe, ethical, and evidence-based. While AI holds enormous promise for transforming teaching and learning, its adoption must be guided by rigorous standards that protect students, promote equity, and ensure tools are effective in real classrooms. The ACES Center for AI positions itself as a trusted authority in this space—conducting applied research, developing certification systems, and establishing ethical frameworks that schools and vendors can rely on.",
@@ -337,13 +385,61 @@ export default function AICenter() {
                       <DialogHeader>
                         <DialogTitle className="text-2xl font-heading text-aces-navy flex items-center gap-3">
                           <pillar.icon className="w-6 h-6 text-aces-blue" />
-                          {pillar.contentKey === "innovativeTools" ? "Innovative AI-Tools Solutions" : "Research & Ethical Standards"}
+                          {pillar.contentKey === "aiReadyEducators" && "AI-Ready Educators & Communities"}
+                          {pillar.contentKey === "innovativeTools" && "Innovative AI-Tools Solutions"}
+                          {pillar.contentKey === "researchEthics" && "Research & Ethical Standards"}
                         </DialogTitle>
                       </DialogHeader>
                       
-                      {pillar.contentKey === "innovativeTools" ? (
+                      {pillar.contentKey === "aiReadyEducators" && (
                         <div className="space-y-8 mt-4">
-                          {/* Introduction */}
+                          <div className="space-y-4">
+                            <p className="text-muted-foreground leading-relaxed">
+                              {aiReadyEducatorsContent.intro}
+                            </p>
+                            <p className="text-muted-foreground leading-relaxed">
+                              {aiReadyEducatorsContent.vision}
+                            </p>
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold font-heading text-aces-navy mb-6">
+                              Pillar I AI-Ready Educators & Communities: Key Supports
+                            </h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              {aiReadyEducatorsContent.supports.map((support) => (
+                                <div
+                                  key={support.audience}
+                                  className="bg-secondary/50 rounded-xl p-6 border border-border"
+                                >
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-10 h-10 bg-aces-green/10 rounded-lg flex items-center justify-center">
+                                      <support.icon className="w-5 h-5 text-aces-green" />
+                                    </div>
+                                    <h4 className="font-semibold font-heading text-aces-navy">
+                                      For {support.audience}
+                                    </h4>
+                                  </div>
+                                  <ul className="space-y-3">
+                                    {support.items.map((item) => (
+                                      <li key={item.title}>
+                                        <p className="font-medium text-foreground mb-1">
+                                          {item.title}
+                                        </p>
+                                        <p className="text-sm text-muted-foreground">
+                                          {item.description}
+                                        </p>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {pillar.contentKey === "innovativeTools" && (
+                        <div className="space-y-8 mt-4">
                           <div className="space-y-4">
                             <p className="text-muted-foreground leading-relaxed">
                               {innovativeToolsContent.intro}
@@ -352,8 +448,6 @@ export default function AICenter() {
                               {innovativeToolsContent.vision}
                             </p>
                           </div>
-
-                          {/* Categories */}
                           <div>
                             <h3 className="text-xl font-bold font-heading text-aces-navy mb-6">
                               Pillar II Innovative Tools for Educators: Key Supports
@@ -385,9 +479,10 @@ export default function AICenter() {
                             </div>
                           </div>
                         </div>
-                      ) : (
+                      )}
+
+                      {pillar.contentKey === "researchEthics" && (
                         <div className="space-y-8 mt-4">
-                          {/* Introduction */}
                           <div className="space-y-4">
                             <p className="text-muted-foreground leading-relaxed">
                               {researchEthicsContent.intro}
@@ -396,8 +491,6 @@ export default function AICenter() {
                               {researchEthicsContent.vision}
                             </p>
                           </div>
-
-                          {/* Key Supports */}
                           <div>
                             <h3 className="text-xl font-bold font-heading text-aces-navy mb-6">
                               Pillar III Research & Ethical Standards: Key Supports
