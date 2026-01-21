@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/ai-center-hero.jpg";
+import workshopImage from "@/assets/ai-workshop.jpg";
+import certificationImage from "@/assets/ai-certification.jpg";
 import {
   Dialog,
   DialogContent,
@@ -296,35 +299,64 @@ export default function AICenter() {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-aces-blue/5 to-background">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-aces-green/10 text-aces-green rounded-full mb-6">
-              <Sparkles className="w-4 h-4" />
-              <span className="text-sm font-semibold font-heading">2025-2026 Catalog</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-aces-navy mb-6">
-              ACES Center for <span className="text-aces-blue">Artificial Intelligence</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Transforming education through AI innovation. We prepare educators and students 
-              for the future with cutting-edge training, tools, and ethical frameworks.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-aces-blue hover:bg-aces-blue/90 text-white">
-                Explore Programs
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-aces-navy text-aces-navy hover:bg-aces-navy/5">
-                Contact Us
-              </Button>
-            </div>
-          </motion.div>
+      <section className="pt-32 pb-20 bg-gradient-to-b from-aces-blue/5 to-background relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-aces-blue/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-aces-green/10 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-4 relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-aces-green/10 text-aces-green rounded-full mb-6">
+                <Sparkles className="w-4 h-4" />
+                <span className="text-sm font-semibold font-heading">Innovation in Education</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-aces-navy mb-6">
+                ACES Center for <span className="text-aces-blue">Artificial Intelligence</span>
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground mb-8">
+                Transforming education through AI innovation. We prepare educators and students 
+                for the future with cutting-edge training, tools, and ethical frameworks.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-aces-blue hover:bg-aces-blue/90 text-white">
+                  Explore Programs
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+                <Button size="lg" variant="outline" className="border-aces-navy text-aces-navy hover:bg-aces-navy/5">
+                  Contact Us
+                </Button>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative hidden lg:block"
+            >
+              <img 
+                src={heroImage} 
+                alt="AI in Education" 
+                className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-lg border border-border">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-aces-green/10 rounded-lg flex items-center justify-center">
+                    <Brain className="w-6 h-6 text-aces-green" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-aces-navy">AI-Powered Learning</p>
+                    <p className="text-sm text-muted-foreground">Future-ready education</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -539,19 +571,45 @@ export default function AICenter() {
       {/* Certification Programs */}
       <section className="py-20 bg-aces-navy/[0.02]">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
-              Certification Programs
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Earn recognized credentials that demonstrate your expertise in AI-enhanced education.
-            </p>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
+                Certification Programs
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Earn recognized credentials that demonstrate your expertise in AI-enhanced education. 
+                Our certification programs are designed by experts and validated by industry leaders.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-aces-blue to-aces-green border-2 border-white flex items-center justify-center">
+                      <GraduationCap className="w-5 h-5 text-white" />
+                    </div>
+                  ))}
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-semibold text-aces-navy">500+</span> educators certified
+                </p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative hidden lg:block"
+            >
+              <img 
+                src={certificationImage} 
+                alt="AI Certification Achievement" 
+                className="rounded-2xl shadow-xl w-full object-cover aspect-video"
+              />
+            </motion.div>
+          </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             {certificationPrograms.map((program, index) => (
@@ -604,21 +662,27 @@ export default function AICenter() {
       {/* Workshops Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
-              Workshops & Training
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Hands-on learning experiences designed to build practical AI skills for educators.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid lg:grid-cols-5 gap-12 items-start">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-2"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
+                Workshops & Training
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Hands-on learning experiences designed to build practical AI skills for educators.
+              </p>
+              <img 
+                src={workshopImage} 
+                alt="Educators in AI workshop" 
+                className="rounded-2xl shadow-lg w-full object-cover aspect-video hidden lg:block"
+              />
+            </motion.div>
+            
+            <div className="lg:col-span-3 grid md:grid-cols-2 gap-4">
             {workshops.map((workshop, index) => (
               <motion.div
                 key={workshop.title}
@@ -644,11 +708,10 @@ export default function AICenter() {
                 <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aces-blue group-hover:translate-x-1 transition-all" />
               </motion.div>
             ))}
+            </div>
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-aces-blue to-aces-navy">
         <div className="container mx-auto px-4">
           <motion.div
