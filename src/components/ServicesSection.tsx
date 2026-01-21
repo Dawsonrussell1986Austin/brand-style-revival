@@ -1,110 +1,47 @@
-import {
-  MessageSquare,
-  Brain,
-  Layers,
-  Users,
-  Target,
-  ClipboardList,
-  GraduationCap,
-  Heart,
-  FileCheck,
-  Package,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Brain, Users, BookOpen, Target, Lightbulb, GraduationCap, BarChart3, Settings, Heart, Rocket } from "lucide-react";
 
 const services = [
-  {
-    icon: MessageSquare,
-    title: "Customized Professional Learning",
-    description:
-      "Professional learning should fit your goals. We design experiences that target instructional strategies, leadership development, or system-wide change.",
-  },
-  {
-    icon: Brain,
-    title: "ACES Center for Artificial Intelligence",
-    description:
-      "AI is reshaping every corner of education. We help teachers, leaders, paraeducators, and students engage with AI responsibly through training, coaching, and support.",
-    featured: true,
-  },
-  {
-    icon: Layers,
-    title: "Curriculum Writing Facilitation & Implementation Support",
-    description:
-      "Curriculum writing teams gain clarity of process and product. A standards-aligned approach guides districts to create high-quality curriculum tailored to their students' needs.",
-  },
-  {
-    icon: Users,
-    title: "Train-the-Trainer for Leaders and Teachers",
-    description:
-      "Capacity grows from within. Our Train-the-Trainer model equips leaders and teacher-leaders with tools, strategies, and resources to deliver professional learning and sustain impact over time.",
-  },
-  {
-    icon: Target,
-    title: "Instructional Coaching",
-    description:
-      "ACES instructional coaching provides personalized, job-embedded support that helps teachers refine their practice, strengthen instructional decision-making, and improve student outcomes.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Curriculum Audits and Management Plans",
-    description:
-      "Strong systems start with a clear picture. We review curriculum for alignment, rigor, equity, and access, then help districts design management plans with timelines, roles, and responsibilities.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Early Childhood Services",
-    description:
-      "Strong foundations start early. We support educators with child development–based learning, coaching, curriculum support, and family engagement strategies.",
-    featured: true,
-  },
-  {
-    icon: Heart,
-    title: "Professional Support for Paraeducators",
-    description:
-      "Paraeducators deserve meaningful preparation. Our services build skills through ParaPro test prep, instructional training, and customized support aligned to district needs.",
-  },
-  {
-    icon: FileCheck,
-    title: "Alternative Routes to Certification (ARC)",
-    description:
-      "Teaching should be accessible. In partnership with the CT State Department of Education, our ARC program supports career changers and paraeducators in earning certification.",
-  },
-  {
-    icon: Package,
-    title: "Product Development",
-    description:
-      "Educators deserve resources that evolve with their practice. We design tools and resources that address evolving practices in education, connect frameworks and research.",
-  },
+  { icon: Brain, title: "AI Integration", description: "Harness AI to enhance teaching and learning outcomes", gradient: "from-primary to-accent", featured: true },
+  { icon: Users, title: "Instructional Coaching", description: "One-on-one support to elevate teaching practices", gradient: "from-accent to-aces-secondary-blue" },
+  { icon: BookOpen, title: "Curriculum Development", description: "Design rigorous, standards-aligned curriculum", gradient: "from-aces-secondary-blue to-primary" },
+  { icon: Target, title: "School Improvement", description: "Strategic planning for sustainable growth", gradient: "from-primary to-aces-secondary-green" },
+  { icon: Lightbulb, title: "Leadership Development", description: "Build capacity at every level of leadership", gradient: "from-aces-secondary-green to-accent" },
+  { icon: GraduationCap, title: "New Teacher Support", description: "Mentorship and resources for new educators", gradient: "from-accent to-primary" },
+  { icon: BarChart3, title: "Data Analysis", description: "Turn data into actionable insights", gradient: "from-primary to-aces-secondary-blue" },
+  { icon: Settings, title: "Technology Integration", description: "Seamlessly blend tech into instruction", gradient: "from-aces-secondary-blue to-aces-secondary-green" },
+  { icon: Heart, title: "Early Childhood", description: "Specialized support for our youngest learners", gradient: "from-aces-secondary-green to-primary" },
+  { icon: Rocket, title: "Innovation Labs", description: "Pilot cutting-edge educational approaches", gradient: "from-primary to-accent", featured: true },
 ];
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground text-center mb-16">
-          Our Services
-        </h2>
+    <section id="services" className="relative py-24 md:py-32 overflow-hidden">
+      <div className="absolute inset-0 gradient-mesh opacity-50" />
+      <div className="orb orb-green w-[400px] h-[400px] top-[20%] -right-[100px] opacity-30" />
+      
+      <div className="relative container mx-auto px-4">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-primary mb-6">
+            <Settings className="w-4 h-4" />
+            What We Offer
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
+            Our <span className="text-gradient-aces">Services</span>
+          </h2>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
           {services.map((service, index) => (
-            <div key={index} className="flex gap-4">
-              <div
-                className={`flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center ${
-                  service.featured
-                    ? "bg-aces-navy text-primary-foreground"
-                    : "border-2 border-foreground/20 text-foreground"
-                }`}
-              >
-                <service.icon className="w-6 h-6" />
+            <motion.div key={service.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.05 }} className="group relative glass-card rounded-2xl p-6 hover:border-primary/40 transition-all duration-300 cursor-pointer">
+              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+              <div className={`relative w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <service.icon className="w-6 h-6 text-white" />
               </div>
-              <div>
-                <h3 className="text-lg font-heading font-bold text-foreground mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            </div>
+              <h3 className="relative text-lg font-heading font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
+              <p className="relative text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+              {service.featured && <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary animate-pulse" />}
+            </motion.div>
           ))}
         </div>
       </div>
