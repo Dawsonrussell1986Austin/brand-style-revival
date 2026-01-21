@@ -5,7 +5,7 @@ import heroImage from "@/assets/hero-educators.jpg";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-32 md:pt-36">
       {/* Background Pattern */}
       <div className="absolute inset-0 dot-pattern" />
       
