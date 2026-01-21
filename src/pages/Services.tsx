@@ -152,20 +152,6 @@ export default function Services() {
               ))}
             </div>
             
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-wrap gap-4"
-            >
-              <Button size="lg" className="bg-aces-green hover:bg-aces-green/90 text-white shadow-lg shadow-aces-green/25">
-                Contact Us
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
-                View Our Work
-              </Button>
-            </motion.div>
           </motion.div>
         </div>
       </section>
