@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { 
   Brain, 
   GraduationCap, 
@@ -14,7 +22,11 @@ import {
   Users,
   Code,
   Lightbulb,
-  Target
+  Target,
+  Building2,
+  UserCheck,
+  UserCog,
+  Heart
 } from "lucide-react";
 
 const pillars = [
@@ -49,9 +61,73 @@ const pillars = [
       "Privacy and data protection",
       "Bias detection and mitigation",
       "Research partnerships"
-    ]
+    ],
+    hasDetailedContent: true
   }
 ];
+
+const researchEthicsContent = {
+  intro: "Pillar III ensures that AI integration in schools is safe, ethical, and evidence-based. While AI holds enormous promise for transforming teaching and learning, its adoption must be guided by rigorous standards that protect students, promote equity, and ensure tools are effective in real classrooms. The ACES Center for AI positions itself as a trusted authority in this space—conducting applied research, developing certification systems, and establishing ethical frameworks that schools and vendors can rely on.",
+  vision: "Through partnerships with district leaders, researchers, and industry experts, the Center will set benchmarks for what responsible AI use looks like in education. By providing readiness audits, ethics training, and a Seal of Approval for AI tools, Pillar III builds trust and transparency, ensuring that AI enhances learning while safeguarding the values and well-being of students, families, and educators.",
+  supports: [
+    {
+      audience: "District & School Leaders",
+      icon: Building2,
+      items: [
+        {
+          title: "AI Readiness & Risk Audit Tool",
+          description: "Assesses institutional readiness, identifies risks, and recommends strategies for responsible AI adoption."
+        },
+        {
+          title: "Policy & Vendor Guidance",
+          description: "Resources and consulting to support safe procurement and adoption of AI solutions."
+        }
+      ]
+    },
+    {
+      audience: "Teachers & Instructional Staff",
+      icon: UserCheck,
+      items: [
+        {
+          title: "AI Ethics Simulation Scenarios",
+          description: "Interactive training modules that help educators navigate classroom-based ethical dilemmas."
+        },
+        {
+          title: "Professional Learning Modules on AI Ethics",
+          description: "Training that builds teacher confidence in selecting and using AI responsibly."
+        }
+      ]
+    },
+    {
+      audience: "Paraeducators & Specialists",
+      icon: UserCog,
+      items: [
+        {
+          title: "Ethics & Equity Evaluation Rubric",
+          description: "Role-specific frameworks to guide equitable and accessible AI practices."
+        },
+        {
+          title: "Certification-Aligned Resources",
+          description: "Supports for integrating safe and ethical AI into specialized roles."
+        }
+      ]
+    },
+    {
+      audience: "Students & Families",
+      icon: Heart,
+      items: [
+        {
+          title: "Student Digital Citizenship & AI Toolkit",
+          description: "Public-facing resources that teach families how to navigate AI tools responsibly and critically."
+        },
+        {
+          title: "Community Engagement Platforms",
+          description: "Podcasts, communications, and workshops to build shared understanding and trust."
+        }
+      ]
+    }
+  ]
+};
 
 const certificationPrograms = [
   {
@@ -191,7 +267,7 @@ export default function AICenter() {
                 <p className="text-muted-foreground mb-6">
                   {pillar.description}
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-3 mb-6">
                   {pillar.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-aces-green flex-shrink-0 mt-0.5" />
@@ -199,6 +275,71 @@ export default function AICenter() {
                     </li>
                   ))}
                 </ul>
+                {pillar.hasDetailedContent && (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" className="w-full border-aces-blue text-aces-blue hover:bg-aces-blue/5">
+                        Read Full Details
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle className="text-2xl font-heading text-aces-navy flex items-center gap-3">
+                          <Shield className="w-6 h-6 text-aces-blue" />
+                          Research & Ethical Standards
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-8 mt-4">
+                        {/* Introduction */}
+                        <div className="space-y-4">
+                          <p className="text-muted-foreground leading-relaxed">
+                            {researchEthicsContent.intro}
+                          </p>
+                          <p className="text-muted-foreground leading-relaxed">
+                            {researchEthicsContent.vision}
+                          </p>
+                        </div>
+
+                        {/* Key Supports */}
+                        <div>
+                          <h3 className="text-xl font-bold font-heading text-aces-navy mb-6">
+                            Pillar III Research & Ethical Standards: Key Supports
+                          </h3>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            {researchEthicsContent.supports.map((support) => (
+                              <div
+                                key={support.audience}
+                                className="bg-secondary/50 rounded-xl p-6 border border-border"
+                              >
+                                <div className="flex items-center gap-3 mb-4">
+                                  <div className="w-10 h-10 bg-aces-green/10 rounded-lg flex items-center justify-center">
+                                    <support.icon className="w-5 h-5 text-aces-green" />
+                                  </div>
+                                  <h4 className="font-semibold font-heading text-aces-navy">
+                                    For {support.audience}
+                                  </h4>
+                                </div>
+                                <ul className="space-y-4">
+                                  {support.items.map((item) => (
+                                    <li key={item.title}>
+                                      <p className="font-medium text-foreground mb-1">
+                                        {item.title}
+                                      </p>
+                                      <p className="text-sm text-muted-foreground">
+                                        {item.description}
+                                      </p>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                )}
               </motion.div>
             ))}
           </div>
