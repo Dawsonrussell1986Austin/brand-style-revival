@@ -7,6 +7,13 @@ import { Users, Target, Lightbulb, Heart, Mail, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
+// Team headshot imports
+import michelleGohagonImg from "@/assets/team/michelle-gohagon.png";
+import rosariaGiannettiImg from "@/assets/team/rosaria-giannetti.png";
+import jessicaWhiteImg from "@/assets/team/jessica-white.png";
+import lisaSealesImg from "@/assets/team/lisa-seales.png";
+import maryStoneImg from "@/assets/team/mary-stone.png";
+
 interface TeamMember {
   name: string;
   role: string;
@@ -17,11 +24,91 @@ interface TeamMember {
   email?: string;
 }
 
-// Team members temporarily hidden until headshots with names are ready
-const leadershipTeam: TeamMember[] = [];
+// Leadership Team
+const leadershipTeam: TeamMember[] = [
+  {
+    name: "Michelle Gohagon",
+    role: "Director",
+    bio: "Leads ACES PDSI with a focus on innovative professional development and school improvement strategies.",
+    fullBio: "Michelle Gohagon serves as the Director of ACES Professional Development & School Improvement. With extensive experience in educational leadership, she guides the organization's mission to support educators and districts across Connecticut through research-based professional learning, coaching, and school improvement services.",
+    image: michelleGohagonImg,
+    email: "mgohagon@aces.org"
+  },
+  {
+    name: "Rosaria Giannetti",
+    role: "Assistant Director",
+    bio: "Supports PDSI initiatives and leads key professional development programs across the region.",
+    fullBio: "Rosaria Giannetti serves as Assistant Director at ACES PDSI, where she coordinates professional development initiatives and supports educators in implementing research-based practices. Her work spans curriculum development, instructional coaching, and systems improvement.",
+    image: rosariaGiannettiImg,
+    email: "rgiannetti@aces.org"
+  },
+  {
+    name: "Jessica White",
+    role: "Assistant Director",
+    bio: "Oversees professional learning programs and supports district-wide improvement efforts.",
+    fullBio: "Jessica White is an Assistant Director at ACES PDSI, bringing expertise in educational leadership and professional development. She works closely with districts to design and implement sustainable learning experiences that drive meaningful change in schools.",
+    image: jessicaWhiteImg,
+    email: "jewhite@aces.org"
+  },
+  {
+    name: "Carolyn Autore",
+    role: "Office Manager",
+    bio: "Manages operations and administrative functions to ensure smooth organizational processes.",
+    fullBio: "Carolyn Autore serves as the Office Manager for ACES PDSI, overseeing daily operations and administrative functions. Her organizational expertise ensures the team can focus on their mission of supporting educators across Connecticut.",
+    email: "cautore@aces.org"
+  },
+  {
+    name: "John Gustafson",
+    role: "Project Coordinator",
+    bio: "Coordinates projects and initiatives to support professional development delivery.",
+    fullBio: "John Gustafson is the Project Coordinator at ACES PDSI, responsible for managing project timelines, coordinating events, and supporting the delivery of professional development services to districts and schools.",
+    email: "jgustafson@aces.org"
+  }
+];
 
-const specialistsTeam: TeamMember[] = [];
+// Professional Learning Specialists
+const specialistsTeam: TeamMember[] = [
+  {
+    name: "Francesca Bickel",
+    role: "Special Education, TEAM",
+    bio: "Specializes in special education support and TEAM mentoring programs.",
+    fullBio: "Francesca Bickel is a Professional Learning Specialist focusing on special education and the TEAM (Teacher Education And Mentoring) program. She supports educators in developing inclusive practices and mentors new teachers entering the profession."
+  },
+  {
+    name: "Kimberly Cellini",
+    role: "Early Childhood",
+    bio: "Focuses on early childhood education and developmentally appropriate practices.",
+    fullBio: "Kimberly Cellini is a Professional Learning Specialist in Early Childhood education. She works with educators to implement play-based, developmentally appropriate learning experiences that support young children's growth and development."
+  },
+  {
+    name: "Michelle Dellacamera",
+    role: "Early Childhood",
+    bio: "Supports early childhood educators with research-based instructional strategies.",
+    fullBio: "Michelle Dellacamera is a Professional Learning Specialist dedicated to early childhood education. She provides coaching and professional development to help educators create engaging, developmentally appropriate learning environments."
+  },
+  {
+    name: "Lisa Seales",
+    role: "Early Childhood, Science",
+    bio: "Brings expertise in early childhood education and science instruction.",
+    fullBio: "Lisa Seales is a Professional Learning Specialist with expertise in both early childhood education and science instruction. She helps educators integrate hands-on, inquiry-based science learning into early childhood classrooms.",
+    image: lisaSealesImg
+  },
+  {
+    name: "Dina Secchiaroli",
+    role: "Cognitive Coaching, CTE",
+    bio: "Expert in cognitive coaching and career technical education support.",
+    fullBio: "Dina Secchiaroli is a Professional Learning Specialist specializing in Cognitive Coaching and Career Technical Education (CTE). She uses reflective coaching practices to support educator growth and improve instructional outcomes."
+  },
+  {
+    name: "Mary Stone",
+    role: "Early Childhood, Special Education",
+    bio: "Combines early childhood and special education expertise to support inclusive practices.",
+    fullBio: "Mary Stone is a Professional Learning Specialist with expertise in early childhood and special education. She supports educators in creating inclusive classrooms where all young learners can thrive academically, socially, and emotionally.",
+    image: maryStoneImg
+  }
+];
 
+// Operations team is empty for now
 const operationsTeam: TeamMember[] = [];
 
 const TeamCard = ({ member, index, onViewBio }: { member: TeamMember; index: number; onViewBio: (member: TeamMember) => void }) => (
