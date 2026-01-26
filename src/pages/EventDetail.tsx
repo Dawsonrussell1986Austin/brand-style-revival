@@ -28,7 +28,7 @@ export const eventDetails: EventData[] = [
     location: "Virtual",
     type: "virtual",
     category: "AI & Technology",
-    registrationUrl: "#",
+    registrationUrl: undefined,
     content: (
       <>
         <p className="text-lg text-muted-foreground leading-relaxed mb-6">
@@ -239,12 +239,18 @@ export default function EventDetail() {
               )}
             </div>
 
-            {event.registrationUrl && (
+            {event.registrationUrl ? (
               <Button asChild size="lg" className="gradient-aces text-white btn-glow">
                 <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
                   Register Now
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
+              </Button>
+            ) : (
+              <Button asChild size="lg" className="gradient-aces text-white btn-glow">
+                <Link to="/contact">
+                  Contact Us
+                </Link>
               </Button>
             )}
           </motion.div>
@@ -262,22 +268,6 @@ export default function EventDetail() {
           >
             {event.content}
 
-            {event.registrationUrl && (
-              <div className="mt-12 p-8 bg-secondary rounded-2xl text-center">
-                <h3 className="text-xl font-heading font-bold text-foreground mb-4">
-                  Ready to Join Us?
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  Secure your spot for this professional development opportunity.
-                </p>
-                <Button asChild size="lg" className="gradient-aces text-white btn-glow">
-                  <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
-                    Register Now
-                    <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              </div>
-            )}
           </motion.article>
         </div>
       </section>
