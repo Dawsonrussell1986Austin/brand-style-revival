@@ -7,10 +7,15 @@ import { NewsSection } from "@/components/NewsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        url="/"
+        keywords="professional development, school improvement, educator training, Connecticut education, ACES PDSI"
+      />
       <Header />
       <main>
         <Hero />

@@ -1,11 +1,18 @@
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Users, Target, Lightbulb, Heart } from "lucide-react";
 
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="About Us"
+        description="Learn about ACES Professional Development & School Improvement. Supporting educators and districts across Connecticut since 1992 with research-based professional learning."
+        url="/about"
+        keywords="about ACES PDSI, education history, Connecticut educators, school improvement mission"
+      />
       <Header />
       <main>
         {/* Hero Section */}

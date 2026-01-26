@@ -3,6 +3,7 @@ import { BookOpen, Download, FileText, ArrowRight, Sparkles, CheckCircle2, Libra
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 
 interface Workbook {
   id: string;
@@ -75,6 +76,12 @@ const freeResources: FreeResource[] = [
 const Resources = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Resources"
+        description="Access free educator resources, workbooks, and tools from ACES PDSI. Practical materials created by educators, for educators."
+        url="/resources"
+        keywords="educator resources, teaching workbooks, free templates, professional learning tools, classroom resources"
+      />
       <Header />
       
       {/* Hero Section */}

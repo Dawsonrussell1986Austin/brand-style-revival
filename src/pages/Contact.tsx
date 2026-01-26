@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { toast } from "sonner";
 import heroImage from "@/assets/teacher-classroom.jpg";
 
@@ -52,6 +53,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with ACES PDSI. Contact our team for professional development services, partnerships, and educational support in Connecticut."
+        url="/contact"
+        keywords="contact ACES PDSI, professional development inquiry, education partnerships, Connecticut educators contact"
+      />
       <Header />
       
       {/* Hero Section */}
