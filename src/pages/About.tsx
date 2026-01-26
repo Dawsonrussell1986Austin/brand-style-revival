@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Users, Target, Lightbulb, Heart, Mail } from "lucide-react";
+import { Users, Target, Lightbulb, Heart, Mail, X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 interface TeamMember {
   name: string;
   role: string;
   bio: string;
+  fullBio?: string;
   image?: string;
   linkedin?: string;
   email?: string;
@@ -20,7 +24,7 @@ const specialistsTeam: TeamMember[] = [];
 
 const operationsTeam: TeamMember[] = [];
 
-const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => (
+const TeamCard = ({ member, index, onViewBio }: { member: TeamMember; index: number; onViewBio: (member: TeamMember) => void }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -57,9 +61,20 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => (
       <p className="text-base font-semibold text-aces-green mb-3">
         {member.role}
       </p>
-      <p className="text-base font-medium text-muted-foreground leading-relaxed line-clamp-4">
+      <p className="text-base font-medium text-muted-foreground leading-relaxed line-clamp-3">
         {member.bio}
       </p>
+      
+      {/* View Full Bio button */}
+      {(member.fullBio || member.bio.length > 150) && (
+        <Button 
+          variant="link" 
+          className="px-0 text-aces-blue font-semibold mt-2 h-auto"
+          onClick={() => onViewBio(member)}
+        >
+          Read Full Bio →
+        </Button>
+      )}
       
       {/* Contact link */}
       <div className="flex gap-2 mt-4 pt-4 border-t border-border">
@@ -75,8 +90,63 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => (
   </motion.div>
 );
 
+const TeamBioDialog = ({ member, open, onClose }: { member: TeamMember | null; open: boolean; onClose: () => void }) => {
+  if (!member) return null;
+  
+  return (
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <div className="flex items-start gap-4">
+            {member.image ? (
+              <img 
+                src={member.image} 
+                alt={member.name}
+                className="w-24 h-24 rounded-xl object-cover object-top"
+              />
+            ) : (
+              <div className="w-24 h-24 rounded-xl bg-gradient-to-br from-aces-blue to-aces-green flex items-center justify-center text-white text-2xl font-heading font-bold flex-shrink-0">
+                {member.name.split(' ').map(n => n[0]).join('')}
+              </div>
+            )}
+            <div className="flex-1">
+              <DialogTitle className="text-2xl font-heading font-bold text-foreground">
+                {member.name}
+              </DialogTitle>
+              <p className="text-lg font-semibold text-aces-green mt-1">
+                {member.role}
+              </p>
+            </div>
+          </div>
+        </DialogHeader>
+        
+        <div className="mt-6 space-y-4">
+          <p className="text-base font-medium text-muted-foreground leading-relaxed whitespace-pre-line">
+            {member.fullBio || member.bio}
+          </p>
+          
+          <div className="flex gap-3 pt-4 border-t border-border">
+            <a 
+              href="mailto:info@acespdsi.org"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-aces-blue text-white font-semibold hover:bg-aces-blue/90 transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              Contact {member.name.split(' ')[0]}
+            </a>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 const About = () => {
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const hasTeamMembers = leadershipTeam.length > 0 || specialistsTeam.length > 0 || operationsTeam.length > 0;
+
+  const handleViewBio = (member: TeamMember) => {
+    setSelectedMember(member);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -212,7 +282,7 @@ const About = () => {
                   </motion.h3>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {leadershipTeam.map((member, index) => (
-                      <TeamCard key={member.name} member={member} index={index} />
+                      <TeamCard key={member.name} member={member} index={index} onViewBio={handleViewBio} />
                     ))}
                   </div>
                 </div>
@@ -232,7 +302,7 @@ const About = () => {
                   </motion.h3>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {specialistsTeam.map((member, index) => (
-                      <TeamCard key={member.name} member={member} index={index} />
+                      <TeamCard key={member.name} member={member} index={index} onViewBio={handleViewBio} />
                     ))}
                   </div>
                 </div>
@@ -252,7 +322,7 @@ const About = () => {
                   </motion.h3>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl">
                     {operationsTeam.map((member, index) => (
-                      <TeamCard key={member.name} member={member} index={index} />
+                      <TeamCard key={member.name} member={member} index={index} onViewBio={handleViewBio} />
                     ))}
                   </div>
                 </div>
@@ -320,6 +390,13 @@ const About = () => {
         </section>
       </main>
       <Footer />
+      
+      {/* Team Member Bio Dialog */}
+      <TeamBioDialog 
+        member={selectedMember} 
+        open={!!selectedMember} 
+        onClose={() => setSelectedMember(null)} 
+      />
     </div>
   );
 };
