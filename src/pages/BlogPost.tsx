@@ -118,17 +118,50 @@ export const blogPosts: BlogPostData[] = [
   },
   {
     slug: "lessons-from-toddlers",
-    title: "What Toddlers Taught Us: 3 Lessons from the Classroom",
+    title: "What Toddlers Taught Us: 3 Lessons from Our Work in Early Childhood Classrooms",
     date: "October 13, 2024",
-    author: "ACES Team",
-    readTime: "3 min read",
+    author: "Drew Powell",
+    readTime: "4 min read",
     category: "Early Childhood",
     image: blog3,
-    excerpt: "Insights that apply everywhere in education.",
+    excerpt: "Big lessons unfold daily in early childhood classrooms—for students and for educators alike.",
     content: (
-      <p className="text-muted-foreground leading-relaxed">
-        Full article coming soon. Discover valuable insights from early childhood education that apply across all grade levels.
-      </p>
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          From the outside, early childhood education looks like coloring books and snack time. But inside those classrooms, big lessons unfold daily—for students and for educators.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          ACES has worked across 19 preschool sites in the last 18 months, supporting instructional design, behavior interventions, and multilingual integration. Here are three lessons we didn't expect to learn—but now bring into every Birth-to-Five consultation.
+        </p>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">1. Simplicity Isn't Simpler—It's Smarter</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          When one preschool director eliminated complex visual schedules and reduced transitions, behavior disruptions fell by 43%. Young learners benefit from predictable rhythm, not constant novelty.
+        </p>
+        <blockquote className="border-l-4 border-primary pl-6 py-2 my-8 italic text-foreground">
+          "We were overwhelming them with adult-designed structure."
+          <footer className="text-sm text-muted-foreground mt-2 not-italic">— Preschool Director</footer>
+        </blockquote>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">2. Language Exposure Trumps Language Mastery</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          In dual-language sites, classrooms that embedded second languages into play and movement, not worksheets, saw stronger retention and engagement. Kids don't need to translate—they need to experience language.
+        </p>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">3. The Teacher's Mood Sets the Tone</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          ACES classroom observations showed a clear pattern: teacher stress levels directly influenced peer interaction and attention span. Coaching that prioritized teacher well-being had a ripple effect on the entire room.
+        </p>
+        <blockquote className="border-l-4 border-primary pl-6 py-2 my-8 italic text-foreground">
+          "When we coached the adult, the children responded instantly."
+          <footer className="text-sm text-muted-foreground mt-2 not-italic">— ACES Facilitator</footer>
+        </blockquote>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">The Takeaway</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Early childhood education is strategic work, not babysitting. It's neuroscience in action, cultural fluency in motion, and a mirror of what's possible when systems slow down and see the whole child.
+        </p>
+      </>
     ),
   },
 ];
