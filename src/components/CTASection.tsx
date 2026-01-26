@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 export function CTASection() {
   return (
@@ -25,18 +26,24 @@ export function CTASection() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button
+              asChild
               size="lg"
               className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-6 rounded-full group"
             >
-              Talk With Our Team
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Link to="/contact">
+                Talk With Our Team
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="border-white/30 text-white hover:bg-white/10 px-8 py-6 rounded-full"
             >
-              Schedule a Demo
+              <Link to="/events">
+                Schedule a Demo
+              </Link>
             </Button>
           </div>
           

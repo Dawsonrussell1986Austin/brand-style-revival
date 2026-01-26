@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 import teacherImage from "@/assets/teacher-classroom.jpg";
 
 export function ProfessionalLearning() {
@@ -35,9 +36,11 @@ export function ProfessionalLearning() {
                 </li>
               ))}
             </ul>
-            <Button className="gradient-aces text-white rounded-full btn-glow group/btn">
-              View Events
-              <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+            <Button asChild className="gradient-aces text-white rounded-full btn-glow group/btn">
+              <Link to="/events">
+                View Events
+                <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </Link>
             </Button>
           </motion.div>
 
@@ -67,9 +70,11 @@ export function ProfessionalLearning() {
                 </li>
               ))}
             </ul>
-            <Button variant="outline" className="rounded-full border-border hover:border-primary/50 group/btn">
-              Learn More
-              <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+            <Button asChild variant="outline" className="rounded-full border-border hover:border-primary/50 group/btn">
+              <Link to="/services">
+                Learn More
+                <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </Link>
             </Button>
           </motion.div>
         </div>

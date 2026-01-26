@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Users, Target, Lightbulb, Heart, Linkedin, Mail } from "lucide-react";
+import { Users, Target, Lightbulb, Heart, Mail } from "lucide-react";
 
 interface TeamMember {
   name: string;
@@ -116,17 +116,12 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => (
         {member.bio}
       </p>
       
-      {/* Social links placeholder */}
+      {/* Contact link */}
       <div className="flex gap-2 mt-4 pt-4 border-t border-border">
         <a 
-          href="#" 
+          href="mailto:info@acespdsi.org"
           className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-aces-blue hover:text-white transition-colors"
-        >
-          <Linkedin className="w-4 h-4" />
-        </a>
-        <a 
-          href="#" 
-          className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-aces-blue hover:text-white transition-colors"
+          aria-label={`Email ${member.name}`}
         >
           <Mail className="w-4 h-4" />
         </a>
