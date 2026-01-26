@@ -46,7 +46,7 @@ export function Header() {
               <a
                 key={item.label}
                 href={item.href}
-                className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                className={`px-4 py-2 text-base font-medium rounded-lg transition-colors ${
                   item.highlight
                     ? "text-accent font-semibold"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary"
