@@ -5,6 +5,32 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 
+declare global {
+  interface Window {
+    __adcloudiq__: Array<(() => void) | { track: (config: { advertiserId: string; pixelId: string }) => void }>;
+  }
+}
+
+// Function to track download conversions
+const trackDownload = () => {
+  // Load the SDK script if not already loaded
+  if (!document.querySelector('script[src="https://p.jmlp.app/sdk.js"]')) {
+    const script = document.createElement("script");
+    script.src = "https://p.jmlp.app/sdk.js";
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+
+  // Initialize tracking
+  window.__adcloudiq__ = window.__adcloudiq__ || [];
+  window.__adcloudiq__.push(function () {
+    (window.__adcloudiq__ as any).track({
+      advertiserId: "91a68c22-c504-4e16-8588-1f817ed6f937",
+      pixelId: "3ea110ae-2daa-40d6-bb0f-6385431a1cf6"
+    });
+  });
+};
+
 interface Workbook {
   id: string;
   title: string;
@@ -303,7 +329,10 @@ const Resources = () => {
                   {resource.description}
                 </p>
                 
-                <Button className="w-full gradient-aces text-white font-semibold rounded-xl btn-glow gap-2">
+                <Button 
+                  className="w-full gradient-aces text-white font-semibold rounded-xl btn-glow gap-2"
+                  onClick={trackDownload}
+                >
                   <Download className="h-4 w-4" />
                   Download Free
                 </Button>
