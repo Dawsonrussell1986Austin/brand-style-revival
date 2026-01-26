@@ -48,6 +48,7 @@ interface FreeResource {
   title: string;
   description: string;
   icon: string;
+  downloadUrl: string;
 }
 
 const workbooks: Workbook[] = [
@@ -86,18 +87,21 @@ const freeResources: FreeResource[] = [
     title: "ACES School Climate Improvement Plan Template",
     description: "A comprehensive template providing schools with a structured framework to develop, implement, and monitor their School Climate Improvement Plan in alignment with Connecticut legislation and school climate standards.",
     icon: "climate",
+    downloadUrl: "/downloads/ACES-School-Climate-Improvement-Plan-Template.docx",
   },
   {
     id: "btc",
     title: "Building Thinking Classrooms: Look Fors Template",
     description: "This practical tool supports educators and leaders in implementing Peter Liljedahl's Building Thinking Classrooms framework with clear 'look-fors' and observable teacher and student behaviors.",
     icon: "thinking",
+    downloadUrl: "/downloads/Building-Thinking-Classrooms-Look-Fors-Template.pdf",
   },
   {
     id: "k2-exec",
     title: "K-2 Executive Functioning Station Activities",
     description: "Engaging, play-based activities designed to help young learners strengthen key executive functioning skills, including impulse control, working memory, cognitive flexibility, and self-regulation.",
     icon: "activities",
+    downloadUrl: "/downloads/K-2-Executive-Functioning-Stations-Activities.pdf",
   },
 ];
 
@@ -357,11 +361,14 @@ const Resources = () => {
                 </p>
                 
                 <Button 
+                  asChild
                   className="w-full gradient-aces text-white font-semibold rounded-xl btn-glow gap-2"
                   onClick={trackDownload}
                 >
-                  <Download className="h-4 w-4" />
-                  Download Free
+                  <a href={resource.downloadUrl} download>
+                    <Download className="h-4 w-4" />
+                    Download Free
+                  </a>
                 </Button>
               </motion.div>
             ))}
