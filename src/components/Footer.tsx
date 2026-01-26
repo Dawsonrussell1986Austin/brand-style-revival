@@ -24,7 +24,7 @@ const footerLinks = {
 
 const socialLinks = [
   { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/aces-center-for-ai/", label: "LinkedIn" },
   { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
   { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
 ];
