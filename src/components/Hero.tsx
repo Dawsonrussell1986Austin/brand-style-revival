@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-educators.jpg";
 
 export function Hero() {
@@ -63,19 +64,25 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <Button
+                asChild
                 size="lg"
                 className="gradient-aces text-white font-semibold px-8 py-6 text-base rounded-full btn-glow group"
               >
-                Explore Services
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <Link to="/services">
+                  Explore Services
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
               <Button
+                asChild
                 size="lg"
                 variant="outline"
                 className="border-border hover:border-primary/50 px-8 py-6 text-base rounded-full group"
               >
-                <Play className="mr-2 w-4 h-4" />
-                Watch Video
+                <Link to="/resources">
+                  <BookOpen className="mr-2 w-4 h-4" />
+                  View Resources
+                </Link>
               </Button>
             </motion.div>
 
