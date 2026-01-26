@@ -10,6 +10,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import heroImage from "@/assets/teacher-classroom.jpg";
 
 declare global {
@@ -50,7 +51,9 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    organization: "",
+    role: "",
+    phone: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,7 +67,7 @@ const Contact = () => {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim()) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       toast.error("Please fill in all required fields");
       return;
     }
@@ -78,11 +81,30 @@ const Contact = () => {
     
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Redirect to thank you page
-    navigate("/thank-you");
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim() || null,
+          organization: formData.organization.trim() || null,
+          role: formData.role.trim() || null,
+          message: formData.message.trim(),
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      // Redirect to thank you page
+      navigate("/thank-you");
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      toast.error("Failed to submit. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -189,25 +211,57 @@ const Contact = () => {
                       />
                     </div>
                     
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="organization" className="text-aces-navy font-medium">
+                          Organization
+                        </Label>
+                        <Input
+                          id="organization"
+                          name="organization"
+                          value={formData.organization}
+                          onChange={handleChange}
+                          className="h-12 rounded-xl border-border focus:border-aces-blue"
+                          placeholder="Your school or organization"
+                          maxLength={200}
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="role" className="text-aces-navy font-medium">
+                          Role
+                        </Label>
+                        <Input
+                          id="role"
+                          name="role"
+                          value={formData.role}
+                          onChange={handleChange}
+                          className="h-12 rounded-xl border-border focus:border-aces-blue"
+                          placeholder="Your position"
+                          maxLength={100}
+                        />
+                      </div>
+                    </div>
+                    
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-aces-navy font-medium">
-                        Subject <span className="text-destructive">*</span>
+                      <Label htmlFor="phone" className="text-aces-navy font-medium">
+                        Phone
                       </Label>
                       <Input
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
                         onChange={handleChange}
                         className="h-12 rounded-xl border-border focus:border-aces-blue"
-                        placeholder="What is this about?"
-                        maxLength={200}
-                        required
+                        placeholder="Your phone number"
+                        maxLength={20}
                       />
                     </div>
                     
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-aces-navy font-medium">
-                        Your message <span className="text-muted-foreground">(optional)</span>
+                        Your message <span className="text-destructive">*</span>
                       </Label>
                       <Textarea
                         id="message"
