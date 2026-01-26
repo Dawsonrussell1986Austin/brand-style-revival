@@ -4,16 +4,6 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Users, Target, Lightbulb, Heart, Mail } from "lucide-react";
 
-// Team headshots
-import michelleGohagon from "@/assets/team/michelle-gohagon.png";
-import rosariaGiannetti from "@/assets/team/rosaria-giannetti.png";
-import jessicaWhite from "@/assets/team/jessica-white.png";
-import melissaRosenthal from "@/assets/team/melissa-rosenthal.png";
-import nicoleBeauchamp from "@/assets/team/nicole-beauchamp.png";
-import staceySimpson from "@/assets/team/stacey-simpson.png";
-import lisaSeales from "@/assets/team/lisa-seales.png";
-import maryStone from "@/assets/team/mary-stone.png";
-
 interface TeamMember {
   name: string;
   role: string;
@@ -23,87 +13,12 @@ interface TeamMember {
   email?: string;
 }
 
-const leadershipTeam: TeamMember[] = [
-  {
-    name: "Michelle Gohagon",
-    role: "Director of Professional Learning and School Improvement & Center for AI",
-    bio: "Michelle brings a superior depth of knowledge and expertise in strategic leadership and systemic school improvement. Her focus areas include equity-centered practices, effective team building and collaboration, and the development of high-impact professional learning systems.",
-    image: michelleGohagon,
-  },
-  {
-    name: "Rosaria Giannetti",
-    role: "Assistant Director of Professional Learning and School Improvement",
-    bio: "With over 17 years of experience as a strategic educational leader, Rosaria drives district and statewide improvement through professional learning system design and leadership coaching. She specializes in managing large-scale district partnerships and implementing equity-centered practices.",
-    image: rosariaGiannetti,
-  },
-  {
-    name: "Dr. Jessica White",
-    role: "Assistant Director of AI Services & Product Development",
-    bio: "Dr. White leads strategic AI integration across districts, supporting educators in building AI-ready systems, curriculum, and professional learning structures. Her expertise includes responsible AI implementation, K–12 mathematics teaching and learning, and culturally responsive leadership.",
-    image: jessicaWhite,
-  },
-];
+// Team members temporarily hidden until headshots with names are ready
+const leadershipTeam: TeamMember[] = [];
 
-const specialistsTeam: TeamMember[] = [
-  {
-    name: "Melissa Rosenthal",
-    role: "Professional Learning Specialist – AI & Literacy",
-    bio: "Melissa designs and facilitates professional learning on effective and responsible AI use in education. As a certified Orton-Gillingham specialist, she brings extensive expertise in Structured Literacy and data-driven instructional improvement.",
-    image: melissaRosenthal,
-  },
-  {
-    name: "Nicole Beauchamp",
-    role: "Professional Learning Specialist – Mathematics",
-    bio: "Nicole specializes in secondary mathematics instruction and coaching, with extensive experience as a District-Wide Secondary Math Coach. She holds Master's degrees in Educational Technology and Mathematics.",
-    image: nicoleBeauchamp,
-  },
-  {
-    name: "Stacey Simpson",
-    role: "Professional Learning Specialist – Curriculum & Intervention",
-    bio: "Stacey specializes in PreK-12 curriculum, intervention design, and instructional coaching. She is a certified trainer of Restorative Practices and focuses on strategies related to executive functioning.",
-    image: staceySimpson,
-  },
-  {
-    name: "Lisa Seales",
-    role: "Professional Learning Specialist – Curriculum & Coaching",
-    bio: "Lisa's expertise includes K-8 curriculum development, instructional coaching, data-informed practices, and trauma-informed instruction. She currently supports teachers under a Magnet Schools Assistance Program grant.",
-    image: lisaSeales,
-  },
-  {
-    name: "Mary Stone",
-    role: "Professional Learning Specialist – Early Childhood",
-    bio: "Mary brings unique dual expertise in early childhood education and special education. She is a CT Office of Early Childhood approved consultant and NAEYC facilitator, providing training on CT ELDS, DOTS, CKCs, and the Pyramid Model.",
-    image: maryStone,
-  },
-  {
-    name: "Michelle Dellacamera",
-    role: "Professional Learning Specialist – Early Childhood",
-    bio: "Michelle brings nearly 40 years of dedicated experience in Early Childhood education. She is passionate about enhancing Early Childhood programs and supporting educators in obtaining key credentials.",
-  },
-  {
-    name: "Kimberly Cellini",
-    role: "Professional Learning Specialist – Early Childhood",
-    bio: "Kimberly specializes in all areas of early childhood education with a strong focus on social and emotional learning. She leads key initiatives including the Play-Based Consortium and enhances educator practices through coaching.",
-  },
-  {
-    name: "Alison Zanardi",
-    role: "Professional Learning Specialist – Early Childhood Leadership",
-    bio: "Alison has over 20 years of experience, including 13 years as a Center Director. She is a State of CT OEC Approved Education Consultant and certified trainer for CT DOTS/ELDS, PALS, and GNS.",
-  },
-];
+const specialistsTeam: TeamMember[] = [];
 
-const operationsTeam: TeamMember[] = [
-  {
-    name: "Carolyn Autore",
-    role: "Support & Logistics Hub",
-    bio: "Carolyn manages the daily operational backbone of PDSI, including drafting contracts, budget preparation, invoicing, and expenditure monitoring. She serves as the primary 'information broker' for clients.",
-  },
-  {
-    name: "John Gustafson",
-    role: "Project & Program Management",
-    bio: "John is responsible for the development, support, and management of departmental projects and programs. He excels at communicating with district and community leaders to expand PDSI's reach and improve outcomes.",
-  },
-];
+const operationsTeam: TeamMember[] = [];
 
 const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => (
   <motion.div
@@ -161,6 +76,8 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => (
 );
 
 const About = () => {
+  const hasTeamMembers = leadershipTeam.length > 0 || specialistsTeam.length > 0 || operationsTeam.length > 0;
+
   return (
     <div className="min-h-screen bg-background">
       <SEO 
@@ -262,79 +179,87 @@ const About = () => {
           </div>
         </section>
 
-        {/* Team Section */}
-        <section className="py-20 bg-gradient-to-b from-muted/30 to-background">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <span className="inline-block text-base font-bold text-aces-blue uppercase tracking-wider mb-3">Our People</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
-                Meet the Team
-              </h2>
-              <p className="text-muted-foreground text-lg font-medium max-w-3xl mx-auto">
-                Our dedicated team of educators, leaders, and specialists bring decades of combined experience in transforming education across Connecticut and beyond.
-              </p>
-            </motion.div>
-
-            {/* Leadership Team */}
-            <div className="mb-16">
-              <motion.h3
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+        {/* Team Section - Only show if there are team members */}
+        {hasTeamMembers && (
+          <section className="py-20 bg-gradient-to-b from-muted/30 to-background">
+            <div className="container mx-auto px-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-2xl font-heading font-bold text-foreground mb-8 flex items-center gap-3"
+                className="text-center mb-16"
               >
-                <div className="w-10 h-1 bg-gradient-to-r from-aces-blue to-aces-green rounded-full" />
-                Leadership
-              </motion.h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {leadershipTeam.map((member, index) => (
-                  <TeamCard key={member.name} member={member} index={index} />
-                ))}
-              </div>
-            </div>
+                <span className="inline-block text-base font-bold text-aces-blue uppercase tracking-wider mb-3">Our People</span>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+                  Meet the Team
+                </h2>
+                <p className="text-muted-foreground text-lg font-medium max-w-3xl mx-auto">
+                  Our dedicated team of educators, leaders, and specialists bring decades of combined experience in transforming education across Connecticut and beyond.
+                </p>
+              </motion.div>
 
-            {/* Professional Learning Specialists */}
-            <div className="mb-16">
-              <motion.h3
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="text-2xl font-heading font-bold text-foreground mb-8 flex items-center gap-3"
-              >
-                <div className="w-10 h-1 bg-gradient-to-r from-aces-green to-aces-blue rounded-full" />
-                Professional Learning Specialists
-              </motion.h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {specialistsTeam.map((member, index) => (
-                  <TeamCard key={member.name} member={member} index={index} />
-                ))}
-              </div>
-            </div>
+              {/* Leadership Team */}
+              {leadershipTeam.length > 0 && (
+                <div className="mb-16">
+                  <motion.h3
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="text-2xl font-heading font-bold text-foreground mb-8 flex items-center gap-3"
+                  >
+                    <div className="w-10 h-1 bg-gradient-to-r from-aces-blue to-aces-green rounded-full" />
+                    Leadership
+                  </motion.h3>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {leadershipTeam.map((member, index) => (
+                      <TeamCard key={member.name} member={member} index={index} />
+                    ))}
+                  </div>
+                </div>
+              )}
 
-            {/* Operations Team */}
-            <div>
-              <motion.h3
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="text-2xl font-heading font-bold text-foreground mb-8 flex items-center gap-3"
-              >
-                <div className="w-10 h-1 bg-gradient-to-r from-aces-blue to-aces-green rounded-full" />
-                Operations & Support
-              </motion.h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl">
-                {operationsTeam.map((member, index) => (
-                  <TeamCard key={member.name} member={member} index={index} />
-                ))}
-              </div>
+              {/* Professional Learning Specialists */}
+              {specialistsTeam.length > 0 && (
+                <div className="mb-16">
+                  <motion.h3
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="text-2xl font-heading font-bold text-foreground mb-8 flex items-center gap-3"
+                  >
+                    <div className="w-10 h-1 bg-gradient-to-r from-aces-green to-aces-blue rounded-full" />
+                    Professional Learning Specialists
+                  </motion.h3>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {specialistsTeam.map((member, index) => (
+                      <TeamCard key={member.name} member={member} index={index} />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Operations Team */}
+              {operationsTeam.length > 0 && (
+                <div>
+                  <motion.h3
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="text-2xl font-heading font-bold text-foreground mb-8 flex items-center gap-3"
+                  >
+                    <div className="w-10 h-1 bg-gradient-to-r from-aces-blue to-aces-green rounded-full" />
+                    Operations & Support
+                  </motion.h3>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl">
+                    {operationsTeam.map((member, index) => (
+                      <TeamCard key={member.name} member={member} index={index} />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Values Section */}
         <section className="py-16 md:py-24 bg-muted/30">
