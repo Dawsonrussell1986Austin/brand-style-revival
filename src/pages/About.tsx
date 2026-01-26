@@ -4,6 +4,12 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Users, Target, Lightbulb, Heart, Mail } from "lucide-react";
 
+// Team headshots
+import michelleGohagon from "@/assets/team/michelle-gohagon.png";
+import rosariaGiannetti from "@/assets/team/rosaria-giannetti.png";
+import jessicaWhite from "@/assets/team/jessica-white.png";
+import melissaRosenthal from "@/assets/team/melissa-rosenthal.png";
+
 interface TeamMember {
   name: string;
   role: string;
@@ -18,16 +24,19 @@ const leadershipTeam: TeamMember[] = [
     name: "Michelle Gohagon",
     role: "Director of Professional Learning and School Improvement & Center for AI",
     bio: "Michelle brings a superior depth of knowledge and expertise in strategic leadership and systemic school improvement. Her focus areas include equity-centered practices, effective team building and collaboration, and the development of high-impact professional learning systems.",
+    image: michelleGohagon,
   },
   {
     name: "Rosaria Giannetti",
     role: "Assistant Director of Professional Learning and School Improvement",
     bio: "With over 17 years of experience as a strategic educational leader, Rosaria drives district and statewide improvement through professional learning system design and leadership coaching. She specializes in managing large-scale district partnerships and implementing equity-centered practices.",
+    image: rosariaGiannetti,
   },
   {
     name: "Dr. Jessica White",
     role: "Assistant Director of AI Services & Product Development",
     bio: "Dr. White leads strategic AI integration across districts, supporting educators in building AI-ready systems, curriculum, and professional learning structures. Her expertise includes responsible AI implementation, K–12 mathematics teaching and learning, and culturally responsive leadership.",
+    image: jessicaWhite,
   },
 ];
 
@@ -36,6 +45,7 @@ const specialistsTeam: TeamMember[] = [
     name: "Melissa Rosenthal",
     role: "Professional Learning Specialist – AI & Literacy",
     bio: "Melissa designs and facilitates professional learning on effective and responsible AI use in education. As a certified Orton-Gillingham specialist, she brings extensive expertise in Structured Literacy and data-driven instructional improvement.",
+    image: melissaRosenthal,
   },
   {
     name: "Nicole Beauchamp",
@@ -95,14 +105,26 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => (
     transition={{ duration: 0.5, delay: index * 0.1 }}
     className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl transition-all duration-300"
   >
-    {/* Photo placeholder */}
+    {/* Photo */}
     <div className="aspect-[4/3] bg-gradient-to-br from-aces-blue/10 via-aces-green/10 to-aces-blue/5 flex items-center justify-center relative overflow-hidden">
-      <div className="w-24 h-24 rounded-full bg-gradient-to-br from-aces-blue to-aces-green flex items-center justify-center text-white text-3xl font-heading font-bold">
-        {member.name.split(' ').map(n => n[0]).join('')}
-      </div>
+      {member.image ? (
+        <img 
+          src={member.image} 
+          alt={member.name}
+          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+        />
+      ) : (
+        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-aces-blue to-aces-green flex items-center justify-center text-white text-3xl font-heading font-bold">
+          {member.name.split(' ').map(n => n[0]).join('')}
+        </div>
+      )}
       {/* Decorative elements */}
-      <div className="absolute top-4 right-4 w-20 h-20 bg-aces-green/10 rounded-full blur-2xl" />
-      <div className="absolute bottom-4 left-4 w-16 h-16 bg-aces-blue/10 rounded-full blur-2xl" />
+      {!member.image && (
+        <>
+          <div className="absolute top-4 right-4 w-20 h-20 bg-aces-green/10 rounded-full blur-2xl" />
+          <div className="absolute bottom-4 left-4 w-16 h-16 bg-aces-blue/10 rounded-full blur-2xl" />
+        </>
+      )}
     </div>
     
     <div className="p-6">
