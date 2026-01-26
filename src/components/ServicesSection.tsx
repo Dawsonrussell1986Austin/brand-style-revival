@@ -35,7 +35,7 @@ export function ServicesSection() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -43,19 +43,19 @@ export function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className={`group card-elevated rounded-2xl p-6 cursor-pointer ${
+              className={`group card-elevated rounded-xl md:rounded-2xl p-4 md:p-6 cursor-pointer ${
                 service.featured ? "ring-2 ring-primary/20" : ""
               }`}
             >
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110 ${
+              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center mb-3 md:mb-4 transition-transform group-hover:scale-110 ${
                 service.featured ? "gradient-aces" : "bg-primary/10"
               }`}>
-                <service.icon className={`w-6 h-6 ${service.featured ? "text-white" : "text-primary"}`} />
+                <service.icon className={`w-5 h-5 md:w-6 md:h-6 ${service.featured ? "text-white" : "text-primary"}`} />
               </div>
-              <h3 className="font-heading font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+              <h3 className="font-heading font-semibold text-foreground mb-1 md:mb-2 text-sm md:text-base group-hover:text-primary transition-colors">
                 {service.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed hidden sm:block">
                 {service.description}
               </p>
               {service.featured && (

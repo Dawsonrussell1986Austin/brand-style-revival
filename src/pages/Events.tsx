@@ -140,7 +140,7 @@ const Events = () => {
       {/* Quick Stats */}
       <section className="py-8 bg-white border-b border-border relative -mt-8">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {[
               { icon: CalendarDays, value: "50+", label: "Events Yearly" },
               { icon: Users, value: "2,000+", label: "Attendees" },
@@ -277,13 +277,13 @@ const Events = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="group bg-white rounded-2xl border border-border hover:border-aces-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
                   >
-                    <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr_280px] gap-0">
+                    <div className="grid grid-cols-1 md:grid-cols-[100px_1fr] lg:grid-cols-[120px_1fr_280px] gap-0">
                       {/* Date Badge */}
-                      <div className="bg-gradient-to-br from-aces-navy to-aces-blue p-6 flex flex-col items-center justify-center text-center">
+                      <div className="bg-gradient-to-br from-aces-navy to-aces-blue p-4 md:p-6 flex md:flex-col items-center md:justify-center text-center gap-3 md:gap-0">
                         <span className="text-sm font-medium text-white/80 uppercase tracking-wider">
                           {dateInfo.month}
                         </span>
-                        <span className="text-4xl lg:text-5xl font-bold text-white leading-none my-1">
+                        <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-none md:my-1">
                           {dateInfo.day}
                         </span>
                         <span className="text-sm text-white/70">{dateInfo.year}</span>

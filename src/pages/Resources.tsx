@@ -184,7 +184,7 @@ const Resources = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             {workbooks.map((workbook, index) => (
               <motion.div
                 key={workbook.id}
@@ -273,7 +273,7 @@ const Resources = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {freeResources.map((resource, index) => (
               <motion.div
                 key={resource.id}
