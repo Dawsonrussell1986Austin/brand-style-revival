@@ -124,24 +124,40 @@ export const eventDetails: EventData[] = [
     address: "205 Skiff Street, Hamden",
     type: "in-person",
     category: "Social-Emotional",
-    registrationUrl: "#",
+    registrationUrl: "https://www.protraxx.com/login.aspx",
     content: (
       <>
         <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-          Incidents of conflict, wrongdoing, and harm occur everywhere, every day in schools, workplaces, college campuses, neighborhoods, and families. The restorative conference provides a way to engage with those who cause and experience harm.
+          Incidents of conflict, wrongdoing, and harm occur everywhere, every day in schools, workplaces, college campuses, neighborhoods, and families. The restorative conference provides a way to engage with those who cause and experience harm, along with the related community.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-6">
-          This is Day 2 of the Restorative Conferencing training, where participants will deepen their understanding and practice of facilitation techniques.
+          This two-day workshop covers the fundamentals of facilitating a formal conference in response to an incident of wrongdoing or harm. Participants will then be able to utilize those skills to create deeper interpersonal understanding and repair relationships among those involved or affected by such an incident.
         </p>
 
         <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
-          <li>Advanced conference facilitation techniques</li>
-          <li>Managing complex emotions and dynamics</li>
-          <li>Creating space for meaningful dialogue</li>
-          <li>Building agreements and accountability plans</li>
-          <li>Follow-up and sustainability strategies</li>
+          <li>Fundamentals of facilitating a formal restorative conference</li>
+          <li>Engaging with those who cause and experience harm</li>
+          <li>Creating deeper interpersonal understanding</li>
+          <li>Repairing relationships among those involved or affected</li>
+          <li>Working with the related community in restorative processes</li>
         </ul>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Workshop Schedule</h2>
+        <div className="bg-secondary/50 rounded-xl p-6 mb-6">
+          <p className="text-muted-foreground leading-relaxed mb-2">
+            <strong className="text-foreground">Please note:</strong> This is a two-day workshop:
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
+            <li><strong className="text-foreground">Day 1:</strong> October 24, 2025</li>
+            <li><strong className="text-foreground">Day 2:</strong> November 14, 2025</li>
+          </ul>
+        </div>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This workshop is recommended for school and district leaders who want to implement restorative practices in their communities.
+        </p>
       </>
     ),
   },
