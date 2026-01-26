@@ -53,10 +53,10 @@ export function ServicesSection() {
                 }`}>
                   <service.icon className={`w-5 h-5 md:w-6 md:h-6 ${service.featured ? "text-white" : "text-primary"}`} />
                 </div>
-                <h3 className="font-heading font-semibold text-foreground mb-1 md:mb-2 text-sm md:text-base group-hover:text-primary transition-colors">
+                <h3 className="font-heading font-bold text-foreground mb-1 md:mb-2 text-base md:text-lg group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-xs md:text-sm text-muted-foreground leading-relaxed hidden sm:block">
+                <p className="text-sm md:text-base font-medium text-muted-foreground leading-relaxed hidden sm:block">
                   {service.description}
                 </p>
                 {service.featured && (
