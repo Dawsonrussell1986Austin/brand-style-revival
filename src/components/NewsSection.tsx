@@ -9,7 +9,7 @@ import blog3 from "@/assets/blog-3.jpg";
 const articles = [
   { slug: "coaching-saved-classroom", date: "Nov 20", image: blog1, category: "Success Story", title: "How One District Improved Teacher Retention in Year 1", excerpt: "Discover how coaching transformed classroom dynamics." },
   { slug: "legislative-changes-pd-budget", date: "Nov 19", image: blog2, category: "Policy", title: "The Hidden Line Item: 3 Legislative Changes That Could Shrink or Stretch Your PD Budget", excerpt: "New federal and state-level changes may expand your options." },
-  { slug: "lessons-from-toddlers", date: "Oct 13", image: blog3, category: "Early Childhood", title: "What Toddlers Taught Us: 3 Lessons from the Classroom", excerpt: "Insights that apply everywhere in education." },
+  { slug: "lessons-from-toddlers", date: "Oct 13", image: blog3, category: "Early Childhood", title: "What Toddlers Taught Us: 3 Lessons from Our Work in Early Childhood Classrooms", excerpt: "Big lessons unfold daily—for students and educators." },
 ];
 
 export function NewsSection() {
