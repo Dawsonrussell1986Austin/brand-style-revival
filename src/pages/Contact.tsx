@@ -107,7 +107,7 @@ const Contact = () => {
             className="max-w-5xl mx-auto"
           >
             <div className="bg-white rounded-2xl shadow-xl border border-border overflow-hidden">
-              <div className="grid lg:grid-cols-[1fr_380px]">
+              <div className="grid lg:grid-cols-[1fr_320px]">
                 {/* Form */}
                 <div className="p-8 md:p-12">
                   <h2 className="text-2xl md:text-3xl font-bold font-heading text-aces-navy mb-8">

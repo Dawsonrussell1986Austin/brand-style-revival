@@ -18,9 +18,9 @@ export function Footer() {
   return (
     <footer className="bg-secondary pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-12 gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
-          <div className="lg:col-span-4">
+          <div className="sm:col-span-2 lg:col-span-4">
             <div className="mb-5">
               <img 
                 src={acesLogo} 
@@ -46,7 +46,7 @@ export function Footer() {
           </div>
 
           {/* Links */}
-          <div className="lg:col-span-5 grid sm:grid-cols-3 gap-8">
+          <div className="sm:col-span-2 lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
             <div>
               <h4 className="font-heading font-semibold text-foreground mb-4 text-sm">Services</h4>
               <ul className="space-y-2.5">
@@ -80,7 +80,7 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="lg:col-span-3">
+          <div className="sm:col-span-2 lg:col-span-3">
             <h4 className="font-heading font-semibold text-foreground mb-4 text-sm">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-muted-foreground text-sm">

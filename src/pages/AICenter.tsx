@@ -378,7 +378,7 @@ export default function AICenter() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {pillars.map((pillar, index) => (
               <motion.div
                 key={pillar.title}
@@ -611,7 +611,7 @@ export default function AICenter() {
             </motion.div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {certificationPrograms.map((program, index) => (
               <motion.div
                 key={program.title}
@@ -662,7 +662,7 @@ export default function AICenter() {
       {/* Workshops Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-5 gap-12 items-start">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -682,7 +682,7 @@ export default function AICenter() {
               />
             </motion.div>
             
-            <div className="lg:col-span-3 grid md:grid-cols-2 gap-4">
+            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {workshops.map((workshop, index) => (
               <motion.div
                 key={workshop.title}
