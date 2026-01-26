@@ -54,20 +54,20 @@ export function NewsSection() {
                     alt={article.title}
                     className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 text-xs font-medium text-foreground">
+                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 text-sm font-semibold text-foreground">
                     {article.category}
                   </span>
                 </div>
                 
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                <div className="flex items-center gap-2 text-base font-medium text-muted-foreground mb-3">
                   <Calendar className="w-4 h-4" />
                   {article.date}
                 </div>
                 
-                <h3 className="text-lg font-heading font-semibold text-foreground mb-2 group-hover:text-primary transition-colors leading-tight">
+                <h3 className="text-xl font-heading font-bold text-foreground mb-2 group-hover:text-primary transition-colors leading-tight">
                   {article.title}
                 </h3>
-                <p className="text-sm text-muted-foreground">{article.excerpt}</p>
+                <p className="text-base font-medium text-muted-foreground">{article.excerpt}</p>
               </motion.article>
             </Link>
           ))}

@@ -163,7 +163,7 @@ const Events = () => {
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
             >
               <CalendarDays className="w-4 h-4 text-aces-green" />
-              <span className="text-sm text-white/90 font-medium">Professional Development Events</span>
+              <span className="text-base text-white/90 font-semibold">Professional Development Events</span>
             </motion.div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6">
@@ -173,7 +173,7 @@ const Events = () => {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl font-medium text-white/90 leading-relaxed max-w-2xl mx-auto">
               Join us for professional development workshops, certification courses, and community learning opportunities designed for educators.
             </p>
           </motion.div>
@@ -198,7 +198,7 @@ const Events = () => {
               >
                 <stat.icon className="w-6 h-6 text-aces-blue mx-auto mb-2" />
                 <div className="text-2xl font-bold font-heading text-aces-navy">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-base font-medium text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -290,8 +290,8 @@ const Events = () => {
             <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
               <Calendar className="w-8 h-8 text-muted-foreground" />
             </div>
-            <p className="text-muted-foreground text-lg mb-2">There are no upcoming events scheduled.</p>
-            <p className="text-sm text-muted-foreground">Check back soon or explore our past events below.</p>
+            <p className="text-muted-foreground text-lg font-medium mb-2">There are no upcoming events scheduled.</p>
+            <p className="text-base font-medium text-muted-foreground">Check back soon or explore our past events below.</p>
           </motion.div>
 
           {/* Past Events */}
@@ -337,11 +337,11 @@ const Events = () => {
                       <div className="p-6 lg:p-8 space-y-4">
                         <div className="flex flex-wrap items-center gap-3">
                           {event.category && (
-                            <span className={`text-xs font-semibold px-3 py-1 rounded-full ${getCategoryColor(event.category)}`}>
+                            <span className={`text-sm font-bold px-3 py-1 rounded-full ${getCategoryColor(event.category)}`}>
                               {event.category}
                             </span>
                           )}
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-2 text-base font-medium text-muted-foreground">
                             <Clock className="w-4 h-4" />
                             {formatTime(event.date)} - {event.endTime}
                           </div>
@@ -351,29 +351,29 @@ const Events = () => {
                           {event.title}
                         </h3>
                         
-                        <div className="flex items-start gap-2 text-sm">
+                        <div className="flex items-start gap-2 text-base font-medium">
                           {event.type === "virtual" ? (
                             <div className="flex items-center gap-2 bg-blue-50 text-aces-blue px-3 py-1.5 rounded-lg">
                               <Monitor className="h-4 w-4" />
-                              <span className="font-medium">Virtual Event</span>
+                              <span className="font-semibold">Virtual Event</span>
                             </div>
                           ) : (
                             <div className="flex items-center gap-2 text-muted-foreground">
                               <MapPin className="h-4 w-4 text-aces-green flex-shrink-0" />
                               <span>
-                                <span className="font-semibold text-aces-navy">{event.location}</span>
-                                {event.address && <span className="text-muted-foreground"> • {event.address}</span>}
+                                <span className="font-bold text-aces-navy">{event.location}</span>
+                                {event.address && <span className="font-medium text-muted-foreground"> • {event.address}</span>}
                               </span>
                             </div>
                           )}
                         </div>
                         
-                        <p className="text-muted-foreground leading-relaxed line-clamp-2">
+                        <p className="text-muted-foreground text-base font-medium leading-relaxed line-clamp-2">
                           {event.description}
                         </p>
                         
                         <motion.div 
-                          className="flex items-center text-aces-blue font-medium text-sm pt-2 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                          className="flex items-center text-aces-blue font-semibold text-base pt-2 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
                           whileHover={{ x: 5 }}
                         >
                           View Event Details <ArrowRight className="ml-2 w-4 h-4" />

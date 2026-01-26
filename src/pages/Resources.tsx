@@ -164,7 +164,7 @@ const Resources = () => {
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
             >
               <Library className="w-4 h-4 text-aces-green" />
-              <span className="text-sm text-white/90 font-medium">Educator Resources</span>
+              <span className="text-base text-white/90 font-semibold">Educator Resources</span>
             </motion.div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6">
@@ -174,7 +174,7 @@ const Resources = () => {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed">
+            <p className="text-lg md:text-xl font-medium text-white/90 leading-relaxed">
               Insights & actionable items for your everyday success. Practical tools created by educators, for educators.
             </p>
           </motion.div>
@@ -201,7 +201,7 @@ const Resources = () => {
                   Resources for Leaders & Educators
                 </h2>
               </div>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              <p className="text-muted-foreground text-lg font-medium leading-relaxed mb-8">
                 At ACES PDSI, we don't just deliver professional learning — we also create practical, innovative resources that extend that learning into everyday practice. Our resources page offers access to the products we develop in collaboration with educators.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -220,7 +220,7 @@ const Resources = () => {
                     className="flex items-center gap-3"
                   >
                     <CheckCircle2 className="w-5 h-5 text-aces-green flex-shrink-0" />
-                    <span className="text-aces-navy font-medium">{item}</span>
+                    <span className="text-aces-navy font-semibold">{item}</span>
                   </motion.div>
                 ))}
               </div>
@@ -239,12 +239,12 @@ const Resources = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="inline-block text-sm font-semibold text-aces-blue uppercase tracking-wider mb-3">Featured Products</span>
+            <span className="inline-block text-base font-bold text-aces-blue uppercase tracking-wider mb-3">Featured Products</span>
             <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
               Premium Workbooks & Guides
             </h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-              The <em className="text-aces-navy font-medium">Rooted in Relationships</em> workbook series provides teachers with practical strategies and activities that foster students' social-emotional growth.
+            <p className="text-muted-foreground text-lg font-medium max-w-3xl mx-auto">
+              The <em className="text-aces-navy font-semibold">Rooted in Relationships</em> workbook series provides teachers with practical strategies and activities that foster students' social-emotional growth.
             </p>
           </motion.div>
 
@@ -271,7 +271,7 @@ const Resources = () => {
                     <h3 className="font-heading text-2xl md:text-3xl font-bold text-aces-navy mb-2">
                       {workbook.title}
                     </h3>
-                    <p className="text-aces-navy/80 text-sm font-medium mb-6 max-w-[200px]">
+                    <p className="text-aces-navy/80 text-base font-semibold mb-6 max-w-[200px]">
                       {workbook.subtitle}
                     </p>
                     <div className="w-20 h-20 bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
@@ -281,7 +281,7 @@ const Resources = () => {
                   
                   {/* Grade level badge */}
                   <div className="absolute bottom-0 left-0 right-0 bg-aces-navy py-4">
-                    <p className="text-white text-sm font-semibold px-4">
+                    <p className="text-white text-base font-bold px-4">
                       {workbook.gradeLevel}
                     </p>
                   </div>
@@ -290,13 +290,13 @@ const Resources = () => {
                   {workbook.status === "coming-soon" && (
                     <div className="absolute top-4 right-4 bg-white shadow-lg rounded-full px-3 py-1.5 flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                      <span className="text-xs font-bold text-aces-navy uppercase">Coming Soon</span>
+                      <span className="text-sm font-bold text-aces-navy uppercase">Coming Soon</span>
                     </div>
                   )}
                 </div>
 
                 {/* Description */}
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                <p className="text-muted-foreground text-base font-medium leading-relaxed mb-6">
                   {workbook.description}
                 </p>
 
@@ -328,11 +328,11 @@ const Resources = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="inline-block text-sm font-semibold text-aces-green uppercase tracking-wider mb-3">Free Downloads</span>
+            <span className="inline-block text-base font-bold text-aces-green uppercase tracking-wider mb-3">Free Downloads</span>
             <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
               Free Tools & Templates
             </h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+            <p className="text-muted-foreground text-lg font-medium max-w-3xl mx-auto">
               Developed in partnership with schools and districts, these free tools make it easier to plan, implement, and sustain effective practices.
             </p>
           </motion.div>
@@ -356,7 +356,7 @@ const Resources = () => {
                   {resource.title}
                 </h3>
                 
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                <p className="text-muted-foreground text-base font-medium leading-relaxed mb-6">
                   {resource.description}
                 </p>
                 

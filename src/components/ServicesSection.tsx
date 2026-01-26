@@ -30,7 +30,7 @@ export function ServicesSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
             Our Services
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg font-medium text-muted-foreground max-w-2xl mx-auto">
             Comprehensive solutions designed to transform education at every level
           </p>
         </motion.div>

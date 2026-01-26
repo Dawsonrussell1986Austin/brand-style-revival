@@ -24,7 +24,7 @@ export function PartnerSection() {
               Your partner in{" "}
               <span className="text-gradient-aces">professional learning</span>
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="text-lg font-medium text-muted-foreground leading-relaxed mb-8">
               At ACES PDSI, we partner with educators—from paraeducators to superintendents—to 
               turn strategy into action and build what's next in education.
             </p>
@@ -56,8 +56,8 @@ export function PartnerSection() {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <item.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-heading font-semibold text-foreground mb-1">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-2">{item.title}</h3>
+                <p className="text-base font-medium text-muted-foreground">{item.description}</p>
               </motion.div>
             ))}
           </div>

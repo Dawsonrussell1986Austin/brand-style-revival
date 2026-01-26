@@ -20,7 +20,7 @@ export function CTASection() {
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight">
             Let's Build What's Next in Education
           </h2>
-          <p className="text-xl text-white/80 mb-10">
+          <p className="text-xl font-medium text-white/90 mb-10">
             Partner with our team of education specialists to create lasting change.
           </p>
           
@@ -39,11 +39,11 @@ export function CTASection() {
           
           {/* Contact */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a href="mailto:info@acespdsi.org" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+            <a href="mailto:info@acespdsi.org" className="flex items-center gap-2 text-white/90 hover:text-white transition-colors text-lg font-medium">
               <Mail className="w-5 h-5" />
               info@acespdsi.org
             </a>
-            <a href="tel:+12034074400" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+            <a href="tel:+12034074400" className="flex items-center gap-2 text-white/90 hover:text-white transition-colors text-lg font-medium">
               <Phone className="w-5 h-5" />
               (203) 407-4400
             </a>

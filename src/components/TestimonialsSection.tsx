@@ -35,7 +35,7 @@ export function TestimonialsSection() {
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
             What Educators Say
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg font-medium text-muted-foreground">
             Hear from the leaders and teachers who partner with us
           </p>
         </motion.div>
@@ -76,8 +76,8 @@ export function TestimonialsSection() {
                   className="w-12 h-12 rounded-full object-cover ring-2 ring-border"
                 />
                 <div>
-                  <p className="font-semibold text-foreground">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="font-bold text-foreground">{testimonial.author}</p>
+                  <p className="text-base font-medium text-muted-foreground">
                     {testimonial.role} • {testimonial.location}
                   </p>
                 </div>

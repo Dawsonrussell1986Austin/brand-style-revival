@@ -139,10 +139,10 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => (
       <h3 className="text-lg font-heading font-bold text-foreground mb-1 group-hover:text-aces-blue transition-colors">
         {member.name}
       </h3>
-      <p className="text-sm font-medium text-aces-green mb-3">
+      <p className="text-base font-semibold text-aces-green mb-3">
         {member.role}
       </p>
-      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
+      <p className="text-base font-medium text-muted-foreground leading-relaxed line-clamp-4">
         {member.bio}
       </p>
       
@@ -184,13 +184,13 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-base font-semibold mb-6">
                 Our Story
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
                 About Us
               </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg font-medium text-muted-foreground max-w-2xl mx-auto">
                 Supporting educators and districts across Connecticut and beyond since 1992.
               </p>
             </motion.div>
@@ -221,8 +221,8 @@ const About = () => {
                         <Lightbulb className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-heading font-semibold text-foreground mb-3">The Center for AI</h3>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <h3 className="text-xl font-heading font-bold text-foreground mb-3">The Center for AI</h3>
+                        <p className="text-muted-foreground text-base font-medium leading-relaxed">
                           As this work expanded, particularly at the intersection of leadership, instructional design, systems improvement, and innovation, it led to the development of the ACES Center for Artificial Intelligence. The Center for AI builds on PDSI's systems-oriented approach by supporting districts in understanding and applying artificial intelligence through leadership readiness, ethical use, instructional design, and organizational decision-making. Services include role-specific professional learning, strategic planning, policy guidance, and support for integrating AI in ways that align with instructional goals and district values.
                         </p>
                       </div>
@@ -235,8 +235,8 @@ const About = () => {
                         <Users className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-heading font-semibold text-foreground mb-3">Collaborative Partnership</h3>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <h3 className="text-xl font-heading font-bold text-foreground mb-3">Collaborative Partnership</h3>
+                        <p className="text-muted-foreground text-base font-medium leading-relaxed">
                           Today, PDSI and the ACES Center for AI work collaboratively and in partnership to support educators, leaders, and districts. Together, we offer integrated services that connect instructional improvement, school climate, data use, and emerging technologies helping organizations move beyond isolated initiatives toward coherent, aligned systems. While rooted in South Central Connecticut, this collaborative work is growing beyond the region and increasingly supporting organizations nationwide.
                         </p>
                       </div>
@@ -249,8 +249,8 @@ const About = () => {
                         <Heart className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-heading font-semibold text-foreground mb-3">Our Mission</h3>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <h3 className="text-xl font-heading font-bold text-foreground mb-3">Our Mission</h3>
+                        <p className="text-muted-foreground text-base font-medium leading-relaxed">
                           Grounded in equity and driven by impact, our work helps schools move from planning to practice, supporting educators in creating learning environments where all students can thrive academically, socially, and emotionally.
                         </p>
                       </div>
@@ -271,11 +271,11 @@ const About = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <span className="inline-block text-sm font-semibold text-aces-blue uppercase tracking-wider mb-3">Our People</span>
+              <span className="inline-block text-base font-bold text-aces-blue uppercase tracking-wider mb-3">Our People</span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
                 Meet the Team
               </h2>
-              <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+              <p className="text-muted-foreground text-lg font-medium max-w-3xl mx-auto">
                 Our dedicated team of educators, leaders, and specialists bring decades of combined experience in transforming education across Connecticut and beyond.
               </p>
             </motion.div>
@@ -348,7 +348,7 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
                 What Guides Us
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-lg font-medium max-w-2xl mx-auto">
                 Our core principles shape everything we do.
               </p>
             </motion.div>
@@ -382,10 +382,10 @@ const About = () => {
                   <div className="w-14 h-14 rounded-xl gradient-aces flex items-center justify-center mx-auto mb-5">
                     <value.icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
+                  <h3 className="text-xl font-heading font-bold text-foreground mb-3">
                     {value.title}
                   </h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-base font-medium">
                     {value.description}
                   </p>
                 </motion.div>

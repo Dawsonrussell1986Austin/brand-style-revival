@@ -42,7 +42,7 @@ export function Footer() {
                 className="h-16 w-auto"
               />
             </Link>
-            <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
+            <p className="text-muted-foreground mb-6 text-base font-medium leading-relaxed">
               Transforming education through innovation, collaboration, and excellence.
             </p>
             <div className="flex gap-2">
@@ -64,31 +64,31 @@ export function Footer() {
           {/* Links */}
           <div className="sm:col-span-2 lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
             <div>
-              <h4 className="font-heading font-semibold text-foreground mb-4 text-sm">Services</h4>
+              <h4 className="font-heading font-bold text-foreground mb-4 text-base">Services</h4>
               <ul className="space-y-2.5">
                 {footerLinks.services.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-sm">{link.label}</Link>
+                    <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="font-heading font-semibold text-foreground mb-4 text-sm">Resources</h4>
+              <h4 className="font-heading font-bold text-foreground mb-4 text-base">Resources</h4>
               <ul className="space-y-2.5">
                 {footerLinks.resources.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-sm">{link.label}</Link>
+                    <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="font-heading font-semibold text-foreground mb-4 text-sm">Company</h4>
+              <h4 className="font-heading font-bold text-foreground mb-4 text-base">Company</h4>
               <ul className="space-y-2.5">
                 {footerLinks.company.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-sm">{link.label}</Link>
+                    <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -97,23 +97,23 @@ export function Footer() {
 
           {/* Contact */}
           <div className="sm:col-span-2 lg:col-span-3">
-            <h4 className="font-heading font-semibold text-foreground mb-4 text-sm">Contact</h4>
+            <h4 className="font-heading font-bold text-foreground mb-4 text-base">Contact</h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-muted-foreground text-sm">
+              <li className="flex items-start gap-3 text-muted-foreground text-base font-medium">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <a href="https://maps.google.com/?q=205+Skiff+St+Hamden+CT+06517" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   205 Skiff St, Hamden, CT 06517
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-sm">
+              <li className="flex items-center gap-3 text-base font-medium">
                 <Phone className="w-4 h-4 text-muted-foreground" />
                 <a href="tel:+12034074400" className="text-muted-foreground hover:text-foreground transition-colors">(203) 407-4400</a>
               </li>
-              <li className="flex items-center gap-3 text-sm">
+              <li className="flex items-center gap-3 text-base font-medium">
                 <Mail className="w-4 h-4 text-muted-foreground" />
                 <a href="mailto:info@acespdsi.org" className="text-muted-foreground hover:text-foreground transition-colors">info@acespdsi.org</a>
               </li>
-              <li className="flex items-center gap-3 text-muted-foreground text-sm">
+              <li className="flex items-center gap-3 text-muted-foreground text-base font-medium">
                 <Clock className="w-4 h-4" />
                 Mon–Fri: 8:00 AM – 4:30 PM
               </li>
@@ -123,10 +123,10 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-base font-medium text-muted-foreground">
             © {new Date().getFullYear()} ACES PDSI. All rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground italic">
+          <p className="text-base font-medium text-muted-foreground italic">
             Advocacy • Commitment • Excellence • Service
           </p>
         </div>

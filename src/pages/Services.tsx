@@ -162,7 +162,7 @@ export default function Services() {
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
             >
               <span className="w-2 h-2 bg-aces-green rounded-full animate-pulse" />
-              <span className="text-sm text-white/90 font-medium">Professional Development Services</span>
+              <span className="text-base text-white/90 font-semibold">Professional Development Services</span>
             </motion.div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6 leading-tight">
@@ -172,7 +172,7 @@ export default function Services() {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl font-medium text-white/90 mb-8 leading-relaxed">
               Innovating today, transforming tomorrow. Partner with ACES for research-based professional learning that makes a lasting difference.
             </p>
             
@@ -183,7 +183,7 @@ export default function Services() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + i * 0.1 }}
-                  className="flex items-center gap-2 text-white/90 text-sm"
+                  className="flex items-center gap-2 text-white/90 text-base font-medium"
                 >
                   <CheckCircle2 className="w-4 h-4 text-aces-green" />
                   {item}
@@ -206,11 +206,11 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block text-sm font-semibold text-aces-blue uppercase tracking-wider mb-3">What We Offer</span>
+            <span className="inline-block text-base font-bold text-aces-blue uppercase tracking-wider mb-3">What We Offer</span>
             <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
               Our Services
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg font-medium max-w-2xl mx-auto">
               Comprehensive professional development solutions designed to empower educators and transform schools.
             </p>
           </motion.div>
@@ -237,7 +237,7 @@ export default function Services() {
                   {service.title}
                 </h3>
                 
-                <p className="text-muted-foreground text-base leading-relaxed">
+                <p className="text-muted-foreground text-base font-medium leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
@@ -265,7 +265,7 @@ export default function Services() {
                 className="text-center"
               >
                 <div className="text-3xl md:text-4xl font-bold font-heading text-white mb-2">{stat.value}</div>
-                <div className="text-white/70 text-sm">{stat.label}</div>
+                <div className="text-white/90 text-base font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
