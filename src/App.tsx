@@ -13,6 +13,7 @@ import Events from "./pages/Events";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 
 declare global {
@@ -58,6 +59,7 @@ const App = () => {
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
