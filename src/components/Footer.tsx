@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Twitter, Youtube, MapPin, Clock, Phone, Mail } from "lucide-react";
+import { Instagram, Linkedin, MapPin, Clock, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import acesLogo from "@/assets/aces-logo.webp";
 
@@ -25,8 +25,6 @@ const footerLinks = {
 const socialLinks = [
   { icon: Instagram, href: "https://www.instagram.com/aces_center_for_ai/", label: "Instagram" },
   { icon: Linkedin, href: "https://www.linkedin.com/company/aces-center-for-ai/", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
 ];
 
 export function Footer() {
