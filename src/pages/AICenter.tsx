@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import heroImage from "@/assets/ai-center-hero.jpg";
 import workshopImage from "@/assets/ai-workshop.jpg";
 import certificationImage from "@/assets/ai-certification.jpg";
@@ -296,6 +297,12 @@ const workshops = [
 export default function AICenter() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Center for Artificial Intelligence"
+        description="The ACES Center for AI prepares educators and students for the future with cutting-edge AI training, certification programs, and ethical frameworks for education."
+        url="/ai-center"
+        keywords="AI in education, artificial intelligence training, educator AI certification, vibe coding, AI ethics, Connecticut AI education"
+      />
       <Header />
       
       {/* Hero Section */}

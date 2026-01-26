@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 
 interface Event {
   id: string;
@@ -95,6 +96,12 @@ const Events = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Events"
+        description="Join ACES PDSI for professional development workshops, AI certification courses, and community learning opportunities designed for educators."
+        url="/events"
+        keywords="professional development events, educator workshops, AI training sessions, teacher certification courses, Connecticut PD"
+      />
       <Header />
       
       {/* Hero Section */}

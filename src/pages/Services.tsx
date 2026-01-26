@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { 
   Users, 
   Brain, 
@@ -91,6 +92,12 @@ const highlights = [
 export default function Services() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Services"
+        description="Explore ACES PDSI's comprehensive professional development services including AI integration, instructional coaching, curriculum development, and leadership training."
+        url="/services"
+        keywords="professional development services, instructional coaching, curriculum development, AI integration, leadership development, teacher training"
+      />
       <Header />
       
       {/* Hero Section */}
