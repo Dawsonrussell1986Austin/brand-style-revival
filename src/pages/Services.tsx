@@ -233,20 +233,13 @@ export default function Services() {
                   <service.icon className="w-7 h-7 text-white" />
                 </div>
                 
-                <h3 className="text-lg font-bold font-heading text-aces-navy mb-3 group-hover:text-aces-blue transition-colors">
+                <h3 className="text-xl font-bold font-heading text-aces-navy mb-3 group-hover:text-aces-blue transition-colors">
                   {service.title}
                 </h3>
                 
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-muted-foreground text-base leading-relaxed">
                   {service.description}
                 </p>
-                
-                <motion.div 
-                  className="mt-6 flex items-center text-aces-blue font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity"
-                  whileHover={{ x: 5 }}
-                >
-                  Learn More <ArrowRight className="ml-2 w-4 h-4" />
-                </motion.div>
               </motion.div>
             ))}
           </div>
