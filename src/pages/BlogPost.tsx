@@ -75,17 +75,45 @@ export const blogPosts: BlogPostData[] = [
   },
   {
     slug: "legislative-changes-pd-budget",
-    title: "3 Legislative Changes That Could Impact Your PD Budget",
+    title: "The Hidden Line Item: 3 Legislative Changes That Could Shrink or Stretch Your PD Budget",
     date: "November 19, 2024",
-    author: "ACES Team",
-    readTime: "3 min read",
+    author: "Drew Powell",
+    readTime: "4 min read",
     category: "Policy",
     image: blog2,
-    excerpt: "Stay ahead of funding changes that affect professional development.",
+    excerpt: "Professional development budgets are often the first line cut—and the last to recover. But for FY 2025–26, new changes may expand your options.",
     content: (
-      <p className="text-muted-foreground leading-relaxed">
-        Full article coming soon. Check back for updates on important policy changes affecting professional development funding.
-      </p>
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          Professional development budgets are often the first line cut—and the last to recover. But for FY 2025–26, new federal and state-level changes may actually expand your options if you know where to look.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Here are three legislative shifts every school leader and PD coordinator should know:
+        </p>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">1. ESSA Title II Flexibility Expanded</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          In March, Congress passed an amendment that allows districts to use up to 20% of Title II funds for digital resources and asynchronous training models. That means tools like AI prompt libraries or on-demand coaching videos are now fair game.
+        </p>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">2. State Matching Grants for Rural Leadership Training</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Connecticut, Massachusetts, and Vermont have all launched state-matching initiatives to fund principal and administrator coaching in rural or high-need districts. These grants can cover up to 50% of leadership PD costs—if applied for by September.
+        </p>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">3. New Reporting Rules on PD "Effectiveness"</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          The federal DOE now requires districts to track outcomes tied to PD spending. That means anecdotal satisfaction may no longer be enough—data-driven tracking (like the ACES Outcomes Dashboard) is quickly becoming essential.
+        </p>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What This Means for You</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Budget reallocation is no longer a guessing game. These new rules allow smart, tech-aligned investment in PD that is more measurable, more fundable, and more scalable than ever before.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Need help aligning your PD plan with these changes? ACES offers consultation and grant-matching support.
+        </p>
+      </>
     ),
   },
   {
