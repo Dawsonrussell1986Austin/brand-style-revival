@@ -23,7 +23,7 @@ export function ProfessionalLearning() {
             <h3 className="text-2xl font-heading font-bold text-foreground mb-4">
               Professional Learning Opportunities
             </h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="text-muted-foreground text-lg font-medium leading-relaxed mb-6">
               We offer workshops, courses, and certification programs that help educators 
               acquire new skills. From instructional practices to technology integration, 
               our sessions transform teaching.
@@ -58,7 +58,7 @@ export function ProfessionalLearning() {
             <h3 className="text-2xl font-heading font-bold text-foreground mb-4">
               In-District & Program Support
             </h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="text-muted-foreground text-lg font-medium leading-relaxed mb-6">
               Our education specialists partner directly with schools and districts to design 
               supports tailored to your unique goals. Every service is customized for maximum impact.
             </p>
