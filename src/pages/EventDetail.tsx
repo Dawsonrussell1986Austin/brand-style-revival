@@ -74,24 +74,44 @@ export const eventDetails: EventData[] = [
     address: "205 Skiff Street, Hamden",
     type: "in-person",
     category: "Leadership",
-    registrationUrl: "#",
+    registrationUrl: "https://catalog.protraxx.com/ClassDetails/440742?CustomerID=254",
     content: (
       <>
         <p className="text-lg text-muted-foreground leading-relaxed mb-6">
           Join us for the ACES AI Certification for Leaders & Educators, a three-day, in-person event, designed to equip educational leaders with the knowledge and strategies to effectively integrate AI in schools.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-6">
-          This is Day 3 of the certification program, focusing on implementation strategies, policy development, and creating sustainable AI integration plans for your district.
+          Created and facilitated by Bob Hutchins, Founder of Human Voice Media, this certification course offers five expert-led modules covering AI foundations, data privacy, leadership in AI-driven change, community engagement, and practical applications through pilot programs.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Participants will gain hands-on learning and actionable strategies to navigate the evolving AI landscape in education. Don't miss this opportunity to learn from an industry expert and lead AI innovation in your district!
         </p>
 
-        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Day 3 Focus Areas</h2>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Course Modules</h2>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
-          <li>Developing district-wide AI implementation strategies</li>
-          <li>Creating AI usage policies and guidelines</li>
-          <li>Building sustainable professional development models</li>
-          <li>Addressing ethical considerations and data privacy</li>
-          <li>Action planning for your school or district</li>
+          <li>AI Foundations for Educational Leaders</li>
+          <li>Data Privacy and Ethical Considerations</li>
+          <li>Leadership in AI-Driven Change</li>
+          <li>Community Engagement Strategies</li>
+          <li>Practical Applications Through Pilot Programs</li>
         </ul>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Course Schedule</h2>
+        <div className="bg-secondary/50 rounded-xl p-6 mb-6">
+          <p className="text-muted-foreground leading-relaxed mb-2">
+            <strong className="text-foreground">Please note:</strong> This is a three-day course:
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
+            <li><strong className="text-foreground">Day 1:</strong> October 29, 2025</li>
+            <li><strong className="text-foreground">Day 2:</strong> October 30, 2025</li>
+            <li><strong className="text-foreground">Day 3:</strong> November 14, 2025</li>
+          </ul>
+        </div>
+
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">About the Facilitator</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          <strong className="text-foreground">Bob Hutchins</strong> is the Founder of Human Voice Media and an expert in AI integration for educational settings. His practical, hands-on approach ensures participants leave with actionable strategies they can implement immediately.
+        </p>
       </>
     ),
   },
