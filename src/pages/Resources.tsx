@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { BookOpen, Download, FileText, ArrowRight, Sparkles, CheckCircle2, Library, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -100,6 +101,31 @@ const freeResources: FreeResource[] = [
 ];
 
 const Resources = () => {
+  // AdCloudIQ page view tracking pixel
+  useEffect(() => {
+    // Load the SDK script
+    const script = document.createElement("script");
+    script.src = "https://p.jmlp.app/sdk.js";
+    script.defer = true;
+    document.head.appendChild(script);
+
+    // Initialize tracking for page view
+    window.__adcloudiq__ = window.__adcloudiq__ || [];
+    window.__adcloudiq__.push(function () {
+      (window.__adcloudiq__ as any).track({
+        advertiserId: "91a68c22-c504-4e16-8588-1f817ed6f937",
+        pixelId: "f69e4b72-3743-43ab-8667-cfacacec64f0"
+      });
+    });
+
+    return () => {
+      const existingScript = document.querySelector('script[src="https://p.jmlp.app/sdk.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <SEO 
