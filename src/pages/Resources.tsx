@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import { Link } from "react-router-dom";
 
 declare global {
   interface Window {
@@ -389,12 +390,16 @@ const Resources = () => {
               We partner with districts to develop tailored tools, guides, and materials that address your unique needs.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-aces-navy hover:bg-white/90 shadow-xl px-8">
-                Contact Us
-                <ArrowRight className="ml-2 w-4 h-4" />
+              <Button asChild size="lg" className="bg-white text-aces-navy hover:bg-white/90 shadow-xl px-8">
+                <Link to="/contact">
+                  Contact Us
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                View All Services
+              <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                <Link to="/services">
+                  View All Services
+                </Link>
               </Button>
             </div>
           </motion.div>
