@@ -9,6 +9,10 @@ import michelleGohagon from "@/assets/team/michelle-gohagon.png";
 import rosariaGiannetti from "@/assets/team/rosaria-giannetti.png";
 import jessicaWhite from "@/assets/team/jessica-white.png";
 import melissaRosenthal from "@/assets/team/melissa-rosenthal.png";
+import nicoleBeauchamp from "@/assets/team/nicole-beauchamp.png";
+import staceySimpson from "@/assets/team/stacey-simpson.png";
+import lisaSeales from "@/assets/team/lisa-seales.png";
+import maryStone from "@/assets/team/mary-stone.png";
 
 interface TeamMember {
   name: string;
@@ -51,21 +55,25 @@ const specialistsTeam: TeamMember[] = [
     name: "Nicole Beauchamp",
     role: "Professional Learning Specialist – Mathematics",
     bio: "Nicole specializes in secondary mathematics instruction and coaching, with extensive experience as a District-Wide Secondary Math Coach. She holds Master's degrees in Educational Technology and Mathematics.",
+    image: nicoleBeauchamp,
   },
   {
     name: "Stacey Simpson",
     role: "Professional Learning Specialist – Curriculum & Intervention",
     bio: "Stacey specializes in PreK-12 curriculum, intervention design, and instructional coaching. She is a certified trainer of Restorative Practices and focuses on strategies related to executive functioning.",
+    image: staceySimpson,
   },
   {
     name: "Lisa Seales",
     role: "Professional Learning Specialist – Curriculum & Coaching",
     bio: "Lisa's expertise includes K-8 curriculum development, instructional coaching, data-informed practices, and trauma-informed instruction. She currently supports teachers under a Magnet Schools Assistance Program grant.",
+    image: lisaSeales,
   },
   {
     name: "Mary Stone",
     role: "Professional Learning Specialist – Early Childhood",
     bio: "Mary brings unique dual expertise in early childhood education and special education. She is a CT Office of Early Childhood approved consultant and NAEYC facilitator, providing training on CT ELDS, DOTS, CKCs, and the Pyramid Model.",
+    image: maryStone,
   },
   {
     name: "Michelle Dellacamera",
