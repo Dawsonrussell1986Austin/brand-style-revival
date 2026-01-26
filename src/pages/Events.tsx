@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ChevronLeft, ChevronRight, ChevronDown, MapPin, Calendar, Monitor, ArrowRight, CalendarDays, Clock, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+
+declare global {
+  interface Window {
+    __adcloudiq__: Array<(() => void) | { track: (config: { advertiserId: string; pixelId: string }) => void }>;
+  }
+}
 
 interface Event {
   id: string;
@@ -93,6 +99,31 @@ const getCategoryColor = (category?: string) => {
 const Events = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"list" | "month">("list");
+
+  // AdCloudIQ tracking pixel
+  useEffect(() => {
+    // Load the SDK script
+    const script = document.createElement("script");
+    script.src = "https://p.jmlp.app/sdk.js";
+    script.defer = true;
+    document.head.appendChild(script);
+
+    // Initialize tracking
+    window.__adcloudiq__ = window.__adcloudiq__ || [];
+    window.__adcloudiq__.push(function () {
+      (window.__adcloudiq__ as any).track({
+        advertiserId: "91a68c22-c504-4e16-8588-1f817ed6f937",
+        pixelId: "75f52577-94f8-41b9-ac4b-73b928239163"
+      });
+    });
+
+    return () => {
+      const existingScript = document.querySelector('script[src="https://p.jmlp.app/sdk.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
