@@ -26,14 +26,14 @@ export function PromoBanner() {
                 />
               </div>
               <div className="text-center md:text-left">
-                <div className="flex items-center gap-2 text-white/80 text-sm mb-1">
+                <div className="flex items-center gap-2 text-white/90 text-base font-medium mb-1">
                   <Sparkles className="w-3.5 h-3.5" />
                   Limited Time Giveaway
                 </div>
                 <h3 className="text-xl md:text-2xl font-heading font-bold text-white">
                   Win AirPods Pro 3
                 </h3>
-                <p className="text-white/70 text-sm">With Live Translation by Apple Intelligence</p>
+                <p className="text-white/80 text-base font-medium">With Live Translation by Apple Intelligence</p>
               </div>
             </div>
             

@@ -351,12 +351,12 @@ export default function AICenter() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-aces-green/10 text-aces-green rounded-full mb-6">
                 <Sparkles className="w-4 h-4" />
-                <span className="text-sm font-semibold font-heading">Innovation in Education</span>
+                <span className="text-base font-bold font-heading">Innovation in Education</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-aces-navy mb-6">
                 ACES Center for <span className="text-aces-blue">Artificial Intelligence</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8">
+              <p className="text-lg md:text-xl font-medium text-muted-foreground mb-8">
                 Transforming education through AI innovation. We prepare educators and students 
                 for the future with cutting-edge training, tools, and ethical frameworks.
               </p>
@@ -410,7 +410,7 @@ export default function AICenter() {
             <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
               Our Three Pillars
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg font-medium max-w-2xl mx-auto">
               The foundation of our approach to AI in education, ensuring comprehensive 
               preparation for the future of learning.
             </p>
@@ -432,14 +432,14 @@ export default function AICenter() {
                 <h3 className="text-xl font-bold font-heading text-aces-navy mb-3">
                   {pillar.title}
                 </h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground text-base font-medium mb-6">
                   {pillar.description}
                 </p>
                 <ul className="space-y-3 mb-6">
                   {pillar.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-aces-green flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-foreground">{feature}</span>
+                      <span className="text-base font-medium text-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -464,10 +464,10 @@ export default function AICenter() {
                       {pillar.contentKey === "aiReadyEducators" && (
                         <div className="space-y-8 mt-4">
                           <div className="space-y-4">
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-muted-foreground text-base font-medium leading-relaxed">
                               {aiReadyEducatorsContent.intro}
                             </p>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-muted-foreground text-base font-medium leading-relaxed">
                               {aiReadyEducatorsContent.vision}
                             </p>
                           </div>
@@ -485,17 +485,17 @@ export default function AICenter() {
                                     <div className="w-10 h-10 bg-aces-green/10 rounded-lg flex items-center justify-center">
                                       <support.icon className="w-5 h-5 text-aces-green" />
                                     </div>
-                                    <h4 className="font-semibold font-heading text-aces-navy">
+                                    <h4 className="font-bold font-heading text-aces-navy">
                                       For {support.audience}
                                     </h4>
                                   </div>
                                   <ul className="space-y-3">
                                     {support.items.map((item) => (
                                       <li key={item.title}>
-                                        <p className="font-medium text-foreground mb-1">
+                                        <p className="font-semibold text-foreground mb-1">
                                           {item.title}
                                         </p>
-                                        <p className="text-sm text-muted-foreground">
+                                        <p className="text-base font-medium text-muted-foreground">
                                           {item.description}
                                         </p>
                                       </li>
@@ -661,8 +661,8 @@ export default function AICenter() {
               >
                 <div className="bg-gradient-to-r from-aces-blue to-aces-green p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-white/80 text-sm font-medium">{program.level}</span>
-                    <span className="bg-white/20 text-white text-xs px-3 py-1 rounded-full">
+                    <span className="text-white/90 text-base font-semibold">{program.level}</span>
+                    <span className="bg-white/20 text-white text-sm font-semibold px-3 py-1 rounded-full">
                       {program.duration}
                     </span>
                   </div>
@@ -671,16 +671,16 @@ export default function AICenter() {
                   </h3>
                 </div>
                 <div className="p-6">
-                  <p className="text-muted-foreground mb-6">
+                  <p className="text-muted-foreground text-base font-medium mb-6">
                     {program.description}
                   </p>
                   <div className="space-y-2 mb-6">
-                    <p className="text-sm font-semibold text-aces-navy">Topics Covered:</p>
+                    <p className="text-base font-bold text-aces-navy">Topics Covered:</p>
                     <div className="flex flex-wrap gap-2">
                       {program.topics.map((topic) => (
                         <span
                           key={topic}
-                          className="text-xs bg-aces-blue/10 text-aces-blue px-3 py-1 rounded-full"
+                          className="text-sm font-semibold bg-aces-blue/10 text-aces-blue px-3 py-1 rounded-full"
                         >
                           {topic}
                         </span>
@@ -710,7 +710,7 @@ export default function AICenter() {
               <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
                 Workshops & Training
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground text-lg font-medium mb-6">
                 Hands-on learning experiences designed to build practical AI skills for educators.
               </p>
               <img 
@@ -734,10 +734,10 @@ export default function AICenter() {
                   <workshop.icon className="w-6 h-6 text-aces-green" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold font-heading text-aces-navy group-hover:text-aces-blue transition-colors">
+                  <h3 className="font-bold font-heading text-aces-navy group-hover:text-aces-blue transition-colors">
                     {workshop.title}
                   </h3>
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-3 text-base font-medium text-muted-foreground">
                     <span>{workshop.date}</span>
                     <span className="w-1 h-1 bg-muted-foreground/50 rounded-full" />
                     <span>{workshop.format}</span>

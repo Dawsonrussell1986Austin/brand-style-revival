@@ -50,7 +50,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+              className="text-lg font-medium text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
             >
               Partner with ACES to transform your educational ecosystem through 
               cutting-edge professional development, AI integration, and evidence-based strategies.
@@ -100,7 +100,7 @@ export function Hero() {
               ].map((stat) => (
                 <div key={stat.label} className="text-center lg:text-left">
                   <div className="text-2xl font-heading font-bold text-foreground">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <div className="text-base font-medium text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -135,8 +135,8 @@ export function Hero() {
                   <span className="text-white text-xl font-bold">98%</span>
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground">Satisfaction Rate</div>
-                  <div className="text-sm text-muted-foreground">From our partners</div>
+                  <div className="font-bold text-foreground">Satisfaction Rate</div>
+                  <div className="text-base font-medium text-muted-foreground">From our partners</div>
                 </div>
               </div>
             </motion.div>
