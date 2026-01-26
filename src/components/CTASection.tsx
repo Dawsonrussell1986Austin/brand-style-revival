@@ -24,7 +24,7 @@ export function CTASection() {
             Partner with our team of education specialists to create lasting change.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex justify-center mb-12">
             <Button
               asChild
               size="lg"
@@ -33,16 +33,6 @@ export function CTASection() {
               <Link to="/contact">
                 Talk With Our Team
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-6 rounded-full"
-            >
-              <Link to="/events">
-                Schedule a Demo
               </Link>
             </Button>
           </div>
