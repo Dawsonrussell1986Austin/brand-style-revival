@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import { Link } from "react-router-dom";
 
 declare global {
   interface Window {
@@ -15,6 +16,7 @@ declare global {
 
 interface Event {
   id: string;
+  slug: string;
   date: Date;
   endTime: string;
   title: string;
@@ -29,6 +31,7 @@ interface Event {
 const pastEvents: Event[] = [
   {
     id: "1",
+    slug: "ai-information-literacy-dec-2025",
     date: new Date(2025, 11, 9, 13, 0),
     endTime: "4:00 pm",
     title: "AI & Information Literacy: Navigating AI Responsibly (Virtual)",
@@ -39,6 +42,7 @@ const pastEvents: Event[] = [
   },
   {
     id: "2",
+    slug: "ai-certification-leaders-day-3",
     date: new Date(2025, 10, 14, 8, 30),
     endTime: "2:30 pm",
     title: "Leading with AI: ACES Certification Course for Leaders & Educators (Day 3)",
@@ -50,6 +54,7 @@ const pastEvents: Event[] = [
   },
   {
     id: "3",
+    slug: "restorative-conferencing-cohort-1-day-2",
     date: new Date(2025, 10, 14, 8, 30),
     endTime: "2:30 pm",
     title: "Restorative Conferencing (Cohort 1, Day 2)",
@@ -307,14 +312,15 @@ const Events = () => {
               {pastEvents.map((event, index) => {
                 const dateInfo = formatDate(event.date);
                 return (
-                  <motion.article
-                    key={event.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="group bg-white rounded-2xl border border-border hover:border-aces-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
+                  <Link to={`/events/${event.slug}`}>
+                    <motion.article
+                      key={event.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="group bg-white rounded-2xl border border-border hover:border-aces-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    >
                     <div className="grid grid-cols-1 md:grid-cols-[100px_1fr] lg:grid-cols-[120px_1fr_280px] gap-0">
                       {/* Date Badge */}
                       <div className="bg-gradient-to-br from-aces-navy to-aces-blue p-4 md:p-6 flex md:flex-col items-center md:justify-center text-center gap-3 md:gap-0">
@@ -382,7 +388,8 @@ const Events = () => {
                         </div>
                       </div>
                     </div>
-                  </motion.article>
+                    </motion.article>
+                  </Link>
                 );
               })}
             </div>

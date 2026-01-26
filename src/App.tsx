@@ -11,6 +11,7 @@ import About from "./pages/About";
 import AICenter from "./pages/AICenter";
 import Services from "./pages/Services";
 import Events from "./pages/Events";
+import EventDetail from "./pages/EventDetail";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
@@ -58,6 +59,7 @@ const App = () => {
             <Route path="/ai-center" element={<AICenter />} />
             <Route path="/services" element={<Services />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/events/:slug" element={<EventDetail />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<ThankYou />} />
