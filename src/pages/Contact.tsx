@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Phone, MapPin, Mail, Send, Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,38 @@ import { SEO } from "@/components/SEO";
 import { toast } from "sonner";
 import heroImage from "@/assets/teacher-classroom.jpg";
 
+declare global {
+  interface Window {
+    __adcloudiq__: Array<(() => void) | { track: (config: { advertiserId: string; pixelId: string }) => void }>;
+  }
+}
+
 const Contact = () => {
+  // AdCloudIQ tracking pixel
+  useEffect(() => {
+    // Load the SDK script
+    const script = document.createElement("script");
+    script.src = "https://p.jmlp.app/sdk.js";
+    script.defer = true;
+    document.head.appendChild(script);
+
+    // Initialize tracking
+    window.__adcloudiq__ = window.__adcloudiq__ || [];
+    window.__adcloudiq__.push(function () {
+      (window.__adcloudiq__ as any).track({
+        advertiserId: "91a68c22-c504-4e16-8588-1f817ed6f937",
+        pixelId: "0f665dec-16be-4e3d-bb74-481cb6b98e5c"
+      });
+    });
+
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://p.jmlp.app/sdk.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
