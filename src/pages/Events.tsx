@@ -28,6 +28,109 @@ interface Event {
   category?: string;
 }
 
+const upcomingEvents: Event[] = [
+  {
+    id: "u1",
+    slug: "teaching-ai-literacy-jan-2026",
+    date: new Date(2026, 0, 13, 9, 0),
+    endTime: "12:00 pm",
+    title: "Teaching AI Literacy: Guiding Student Understanding",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    description: "This session is for educators who want to build students' AI literacy. Explore how AI works, where students encounter it daily, and how to foster curiosity, critical thinking, and digital responsibility. Leave with strategies, model lessons, and tools to empower students as informed users of AI.",
+  },
+  {
+    id: "u2",
+    slug: "supporting-students-ai-paraeducators-jan-2026",
+    date: new Date(2026, 0, 14, 9, 0),
+    endTime: "12:00 pm",
+    title: "Supporting Students with AI: For Paraeducators",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    description: "Created for paraeducators, this hands-on session shows how AI can support individualized learning, behavior tracking, and communication tools. Participants will gain practical strategies, ethical guidance, and confidence to use AI in daily student support.",
+  },
+  {
+    id: "u3",
+    slug: "ai-student-data-privacy-ethics-feb-2026",
+    date: new Date(2026, 1, 5, 9, 0),
+    endTime: "12:00 pm",
+    title: "AI & Student Data: Privacy, Ethics, & Safety",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    description: "This session is for all educators, administrators, and support staff concerned with AI, privacy, and student safety. Explore how AI tools use data, examine issues like bias and consent, and leave with strategies to ask the right questions, engage families, and uphold equity and ethics in AI use.",
+  },
+  {
+    id: "u4",
+    slug: "ai-classroom-tools-educators-feb-2026",
+    date: new Date(2026, 1, 11, 9, 0),
+    endTime: "12:00 pm",
+    title: "AI in the Classroom: Tools for Today's Educators",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    description: "This workshop is for teachers who want to explore how AI can enhance planning, assessment, and student engagement while keeping relationships central. Try classroom-ready tools, see examples, and take away ethical strategies to integrate AI into teaching.",
+  },
+  {
+    id: "u5",
+    slug: "ai-administrative-assistants-mar-2026",
+    date: new Date(2026, 2, 3, 9, 0),
+    endTime: "12:00 pm",
+    title: "AI for Administrative Assistants",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    description: "Designed for administrative assistants, this session introduces AI tools to streamline scheduling, communication, and office tasks. You'll leave with easy-to-use strategies to save time, reduce stress, and boost efficiency while supporting students, staff, and families.",
+  },
+  {
+    id: "u6",
+    slug: "ai-strategy-district-school-leaders-mar-2026",
+    date: new Date(2026, 2, 5, 9, 0),
+    endTime: "12:00 pm",
+    title: "AI Strategy for District & School Leaders",
+    location: "Virtual",
+    type: "virtual",
+    category: "Leadership",
+    description: "For district and school leaders, this session explores strategic uses of AI through case studies, frameworks, and scenarios. Leaders will build a vision aligned with district priorities, address ethics and policy, and leave with tools and next steps for schoolwide integration.",
+  },
+  {
+    id: "u7",
+    slug: "creative-intelligence-ai-arts-apr-2026",
+    date: new Date(2026, 3, 2, 9, 0),
+    endTime: "12:00 pm",
+    title: "Creative Intelligence: AI in the Arts",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    description: "This session is for arts educators in music, visual arts, theater, and beyond. Explore how AI can support creativity through hands-on work with generative tools, examine ethical considerations, and leave with strategies to help students use AI to expand, never replace, their originality and imagination.",
+  },
+  {
+    id: "u8",
+    slug: "leading-with-ai-certification-spring-2026",
+    date: new Date(2026, 3, 7, 8, 30),
+    endTime: "2:30 pm",
+    title: "Leading with AI: ACES AI Certification Course for Leaders & Educators",
+    location: "ACES Staff Development Administrative Offices (SDA)",
+    address: "205 Skiff Street, Hamden",
+    type: "in-person",
+    category: "Leadership",
+    description: "In collaboration with Bob Hutchins of Human Voice Media, this course immerses participants in hands-on activities, case studies, and collaborative planning. Educators and leaders will leave with practical tools and a clear, actionable plan for bringing AI into their schools and classrooms. Upon completion, participants will earn an ACES AI Certification Course Certificate and Digital Badge, recognizing their readiness to lead and support AI implementation in education. Spring Course Dates: April 7, 8 and May 5, 2026.",
+  },
+  {
+    id: "u9",
+    slug: "supporting-students-ai-paraeducators-may-2026",
+    date: new Date(2026, 4, 19, 9, 0),
+    endTime: "12:00 pm",
+    title: "Supporting Students with AI: For Paraeducators",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    description: "Created for paraeducators, this hands-on session shows how AI can support individualized learning, behavior tracking, and communication tools. Participants will gain practical strategies, ethical guidance, and confidence to use AI in daily student support.",
+  },
+];
+
 const pastEvents: Event[] = [
   {
     id: "1",
@@ -280,19 +383,91 @@ const Events = () => {
             </button>
           </motion.div>
 
-          {/* Upcoming Events - Empty State */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white rounded-2xl border-2 border-dashed border-border p-12 text-center mb-16"
-          >
-            <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-              <Calendar className="w-8 h-8 text-muted-foreground" />
-            </div>
-            <p className="text-muted-foreground text-lg font-medium mb-2">There are no upcoming events scheduled.</p>
-            <p className="text-base font-medium text-muted-foreground">Check back soon or explore our past events below.</p>
-          </motion.div>
+          {/* Upcoming Events */}
+          <div className="grid gap-6 mb-16">
+            {upcomingEvents.map((event, index) => {
+              const dateInfo = formatDate(event.date);
+              return (
+                <Link to={`/events/${event.slug}`} key={event.id}>
+                  <motion.article
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.05 }}
+                    className="group bg-white rounded-2xl border border-border hover:border-aces-green/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+                  >
+                    <div className="grid grid-cols-1 md:grid-cols-[100px_1fr] lg:grid-cols-[120px_1fr_280px] gap-0">
+                      {/* Date Badge */}
+                      <div className="bg-gradient-to-br from-aces-green to-aces-blue p-4 md:p-6 flex md:flex-col items-center md:justify-center text-center gap-3 md:gap-0">
+                        <span className="text-sm font-medium text-white/80 uppercase tracking-wider">
+                          {dateInfo.month}
+                        </span>
+                        <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-none md:my-1">
+                          {dateInfo.day}
+                        </span>
+                        <span className="text-sm text-white/70">{dateInfo.year}</span>
+                      </div>
+
+                      {/* Event Details */}
+                      <div className="p-6 lg:p-8 space-y-4">
+                        <div className="flex flex-wrap items-center gap-3">
+                          {event.category && (
+                            <span className={`text-sm font-bold px-3 py-1 rounded-full ${getCategoryColor(event.category)}`}>
+                              {event.category}
+                            </span>
+                          )}
+                          <div className="flex items-center gap-2 text-base font-medium text-muted-foreground">
+                            <Clock className="w-4 h-4" />
+                            {formatTime(event.date)} - {event.endTime}
+                          </div>
+                        </div>
+                        
+                        <h3 className="font-heading text-xl md:text-2xl font-bold text-aces-navy group-hover:text-aces-blue transition-colors cursor-pointer">
+                          {event.title}
+                        </h3>
+                        
+                        <div className="flex items-start gap-2 text-base font-medium">
+                          {event.type === "virtual" ? (
+                            <div className="flex items-center gap-2 bg-blue-50 text-aces-blue px-3 py-1.5 rounded-lg">
+                              <Monitor className="h-4 w-4" />
+                              <span className="font-semibold">Virtual Event</span>
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                              <MapPin className="h-4 w-4 text-aces-green flex-shrink-0" />
+                              <span>
+                                <span className="font-bold text-aces-navy">{event.location}</span>
+                                {event.address && <span className="font-medium text-muted-foreground"> • {event.address}</span>}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                        
+                        <p className="text-muted-foreground text-base font-medium leading-relaxed line-clamp-2">
+                          {event.description}
+                        </p>
+                        
+                        <motion.div 
+                          className="flex items-center text-aces-green font-semibold text-base pt-2 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                          whileHover={{ x: 5 }}
+                        >
+                          View Event Details <ArrowRight className="ml-2 w-4 h-4" />
+                        </motion.div>
+                      </div>
+
+                      {/* Event Image */}
+                      <div className="hidden lg:block p-4">
+                        <div className="h-full aspect-[4/3] bg-gradient-to-br from-secondary via-aces-green/10 to-aces-blue/10 rounded-xl flex items-center justify-center relative overflow-hidden">
+                          <div className="absolute inset-0 dot-pattern opacity-30" />
+                          <Calendar className="h-16 w-16 text-aces-green/30" />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.article>
+                </Link>
+              );
+            })}
+          </div>
 
           {/* Past Events */}
           <motion.div
