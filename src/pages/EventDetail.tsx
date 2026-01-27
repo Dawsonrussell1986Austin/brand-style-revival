@@ -161,6 +161,311 @@ export const eventDetails: EventData[] = [
       </>
     ),
   },
+  // Upcoming Events 2026
+  {
+    slug: "teaching-ai-literacy-jan-2026",
+    title: "Teaching AI Literacy: Guiding Student Understanding",
+    date: "January 13, 2026",
+    time: "9:00 am - 12:00 pm",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    registrationUrl: undefined,
+    content: (
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          This session is for educators who want to build students' AI literacy. Explore how AI works, where students encounter it daily, and how to foster curiosity, critical thinking, and digital responsibility.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Leave with strategies, model lessons, and tools to empower students as informed users of AI.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
+          <li>How AI works and where students encounter it daily</li>
+          <li>Strategies for fostering curiosity and critical thinking about AI</li>
+          <li>Model lessons for teaching AI literacy</li>
+          <li>Tools to empower students as informed AI users</li>
+          <li>Approaches to digital responsibility in the age of AI</li>
+        </ul>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This session is designed for K-12 educators who want to help students understand and critically engage with AI technology.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "supporting-students-ai-paraeducators-jan-2026",
+    title: "Supporting Students with AI: For Paraeducators",
+    date: "January 14, 2026",
+    time: "9:00 am - 12:00 pm",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    registrationUrl: undefined,
+    content: (
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          Created for paraeducators, this hands-on session shows how AI can support individualized learning, behavior tracking, and communication tools.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Participants will gain practical strategies, ethical guidance, and confidence to use AI in daily student support.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
+          <li>AI tools for individualized learning support</li>
+          <li>Behavior tracking and communication tools</li>
+          <li>Practical strategies for daily student support</li>
+          <li>Ethical guidance for AI use with students</li>
+          <li>Building confidence in using AI tools</li>
+        </ul>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This session is designed specifically for paraeducators and teaching assistants who support students in classroom settings.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "ai-student-data-privacy-ethics-feb-2026",
+    title: "AI & Student Data: Privacy, Ethics, & Safety",
+    date: "February 5, 2026",
+    time: "9:00 am - 12:00 pm",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    registrationUrl: undefined,
+    content: (
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          This session is for all educators, administrators, and support staff concerned with AI, privacy, and student safety.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Explore how AI tools use data, examine issues like bias and consent, and leave with strategies to ask the right questions, engage families, and uphold equity and ethics in AI use.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
+          <li>How AI tools collect and use student data</li>
+          <li>Understanding bias and consent in AI systems</li>
+          <li>Strategies for asking the right questions about AI tools</li>
+          <li>Engaging families in conversations about AI</li>
+          <li>Upholding equity and ethics in AI use</li>
+        </ul>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This session is for educators, administrators, and support staff who want to ensure AI is used responsibly and ethically in their schools.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "ai-classroom-tools-educators-feb-2026",
+    title: "AI in the Classroom: Tools for Today's Educators",
+    date: "February 11, 2026",
+    time: "9:00 am - 12:00 pm",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    registrationUrl: undefined,
+    content: (
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          This workshop is for teachers who want to explore how AI can enhance planning, assessment, and student engagement while keeping relationships central.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Try classroom-ready tools, see examples, and take away ethical strategies to integrate AI into teaching.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
+          <li>AI tools for lesson planning and curriculum development</li>
+          <li>Assessment strategies enhanced by AI</li>
+          <li>Methods for boosting student engagement with AI</li>
+          <li>Keeping relationships central while using technology</li>
+          <li>Ethical strategies for AI integration</li>
+        </ul>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This session is designed for classroom teachers at all grade levels who want practical, hands-on experience with AI tools.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "ai-administrative-assistants-mar-2026",
+    title: "AI for Administrative Assistants",
+    date: "March 3, 2026",
+    time: "9:00 am - 12:00 pm",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    registrationUrl: undefined,
+    content: (
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          Designed for administrative assistants, this session introduces AI tools to streamline scheduling, communication, and office tasks.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          You'll leave with easy-to-use strategies to save time, reduce stress, and boost efficiency while supporting students, staff, and families.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
+          <li>AI tools for streamlining scheduling</li>
+          <li>Communication tools powered by AI</li>
+          <li>Office task automation strategies</li>
+          <li>Time-saving techniques for busy professionals</li>
+          <li>Supporting students, staff, and families with AI</li>
+        </ul>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This session is designed for administrative assistants, office managers, and support staff in educational settings.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "ai-strategy-district-school-leaders-mar-2026",
+    title: "AI Strategy for District & School Leaders",
+    date: "March 5, 2026",
+    time: "9:00 am - 12:00 pm",
+    location: "Virtual",
+    type: "virtual",
+    category: "Leadership",
+    registrationUrl: undefined,
+    content: (
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          For district and school leaders, this session explores strategic uses of AI through case studies, frameworks, and scenarios.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Leaders will build a vision aligned with district priorities, address ethics and policy, and leave with tools and next steps for schoolwide integration.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
+          <li>Strategic uses of AI in educational leadership</li>
+          <li>Case studies and frameworks for AI implementation</li>
+          <li>Building a vision aligned with district priorities</li>
+          <li>Addressing ethics and policy in AI adoption</li>
+          <li>Tools and next steps for schoolwide integration</li>
+        </ul>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This session is designed for superintendents, principals, assistant principals, and other district and school leaders.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "creative-intelligence-ai-arts-apr-2026",
+    title: "Creative Intelligence: AI in the Arts",
+    date: "April 2, 2026",
+    time: "9:00 am - 12:00 pm",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    registrationUrl: undefined,
+    content: (
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          This session is for arts educators in music, visual arts, theater, and beyond. Explore how AI can support creativity through hands-on work with generative tools.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Examine ethical considerations, and leave with strategies to help students use AI to expand, never replace, their originality and imagination.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
+          <li>Generative AI tools for music, visual arts, and theater</li>
+          <li>Hands-on experience with creative AI tools</li>
+          <li>Ethical considerations for AI in the arts</li>
+          <li>Strategies to expand student creativity with AI</li>
+          <li>Preserving originality and imagination</li>
+        </ul>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This session is designed for arts educators including music teachers, visual arts instructors, theater directors, and creative writing teachers.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "leading-with-ai-certification-spring-2026",
+    title: "Leading with AI: ACES AI Certification Course for Leaders & Educators",
+    date: "April 7, 8 & May 5, 2026",
+    time: "8:30 am - 2:30 pm",
+    location: "ACES Staff Development Administrative Offices (SDA)",
+    address: "205 Skiff Street, Hamden",
+    type: "in-person",
+    category: "Leadership",
+    registrationUrl: "https://catalog.protraxx.com/ClassDetails/440743?CustomerID=254",
+    content: (
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          In collaboration with Bob Hutchins of Human Voice Media, this course immerses participants in hands-on activities, case studies, and collaborative planning.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Educators and leaders will leave with practical tools and a clear, actionable plan for bringing AI into their schools and classrooms. Upon completion, participants will earn an ACES AI Certification Course Certificate and Digital Badge, recognizing their readiness to lead and support AI implementation in education.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Course Schedule</h2>
+        <div className="bg-secondary/50 rounded-xl p-6 mb-6">
+          <p className="text-muted-foreground leading-relaxed mb-2">
+            <strong className="text-foreground">Spring 2026 Dates:</strong>
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
+            <li><strong className="text-foreground">Day 1:</strong> April 7, 2026</li>
+            <li><strong className="text-foreground">Day 2:</strong> April 8, 2026</li>
+            <li><strong className="text-foreground">Day 3:</strong> May 5, 2026</li>
+          </ul>
+        </div>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
+          <li>AI Foundations for Educational Leaders</li>
+          <li>Data Privacy and Ethical Considerations</li>
+          <li>Leadership in AI-Driven Change</li>
+          <li>Community Engagement Strategies</li>
+          <li>Practical Applications Through Pilot Programs</li>
+        </ul>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">About the Facilitator</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          <strong className="text-foreground">Bob Hutchins</strong> is the Founder of Human Voice Media and an expert in AI integration for educational settings. His practical, hands-on approach ensures participants leave with actionable strategies they can implement immediately.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This course is designed for district and school leaders, curriculum coordinators, and educators who want to lead AI implementation in their schools.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "supporting-students-ai-paraeducators-may-2026",
+    title: "Supporting Students with AI: For Paraeducators",
+    date: "May 19, 2026",
+    time: "9:00 am - 12:00 pm",
+    location: "Virtual",
+    type: "virtual",
+    category: "AI & Technology",
+    registrationUrl: undefined,
+    content: (
+      <>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          Created for paraeducators, this hands-on session shows how AI can support individualized learning, behavior tracking, and communication tools.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Participants will gain practical strategies, ethical guidance, and confidence to use AI in daily student support.
+        </p>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">What You'll Learn</h2>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 ml-4">
+          <li>AI tools for individualized learning support</li>
+          <li>Behavior tracking and communication tools</li>
+          <li>Practical strategies for daily student support</li>
+          <li>Ethical guidance for AI use with students</li>
+          <li>Building confidence in using AI tools</li>
+        </ul>
+        <h2 className="text-2xl font-heading font-bold text-foreground mt-10 mb-4">Who Should Attend</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          This session is designed specifically for paraeducators and teaching assistants who support students in classroom settings.
+        </p>
+      </>
+    ),
+  },
 ];
 
 export default function EventDetail() {
