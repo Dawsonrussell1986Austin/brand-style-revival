@@ -330,7 +330,7 @@ export const eventDetails: EventData[] = [
     location: "Virtual",
     type: "virtual",
     category: "Leadership",
-    registrationUrl: undefined,
+    registrationUrl: "https://catalog.protraxx.com/classdetails/440735?Customerid=254",
     content: (
       <>
         <p className="text-lg text-muted-foreground leading-relaxed mb-6">
