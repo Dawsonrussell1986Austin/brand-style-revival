@@ -204,9 +204,145 @@ const getCategoryColor = (category?: string) => {
   }
 };
 
+const allEvents = [...upcomingEvents, ...pastEvents];
+
+const MonthCalendarView = ({ events, currentMonth, onMonthChange }: { 
+  events: Event[]; 
+  currentMonth: Date;
+  onMonthChange: (date: Date) => void;
+}) => {
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  
+  const year = currentMonth.getFullYear();
+  const month = currentMonth.getMonth();
+  
+  const firstDayOfMonth = new Date(year, month, 1);
+  const lastDayOfMonth = new Date(year, month + 1, 0);
+  const startingDayOfWeek = firstDayOfMonth.getDay();
+  const daysInMonth = lastDayOfMonth.getDate();
+  
+  const days: (number | null)[] = [];
+  for (let i = 0; i < startingDayOfWeek; i++) {
+    days.push(null);
+  }
+  for (let i = 1; i <= daysInMonth; i++) {
+    days.push(i);
+  }
+  
+  const getEventsForDay = (day: number) => {
+    return events.filter(event => {
+      const eventDate = event.date;
+      return eventDate.getFullYear() === year && 
+             eventDate.getMonth() === month && 
+             eventDate.getDate() === day;
+    });
+  };
+
+  const goToPreviousMonth = () => {
+    onMonthChange(new Date(year, month - 1, 1));
+  };
+
+  const goToNextMonth = () => {
+    onMonthChange(new Date(year, month + 1, 1));
+  };
+
+  const goToToday = () => {
+    onMonthChange(new Date());
+  };
+  
+  return (
+    <div className="bg-white rounded-2xl border border-border shadow-lg overflow-hidden mb-16">
+      {/* Calendar Header */}
+      <div className="flex items-center justify-between p-4 border-b border-border bg-secondary/30">
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={goToPreviousMonth}
+            className="p-2 hover:bg-secondary rounded-lg transition-colors"
+          >
+            <ChevronLeft className="h-5 w-5 text-aces-navy" />
+          </button>
+          <button 
+            onClick={goToNextMonth}
+            className="p-2 hover:bg-secondary rounded-lg transition-colors"
+          >
+            <ChevronRight className="h-5 w-5 text-aces-navy" />
+          </button>
+          <button 
+            onClick={goToToday}
+            className="px-3 py-1.5 text-sm font-medium hover:bg-secondary rounded-lg transition-colors"
+          >
+            Today
+          </button>
+        </div>
+        <h3 className="text-xl font-heading font-bold text-aces-navy">
+          {monthNames[month]} {year}
+        </h3>
+        <div className="w-24" /> {/* Spacer for balance */}
+      </div>
+      
+      {/* Days of Week Header */}
+      <div className="grid grid-cols-7 bg-secondary/50">
+        {daysOfWeek.map(day => (
+          <div key={day} className="p-3 text-center text-sm font-semibold text-aces-navy border-b border-border">
+            {day}
+          </div>
+        ))}
+      </div>
+      
+      {/* Calendar Grid */}
+      <div className="grid grid-cols-7">
+        {days.map((day, index) => {
+          const dayEvents = day ? getEventsForDay(day) : [];
+          const isToday = day && 
+            new Date().getFullYear() === year && 
+            new Date().getMonth() === month && 
+            new Date().getDate() === day;
+          
+          return (
+            <div 
+              key={index} 
+              className={`min-h-[120px] p-2 border-b border-r border-border ${
+                day ? 'bg-white' : 'bg-secondary/20'
+              } ${isToday ? 'bg-aces-blue/5' : ''}`}
+            >
+              {day && (
+                <>
+                  <span className={`inline-flex items-center justify-center w-7 h-7 text-sm font-medium rounded-full ${
+                    isToday ? 'bg-aces-blue text-white' : 'text-aces-navy'
+                  }`}>
+                    {day}
+                  </span>
+                  <div className="mt-1 space-y-1">
+                    {dayEvents.slice(0, 2).map(event => (
+                      <Link 
+                        key={event.id} 
+                        to={`/events/${event.slug}`}
+                        className={`block text-xs p-1.5 rounded truncate font-medium hover:opacity-80 transition-opacity ${getCategoryColor(event.category)}`}
+                      >
+                        {event.title}
+                      </Link>
+                    ))}
+                    {dayEvents.length > 2 && (
+                      <span className="text-xs text-muted-foreground font-medium">
+                        +{dayEvents.length - 2} more
+                      </span>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
 const Events = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"list" | "month">("list");
+  const [currentMonth, setCurrentMonth] = useState(new Date(2026, 0, 1)); // Start at Jan 2026 where events are
 
   // AdCloudIQ tracking pixel
   useEffect(() => {
@@ -359,31 +495,31 @@ const Events = () => {
             </div>
           </motion.div>
 
-          {/* Navigation Controls */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex items-center gap-4 mb-10"
-          >
-            <div className="flex items-center gap-2">
-              <button className="p-2.5 hover:bg-secondary rounded-xl transition-colors border border-border">
-                <ChevronLeft className="h-5 w-5 text-aces-navy" />
-              </button>
-              <button className="p-2.5 hover:bg-secondary rounded-xl transition-colors border border-border">
-                <ChevronRight className="h-5 w-5 text-aces-navy" />
-              </button>
-            </div>
-            <Button variant="outline" className="text-sm font-medium rounded-xl">
-              Today
-            </Button>
-            <button className="flex items-center gap-2 text-2xl md:text-3xl font-heading font-bold text-aces-navy hover:text-aces-blue transition-colors">
-              Upcoming
-              <ChevronDown className="h-5 w-5" />
-            </button>
-          </motion.div>
+          {/* Navigation Controls - Only show for list view */}
+          {viewMode === "list" && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex items-center gap-4 mb-10"
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-aces-navy">
+                Upcoming Events
+              </h2>
+            </motion.div>
+          )}
 
-          {/* Upcoming Events */}
+          {/* Month Calendar View */}
+          {viewMode === "month" && (
+            <MonthCalendarView 
+              events={allEvents} 
+              currentMonth={currentMonth}
+              onMonthChange={setCurrentMonth}
+            />
+          )}
+
+          {/* Upcoming Events - List View */}
+          {viewMode === "list" && (
           <div className="grid gap-6 mb-16">
             {upcomingEvents.map((event, index) => {
               const dateInfo = formatDate(event.date);
@@ -468,6 +604,7 @@ const Events = () => {
               );
             })}
           </div>
+          )}
 
           {/* Past Events */}
           <motion.div
