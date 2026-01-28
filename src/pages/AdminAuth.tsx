@@ -17,35 +17,33 @@ export default function AdminAuth() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const checkAdminRole = async (userId: string) => {
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId)
+        .in("role", ["admin", "editor"]);
+      
+      if (data && data.length > 0) {
+        navigate("/admin");
+      }
+    };
+
+    // Set up listener FIRST - use setTimeout to avoid deadlock
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      (event, session) => {
         if (session?.user) {
-          // Check if user is admin
-          const { data } = await supabase
-            .from("user_roles")
-            .select("role")
-            .eq("user_id", session.user.id)
-            .in("role", ["admin", "editor"]);
-          
-          if (data && data.length > 0) {
-            navigate("/admin");
-          }
+          setTimeout(() => {
+            checkAdminRole(session.user.id);
+          }, 0);
         }
       }
     );
 
-    // Check initial session
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
+    // THEN check initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
-        const { data } = await supabase
-          .from("user_roles")
-          .select("role")
-          .eq("user_id", session.user.id)
-          .in("role", ["admin", "editor"]);
-        
-        if (data && data.length > 0) {
-          navigate("/admin");
-        }
+        checkAdminRole(session.user.id);
       }
     });
 
