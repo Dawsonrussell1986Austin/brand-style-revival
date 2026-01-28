@@ -13,6 +13,9 @@ import rosariaGiannettiImg from "@/assets/team/rosaria-giannetti.png";
 import jessicaWhiteImg from "@/assets/team/jessica-white.png";
 import lisaSealesImg from "@/assets/team/lisa-seales.png";
 import maryStoneImg from "@/assets/team/mary-stone.png";
+import johnGustafsonImg from "@/assets/team/john-gustafson.png";
+import kimCelliniImg from "@/assets/team/kim-cellini.png";
+import alisonZanardiImg from "@/assets/team/alison-zanardi.png";
 
 interface TeamMember {
   name: string;
@@ -62,6 +65,7 @@ const leadershipTeam: TeamMember[] = [
     role: "Project Coordinator",
     bio: "Coordinates projects and initiatives to support professional development delivery.",
     fullBio: "John Gustafson is the Project Coordinator at ACES PDSI, responsible for managing project timelines, coordinating events, and supporting the delivery of professional development services to districts and schools.",
+    image: johnGustafsonImg,
     email: "jgustafson@aces.org"
   }
 ];
@@ -78,7 +82,8 @@ const specialistsTeam: TeamMember[] = [
     name: "Kimberly Cellini",
     role: "Early Childhood",
     bio: "Focuses on early childhood education and developmentally appropriate practices.",
-    fullBio: "Kimberly Cellini is a Professional Learning Specialist in Early Childhood education. She works with educators to implement play-based, developmentally appropriate learning experiences that support young children's growth and development."
+    fullBio: "Kimberly Cellini is a Professional Learning Specialist in Early Childhood education. She works with educators to implement play-based, developmentally appropriate learning experiences that support young children's growth and development.",
+    image: kimCelliniImg
   },
   {
     name: "Michelle Dellacamera",
