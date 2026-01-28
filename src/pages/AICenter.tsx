@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -719,29 +720,30 @@ export default function AICenter() {
             
             <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {workshops.map((workshop, index) => (
-              <motion.div
-                key={workshop.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="flex items-center gap-4 p-5 bg-white rounded-xl border border-border hover:border-aces-blue/30 hover:shadow-md transition-all duration-300 cursor-pointer group"
-              >
-                <div className="w-12 h-12 bg-aces-green/10 rounded-lg flex items-center justify-center group-hover:bg-aces-green/20 transition-colors">
-                  <workshop.icon className="w-6 h-6 text-aces-green" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-bold font-heading text-aces-navy group-hover:text-aces-blue transition-colors">
-                    {workshop.title}
-                  </h3>
-                  <div className="flex items-center gap-3 text-base font-medium text-muted-foreground">
-                    <span>{workshop.date}</span>
-                    <span className="w-1 h-1 bg-muted-foreground/50 rounded-full" />
-                    <span>{workshop.format}</span>
+              <Link key={workshop.title} to="/events">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="flex items-center gap-4 p-5 bg-white rounded-xl border border-border hover:border-aces-blue/30 hover:shadow-md transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="w-12 h-12 bg-aces-green/10 rounded-lg flex items-center justify-center group-hover:bg-aces-green/20 transition-colors">
+                    <workshop.icon className="w-6 h-6 text-aces-green" />
                   </div>
-                </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aces-blue group-hover:translate-x-1 transition-all" />
-              </motion.div>
+                  <div className="flex-1">
+                    <h3 className="font-bold font-heading text-aces-navy group-hover:text-aces-blue transition-colors">
+                      {workshop.title}
+                    </h3>
+                    <div className="flex items-center gap-3 text-base font-medium text-muted-foreground">
+                      <span>{workshop.date}</span>
+                      <span className="w-1 h-1 bg-muted-foreground/50 rounded-full" />
+                      <span>{workshop.format}</span>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aces-blue group-hover:translate-x-1 transition-all" />
+                </motion.div>
+              </Link>
             ))}
             </div>
           </div>
