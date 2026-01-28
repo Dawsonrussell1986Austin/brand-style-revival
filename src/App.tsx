@@ -17,6 +17,8 @@ import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
+import Admin from "./pages/Admin";
+import AdminAuth from "./pages/AdminAuth";
 
 declare global {
   interface Window {
@@ -64,6 +66,8 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/auth" element={<AdminAuth />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
