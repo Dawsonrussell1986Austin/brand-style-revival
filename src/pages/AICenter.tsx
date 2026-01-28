@@ -674,7 +674,7 @@ export default function AICenter() {
                   <p className="text-muted-foreground text-base font-medium mb-6">
                     {program.description}
                   </p>
-                  <div className="space-y-2 mb-6">
+                  <div className="space-y-2">
                     <p className="text-base font-bold text-aces-navy">Topics Covered:</p>
                     <div className="flex flex-wrap gap-2">
                       {program.topics.map((topic) => (
@@ -687,9 +687,6 @@ export default function AICenter() {
                       ))}
                     </div>
                   </div>
-                  <Button className="w-full bg-aces-blue hover:bg-aces-blue/90 text-white">
-                    Learn More
-                  </Button>
                 </div>
               </motion.div>
             ))}
