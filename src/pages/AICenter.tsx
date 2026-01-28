@@ -362,13 +362,17 @@ export default function AICenter() {
                 for the future with cutting-edge training, tools, and ethical frameworks.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-aces-blue hover:bg-aces-blue/90 text-white">
-                  Explore Programs
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-aces-navy text-aces-navy hover:bg-aces-navy/5">
-                  Contact Us
-                </Button>
+                <Link to="/events">
+                  <Button size="lg" className="bg-aces-blue hover:bg-aces-blue/90 text-white">
+                    Explore Programs
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button size="lg" variant="outline" className="border-aces-navy text-aces-navy hover:bg-aces-navy/5">
+                    Contact Us
+                  </Button>
+                </Link>
               </div>
             </motion.div>
             
@@ -766,13 +770,17 @@ export default function AICenter() {
               more engaging, personalized, and effective learning experiences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-aces-blue hover:bg-white/90">
-                Get Started Today
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Schedule a Consultation
-              </Button>
+              <Link to="/events">
+                <Button size="lg" className="bg-white text-aces-blue hover:bg-white/90">
+                  Get Started Today
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/20">
+                  Schedule a Consultation
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
