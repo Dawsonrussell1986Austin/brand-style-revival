@@ -25,6 +25,11 @@ import {
   RefreshCw,
   Monitor,
   Smartphone,
+  Inbox,
+  Mail,
+  Phone,
+  Clock,
+  Building,
 } from "lucide-react";
 import {
   useAllContent,
@@ -292,6 +297,7 @@ function ImageField({
 export default function Admin() {
   const [user, setUser] = useState<any>(null);
   const [selectedPage, setSelectedPage] = useState<string>("home");
+  const [activeView, setActiveView] = useState<"pages" | "submissions">("pages");
   const [panelOpen, setPanelOpen] = useState(true);
   const [previewMode, setPreviewMode] = useState<"desktop" | "mobile">("desktop");
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
@@ -307,6 +313,23 @@ export default function Admin() {
   const updateContent = useUpdateContent();
   const updateImage = useUpdateImage();
   const uploadImage = useUploadImage();
+
+  const [submissions, setSubmissions] = useState<any[]>([]);
+  const [submissionsLoading, setSubmissionsLoading] = useState(false);
+
+  const fetchSubmissions = async () => {
+    setSubmissionsLoading(true);
+    const { data, error } = await supabase
+      .from("contact_submissions")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (!error && data) setSubmissions(data);
+    setSubmissionsLoading(false);
+  };
+
+  useEffect(() => {
+    if (activeView === "submissions") fetchSubmissions();
+  }, [activeView]);
 
   // Auth check
   useEffect(() => {
@@ -478,22 +501,48 @@ export default function Admin() {
         <img src={acesLogo} alt="ACES" className="h-8" />
         <div className="h-6 w-px bg-slate-200" />
 
+        {/* View Toggle */}
+        <div className="flex items-center gap-1 border border-slate-200 rounded-lg p-0.5">
+          <button
+            onClick={() => setActiveView("pages")}
+            className={`px-3 py-1 rounded-md text-xs font-semibold transition-colors ${
+              activeView === "pages" ? "bg-blue-600 text-white" : "text-slate-500 hover:text-slate-700"
+            }`}
+          >
+            Pages
+          </button>
+          <button
+            onClick={() => setActiveView("submissions")}
+            className={`px-3 py-1 rounded-md text-xs font-semibold transition-colors flex items-center gap-1 ${
+              activeView === "submissions" ? "bg-blue-600 text-white" : "text-slate-500 hover:text-slate-700"
+            }`}
+          >
+            <Inbox className="w-3 h-3" />
+            Submissions
+          </button>
+        </div>
+
+        <div className="h-6 w-px bg-slate-200" />
+
         {/* Page Tabs */}
-        <nav className="flex items-center gap-1 overflow-x-auto flex-1">
-          {pages.map((page) => (
-            <button
-              key={page}
-              onClick={() => setSelectedPage(page)}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
-                selectedPage === page
-                  ? "bg-blue-50 text-blue-700"
-                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-              }`}
-            >
-              {getLabel(pageLabels, page)}
-            </button>
-          ))}
-        </nav>
+        {activeView === "pages" && (
+          <nav className="flex items-center gap-1 overflow-x-auto flex-1">
+            {pages.map((page) => (
+              <button
+                key={page}
+                onClick={() => setSelectedPage(page)}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
+                  selectedPage === page
+                    ? "bg-blue-50 text-blue-700"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                }`}
+              >
+                {getLabel(pageLabels, page)}
+              </button>
+            ))}
+          </nav>
+        )}
+        {activeView === "submissions" && <div className="flex-1" />}
 
         <div className="h-6 w-px bg-slate-200" />
 
@@ -548,6 +597,72 @@ export default function Admin() {
 
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
+        {activeView === "submissions" ? (
+          /* Submissions View */
+          <div className="flex-1 overflow-y-auto p-6">
+            <div className="max-w-5xl mx-auto">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900">Contact Submissions</h2>
+                  <p className="text-sm text-slate-500">{submissions.length} submission{submissions.length !== 1 ? "s" : ""}</p>
+                </div>
+                <Button size="sm" variant="outline" onClick={fetchSubmissions} disabled={submissionsLoading} className="h-8">
+                  <RefreshCw className={`w-3.5 h-3.5 mr-1 ${submissionsLoading ? "animate-spin" : ""}`} />
+                  Refresh
+                </Button>
+              </div>
+
+              {submissionsLoading ? (
+                <div className="flex items-center justify-center py-20">
+                  <RefreshCw className="w-6 h-6 text-slate-400 animate-spin" />
+                </div>
+              ) : submissions.length === 0 ? (
+                <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
+                  <Inbox className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                  <p className="font-medium text-slate-500">No submissions yet</p>
+                  <p className="text-sm text-slate-400">Contact form submissions will appear here.</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {submissions.map((sub) => (
+                    <div key={sub.id} className="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h3 className="font-semibold text-slate-900">{sub.name}</h3>
+                          {sub.organization && (
+                            <div className="flex items-center gap-1 text-sm text-slate-500 mt-0.5">
+                              <Building className="w-3.5 h-3.5" />
+                              {sub.organization}
+                              {sub.role && <span className="text-slate-400">• {sub.role}</span>}
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-1 text-xs text-slate-400">
+                          <Clock className="w-3 h-3" />
+                          {new Date(sub.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit" })}
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-700 mb-3 leading-relaxed">{sub.message}</p>
+                      <div className="flex flex-wrap gap-3">
+                        <a href={`mailto:${sub.email}`} className="flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-medium">
+                          <Mail className="w-3.5 h-3.5" />
+                          {sub.email}
+                        </a>
+                        {sub.phone && (
+                          <a href={`tel:${sub.phone}`} className="flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-medium">
+                            <Phone className="w-3.5 h-3.5" />
+                            {sub.phone}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ) : (
+          <>
         {/* Preview Panel */}
         <div className="flex-1 flex items-start justify-center p-4 bg-slate-200/50 overflow-hidden">
           <div
@@ -769,6 +884,8 @@ export default function Admin() {
               </div>
             )}
           </div>
+        )}
+          </>
         )}
       </div>
     </div>
