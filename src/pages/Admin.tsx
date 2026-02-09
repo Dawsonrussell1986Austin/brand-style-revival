@@ -85,6 +85,19 @@ const sectionLabels: Record<string, string> = {
   info: "Contact Info",
 };
 
+// Define display order for sections (lower = higher on page)
+const sectionOrder: Record<string, number> = {
+  hero: 0,
+  partners: 1,
+  professional_learning: 2,
+  services: 3,
+  news: 4,
+  testimonials: 5,
+  cta: 6,
+  main: 1,
+  info: 2,
+};
+
 const keyLabels: Record<string, string> = {
   badge: "Badge Text",
   heading_line1: "Heading Line 1",
@@ -607,7 +620,7 @@ export default function Admin() {
               ) : (
                 <div className="divide-y divide-slate-100">
                   {Array.from(sectionMap.entries())
-                    .sort(([a], [b]) => a.localeCompare(b))
+                    .sort(([a], [b]) => (sectionOrder[a] ?? 99) - (sectionOrder[b] ?? 99))
                     .map(([sectionKey, { content, images }]) => {
                       const isExpanded = expandedSections.has(sectionKey);
                       const itemCount = content.length + images.length;
