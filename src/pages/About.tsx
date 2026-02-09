@@ -6,16 +6,17 @@ import { SEO } from "@/components/SEO";
 import { Users, Target, Lightbulb, Heart, Mail, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useImage } from "@/hooks/useSiteContent";
 
-// Team headshot imports
-import michelleGohagonImg from "@/assets/team/michelle-gohagon.png";
-import rosariaGiannettiImg from "@/assets/team/rosaria-giannetti.png";
-import jessicaWhiteImg from "@/assets/team/jessica-white.png";
-import lisaSealesImg from "@/assets/team/lisa-seales.png";
-import maryStoneImg from "@/assets/team/mary-stone.png";
-import johnGustafsonImg from "@/assets/team/john-gustafson.png";
-import kimCelliniImg from "@/assets/team/kim-cellini.png";
-import alisonZanardiImg from "@/assets/team/alison-zanardi.png";
+// Team headshot imports (fallbacks)
+import michelleGohagonFallback from "@/assets/team/michelle-gohagon.png";
+import rosariaGiannettiFallback from "@/assets/team/rosaria-giannetti.png";
+import jessicaWhiteFallback from "@/assets/team/jessica-white.png";
+import lisaSealesFallback from "@/assets/team/lisa-seales.png";
+import maryStoneFallback from "@/assets/team/mary-stone.png";
+import johnGustafsonFallback from "@/assets/team/john-gustafson.png";
+import kimCelliniFallback from "@/assets/team/kim-cellini.png";
+import alisonZanardiFallback from "@/assets/team/alison-zanardi.png";
 
 interface TeamMember {
   name: string;
@@ -34,7 +35,7 @@ const leadershipTeam: TeamMember[] = [
     role: "Director",
     bio: "Leads ACES PDSI with a focus on innovative professional development and school improvement strategies.",
     fullBio: "Michelle Gohagon serves as the Director of ACES Professional Development & School Improvement. With extensive experience in educational leadership, she guides the organization's mission to support educators and districts across Connecticut through research-based professional learning, coaching, and school improvement services.",
-    image: michelleGohagonImg,
+    image: michelleGohagonFallback,
     email: "mgohagon@aces.org"
   },
   {
@@ -42,7 +43,7 @@ const leadershipTeam: TeamMember[] = [
     role: "Assistant Director",
     bio: "Supports PDSI initiatives and leads key professional development programs across the region.",
     fullBio: "Rosaria Giannetti serves as Assistant Director at ACES PDSI, where she coordinates professional development initiatives and supports educators in implementing research-based practices. Her work spans curriculum development, instructional coaching, and systems improvement.",
-    image: rosariaGiannettiImg,
+    image: rosariaGiannettiFallback,
     email: "rgiannetti@aces.org"
   },
   {
@@ -50,7 +51,7 @@ const leadershipTeam: TeamMember[] = [
     role: "Assistant Director",
     bio: "Oversees professional learning programs and supports district-wide improvement efforts.",
     fullBio: "Jessica White is an Assistant Director at ACES PDSI, bringing expertise in educational leadership and professional development. She works closely with districts to design and implement sustainable learning experiences that drive meaningful change in schools.",
-    image: jessicaWhiteImg,
+    image: jessicaWhiteFallback,
     email: "jewhite@aces.org"
   },
   {
@@ -65,7 +66,7 @@ const leadershipTeam: TeamMember[] = [
     role: "Project Coordinator",
     bio: "Coordinates projects and initiatives to support professional development delivery.",
     fullBio: "John Gustafson is the Project Coordinator at ACES PDSI, responsible for managing project timelines, coordinating events, and supporting the delivery of professional development services to districts and schools.",
-    image: johnGustafsonImg,
+    image: johnGustafsonFallback,
     email: "jgustafson@aces.org"
   }
 ];
@@ -83,7 +84,7 @@ const specialistsTeam: TeamMember[] = [
     role: "Early Childhood",
     bio: "Focuses on early childhood education and developmentally appropriate practices.",
     fullBio: "Kimberly Cellini is a Professional Learning Specialist in Early Childhood education. She works with educators to implement play-based, developmentally appropriate learning experiences that support young children's growth and development.",
-    image: kimCelliniImg
+    image: kimCelliniFallback
   },
   {
     name: "Michelle Dellacamera",
@@ -96,7 +97,7 @@ const specialistsTeam: TeamMember[] = [
     role: "Early Childhood, Science",
     bio: "Brings expertise in early childhood education and science instruction.",
     fullBio: "Lisa Seales is a Professional Learning Specialist with expertise in both early childhood education and science instruction. She helps educators integrate hands-on, inquiry-based science learning into early childhood classrooms.",
-    image: lisaSealesImg
+    image: lisaSealesFallback
   },
   {
     name: "Dina Secchiaroli",
@@ -109,14 +110,16 @@ const specialistsTeam: TeamMember[] = [
     role: "Early Childhood, Special Education",
     bio: "Combines early childhood and special education expertise to support inclusive practices.",
     fullBio: "Mary Stone is a Professional Learning Specialist with expertise in early childhood and special education. She supports educators in creating inclusive classrooms where all young learners can thrive academically, socially, and emotionally.",
-    image: maryStoneImg
+    image: maryStoneFallback
   }
 ];
 
 // Operations team is empty for now
 const operationsTeam: TeamMember[] = [];
 
-const TeamCard = ({ member, index, onViewBio }: { member: TeamMember; index: number; onViewBio: (member: TeamMember) => void }) => (
+const TeamCard = ({ member, index, onViewBio, imageOverride }: { member: TeamMember; index: number; onViewBio: (member: TeamMember) => void; imageOverride?: string }) => {
+  const displayImage = imageOverride || member.image;
+  return (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -126,9 +129,9 @@ const TeamCard = ({ member, index, onViewBio }: { member: TeamMember; index: num
   >
     {/* Photo */}
     <div className="aspect-[4/3] bg-gradient-to-br from-aces-blue/10 via-aces-green/10 to-aces-blue/5 flex items-center justify-center relative overflow-hidden">
-      {member.image ? (
+      {displayImage ? (
         <img 
-          src={member.image} 
+          src={displayImage} 
           alt={member.name}
           className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
         />
@@ -138,7 +141,7 @@ const TeamCard = ({ member, index, onViewBio }: { member: TeamMember; index: num
         </div>
       )}
       {/* Decorative elements */}
-      {!member.image && (
+      {!displayImage && (
         <>
           <div className="absolute top-4 right-4 w-20 h-20 bg-aces-green/10 rounded-full blur-2xl" />
           <div className="absolute bottom-4 left-4 w-16 h-16 bg-aces-blue/10 rounded-full blur-2xl" />
@@ -180,7 +183,8 @@ const TeamCard = ({ member, index, onViewBio }: { member: TeamMember; index: num
       </div>
     </div>
   </motion.div>
-);
+  );
+};
 
 const TeamBioDialog = ({ member, open, onClose }: { member: TeamMember | null; open: boolean; onClose: () => void }) => {
   if (!member) return null;
@@ -235,6 +239,30 @@ const TeamBioDialog = ({ member, open, onClose }: { member: TeamMember | null; o
 const About = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const hasTeamMembers = leadershipTeam.length > 0 || specialistsTeam.length > 0 || operationsTeam.length > 0;
+
+  // CMS image overrides for team members
+  const { imageUrl: michelleImg } = useImage("about", "team", "michelle_gohagon", michelleGohagonFallback);
+  const { imageUrl: rosariaImg } = useImage("about", "team", "rosaria_giannetti", rosariaGiannettiFallback);
+  const { imageUrl: jessicaImg } = useImage("about", "team", "jessica_white", jessicaWhiteFallback);
+  const { imageUrl: lisaImg } = useImage("about", "team", "lisa_seales", lisaSealesFallback);
+  const { imageUrl: maryImg } = useImage("about", "team", "mary_stone", maryStoneFallback);
+  const { imageUrl: johnImg } = useImage("about", "team", "john_gustafson", johnGustafsonFallback);
+  const { imageUrl: kimImg } = useImage("about", "team", "kim_cellini", kimCelliniFallback);
+  const { imageUrl: alisonImg } = useImage("about", "team", "alison_zanardi", alisonZanardiFallback);
+
+  // Map CMS images to team members
+  const cmsImageMap: Record<string, string> = {
+    "Michelle Gohagon": michelleImg,
+    "Rosaria Giannetti": rosariaImg,
+    "Jessica White": jessicaImg,
+    "Lisa Seales": lisaImg,
+    "Mary Stone": maryImg,
+    "John Gustafson": johnImg,
+    "Kimberly Cellini": kimImg,
+    "Alison Zanardi": alisonImg,
+  };
+
+  const getTeamImage = (member: TeamMember) => cmsImageMap[member.name] || member.image;
 
   const handleViewBio = (member: TeamMember) => {
     setSelectedMember(member);
@@ -374,7 +402,7 @@ const About = () => {
                   </motion.h3>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {leadershipTeam.map((member, index) => (
-                      <TeamCard key={member.name} member={member} index={index} onViewBio={handleViewBio} />
+                      <TeamCard key={member.name} member={member} index={index} onViewBio={handleViewBio} imageOverride={getTeamImage(member)} />
                     ))}
                   </div>
                 </div>
@@ -394,7 +422,7 @@ const About = () => {
                   </motion.h3>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {specialistsTeam.map((member, index) => (
-                      <TeamCard key={member.name} member={member} index={index} onViewBio={handleViewBio} />
+                      <TeamCard key={member.name} member={member} index={index} onViewBio={handleViewBio} imageOverride={getTeamImage(member)} />
                     ))}
                   </div>
                 </div>
@@ -414,7 +442,7 @@ const About = () => {
                   </motion.h3>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl">
                     {operationsTeam.map((member, index) => (
-                      <TeamCard key={member.name} member={member} index={index} onViewBio={handleViewBio} />
+                      <TeamCard key={member.name} member={member} index={index} onViewBio={handleViewBio} imageOverride={getTeamImage(member)} />
                     ))}
                   </div>
                 </div>
