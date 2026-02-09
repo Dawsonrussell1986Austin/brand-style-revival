@@ -3,8 +3,17 @@ import { ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-educators.jpg";
+import { useContent } from "@/hooks/useSiteContent";
 
 export function Hero() {
+  const { content: badge } = useContent("home", "hero", "badge", "Empowering Educators Since 1992");
+  const { content: headingLine1 } = useContent("home", "hero", "heading_line1", "Grounded in Pedagogy");
+  const { content: headingLine2 } = useContent("home", "hero", "heading_line2", "Growing in Innovation");
+  const { content: subtitle } = useContent("home", "hero", "subtitle", "Partner with ACES to transform your educational ecosystem through cutting-edge professional development, AI integration, and evidence-based strategies.");
+  const { content: statYears } = useContent("home", "hero", "stat_years", "30+");
+  const { content: statDistricts } = useContent("home", "hero", "stat_districts", "500+");
+  const { content: statEducators } = useContent("home", "hero", "stat_educators", "10K+");
+  const { content: satisfactionRate } = useContent("home", "hero", "satisfaction_rate", "98%");
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-32 md:pt-36">
       {/* Background Pattern */}
@@ -27,7 +36,7 @@ export function Hero() {
             >
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               <span className="text-sm font-medium text-accent">
-                Empowering Educators Since 1992
+                {badge}
               </span>
             </motion.div>
 
@@ -38,11 +47,11 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight mb-6"
             >
-              Grounded in{" "}
-              <span className="text-gradient-aces">Pedagogy</span>
+              {headingLine1.split(' ').slice(0, -1).join(' ')}{" "}
+              <span className="text-gradient-aces">{headingLine1.split(' ').pop()}</span>
               <br />
-              Growing in{" "}
-              <span className="text-gradient-aces">Innovation</span>
+              {headingLine2.split(' ').slice(0, -1).join(' ')}{" "}
+              <span className="text-gradient-aces">{headingLine2.split(' ').pop()}</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -52,8 +61,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg font-medium text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
             >
-              Partner with ACES to transform your educational ecosystem through 
-              cutting-edge professional development, AI integration, and evidence-based strategies.
+              {subtitle}
             </motion.p>
 
             {/* CTA Buttons */}
@@ -94,9 +102,9 @@ export function Hero() {
               className="flex flex-wrap gap-8 justify-center lg:justify-start mt-12 pt-8 border-t border-border"
             >
               {[
-                { value: "30+", label: "Years" },
-                { value: "500+", label: "Districts" },
-                { value: "10K+", label: "Educators" },
+                { value: statYears, label: "Years" },
+                { value: statDistricts, label: "Districts" },
+                { value: statEducators, label: "Educators" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center lg:text-left">
                   <div className="text-2xl font-heading font-bold text-foreground">{stat.value}</div>
@@ -132,7 +140,7 @@ export function Hero() {
             >
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-xl gradient-aces flex items-center justify-center">
-                  <span className="text-white text-xl font-bold">98%</span>
+                  <span className="text-white text-xl font-bold">{satisfactionRate}</span>
                 </div>
                 <div>
                   <div className="font-bold text-foreground">Satisfaction Rate</div>
