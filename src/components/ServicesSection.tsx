@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Brain, Users, BookOpen, Target, Lightbulb, GraduationCap, BarChart3, Settings, Heart, Rocket, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useContent } from "@/hooks/useSiteContent";
 
 const services = [
   { icon: Brain, title: "AI Integration", description: "Harness AI to enhance teaching and learning", featured: true, link: "/ai-center" },
@@ -16,6 +17,8 @@ const services = [
 ];
 
 export function ServicesSection() {
+  const { content: sectionTitle } = useContent("home", "services", "title", "Our Services");
+  const { content: sectionSubtitle } = useContent("home", "services", "subtitle", "Comprehensive solutions designed to transform education at every level");
   return (
     <section id="services" className="py-20 md:py-28">
       <div className="container mx-auto px-4">
@@ -28,10 +31,10 @@ export function ServicesSection() {
         >
           <div className="accent-line w-16 mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
-            Our Services
+            {sectionTitle}
           </h2>
           <p className="text-lg font-medium text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive solutions designed to transform education at every level
+            {sectionSubtitle}
           </p>
         </motion.div>
 
