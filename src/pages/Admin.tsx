@@ -83,6 +83,11 @@ const sectionLabels: Record<string, string> = {
   professional_learning: "Professional Learning",
   main: "Main Content",
   info: "Contact Info",
+  pillars: "Three Pillars",
+  workshops: "Workshops & Training",
+  certifications: "Certification Programs",
+  workbooks: "Premium Workbooks",
+  free_tools: "Free Tools & Templates",
 };
 
 // Define display order for sections (lower = higher on page)
@@ -96,6 +101,11 @@ const sectionOrder: Record<string, number> = {
   cta: 6,
   main: 1,
   info: 2,
+  pillars: 1,
+  workshops: 2,
+  certifications: 3,
+  workbooks: 1,
+  free_tools: 2,
 };
 
 const keyLabels: Record<string, string> = {
