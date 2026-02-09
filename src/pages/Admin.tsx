@@ -30,6 +30,9 @@ import {
   Phone,
   Clock,
   Building,
+  Users,
+  UserPlus,
+  Shield,
 } from "lucide-react";
 import {
   useAllContent,
@@ -297,7 +300,12 @@ function ImageField({
 export default function Admin() {
   const [user, setUser] = useState<any>(null);
   const [selectedPage, setSelectedPage] = useState<string>("home");
-  const [activeView, setActiveView] = useState<"pages" | "submissions">("pages");
+  const [activeView, setActiveView] = useState<"pages" | "submissions" | "team">("pages");
+  const [teamMembers, setTeamMembers] = useState<any[]>([]);
+  const [teamLoading, setTeamLoading] = useState(false);
+  const [inviteEmail, setInviteEmail] = useState("");
+  const [inviteRole, setInviteRole] = useState<"admin" | "editor">("editor");
+  const [inviting, setInviting] = useState(false);
   const [panelOpen, setPanelOpen] = useState(true);
   const [previewMode, setPreviewMode] = useState<"desktop" | "mobile">("desktop");
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
@@ -327,8 +335,55 @@ export default function Admin() {
     setSubmissionsLoading(false);
   };
 
+  const fetchTeamMembers = async () => {
+    setTeamLoading(true);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const res = await supabase.functions.invoke("list-admins", {
+        headers: { Authorization: `Bearer ${session?.access_token}` },
+      });
+      if (res.data?.members) setTeamMembers(res.data.members);
+    } catch (e: any) {
+      toast.error(e.message);
+    }
+    setTeamLoading(false);
+  };
+
+  const handleInvite = async () => {
+    if (!inviteEmail) { toast.error("Enter an email"); return; }
+    setInviting(true);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const res = await supabase.functions.invoke("invite-admin", {
+        headers: { Authorization: `Bearer ${session?.access_token}` },
+        body: { email: inviteEmail, role: inviteRole },
+      });
+      if (res.data?.error) { toast.error(res.data.error); }
+      else { toast.success(res.data?.message || "Invited!"); setInviteEmail(""); fetchTeamMembers(); }
+    } catch (e: any) {
+      toast.error(e.message);
+    }
+    setInviting(false);
+  };
+
+  const handleRemoveMember = async (userId: string, role: string) => {
+    if (!confirm(`Remove this user's ${role} role?`)) return;
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const res = await supabase.functions.invoke("remove-admin", {
+        headers: { Authorization: `Bearer ${session?.access_token}` },
+        body: { user_id: userId, role },
+      });
+      if (res.data?.error) { toast.error(res.data.error); }
+      else { toast.success("Role removed"); fetchTeamMembers(); }
+    } catch (e: any) {
+      toast.error(e.message);
+    }
+  };
+
   useEffect(() => {
     if (activeView === "submissions") fetchSubmissions();
+    if (activeView === "team") fetchTeamMembers();
   }, [activeView]);
 
   // Auth check
@@ -520,6 +575,15 @@ export default function Admin() {
             <Inbox className="w-3 h-3" />
             Submissions
           </button>
+          <button
+            onClick={() => setActiveView("team")}
+            className={`px-3 py-1 rounded-md text-xs font-semibold transition-colors flex items-center gap-1 ${
+              activeView === "team" ? "bg-blue-600 text-white" : "text-slate-500 hover:text-slate-700"
+            }`}
+          >
+            <Users className="w-3 h-3" />
+            Team
+          </button>
         </div>
 
         <div className="h-6 w-px bg-slate-200" />
@@ -542,7 +606,7 @@ export default function Admin() {
             ))}
           </nav>
         )}
-        {activeView === "submissions" && <div className="flex-1" />}
+        {activeView !== "pages" && <div className="flex-1" />}
 
         <div className="h-6 w-px bg-slate-200" />
 
@@ -654,6 +718,112 @@ export default function Admin() {
                             {sub.phone}
                           </a>
                         )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ) : activeView === "team" ? (
+          /* Team View */
+          <div className="flex-1 overflow-y-auto p-6">
+            <div className="max-w-3xl mx-auto">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900">Team Members</h2>
+                  <p className="text-sm text-slate-500">Manage who has access to this admin panel</p>
+                </div>
+                <Button size="sm" variant="outline" onClick={fetchTeamMembers} disabled={teamLoading} className="h-8">
+                  <RefreshCw className={`w-3.5 h-3.5 mr-1 ${teamLoading ? "animate-spin" : ""}`} />
+                  Refresh
+                </Button>
+              </div>
+
+              {/* Invite Form */}
+              <div className="bg-white rounded-xl border border-slate-200 p-5 mb-6">
+                <h3 className="text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                  <UserPlus className="w-4 h-4" />
+                  Invite New Member
+                </h3>
+                <div className="flex gap-3">
+                  <Input
+                    placeholder="Email address"
+                    type="email"
+                    value={inviteEmail}
+                    onChange={(e) => setInviteEmail(e.target.value)}
+                    className="flex-1 h-9"
+                  />
+                  <select
+                    value={inviteRole}
+                    onChange={(e) => setInviteRole(e.target.value as "admin" | "editor")}
+                    className="h-9 px-3 rounded-md border border-slate-200 text-sm bg-white"
+                  >
+                    <option value="editor">Editor</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                  <Button onClick={handleInvite} disabled={inviting} className="h-9 bg-blue-600 hover:bg-blue-700 text-white">
+                    {inviting ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <UserPlus className="w-3.5 h-3.5 mr-1" />}
+                    Invite
+                  </Button>
+                </div>
+                <p className="text-xs text-slate-400 mt-2">
+                  They'll be able to log in at the admin page. If they don't have an account, one will be created.
+                </p>
+              </div>
+
+              {/* Members List */}
+              {teamLoading ? (
+                <div className="flex items-center justify-center py-20">
+                  <RefreshCw className="w-6 h-6 text-slate-400 animate-spin" />
+                </div>
+              ) : teamMembers.length === 0 ? (
+                <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
+                  <Users className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                  <p className="font-medium text-slate-500">No team members found</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {teamMembers.map((member) => (
+                    <div key={member.id} className="bg-white rounded-xl border border-slate-200 p-4 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                          <span className="text-sm font-bold text-blue-600">
+                            {member.email?.[0]?.toUpperCase() || "?"}
+                          </span>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-slate-900">{member.email}</p>
+                          <div className="flex gap-1.5 mt-1">
+                            {member.roles?.map((role: string) => (
+                              <span
+                                key={role}
+                                className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                                  role === "admin"
+                                    ? "bg-amber-100 text-amber-700"
+                                    : "bg-blue-100 text-blue-700"
+                                }`}
+                              >
+                                <Shield className="w-3 h-3 inline mr-0.5" />
+                                {role}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex gap-1">
+                        {member.roles?.map((role: string) => (
+                          member.id !== user?.id && (
+                            <button
+                              key={role}
+                              onClick={() => handleRemoveMember(member.id, role)}
+                              className="p-1.5 rounded-md text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+                              title={`Remove ${role} role`}
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          )
+                        ))}
                       </div>
                     </div>
                   ))}
