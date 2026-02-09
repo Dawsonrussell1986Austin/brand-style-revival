@@ -1,26 +1,32 @@
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
-import testimonial1 from "@/assets/testimonial-1.jpg";
-import testimonial2 from "@/assets/testimonial-2.jpg";
-
-const testimonials = [
-  {
-    image: testimonial1,
-    quote: "ACES helped us turn our PD from passive to powerful. The transformation was remarkable.",
-    author: "Dr. Sarah Mitchell",
-    role: "School Principal",
-    location: "Hartford, CT",
-  },
-  {
-    image: testimonial2,
-    quote: "They get it. Their coaching is tailored, practical, and worth every penny. A game-changer.",
-    author: "Marcus Thompson",
-    role: "District Superintendent",
-    location: "New Haven, CT",
-  },
-];
+import testimonial1Fallback from "@/assets/testimonial-1.jpg";
+import testimonial2Fallback from "@/assets/testimonial-2.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 
 export function TestimonialsSection() {
+  const { imageUrl: img1, altText: alt1 } = useImage("home", "testimonials", "testimonial_1", testimonial1Fallback);
+  const { imageUrl: img2, altText: alt2 } = useImage("home", "testimonials", "testimonial_2", testimonial2Fallback);
+
+  const testimonials = [
+    {
+      image: img1,
+      quote: "ACES helped us turn our PD from passive to powerful. The transformation was remarkable.",
+      author: "Dr. Sarah Mitchell",
+      role: "School Principal",
+      location: "Hartford, CT",
+      altText: alt1,
+    },
+    {
+      image: img2,
+      quote: "They get it. Their coaching is tailored, practical, and worth every penny. A game-changer.",
+      author: "Marcus Thompson",
+      role: "District Superintendent",
+      location: "New Haven, CT",
+      altText: alt2,
+    },
+  ];
+
   return (
     <section className="py-20 md:py-28">
       <div className="container mx-auto px-4">
@@ -72,7 +78,7 @@ export function TestimonialsSection() {
               <div className="flex items-center gap-4">
                 <img
                   src={testimonial.image}
-                  alt={testimonial.author}
+                  alt={testimonial.altText || testimonial.author}
                   className="w-12 h-12 rounded-full object-cover ring-2 ring-border"
                 />
                 <div>

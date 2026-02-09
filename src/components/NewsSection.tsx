@@ -2,17 +2,22 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-import blog1 from "@/assets/blog-1.jpg";
-import blog2 from "@/assets/blog-2.jpg";
-import blog3 from "@/assets/blog-3.jpg";
-
-const articles = [
-  { slug: "coaching-saved-classroom", date: "Nov 20", image: blog1, category: "Success Story", title: "How One District Improved Teacher Retention in Year 1", excerpt: "Discover how coaching transformed classroom dynamics." },
-  { slug: "legislative-changes-pd-budget", date: "Nov 19", image: blog2, category: "Policy", title: "The Hidden Line Item: 3 Legislative Changes That Could Shrink or Stretch Your PD Budget", excerpt: "New federal and state-level changes may expand your options." },
-  { slug: "lessons-from-toddlers", date: "Oct 13", image: blog3, category: "Early Childhood", title: "What Toddlers Taught Us: 3 Lessons from Our Work in Early Childhood Classrooms", excerpt: "Big lessons unfold daily—for students and educators." },
-];
+import blog1Fallback from "@/assets/blog-1.jpg";
+import blog2Fallback from "@/assets/blog-2.jpg";
+import blog3Fallback from "@/assets/blog-3.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 
 export function NewsSection() {
+  const { imageUrl: blog1 } = useImage("home", "news", "blog_1", blog1Fallback);
+  const { imageUrl: blog2 } = useImage("home", "news", "blog_2", blog2Fallback);
+  const { imageUrl: blog3 } = useImage("home", "news", "blog_3", blog3Fallback);
+
+  const articles = [
+    { slug: "coaching-saved-classroom", date: "Nov 20", image: blog1, category: "Success Story", title: "How One District Improved Teacher Retention in Year 1", excerpt: "Discover how coaching transformed classroom dynamics." },
+    { slug: "legislative-changes-pd-budget", date: "Nov 19", image: blog2, category: "Policy", title: "The Hidden Line Item: 3 Legislative Changes That Could Shrink or Stretch Your PD Budget", excerpt: "New federal and state-level changes may expand your options." },
+    { slug: "lessons-from-toddlers", date: "Oct 13", image: blog3, category: "Early Childhood", title: "What Toddlers Taught Us: 3 Lessons from Our Work in Early Childhood Classrooms", excerpt: "Big lessons unfold daily—for students and educators." },
+  ];
+
   return (
     <section className="py-20 md:py-28 section-alt">
       <div className="container mx-auto px-4">

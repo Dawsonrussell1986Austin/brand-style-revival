@@ -93,7 +93,7 @@ export function useImage(page: string, section: string, key: string, fallback: s
   });
 
   return { 
-    imageUrl: data?.image_url ?? fallback, 
+    imageUrl: data?.image_url && data.image_url.length > 0 ? data.image_url : fallback, 
     altText: data?.alt_text ?? "",
     isLoading 
   };

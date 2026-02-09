@@ -11,7 +11,8 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import heroImage from "@/assets/teacher-classroom.jpg";
+import heroImageFallback from "@/assets/teacher-classroom.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 
 declare global {
   interface Window {
@@ -20,6 +21,7 @@ declare global {
 }
 
 const Contact = () => {
+  const { imageUrl: heroImage } = useImage("contact", "hero", "hero_image", heroImageFallback);
   // AdCloudIQ tracking pixel
   useEffect(() => {
     // Load the SDK script

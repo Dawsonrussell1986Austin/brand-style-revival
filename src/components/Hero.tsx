@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-educators.jpg";
-import { useContent } from "@/hooks/useSiteContent";
+import heroImageFallback from "@/assets/hero-educators.jpg";
+import { useContent, useImage } from "@/hooks/useSiteContent";
 
 export function Hero() {
   const { content: badge } = useContent("home", "hero", "badge", "Empowering Educators Since 1992");
@@ -14,6 +14,7 @@ export function Hero() {
   const { content: statDistricts } = useContent("home", "hero", "stat_districts", "500+");
   const { content: statEducators } = useContent("home", "hero", "stat_educators", "10K+");
   const { content: satisfactionRate } = useContent("home", "hero", "satisfaction_rate", "98%");
+  const { imageUrl: heroImage, altText: heroAlt } = useImage("home", "hero", "hero_image", heroImageFallback);
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-32 md:pt-36">
       {/* Background Pattern */}
@@ -124,7 +125,7 @@ export function Hero() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src={heroImage}
-                alt="Educators collaborating in modern classroom"
+                alt={heroAlt || "Educators collaborating in modern classroom"}
                 className="w-full aspect-[4/3] object-cover"
               />
               {/* Overlay gradient */}

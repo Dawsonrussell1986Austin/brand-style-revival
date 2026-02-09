@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
-import airpodsImage from "@/assets/airpods-giveaway.webp";
+import airpodsImageFallback from "@/assets/airpods-giveaway.webp";
+import { useImage } from "@/hooks/useSiteContent";
 
 export function PromoBanner() {
+  const { imageUrl: airpodsImage, altText: airpodsAlt } = useImage("home", "promo", "airpods_giveaway", airpodsImageFallback);
   return (
     <section className="py-6">
       <div className="container mx-auto px-4">
@@ -21,7 +23,7 @@ export function PromoBanner() {
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white/10 flex items-center justify-center p-2 animate-float">
                 <img 
                   src={airpodsImage} 
-                  alt="AirPods Pro 3" 
+                  alt={airpodsAlt || "AirPods Pro 3"} 
                   className="w-full h-full object-contain drop-shadow-lg"
                 />
               </div>

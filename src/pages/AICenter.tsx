@@ -11,9 +11,10 @@ declare global {
     __adcloudiq__: Array<(() => void) | { track: (config: { advertiserId: string; pixelId: string }) => void }>;
   }
 }
-import heroImage from "@/assets/ai-center-hero.jpg";
-import workshopImage from "@/assets/ai-workshop.jpg";
-import certificationImage from "@/assets/ai-certification.jpg";
+import heroImageFallback from "@/assets/ai-center-hero.jpg";
+import workshopImageFallback from "@/assets/ai-workshop.jpg";
+import certificationImageFallback from "@/assets/ai-certification.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 import {
   Dialog,
   DialogContent,
@@ -302,6 +303,9 @@ const workshops = [
 ];
 
 export default function AICenter() {
+  const { imageUrl: heroImage } = useImage("ai-center", "hero", "hero_image", heroImageFallback);
+  const { imageUrl: workshopImage } = useImage("ai-center", "workshops", "workshop_image", workshopImageFallback);
+  const { imageUrl: certificationImage } = useImage("ai-center", "certifications", "certification_image", certificationImageFallback);
   // AdCloudIQ tracking pixel
   useEffect(() => {
     // Load the SDK script

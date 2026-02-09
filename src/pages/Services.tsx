@@ -24,7 +24,8 @@ import {
   ArrowRight,
   CheckCircle2
 } from "lucide-react";
-import heroImage from "@/assets/teacher-classroom.jpg";
+import heroImageFallback from "@/assets/teacher-classroom.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 
 const services = [
   {
@@ -97,6 +98,7 @@ const highlights = [
 ];
 
 export default function Services() {
+  const { imageUrl: heroImage } = useImage("services", "hero", "hero_image", heroImageFallback);
   // AdCloudIQ tracking pixel
   useEffect(() => {
     // Load the SDK script

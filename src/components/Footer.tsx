@@ -1,6 +1,7 @@
 import { Instagram, Linkedin, Facebook, MapPin, Clock, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import acesLogo from "@/assets/aces-logo.webp";
+import acesLogoFallback from "@/assets/aces-logo.webp";
+import { useImage } from "@/hooks/useSiteContent";
 
 const footerLinks = {
   services: [
@@ -29,6 +30,7 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { imageUrl: acesLogo, altText: logoAlt } = useImage("home", "footer", "logo", acesLogoFallback);
   return (
     <footer className="bg-secondary pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -38,7 +40,7 @@ export function Footer() {
             <Link to="/" className="mb-5 block">
               <img 
                 src={acesLogo} 
-                alt="ACES Professional Development & School Improvement" 
+                alt={logoAlt || "ACES Professional Development & School Improvement"} 
                 className="h-16 w-auto"
               />
             </Link>

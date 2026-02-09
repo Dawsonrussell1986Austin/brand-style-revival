@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-import teacherImage from "@/assets/teacher-classroom.jpg";
+import teacherImageFallback from "@/assets/teacher-classroom.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 
 export function ProfessionalLearning() {
+  const { imageUrl: teacherImage, altText: teacherAlt } = useImage("home", "professional_learning", "teacher_classroom", teacherImageFallback);
   return (
     <section className="py-20 md:py-28 section-alt">
       <div className="container mx-auto px-4">
@@ -88,7 +90,7 @@ export function ProfessionalLearning() {
         >
           <img
             src={teacherImage}
-            alt="Teacher engaging students"
+            alt={teacherAlt || "Teacher engaging students"}
             className="w-full h-64 md:h-80 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/70 to-transparent flex items-center">

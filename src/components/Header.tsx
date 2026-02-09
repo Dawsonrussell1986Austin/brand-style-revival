@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import acesLogo from "@/assets/aces-logo.webp";
+import acesLogoFallback from "@/assets/aces-logo.webp";
+import { useImage } from "@/hooks/useSiteContent";
 
 const navItems = [
   { label: "AI Center", href: "/ai-center", highlight: true },
@@ -15,6 +16,7 @@ const navItems = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { imageUrl: acesLogo, altText: logoAlt } = useImage("home", "header", "logo", acesLogoFallback);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -35,7 +37,7 @@ export function Header() {
           <a href="/" className="group flex items-center">
             <img 
               src={acesLogo} 
-              alt="ACES Professional Development & School Improvement" 
+              alt={logoAlt || "ACES Professional Development & School Improvement"} 
               className="h-12 md:h-14 w-auto"
             />
           </a>
