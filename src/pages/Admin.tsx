@@ -520,10 +520,12 @@ export default function Admin() {
     });
   };
 
-  // Get pages that have content
-  const pages = Array.from(
-    new Set([...(allContent?.map((c) => c.page) || []), ...(allImages?.map((i) => i.page) || [])])
-  ).sort();
+  // Get pages that have content, ordered to match site navigation
+  const pageOrder = ["home", "ai-center", "services", "events", "resources", "about", "contact"];
+  const allPages = new Set([...(allContent?.map((c) => c.page) || []), ...(allImages?.map((i) => i.page) || [])]);
+  const pages = pageOrder.filter((p) => allPages.has(p)).concat(
+    [...allPages].filter((p) => !pageOrder.includes(p)).sort()
+  );
 
   // Content for selected page, grouped by section
   const pageContent = allContent?.filter((c) => c.page === selectedPage) || [];
