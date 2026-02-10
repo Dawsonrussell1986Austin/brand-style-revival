@@ -75,6 +75,8 @@ Deno.serve(async (req) => {
         roles: userRoles.map((r) => r.role),
         created_at: user?.created_at,
         last_sign_in_at: user?.last_sign_in_at || null,
+        email_confirmed_at: user?.email_confirmed_at || null,
+        updated_at: user?.updated_at || null,
       });
     }
 
