@@ -272,11 +272,19 @@ function ImageField({
         className="relative rounded-lg overflow-hidden border border-slate-200 cursor-pointer group/img"
         onClick={() => fileInputRef.current?.click()}
       >
-        <img
-          src={item.image_url}
-          alt={item.alt_text || item.image_key}
-          className="w-full h-32 object-cover"
-        />
+        {item.image_url && item.image_url.length > 0 ? (
+          <img
+            src={item.image_url}
+            alt={item.alt_text || item.image_key}
+            className="w-full h-32 object-cover"
+          />
+        ) : (
+          <div className="w-full h-32 bg-slate-100 flex flex-col items-center justify-center text-slate-400">
+            <ImageIcon className="w-8 h-8 mb-1" />
+            <span className="text-xs font-medium">No image uploaded</span>
+            <span className="text-[10px] text-slate-300">Using default</span>
+          </div>
+        )}
         <div
           className={`absolute inset-0 flex items-center justify-center transition-opacity ${
             uploading ? "bg-black/50 opacity-100" : "bg-black/40 opacity-0 group-hover/img:opacity-100"
