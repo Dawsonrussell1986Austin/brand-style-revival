@@ -39,6 +39,8 @@ import {
   MapPin,
   Download,
   GripVertical,
+  Copy,
+  Key,
 } from "lucide-react";
 import {
   useAllContent,
@@ -383,6 +385,7 @@ export default function Admin() {
   const [inviteRole, setInviteRole] = useState<"admin" | "editor">("editor");
   const [inviting, setInviting] = useState(false);
   const [resendingInvite, setResendingInvite] = useState<string | null>(null);
+  const [tempPasswordInfo, setTempPasswordInfo] = useState<{ email: string; password: string } | null>(null);
   const [panelOpen, setPanelOpen] = useState(true);
   const [previewMode, setPreviewMode] = useState<"desktop" | "mobile">("desktop");
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
@@ -638,7 +641,14 @@ export default function Admin() {
         body: { email: inviteEmail, role: inviteRole },
       });
       if (res.data?.error) { toast.error(res.data.error); }
-      else { toast.success(res.data?.message || "Invited!"); setInviteEmail(""); fetchTeamMembers(); }
+      else {
+        toast.success(res.data?.message || "Invited!");
+        if (res.data?.tempPassword) {
+          setTempPasswordInfo({ email: inviteEmail, password: res.data.tempPassword });
+        }
+        setInviteEmail("");
+        fetchTeamMembers();
+      }
     } catch (e: any) {
       toast.error(e.message);
     }
@@ -1712,6 +1722,38 @@ export default function Admin() {
           </>
         )}
       </div>
+      {/* Temp Password Dialog */}
+      {tempPasswordInfo && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60]">
+          <div className="bg-white rounded-xl shadow-xl p-6 max-w-md w-full mx-4">
+            <div className="flex items-center gap-2 mb-4">
+              <Key className="w-5 h-5 text-amber-500" />
+              <h3 className="text-lg font-bold text-slate-900">Temporary Password</h3>
+            </div>
+            <p className="text-sm text-slate-600 mb-3">
+              A temporary password was created for <strong>{tempPasswordInfo.email}</strong>. Copy it and send it to them so they can log in.
+            </p>
+            <div className="flex items-center gap-2 mb-4">
+              <code className="flex-1 bg-slate-100 border border-slate-200 rounded-lg px-3 py-2 text-sm font-mono select-all">
+                {tempPasswordInfo.password}
+              </code>
+              <Button
+                size="sm"
+                variant="outline"
+                className="h-9"
+                onClick={() => {
+                  navigator.clipboard.writeText(tempPasswordInfo.password);
+                  toast.success("Password copied!");
+                }}
+              >
+                <Copy className="w-4 h-4" />
+              </Button>
+            </div>
+            <p className="text-xs text-amber-600 mb-4">⚠️ This password will not be shown again. They should change it after logging in.</p>
+            <Button className="w-full" onClick={() => setTempPasswordInfo(null)}>Done</Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

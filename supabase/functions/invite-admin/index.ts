@@ -90,8 +90,11 @@ Deno.serve(async (req) => {
       userId = existingUser.id;
       console.log("invite-admin: user already exists with id", userId);
     } else {
-      // Create an invited user with a random password (they'll reset it)
-      const tempPassword = crypto.randomUUID() + "Aa1!";
+      // Create an invited user with a readable temporary password
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
+      let tempPassword = "";
+      for (let i = 0; i < 10; i++) tempPassword += chars[Math.floor(Math.random() * chars.length)];
+      tempPassword += "Aa1!"; // ensure complexity requirements
       const { data: newUser, error: createError } = await adminClient.auth.admin.createUser({
         email,
         password: tempPassword,
@@ -218,6 +221,7 @@ Deno.serve(async (req) => {
         userId, 
         message: `${email} added as ${role}`,
         emailSent,
+        ...(isNewUser ? { tempPassword } : {}),
       }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
