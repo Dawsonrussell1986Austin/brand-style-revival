@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,6 +34,9 @@ import {
   Users,
   UserPlus,
   Shield,
+  CalendarDays,
+  Edit,
+  MapPin,
 } from "lucide-react";
 import {
   useAllContent,
@@ -359,7 +363,7 @@ function ImageField({
 export default function Admin() {
   const [user, setUser] = useState<any>(null);
   const [selectedPage, setSelectedPage] = useState<string>("home");
-  const [activeView, setActiveView] = useState<"pages" | "submissions" | "team">("pages");
+  const [activeView, setActiveView] = useState<"pages" | "submissions" | "team" | "events">("pages");
   const [teamMembers, setTeamMembers] = useState<any[]>([]);
   const [teamLoading, setTeamLoading] = useState(false);
   const [inviteEmail, setInviteEmail] = useState("");
@@ -380,6 +384,131 @@ export default function Admin() {
   const updateContent = useUpdateContent();
   const updateImage = useUpdateImage();
   const uploadImage = useUploadImage();
+
+  // Events state
+  interface EventRecord {
+    id: string;
+    slug: string;
+    title: string;
+    description: string;
+    content: string;
+    date: string;
+    end_time: string;
+    location: string;
+    address: string | null;
+    type: string;
+    category: string | null;
+    registration_url: string | null;
+    image_url: string | null;
+    is_published: boolean;
+    created_at: string;
+    updated_at: string;
+  }
+
+  const queryClient = useQueryClient();
+  const [editingEvent, setEditingEvent] = useState<EventRecord | null>(null);
+  const [showEventForm, setShowEventForm] = useState(false);
+  const [eventForm, setEventForm] = useState({
+    title: "", slug: "", description: "", content: "", date: "", end_time: "",
+    location: "", address: "", type: "virtual" as string, category: "AI & Technology",
+    registration_url: "", is_published: true,
+  });
+
+  const { data: events = [], isLoading: eventsLoading } = useQuery({
+    queryKey: ["admin-events"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("events").select("*").order("date", { ascending: false });
+      if (error) throw error;
+      return data as EventRecord[];
+    },
+    enabled: activeView === "events",
+  });
+
+  const saveEventMutation = useMutation({
+    mutationFn: async (event: typeof eventForm & { id?: string }) => {
+      const payload = {
+        title: event.title,
+        slug: event.slug,
+        description: event.description,
+        content: event.content,
+        date: event.date,
+        end_time: event.end_time,
+        location: event.location,
+        address: event.address || null,
+        type: event.type,
+        category: event.category,
+        registration_url: event.registration_url || null,
+        is_published: event.is_published,
+      };
+      if (event.id) {
+        const { error } = await supabase.from("events").update(payload).eq("id", event.id);
+        if (error) throw error;
+      } else {
+        const { error } = await supabase.from("events").insert(payload);
+        if (error) throw error;
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin-events"] });
+      toast.success(editingEvent ? "Event updated!" : "Event created!");
+      resetEventForm();
+      setTimeout(() => iframeRef.current?.contentWindow?.location.reload(), 500);
+    },
+    onError: (e: any) => toast.error(e.message),
+  });
+
+  const deleteEventMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("events").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin-events"] });
+      toast.success("Event deleted!");
+    },
+    onError: (e: any) => toast.error(e.message),
+  });
+
+  const resetEventForm = () => {
+    setEventForm({
+      title: "", slug: "", description: "", content: "", date: "", end_time: "",
+      location: "", address: "", type: "virtual", category: "AI & Technology",
+      registration_url: "", is_published: true,
+    });
+    setEditingEvent(null);
+    setShowEventForm(false);
+  };
+
+  const openEditEvent = (event: EventRecord) => {
+    setEditingEvent(event);
+    setEventForm({
+      title: event.title,
+      slug: event.slug,
+      description: event.description,
+      content: event.content,
+      date: event.date ? new Date(event.date).toISOString().slice(0, 16) : "",
+      end_time: event.end_time,
+      location: event.location,
+      address: event.address || "",
+      type: event.type,
+      category: event.category || "AI & Technology",
+      registration_url: event.registration_url || "",
+      is_published: event.is_published,
+    });
+    setShowEventForm(true);
+  };
+
+  const handleSaveEvent = () => {
+    if (!eventForm.title || !eventForm.slug || !eventForm.date) {
+      toast.error("Title, slug, and date are required");
+      return;
+    }
+    saveEventMutation.mutate({ ...eventForm, id: editingEvent?.id });
+  };
+
+  const generateSlug = (title: string) => {
+    return title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  };
 
   const [submissions, setSubmissions] = useState<any[]>([]);
   const [submissionsLoading, setSubmissionsLoading] = useState(false);
@@ -645,6 +774,15 @@ export default function Admin() {
             <Users className="w-3 h-3" />
             Team
           </button>
+          <button
+            onClick={() => setActiveView("events")}
+            className={`px-3 py-1 rounded-md text-xs font-semibold transition-colors flex items-center gap-1 ${
+              activeView === "events" ? "bg-blue-600 text-white" : "text-slate-500 hover:text-slate-700"
+            }`}
+          >
+            <CalendarDays className="w-3 h-3" />
+            Events
+          </button>
         </div>
 
         <div className="h-6 w-px bg-slate-200" />
@@ -888,6 +1026,218 @@ export default function Admin() {
                       </div>
                     </div>
                   ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ) : activeView === "events" ? (
+          /* Events View */
+          <div className="flex-1 overflow-y-auto p-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900">Events</h2>
+                  <p className="text-sm text-slate-500">{events.length} event{events.length !== 1 ? "s" : ""}</p>
+                </div>
+                <Button
+                  size="sm"
+                  onClick={() => { resetEventForm(); setShowEventForm(true); }}
+                  className="h-8 bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  <Plus className="w-3.5 h-3.5 mr-1" />
+                  New Event
+                </Button>
+              </div>
+
+              {/* Event Form */}
+              {showEventForm && (
+                <div className="bg-white rounded-xl border border-slate-200 p-6 mb-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-semibold text-slate-900">
+                      {editingEvent ? "Edit Event" : "New Event"}
+                    </h3>
+                    <button onClick={resetEventForm} className="p-1 rounded hover:bg-slate-100">
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="col-span-2">
+                      <Label className="text-xs font-semibold text-slate-500">Title *</Label>
+                      <Input
+                        value={eventForm.title}
+                        onChange={(e) => {
+                          const title = e.target.value;
+                          setEventForm(p => ({
+                            ...p, title,
+                            slug: editingEvent ? p.slug : generateSlug(title),
+                          }));
+                        }}
+                        className="h-9"
+                        placeholder="Event title"
+                      />
+                    </div>
+                    <div className="col-span-2">
+                      <Label className="text-xs font-semibold text-slate-500">Slug *</Label>
+                      <Input value={eventForm.slug} onChange={(e) => setEventForm(p => ({ ...p, slug: e.target.value }))} className="h-9" placeholder="url-friendly-slug" />
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">Date & Time *</Label>
+                      <Input type="datetime-local" value={eventForm.date} onChange={(e) => setEventForm(p => ({ ...p, date: e.target.value }))} className="h-9" />
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">End Time</Label>
+                      <Input value={eventForm.end_time} onChange={(e) => setEventForm(p => ({ ...p, end_time: e.target.value }))} className="h-9" placeholder="e.g., 12:00 pm" />
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">Type</Label>
+                      <select
+                        value={eventForm.type}
+                        onChange={(e) => setEventForm(p => ({ ...p, type: e.target.value }))}
+                        className="h-9 w-full px-3 rounded-md border border-slate-200 text-sm bg-white"
+                      >
+                        <option value="virtual">Virtual</option>
+                        <option value="in-person">In-Person</option>
+                      </select>
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">Category</Label>
+                      <select
+                        value={eventForm.category}
+                        onChange={(e) => setEventForm(p => ({ ...p, category: e.target.value }))}
+                        className="h-9 w-full px-3 rounded-md border border-slate-200 text-sm bg-white"
+                      >
+                        <option value="AI & Technology">AI & Technology</option>
+                        <option value="Leadership">Leadership</option>
+                        <option value="Social-Emotional">Social-Emotional</option>
+                      </select>
+                    </div>
+                    <div className="col-span-2">
+                      <Label className="text-xs font-semibold text-slate-500">Location</Label>
+                      <Input value={eventForm.location} onChange={(e) => setEventForm(p => ({ ...p, location: e.target.value }))} className="h-9" placeholder="e.g., Virtual or venue name" />
+                    </div>
+                    {eventForm.type === "in-person" && (
+                      <div className="col-span-2">
+                        <Label className="text-xs font-semibold text-slate-500">Address</Label>
+                        <Input value={eventForm.address} onChange={(e) => setEventForm(p => ({ ...p, address: e.target.value }))} className="h-9" placeholder="Street address" />
+                      </div>
+                    )}
+                    <div className="col-span-2">
+                      <Label className="text-xs font-semibold text-slate-500">Registration URL</Label>
+                      <Input value={eventForm.registration_url} onChange={(e) => setEventForm(p => ({ ...p, registration_url: e.target.value }))} className="h-9" placeholder="https://..." />
+                    </div>
+                    <div className="col-span-2">
+                      <Label className="text-xs font-semibold text-slate-500">Short Description</Label>
+                      <Textarea value={eventForm.description} onChange={(e) => setEventForm(p => ({ ...p, description: e.target.value }))} rows={3} placeholder="Brief event description for listing cards..." />
+                    </div>
+                    <div className="col-span-2">
+                      <Label className="text-xs font-semibold text-slate-500">Full Content (HTML)</Label>
+                      <Textarea value={eventForm.content} onChange={(e) => setEventForm(p => ({ ...p, content: e.target.value }))} rows={8} placeholder="<p>Full event details...</p><h2>What You'll Learn</h2><ul><li>...</li></ul>" />
+                      <p className="text-[10px] text-slate-400 mt-1">Supports HTML: &lt;p&gt;, &lt;h2&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, etc.</p>
+                    </div>
+                    <div className="col-span-2 flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        checked={eventForm.is_published}
+                        onChange={(e) => setEventForm(p => ({ ...p, is_published: e.target.checked }))}
+                        className="rounded"
+                      />
+                      <Label className="text-xs font-semibold text-slate-500">Published</Label>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2 pt-2">
+                    <Button
+                      onClick={handleSaveEvent}
+                      disabled={saveEventMutation.isPending}
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white h-9"
+                    >
+                      {saveEventMutation.isPending ? <RefreshCw className="w-3.5 h-3.5 animate-spin mr-1" /> : <Save className="w-3.5 h-3.5 mr-1" />}
+                      {editingEvent ? "Update Event" : "Create Event"}
+                    </Button>
+                    <Button variant="outline" onClick={resetEventForm} className="h-9">Cancel</Button>
+                  </div>
+                </div>
+              )}
+
+              {/* Events List */}
+              {eventsLoading ? (
+                <div className="flex items-center justify-center py-20">
+                  <RefreshCw className="w-6 h-6 text-slate-400 animate-spin" />
+                </div>
+              ) : events.length === 0 ? (
+                <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
+                  <CalendarDays className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                  <p className="font-medium text-slate-500">No events yet</p>
+                  <p className="text-sm text-slate-400">Create your first event above.</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {events.map((event) => {
+                    const eventDate = new Date(event.date);
+                    const isPast = eventDate < new Date();
+                    return (
+                      <div key={event.id} className={`bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow ${isPast ? "opacity-60" : ""}`}>
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                                event.category === "AI & Technology" ? "bg-blue-100 text-blue-700" :
+                                event.category === "Leadership" ? "bg-green-100 text-green-700" :
+                                "bg-amber-100 text-amber-700"
+                              }`}>
+                                {event.category}
+                              </span>
+                              <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                                event.type === "virtual" ? "bg-blue-50 text-blue-600" : "bg-orange-50 text-orange-600"
+                              }`}>
+                                {event.type === "virtual" ? "Virtual" : "In-Person"}
+                              </span>
+                              {!event.is_published && (
+                                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">Draft</span>
+                              )}
+                              {isPast && (
+                                <span className="text-xs font-medium text-slate-400">Past</span>
+                              )}
+                            </div>
+                            <h3 className="font-semibold text-slate-900 mb-1">{event.title}</h3>
+                            <div className="flex items-center gap-3 text-xs text-slate-500">
+                              <span className="flex items-center gap-1">
+                                <CalendarDays className="w-3 h-3" />
+                                {eventDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-3 h-3" />
+                                {eventDate.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })} - {event.end_time}
+                              </span>
+                              {event.type !== "virtual" && (
+                                <span className="flex items-center gap-1">
+                                  <MapPin className="w-3 h-3" />
+                                  {event.location}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          <div className="flex gap-1 ml-4">
+                            <button
+                              onClick={() => openEditEvent(event)}
+                              className="p-1.5 rounded-md text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                              title="Edit"
+                            >
+                              <Edit className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              onClick={() => { if (confirm("Delete this event?")) deleteEventMutation.mutate(event.id); }}
+                              className="p-1.5 rounded-md text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+                              title="Delete"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>

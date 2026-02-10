@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
+import { useEvent, useEvents } from "@/hooks/useEvents";
 
 interface EventData {
   slug: string;
@@ -470,7 +471,35 @@ export const eventDetails: EventData[] = [
 
 export default function EventDetail() {
   const { slug } = useParams<{ slug: string }>();
-  const event = eventDetails.find((e) => e.slug === slug);
+  const { data: dbEvent, isLoading } = useEvent(slug);
+  const { data: dbEvents } = useEvents();
+  
+  // Fall back to hardcoded event if not in DB
+  const hardcodedEvent = eventDetails.find((e) => e.slug === slug);
+  
+  // Determine which data to use
+  const isDBEvent = !!dbEvent;
+  const event = isDBEvent ? {
+    slug: dbEvent.slug,
+    title: dbEvent.title,
+    date: new Date(dbEvent.date).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" }),
+    time: `${new Date(dbEvent.date).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })} - ${dbEvent.end_time}`,
+    location: dbEvent.location,
+    address: dbEvent.address || undefined,
+    type: dbEvent.type as "virtual" | "in-person",
+    category: dbEvent.category || "AI & Technology",
+    registrationUrl: dbEvent.registration_url || undefined,
+    content: null as React.ReactNode,
+    htmlContent: dbEvent.content,
+  } : hardcodedEvent ? { ...hardcodedEvent, htmlContent: undefined as string | undefined } : null;
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+      </div>
+    );
+  }
 
   if (!event) {
     return <Navigate to="/events" replace />;
@@ -571,7 +600,14 @@ export default function EventDetail() {
             transition={{ delay: 0.2 }}
             className="max-w-3xl mx-auto"
           >
-            {event.content}
+            {event.htmlContent ? (
+              <div
+                className="prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground"
+                dangerouslySetInnerHTML={{ __html: event.htmlContent }}
+              />
+            ) : (
+              event.content
+            )}
 
           </motion.article>
         </div>
@@ -585,7 +621,7 @@ export default function EventDetail() {
               Other Events
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
-              {eventDetails
+              {(dbEvents || [])
                 .filter((e) => e.slug !== slug)
                 .slice(0, 2)
                 .map((relatedEvent) => (
@@ -594,7 +630,7 @@ export default function EventDetail() {
                     to={`/events/${relatedEvent.slug}`}
                     className="group bg-background rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow p-6"
                   >
-                    <span className={`inline-block text-xs font-semibold px-2 py-1 rounded-full mb-3 ${getCategoryColor(relatedEvent.category)}`}>
+                    <span className={`inline-block text-xs font-semibold px-2 py-1 rounded-full mb-3 ${getCategoryColor(relatedEvent.category || "")}`}>
                       {relatedEvent.category}
                     </span>
                     <h3 className="text-lg font-heading font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
@@ -602,7 +638,7 @@ export default function EventDetail() {
                     </h3>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Calendar className="h-4 w-4" />
-                      {relatedEvent.date}
+                      {new Date(relatedEvent.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
                     </div>
                   </Link>
                 ))}

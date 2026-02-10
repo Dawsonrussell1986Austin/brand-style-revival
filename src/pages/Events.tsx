@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Search, ChevronLeft, ChevronRight, ChevronDown, MapPin, Calendar, Monitor, ArrowRight, CalendarDays, Clock, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
+import { useEvents } from "@/hooks/useEvents";
 
 declare global {
   interface Window {
@@ -342,7 +343,31 @@ const MonthCalendarView = ({ events, currentMonth, onMonthChange }: {
 const Events = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"list" | "month">("list");
-  const [currentMonth, setCurrentMonth] = useState(new Date(2026, 0, 1)); // Start at Jan 2026 where events are
+  const [currentMonth, setCurrentMonth] = useState(new Date(2026, 0, 1));
+  const { data: dbEvents } = useEvents();
+
+  // Use DB events if available, otherwise fall back to hardcoded
+  const resolvedEvents: Event[] = useMemo(() => {
+    if (dbEvents && dbEvents.length > 0) {
+      return dbEvents.map(e => ({
+        id: e.id,
+        slug: e.slug,
+        date: new Date(e.date),
+        endTime: e.end_time,
+        title: e.title,
+        location: e.location,
+        address: e.address || undefined,
+        type: e.type as "virtual" | "in-person",
+        description: e.description,
+        category: e.category || undefined,
+      }));
+    }
+    return [...upcomingEvents, ...pastEvents];
+  }, [dbEvents]);
+
+  const now = new Date();
+  const resolvedUpcoming = resolvedEvents.filter(e => e.date >= now).sort((a, b) => a.date.getTime() - b.date.getTime());
+  const resolvedPast = resolvedEvents.filter(e => e.date < now).sort((a, b) => b.date.getTime() - a.date.getTime());
 
   // AdCloudIQ tracking pixel
   useEffect(() => {
@@ -512,7 +537,7 @@ const Events = () => {
           {/* Month Calendar View */}
           {viewMode === "month" && (
             <MonthCalendarView 
-              events={allEvents} 
+              events={resolvedEvents} 
               currentMonth={currentMonth}
               onMonthChange={setCurrentMonth}
             />
@@ -521,7 +546,7 @@ const Events = () => {
           {/* Upcoming Events - List View */}
           {viewMode === "list" && (
           <div className="grid gap-6 mb-16">
-            {upcomingEvents.map((event, index) => {
+            {resolvedUpcoming.map((event, index) => {
               const dateInfo = formatDate(event.date);
               return (
                 <Link to={`/events/${event.slug}`} key={event.id}>
@@ -621,7 +646,7 @@ const Events = () => {
             </div>
 
             <div className="grid gap-6">
-              {pastEvents.map((event, index) => {
+              {resolvedPast.map((event, index) => {
                 const dateInfo = formatDate(event.date);
                 return (
                   <Link to={`/events/${event.slug}`}>
