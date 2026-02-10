@@ -1127,7 +1127,7 @@ export default function Admin() {
                         </div>
                       </div>
                       <div className="flex gap-1 items-center">
-                        {member.id !== user?.id && !member.last_sign_in_at && (
+                        {member.id !== user?.id && (
                           <Button
                             size="sm"
                             variant="outline"
