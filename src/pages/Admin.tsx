@@ -42,6 +42,26 @@ import {
   useUploadImage,
 } from "@/hooks/useSiteContent";
 import acesLogo from "@/assets/aces-logo.webp";
+import fallbackHero from "@/assets/hero-educators.jpg";
+import fallbackTeacher from "@/assets/teacher-classroom.jpg";
+import fallbackTest1 from "@/assets/testimonial-1.jpg";
+import fallbackTest2 from "@/assets/testimonial-2.jpg";
+import fallbackBlog1 from "@/assets/blog-1.jpg";
+import fallbackBlog2 from "@/assets/blog-2.jpg";
+import fallbackBlog3 from "@/assets/blog-3.jpg";
+import fallbackAirpods from "@/assets/airpods-giveaway.webp";
+import fallbackAIHero from "@/assets/ai-center-hero.jpg";
+import fallbackWorkshop from "@/assets/ai-workshop.jpg";
+import fallbackCert from "@/assets/ai-certification.jpg";
+import fallbackCTA from "@/assets/cta-banner.jpg";
+import fallbackMichelle from "@/assets/team/michelle-gohagon.png";
+import fallbackRosaria from "@/assets/team/rosaria-giannetti.png";
+import fallbackJessica from "@/assets/team/jessica-white.png";
+import fallbackLisa from "@/assets/team/lisa-seales.png";
+import fallbackMary from "@/assets/team/mary-stone.png";
+import fallbackJohn from "@/assets/team/john-gustafson.png";
+import fallbackKim from "@/assets/team/kim-cellini.png";
+import fallbackAlison from "@/assets/team/alison-zanardi.png";
 
 interface ContentItem {
   id: string;
@@ -235,6 +255,35 @@ function ContentField({
 }
 
 // Image editor field
+// Fallback images map: page/section/key -> static asset path
+const defaultImageMap: Record<string, string> = {
+  "home/hero/hero_image": fallbackHero,
+  "home/professional_learning/teacher_classroom": fallbackTeacher,
+  "home/testimonials/testimonial_1": fallbackTest1,
+  "home/testimonials/testimonial_2": fallbackTest2,
+  "home/news/blog_1": fallbackBlog1,
+  "home/news/blog_2": fallbackBlog2,
+  "home/news/blog_3": fallbackBlog3,
+  "home/promo/airpods_giveaway": fallbackAirpods,
+  "ai-center/hero/hero_image": fallbackAIHero,
+  "ai-center/workshops/workshop_image": fallbackWorkshop,
+  "ai-center/certifications/certification_image": fallbackCert,
+  "services/hero/hero_image": fallbackCTA,
+  "about/team/michelle_gohagon": fallbackMichelle,
+  "about/team/rosaria_giannetti": fallbackRosaria,
+  "about/team/jessica_white": fallbackJessica,
+  "about/team/lisa_seales": fallbackLisa,
+  "about/team/mary_stone": fallbackMary,
+  "about/team/john_gustafson": fallbackJohn,
+  "about/team/kim_cellini": fallbackKim,
+  "about/team/alison_zanardi": fallbackAlison,
+};
+
+function getDefaultImage(item: ImageItem): string | null {
+  const key = `${item.page}/${item.section}/${item.image_key}`;
+  return defaultImageMap[key] || null;
+}
+
 function ImageField({
   item,
   onUpload,
@@ -255,6 +304,8 @@ function ImageField({
     setUploading(false);
   };
 
+  const displayUrl = item.image_url && item.image_url.length > 0 ? item.image_url : getDefaultImage(item);
+
   return (
     <div className="group">
       <div className="flex items-center justify-between mb-1.5">
@@ -272,9 +323,9 @@ function ImageField({
         className="relative rounded-lg overflow-hidden border border-slate-200 cursor-pointer group/img"
         onClick={() => fileInputRef.current?.click()}
       >
-        {item.image_url && item.image_url.length > 0 ? (
+        {displayUrl ? (
           <img
-            src={item.image_url}
+            src={displayUrl}
             alt={item.alt_text || item.image_key}
             className="w-full h-32 object-cover"
           />
