@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { Resend } from "npm:resend@2.0.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -15,6 +16,7 @@ Deno.serve(async (req) => {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const anonKey = Deno.env.get("SUPABASE_PUBLISHABLE_KEY")!;
+    const resendApiKey = Deno.env.get("RESEND_API_KEY");
 
     // Verify the caller is an admin
     const authHeader = req.headers.get("Authorization");
@@ -66,6 +68,7 @@ Deno.serve(async (req) => {
     );
 
     let userId: string;
+    let isNewUser = false;
 
     if (existingUser) {
       userId = existingUser.id;
@@ -84,6 +87,7 @@ Deno.serve(async (req) => {
         });
       }
       userId = newUser.user.id;
+      isNewUser = true;
     }
 
     // Check if role already exists
@@ -112,8 +116,68 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Send email notification if Resend is configured
+    let emailSent = false;
+    if (resendApiKey && isNewUser) {
+      try {
+        // Generate a password reset link so the new admin can set their password
+        const { data: resetData, error: resetError } = await adminClient.auth.admin.generateLink({
+          type: "recovery",
+          email,
+        });
+
+        const resetUrl = resetData?.properties?.action_link || null;
+
+        const resend = new Resend(resendApiKey);
+        await resend.emails.send({
+          from: "ACES PDSI <onboarding@resend.dev>",
+          to: [email],
+          subject: `You've been invited as an ${role} on ACES PDSI`,
+          html: `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+              <div style="text-align: center; margin-bottom: 32px;">
+                <h1 style="color: #1e293b; font-size: 24px; margin: 0;">Welcome to ACES PDSI</h1>
+              </div>
+              <p style="color: #475569; font-size: 16px; line-height: 1.6;">
+                You've been invited as an <strong>${role}</strong> on the ACES PDSI website. 
+                You now have access to the content management system.
+              </p>
+              ${resetUrl ? `
+              <div style="text-align: center; margin: 32px 0;">
+                <a href="${resetUrl}" style="background: #2563eb; color: white; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; display: inline-block;">
+                  Set Your Password
+                </a>
+              </div>
+              <p style="color: #64748b; font-size: 14px; line-height: 1.5;">
+                Click the button above to set your password and access the CMS. This link will expire in 24 hours.
+              </p>
+              ` : `
+              <p style="color: #64748b; font-size: 14px; line-height: 1.5;">
+                Please visit the admin login page and use "Forgot Password" to set up your account.
+              </p>
+              `}
+              <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;" />
+              <p style="color: #94a3b8; font-size: 12px; text-align: center;">
+                ACES PDSI · Professional Development & School Improvement
+              </p>
+            </div>
+          `,
+        });
+        emailSent = true;
+        console.log(`Invite email sent to ${email}`);
+      } catch (emailError) {
+        console.error("Failed to send invite email:", emailError);
+        // Don't fail the whole request if email fails — the user was still created
+      }
+    }
+
     return new Response(
-      JSON.stringify({ success: true, userId, message: `${email} added as ${role}` }),
+      JSON.stringify({ 
+        success: true, 
+        userId, 
+        message: `${email} added as ${role}`,
+        emailSent,
+      }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
