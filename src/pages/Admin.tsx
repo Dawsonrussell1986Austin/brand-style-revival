@@ -142,6 +142,17 @@ const sectionOrder: Record<string, number> = {
   free_tools: 2,
 };
 
+// Define display order for content keys within a section (lower = appears first)
+const keyOrder: Record<string, number> = {
+  badge: 0,
+  title: 1,
+  heading_line1: 1,
+  heading_line2: 2,
+  subtitle: 3,
+  description: 4,
+  button_text: 5,
+};
+
 const keyLabels: Record<string, string> = {
   badge: "Badge Text",
   heading_line1: "Heading Line 1",
@@ -1529,7 +1540,7 @@ export default function Admin() {
 
                           {isExpanded && (
                             <div className="px-4 pb-4 space-y-4">
-                              {content.map((item) => (
+                              {[...content].sort((a, b) => (keyOrder[a.content_key] ?? 50) - (keyOrder[b.content_key] ?? 50)).map((item) => (
                                 <ContentField
                                   key={item.id}
                                   item={item}
