@@ -15,12 +15,15 @@ Deno.serve(async (req) => {
   try {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-    const anonKey = Deno.env.get("SUPABASE_PUBLISHABLE_KEY")!;
+    const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
+
+    console.log("invite-admin: starting, resend configured:", !!resendApiKey);
 
     // Verify the caller is an admin
     const authHeader = req.headers.get("Authorization");
     if (!authHeader) {
+      console.log("invite-admin: no auth header");
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -30,23 +33,34 @@ Deno.serve(async (req) => {
     const anonClient = createClient(supabaseUrl, anonKey, {
       global: { headers: { Authorization: authHeader } },
     });
-    const { data: { user: caller } } = await anonClient.auth.getUser();
+    const { data: { user: caller }, error: authError } = await anonClient.auth.getUser();
+    if (authError) {
+      console.log("invite-admin: auth error:", authError.message);
+    }
     if (!caller) {
+      console.log("invite-admin: no caller user found");
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
+    console.log("invite-admin: caller is", caller.email);
+
     // Check caller is admin
     const adminClient = createClient(supabaseUrl, serviceRoleKey);
-    const { data: callerRoles } = await adminClient
+    const { data: callerRoles, error: rolesError } = await adminClient
       .from("user_roles")
       .select("role")
       .eq("user_id", caller.id)
       .eq("role", "admin");
 
+    if (rolesError) {
+      console.log("invite-admin: roles check error:", rolesError.message);
+    }
+
     if (!callerRoles || callerRoles.length === 0) {
+      console.log("invite-admin: caller is not admin");
       return new Response(JSON.stringify({ error: "Only admins can invite users" }), {
         status: 403,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -54,6 +68,8 @@ Deno.serve(async (req) => {
     }
 
     const { email, role } = await req.json();
+    console.log("invite-admin: inviting", email, "as", role);
+
     if (!email || !role || !["admin", "editor"].includes(role)) {
       return new Response(JSON.stringify({ error: "Valid email and role (admin/editor) required" }), {
         status: 400,
@@ -72,6 +88,7 @@ Deno.serve(async (req) => {
 
     if (existingUser) {
       userId = existingUser.id;
+      console.log("invite-admin: user already exists with id", userId);
     } else {
       // Create an invited user with a random password (they'll reset it)
       const tempPassword = crypto.randomUUID() + "Aa1!";
@@ -81,6 +98,7 @@ Deno.serve(async (req) => {
         email_confirm: true,
       });
       if (createError || !newUser.user) {
+        console.log("invite-admin: create user error:", createError?.message);
         return new Response(JSON.stringify({ error: createError?.message || "Failed to create user" }), {
           status: 500,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -88,6 +106,7 @@ Deno.serve(async (req) => {
       }
       userId = newUser.user.id;
       isNewUser = true;
+      console.log("invite-admin: created new user with id", userId);
     }
 
     // Check if role already exists
@@ -110,26 +129,39 @@ Deno.serve(async (req) => {
       .insert({ user_id: userId, role });
 
     if (roleError) {
+      console.log("invite-admin: role insert error:", roleError.message);
       return new Response(JSON.stringify({ error: roleError.message }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
+    console.log("invite-admin: role added successfully");
+
     // Send email notification if Resend is configured
     let emailSent = false;
     if (resendApiKey && isNewUser) {
       try {
+        console.log("invite-admin: generating password reset link...");
         // Generate a password reset link so the new admin can set their password
         const { data: resetData, error: resetError } = await adminClient.auth.admin.generateLink({
           type: "recovery",
           email,
         });
 
+        if (resetError) {
+          console.log("invite-admin: reset link error:", resetError.message);
+        }
+
         const resetUrl = resetData?.properties?.action_link || null;
+        console.log("invite-admin: reset URL generated:", !!resetUrl);
 
         const resend = new Resend(resendApiKey);
-        await resend.emails.send({
+        
+        // Using onboarding@resend.dev - this is Resend's sandbox sender.
+        // It only delivers to the Resend account owner's email.
+        // For production, verify your own domain at resend.com/domains
+        const emailResult = await resend.emails.send({
           from: "ACES PDSI <onboarding@resend.dev>",
           to: [email],
           subject: `You've been invited as an ${role} on ACES PDSI`,
@@ -163,12 +195,15 @@ Deno.serve(async (req) => {
             </div>
           `,
         });
+        
+        console.log("invite-admin: email send result:", JSON.stringify(emailResult));
         emailSent = true;
-        console.log(`Invite email sent to ${email}`);
       } catch (emailError) {
-        console.error("Failed to send invite email:", emailError);
+        console.error("invite-admin: email send failed:", emailError);
         // Don't fail the whole request if email fails — the user was still created
       }
+    } else {
+      console.log("invite-admin: skipping email - resend configured:", !!resendApiKey, "isNewUser:", isNewUser);
     }
 
     return new Response(
@@ -181,6 +216,7 @@ Deno.serve(async (req) => {
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
+    console.error("invite-admin: unexpected error:", error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
