@@ -86,15 +86,24 @@ Deno.serve(async (req) => {
     let userId: string;
     let isNewUser = false;
 
+    // Generate a readable temporary password
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
+    let tempPassword = "";
+    for (let i = 0; i < 10; i++) tempPassword += chars[Math.floor(Math.random() * chars.length)];
+    tempPassword += "Aa1!"; // ensure complexity requirements
+
     if (existingUser) {
       userId = existingUser.id;
-      console.log("invite-admin: user already exists with id", userId);
+      console.log("invite-admin: user already exists with id", userId, "- resetting password");
+      // Update existing user's password so they can log in with the new temp password
+      const { error: updateError } = await adminClient.auth.admin.updateUserById(userId, {
+        password: tempPassword,
+        email_confirm: true,
+      });
+      if (updateError) {
+        console.log("invite-admin: password update error:", updateError.message);
+      }
     } else {
-      // Create an invited user with a readable temporary password
-      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
-      let tempPassword = "";
-      for (let i = 0; i < 10; i++) tempPassword += chars[Math.floor(Math.random() * chars.length)];
-      tempPassword += "Aa1!"; // ensure complexity requirements
       const { data: newUser, error: createError } = await adminClient.auth.admin.createUser({
         email,
         password: tempPassword,
@@ -221,7 +230,7 @@ Deno.serve(async (req) => {
         userId, 
         message: `${email} added as ${role}`,
         emailSent,
-        ...(isNewUser ? { tempPassword } : {}),
+        tempPassword,
       }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
