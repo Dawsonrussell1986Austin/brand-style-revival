@@ -382,6 +382,7 @@ export default function Admin() {
   const [inviteEmail, setInviteEmail] = useState("");
   const [inviteRole, setInviteRole] = useState<"admin" | "editor">("editor");
   const [inviting, setInviting] = useState(false);
+  const [resendingInvite, setResendingInvite] = useState<string | null>(null);
   const [panelOpen, setPanelOpen] = useState(true);
   const [previewMode, setPreviewMode] = useState<"desktop" | "mobile">("desktop");
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
@@ -657,6 +658,22 @@ export default function Admin() {
     } catch (e: any) {
       toast.error(e.message);
     }
+  };
+
+  const handleResendInvite = async (email: string, roles: string[]) => {
+    setResendingInvite(email);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const res = await supabase.functions.invoke("resend-invite", {
+        headers: { Authorization: `Bearer ${session?.access_token}` },
+        body: { email, role: roles[0] || "editor" },
+      });
+      if (res.data?.error) { toast.error(res.data.error); }
+      else { toast.success(res.data?.message || "Invite resent!"); }
+    } catch (e: any) {
+      toast.error(e.message);
+    }
+    setResendingInvite(null);
   };
 
   useEffect(() => {
@@ -1109,7 +1126,23 @@ export default function Admin() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex gap-1">
+                      <div className="flex gap-1 items-center">
+                        {member.id !== user?.id && !member.last_sign_in_at && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="h-7 px-2.5 text-xs"
+                            disabled={resendingInvite === member.email}
+                            onClick={() => handleResendInvite(member.email, member.roles)}
+                          >
+                            {resendingInvite === member.email ? (
+                              <RefreshCw className="w-3 h-3 animate-spin mr-1" />
+                            ) : (
+                              <Mail className="w-3 h-3 mr-1" />
+                            )}
+                            Resend Invite
+                          </Button>
+                        )}
                         {member.roles?.map((role: string) => (
                           member.id !== user?.id && (
                             <button
