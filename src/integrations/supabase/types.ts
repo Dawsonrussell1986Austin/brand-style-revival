@@ -47,6 +47,63 @@ export type Database = {
         }
         Relationships: []
       }
+      events: {
+        Row: {
+          address: string | null
+          category: string | null
+          content: string
+          created_at: string
+          date: string
+          description: string
+          end_time: string
+          id: string
+          image_url: string | null
+          is_published: boolean
+          location: string
+          registration_url: string | null
+          slug: string
+          title: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          category?: string | null
+          content?: string
+          created_at?: string
+          date: string
+          description?: string
+          end_time?: string
+          id?: string
+          image_url?: string | null
+          is_published?: boolean
+          location?: string
+          registration_url?: string | null
+          slug: string
+          title: string
+          type?: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          category?: string | null
+          content?: string
+          created_at?: string
+          date?: string
+          description?: string
+          end_time?: string
+          id?: string
+          image_url?: string | null
+          is_published?: boolean
+          location?: string
+          registration_url?: string | null
+          slug?: string
+          title?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       site_content: {
         Row: {
           content_key: string
