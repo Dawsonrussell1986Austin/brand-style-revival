@@ -878,10 +878,6 @@ export default function Admin() {
                 <h2 className="text-sm font-bold text-slate-900">
                   {getLabel(pageLabels, selectedPage)}
                 </h2>
-                <p className="text-xs text-slate-400">
-                  {sectionMap.size} section{sectionMap.size !== 1 ? "s" : ""} •{" "}
-                  {pageContent.length + pageImages.length} items
-                </p>
               </div>
               <div className="flex gap-1">
                 <button
@@ -935,9 +931,6 @@ export default function Admin() {
                             )}
                             <span className="text-sm font-semibold text-slate-700 flex-1">
                               {getLabel(sectionLabels, sectionKey)}
-                            </span>
-                            <span className="text-xs text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">
-                              {itemCount}
                             </span>
                           </button>
 
