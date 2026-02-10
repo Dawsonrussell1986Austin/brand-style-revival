@@ -1100,61 +1100,83 @@ export default function Admin() {
               ) : (
                 <div className="space-y-3">
                   {teamMembers.map((member) => (
-                    <div key={member.id} className="bg-white rounded-xl border border-slate-200 p-4 flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                          <span className="text-sm font-bold text-blue-600">
-                            {member.email?.[0]?.toUpperCase() || "?"}
-                          </span>
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-slate-900">{member.email}</p>
-                          <div className="flex gap-1.5 mt-1">
-                            {member.roles?.map((role: string) => (
-                              <span
-                                key={role}
-                                className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-                                  role === "admin"
-                                    ? "bg-amber-100 text-amber-700"
-                                    : "bg-blue-100 text-blue-700"
-                                }`}
-                              >
-                                <Shield className="w-3 h-3 inline mr-0.5" />
-                                {role}
-                              </span>
-                            ))}
+                    <div key={member.id} className="bg-white rounded-xl border border-slate-200 p-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                            <span className="text-sm font-bold text-blue-600">
+                              {member.email?.[0]?.toUpperCase() || "?"}
+                            </span>
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <p className="text-sm font-semibold text-slate-900">{member.email}</p>
+                              {member.last_sign_in_at ? (
+                                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-green-100 text-green-700">Active</span>
+                              ) : (
+                                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-700">Pending</span>
+                              )}
+                            </div>
+                            <div className="flex gap-1.5 mt-1">
+                              {member.roles?.map((role: string) => (
+                                <span
+                                  key={role}
+                                  className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                                    role === "admin"
+                                      ? "bg-amber-100 text-amber-700"
+                                      : "bg-blue-100 text-blue-700"
+                                  }`}
+                                >
+                                  <Shield className="w-3 h-3 inline mr-0.5" />
+                                  {role}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex gap-1 items-center">
-                        {member.id !== user?.id && (
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="h-7 px-2.5 text-xs"
-                            disabled={resendingInvite === member.email}
-                            onClick={() => handleResendInvite(member.email, member.roles)}
-                          >
-                            {resendingInvite === member.email ? (
-                              <RefreshCw className="w-3 h-3 animate-spin mr-1" />
-                            ) : (
-                              <Mail className="w-3 h-3 mr-1" />
-                            )}
-                            Resend Invite
-                          </Button>
-                        )}
-                        {member.roles?.map((role: string) => (
-                          member.id !== user?.id && (
-                            <button
-                              key={role}
-                              onClick={() => handleRemoveMember(member.id, role)}
-                              className="p-1.5 rounded-md text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
-                              title={`Remove ${role} role`}
+                        <div className="flex gap-1 items-center">
+                          {member.id !== user?.id && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="h-7 px-2.5 text-xs"
+                              disabled={resendingInvite === member.email}
+                              onClick={() => handleResendInvite(member.email, member.roles)}
                             >
-                              <Trash2 className="w-3.5 h-3.5" />
-                            </button>
-                          )
-                        ))}
+                              {resendingInvite === member.email ? (
+                                <RefreshCw className="w-3 h-3 animate-spin mr-1" />
+                              ) : (
+                                <Mail className="w-3 h-3 mr-1" />
+                              )}
+                              Resend Invite
+                            </Button>
+                          )}
+                          {member.roles?.map((role: string) => (
+                            member.id !== user?.id && (
+                              <button
+                                key={role}
+                                onClick={() => handleRemoveMember(member.id, role)}
+                                className="p-1.5 rounded-md text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+                                title={`Remove ${role} role`}
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            )
+                          ))}
+                        </div>
+                      </div>
+                      <div className="mt-2.5 pl-[52px] flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-400">
+                        {member.created_at && (
+                          <span><Clock className="w-3 h-3 inline mr-0.5" /> Joined {new Date(member.created_at).toLocaleDateString()}</span>
+                        )}
+                        {member.last_sign_in_at ? (
+                          <span><Check className="w-3 h-3 inline mr-0.5" /> Last login {new Date(member.last_sign_in_at).toLocaleDateString()}</span>
+                        ) : (
+                          <span className="text-yellow-500">Never signed in</span>
+                        )}
+                        {member.updated_at && member.updated_at !== member.created_at && (
+                          <span><Edit className="w-3 h-3 inline mr-0.5" /> Updated {new Date(member.updated_at).toLocaleDateString()}</span>
+                        )}
                       </div>
                     </div>
                   ))}
