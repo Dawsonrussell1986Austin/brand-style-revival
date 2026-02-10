@@ -995,10 +995,35 @@ export default function Admin() {
                   <h2 className="text-xl font-bold text-slate-900">Contact Submissions</h2>
                   <p className="text-sm text-slate-500">{submissions.length} submission{submissions.length !== 1 ? "s" : ""}</p>
                 </div>
-                <Button size="sm" variant="outline" onClick={fetchSubmissions} disabled={submissionsLoading} className="h-8">
-                  <RefreshCw className={`w-3.5 h-3.5 mr-1 ${submissionsLoading ? "animate-spin" : ""}`} />
-                  Refresh
-                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="h-8"
+                    disabled={submissions.length === 0}
+                    onClick={() => {
+                      const headers = ["Name", "Email", "Phone", "Organization", "Role", "Message", "Date"];
+                      const escape = (v: string) => `"${(v || "").replace(/"/g, '""')}"`;
+                      const rows = submissions.map(s => [s.name, s.email, s.phone, s.organization, s.role, s.message, new Date(s.created_at).toLocaleString()].map(escape).join(","));
+                      const csv = [headers.join(","), ...rows].join("\n");
+                      const blob = new Blob([csv], { type: "text/csv" });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement("a");
+                      a.href = url;
+                      a.download = `submissions-${new Date().toISOString().slice(0, 10)}.csv`;
+                      a.click();
+                      URL.revokeObjectURL(url);
+                      toast.success("CSV exported!");
+                    }}
+                  >
+                    <Download className="w-3.5 h-3.5 mr-1" />
+                    Export CSV
+                  </Button>
+                  <Button size="sm" variant="outline" onClick={fetchSubmissions} disabled={submissionsLoading} className="h-8">
+                    <RefreshCw className={`w-3.5 h-3.5 mr-1 ${submissionsLoading ? "animate-spin" : ""}`} />
+                    Refresh
+                  </Button>
+                </div>
               </div>
 
               {submissionsLoading ? (
@@ -1032,7 +1057,7 @@ export default function Admin() {
                         </div>
                       </div>
                       <p className="text-sm text-slate-700 mb-3 leading-relaxed">{sub.message}</p>
-                      <div className="flex flex-wrap gap-3">
+                      <div className="flex flex-wrap items-center gap-3">
                         <a href={`mailto:${sub.email}`} className="flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-medium">
                           <Mail className="w-3.5 h-3.5" />
                           {sub.email}
@@ -1043,6 +1068,13 @@ export default function Admin() {
                             {sub.phone}
                           </a>
                         )}
+                        <a
+                          href={`mailto:${sub.email}?subject=Re: Your inquiry to ACES PDSI&body=%0A%0A--- Original Message ---%0AFrom: ${encodeURIComponent(sub.name)}%0ADate: ${encodeURIComponent(new Date(sub.created_at).toLocaleString())}%0AMessage: ${encodeURIComponent(sub.message)}`}
+                          className="ml-auto flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+                        >
+                          <Mail className="w-3 h-3" />
+                          Reply
+                        </a>
                       </div>
                     </div>
                   ))}
