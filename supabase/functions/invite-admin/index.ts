@@ -162,7 +162,7 @@ Deno.serve(async (req) => {
         // It only delivers to the Resend account owner's email.
         // For production, verify your own domain at resend.com/domains
         const emailResult = await resend.emails.send({
-          from: "ACES PDSI <onboarding@resend.dev>",
+          from: "ACES PDSI <noreply@updates.raiselaunch.com>",
           to: [email],
           subject: `You've been invited as an ${role} on ACES PDSI`,
           html: `
