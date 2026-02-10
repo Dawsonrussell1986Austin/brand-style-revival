@@ -153,7 +153,15 @@ Deno.serve(async (req) => {
           console.log("invite-admin: reset link error:", resetError.message);
         }
 
-        const resetUrl = resetData?.properties?.action_link || null;
+        let resetUrl = resetData?.properties?.action_link || null;
+        // Rewrite to custom domain
+        if (resetUrl) {
+          const url = new URL(resetUrl);
+          url.hostname = "acespdsi.org";
+          url.protocol = "https:";
+          url.port = "";
+          resetUrl = url.toString();
+        }
         console.log("invite-admin: reset URL generated:", !!resetUrl);
 
         const resend = new Resend(resendApiKey);

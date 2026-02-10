@@ -80,7 +80,15 @@ Deno.serve(async (req) => {
       });
     }
 
-    const resetUrl = resetData?.properties?.action_link || null;
+    let resetUrl = resetData?.properties?.action_link || null;
+    // Rewrite to custom domain
+    if (resetUrl) {
+      const url = new URL(resetUrl);
+      url.hostname = "acespdsi.org";
+      url.protocol = "https:";
+      url.port = "";
+      resetUrl = url.toString();
+    }
 
     const resend = new Resend(resendApiKey);
     const emailResult = await resend.emails.send({
