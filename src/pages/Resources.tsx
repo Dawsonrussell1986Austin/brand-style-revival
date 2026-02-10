@@ -6,6 +6,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 declare global {
   interface Window {
@@ -106,6 +108,19 @@ const freeResources: FreeResource[] = [
 ];
 
 const Resources = () => {
+  const { data: dbResources } = useQuery({
+    queryKey: ["free-resources"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("free_resources").select("*").eq("is_published", true).order("display_order", { ascending: true });
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const resolvedResources: FreeResource[] = dbResources && dbResources.length > 0
+    ? dbResources.map(r => ({ id: r.id, title: r.title, description: r.description, icon: "file", downloadUrl: r.file_url }))
+    : freeResources;
+
   // AdCloudIQ page view tracking pixel
   useEffect(() => {
     // Load the SDK script
@@ -338,7 +353,7 @@ const Resources = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {freeResources.map((resource, index) => (
+            {resolvedResources.map((resource, index) => (
               <motion.div
                 key={resource.id}
                 initial={{ opacity: 0, y: 30 }}
