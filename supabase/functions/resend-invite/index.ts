@@ -81,12 +81,10 @@ Deno.serve(async (req) => {
     }
 
     let resetUrl = resetData?.properties?.action_link || null;
-    // Rewrite to custom domain
+    // Rewrite only the redirect_to param to use custom domain
     if (resetUrl) {
       const url = new URL(resetUrl);
-      url.hostname = "acespdsi.org";
-      url.protocol = "https:";
-      url.port = "";
+      url.searchParams.set("redirect_to", "https://acespdsi.org");
       resetUrl = url.toString();
     }
 
