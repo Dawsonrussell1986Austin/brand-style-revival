@@ -338,6 +338,17 @@ export default function AICenter() {
         description="The ACES Center for AI prepares educators and students for the future with cutting-edge AI training, certification programs, and ethical frameworks for education."
         url="/ai-center"
         keywords="AI in education, artificial intelligence training, educator AI certification, vibe coding, AI ethics, Connecticut AI education"
+        jsonLd={{
+          "@type": "WebPage",
+          "name": "ACES Center for Artificial Intelligence",
+          "url": "https://brand-style-revival.lovable.app/ai-center",
+          "mainEntity": {
+            "@type": "EducationalOrganization",
+            "name": "ACES Center for AI",
+            "description": "Cutting-edge AI training and certification programs for educators",
+            "parentOrganization": { "@type": "Organization", "name": "ACES PDSI" }
+          }
+        }}
       />
       <Header />
       

@@ -401,6 +401,12 @@ const Events = () => {
         description="Join ACES PDSI for professional development workshops, AI certification courses, and community learning opportunities designed for educators."
         url="/events"
         keywords="professional development events, educator workshops, AI training sessions, teacher certification courses, Connecticut PD"
+        jsonLd={{
+          "@type": "CollectionPage",
+          "name": "ACES PDSI Events",
+          "url": "https://brand-style-revival.lovable.app/events",
+          "description": "Professional development workshops, AI certification courses, and learning opportunities for educators."
+        }}
       />
       <Header />
       
