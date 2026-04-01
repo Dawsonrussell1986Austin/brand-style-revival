@@ -134,7 +134,7 @@ export default function Services() {
         jsonLd={{
           "@type": "WebPage",
           "name": "ACES PDSI Services",
-          "url": "https://brand-style-revival.lovable.app/services",
+          "url": "https://acespdsi.org/services",
           "mainEntity": {
             "@type": "ItemList",
             "itemListElement": [

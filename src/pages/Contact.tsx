@@ -119,7 +119,7 @@ const Contact = () => {
         jsonLd={{
           "@type": "ContactPage",
           "name": "Contact ACES PDSI",
-          "url": "https://brand-style-revival.lovable.app/contact",
+          "url": "https://acespdsi.org/contact",
           "mainEntity": {
             "@type": "Organization",
             "name": "ACES PDSI",

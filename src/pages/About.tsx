@@ -278,7 +278,7 @@ const About = () => {
         jsonLd={{
           "@type": "AboutPage",
           "name": "About ACES PDSI",
-          "url": "https://brand-style-revival.lovable.app/about",
+          "url": "https://acespdsi.org/about",
           "description": "Learn about ACES Professional Development & School Improvement. Supporting educators and districts across Connecticut since 1992.",
           "mainEntity": {
             "@type": "EducationalOrganization",
