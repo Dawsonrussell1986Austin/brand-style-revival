@@ -8,8 +8,9 @@ export function GoogleAnalytics() {
 
   useEffect(() => {
     // Send pageview on every route change
-    if (typeof window.gtag === "function") {
-      window.gtag("config", GA_MEASUREMENT_ID, {
+    const w = window as any;
+    if (typeof w.gtag === "function") {
+      w.gtag("config", GA_MEASUREMENT_ID, {
         page_path: location.pathname + location.search,
       });
     }
