@@ -15,6 +15,16 @@ const Index = () => {
       <SEO 
         url="/"
         keywords="professional development, school improvement, educator training, Connecticut education, ACES PDSI"
+        jsonLd={{
+          "@type": "WebSite",
+          "name": "ACES PDSI",
+          "url": "https://brand-style-revival.lovable.app",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://brand-style-revival.lovable.app/events?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }}
       />
       <Header />
       <main>

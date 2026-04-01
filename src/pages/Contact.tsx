@@ -116,6 +116,24 @@ const Contact = () => {
         description="Get in touch with ACES PDSI. Contact our team for professional development services, partnerships, and educational support in Connecticut."
         url="/contact"
         keywords="contact ACES PDSI, professional development inquiry, education partnerships, Connecticut educators contact"
+        jsonLd={{
+          "@type": "ContactPage",
+          "name": "Contact ACES PDSI",
+          "url": "https://brand-style-revival.lovable.app/contact",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "ACES PDSI",
+            "telephone": "(203) 407-4400",
+            "email": "info@acespdsi.org",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "205 Skiff Street",
+              "addressLocality": "Hamden",
+              "addressRegion": "CT",
+              "postalCode": "06517"
+            }
+          }
+        }}
       />
       <Header />
       

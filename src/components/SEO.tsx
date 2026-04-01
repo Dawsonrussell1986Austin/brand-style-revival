@@ -7,6 +7,7 @@ interface SEOProps {
   url?: string;
   type?: string;
   keywords?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
 const BASE_URL = "https://brand-style-revival.lovable.app";
@@ -21,6 +22,7 @@ export function SEO({
   url,
   type = "website",
   keywords,
+  jsonLd,
 }: SEOProps) {
   const fullTitle = title ? `${title} | ACES PDSI` : DEFAULT_TITLE;
   const fullUrl = url ? `${BASE_URL}${url}` : BASE_URL;
@@ -50,6 +52,13 @@ export function SEO({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
       <meta name="twitter:site" content="@ACESPDSI" />
+
+      {/* JSON-LD Structured Data */}
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify({ "@context": "https://schema.org", ...jsonLd })}
+        </script>
+      )}
     </Helmet>
   );
 }

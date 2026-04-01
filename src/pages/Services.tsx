@@ -131,6 +131,20 @@ export default function Services() {
         description="Explore ACES PDSI's comprehensive professional development services including AI integration, instructional coaching, curriculum development, and leadership training."
         url="/services"
         keywords="professional development services, instructional coaching, curriculum development, AI integration, leadership development, teacher training"
+        jsonLd={{
+          "@type": "WebPage",
+          "name": "ACES PDSI Services",
+          "url": "https://brand-style-revival.lovable.app/services",
+          "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+              { "@type": "Service", "name": "Instructional Coaching", "provider": { "@type": "Organization", "name": "ACES PDSI" } },
+              { "@type": "Service", "name": "AI Integration Training", "provider": { "@type": "Organization", "name": "ACES PDSI" } },
+              { "@type": "Service", "name": "Curriculum Development", "provider": { "@type": "Organization", "name": "ACES PDSI" } },
+              { "@type": "Service", "name": "Leadership Development", "provider": { "@type": "Organization", "name": "ACES PDSI" } }
+            ]
+          }
+        }}
       />
       <Header />
       
