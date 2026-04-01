@@ -18,10 +18,10 @@ const Index = () => {
         jsonLd={{
           "@type": "WebSite",
           "name": "ACES PDSI",
-          "url": "https://brand-style-revival.lovable.app",
+          "url": "https://acespdsi.org",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://brand-style-revival.lovable.app/events?q={search_term_string}",
+            "target": "https://acespdsi.org/events?q={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         }}

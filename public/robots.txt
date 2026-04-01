@@ -1,5 +1,5 @@
 # Robots.txt for ACES PDSI
-# https://brand-style-revival.lovable.app
+# https://acespdsi.org
 
 User-agent: Googlebot
 Allow: /
@@ -17,7 +17,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://brand-style-revival.lovable.app/sitemap.xml
+Sitemap: https://acespdsi.org/sitemap.xml
 
 # Crawl-delay for politeness
 Crawl-delay: 1

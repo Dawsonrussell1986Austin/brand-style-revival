@@ -10,7 +10,7 @@ interface SEOProps {
   jsonLd?: Record<string, unknown>;
 }
 
-const BASE_URL = "https://brand-style-revival.lovable.app";
+const BASE_URL = "https://acespdsi.org";
 const DEFAULT_TITLE = "ACES PDSI - Professional Development & School Improvement";
 const DEFAULT_DESCRIPTION = "ACES Professional Development & School Improvement provides innovative educational services, AI training, and resources for educators across Connecticut.";
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;

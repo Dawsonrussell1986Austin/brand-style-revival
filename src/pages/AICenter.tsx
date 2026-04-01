@@ -341,7 +341,7 @@ export default function AICenter() {
         jsonLd={{
           "@type": "WebPage",
           "name": "ACES Center for Artificial Intelligence",
-          "url": "https://brand-style-revival.lovable.app/ai-center",
+          "url": "https://acespdsi.org/ai-center",
           "mainEntity": {
             "@type": "EducationalOrganization",
             "name": "ACES Center for AI",

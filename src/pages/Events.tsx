@@ -404,7 +404,7 @@ const Events = () => {
         jsonLd={{
           "@type": "CollectionPage",
           "name": "ACES PDSI Events",
-          "url": "https://brand-style-revival.lovable.app/events",
+          "url": "https://acespdsi.org/events",
           "description": "Professional development workshops, AI certification courses, and learning opportunities for educators."
         }}
       />
