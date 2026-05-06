@@ -96,6 +96,13 @@ export function Footer() {
                     <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
                   </li>
                 ))}
+                {cmsFooterPages.map((page) => (
+                  <li key={page.id}>
+                    <Link to={`/${page.slug}`} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">
+                      {page.nav_label || page.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
