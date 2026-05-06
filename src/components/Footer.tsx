@@ -2,6 +2,7 @@ import { Instagram, Linkedin, Facebook, MapPin, Clock, Phone, Mail } from "lucid
 import { Link } from "react-router-dom";
 import acesLogoFallback from "@/assets/aces-logo.webp";
 import { useImage } from "@/hooks/useSiteContent";
+import { usePublishedPages } from "@/hooks/usePages";
 
 const footerLinks = {
   services: [
@@ -31,6 +32,8 @@ const socialLinks = [
 
 export function Footer() {
   const { imageUrl: acesLogo, altText: logoAlt } = useImage("home", "footer", "logo", acesLogoFallback);
+  const { data: cmsPages } = usePublishedPages();
+  const cmsFooterPages = (cmsPages || []).filter((p) => p.show_in_footer);
   return (
     <footer className="bg-secondary pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -91,6 +94,13 @@ export function Footer() {
                 {footerLinks.company.map((link) => (
                   <li key={link.label}>
                     <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
+                  </li>
+                ))}
+                {cmsFooterPages.map((page) => (
+                  <li key={page.id}>
+                    <Link to={`/${page.slug}`} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">
+                      {page.nav_label || page.title}
+                    </Link>
                   </li>
                 ))}
               </ul>
