@@ -380,7 +380,7 @@ function ImageField({
 export default function Admin() {
   const [user, setUser] = useState<any>(null);
   const [selectedPage, setSelectedPage] = useState<string>("home");
-  const [activeView, setActiveView] = useState<"pages" | "submissions" | "team" | "events" | "downloads">("pages");
+  const [activeView, setActiveView] = useState<"pages" | "site-pages" | "submissions" | "team" | "events" | "downloads">("pages");
   const [teamMembers, setTeamMembers] = useState<any[]>([]);
   const [teamLoading, setTeamLoading] = useState(false);
   const [inviteEmail, setInviteEmail] = useState("");
