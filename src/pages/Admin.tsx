@@ -1529,6 +1529,157 @@ export default function Admin() {
               )}
             </div>
           </div>
+        ) : activeView === "site-pages" ? (
+          /* Site Pages View — admin-managed dynamic pages */
+          <div className="flex-1 overflow-y-auto p-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900">Site Pages</h2>
+                  <p className="text-sm text-slate-500">
+                    {cmsPages.length} custom page{cmsPages.length !== 1 ? "s" : ""}. Add new URLs (e.g. /our-impact) that admins can edit.
+                  </p>
+                </div>
+                <Button
+                  size="sm"
+                  onClick={() => { resetPageForm(); setPageForm(p => ({ ...p, display_order: cmsPages.length + 1 })); setShowPageForm(true); }}
+                  className="h-8 bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  <Plus className="w-3.5 h-3.5 mr-1" /> New Page
+                </Button>
+              </div>
+
+              {showPageForm && (
+                <div className="bg-white rounded-xl border border-slate-200 p-6 mb-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-semibold text-slate-900">{editingPage ? "Edit Page" : "New Page"}</h3>
+                    <button onClick={resetPageForm} className="p-1 rounded hover:bg-slate-100"><X className="w-4 h-4" /></button>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="col-span-2">
+                      <Label className="text-xs font-semibold text-slate-500">Page Title *</Label>
+                      <Input
+                        value={pageForm.title}
+                        onChange={(e) => {
+                          const title = e.target.value;
+                          setPageForm(p => ({
+                            ...p,
+                            title,
+                            slug: editingPage ? p.slug : generateSlug(title),
+                            nav_label: p.nav_label || title,
+                          }));
+                        }}
+                        className="h-9"
+                        placeholder="e.g., Our Impact"
+                      />
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">URL Slug *</Label>
+                      <Input
+                        value={pageForm.slug}
+                        onChange={(e) => setPageForm(p => ({ ...p, slug: e.target.value }))}
+                        className="h-9"
+                        placeholder="our-impact"
+                      />
+                      <p className="text-[10px] text-slate-400 mt-1">Will be: /{pageForm.slug || "your-slug"}</p>
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">Navigation Label</Label>
+                      <Input
+                        value={pageForm.nav_label}
+                        onChange={(e) => setPageForm(p => ({ ...p, nav_label: e.target.value }))}
+                        className="h-9"
+                        placeholder="Defaults to title"
+                      />
+                    </div>
+                    <div className="col-span-2">
+                      <Label className="text-xs font-semibold text-slate-500">Meta Description</Label>
+                      <Textarea
+                        value={pageForm.meta_description}
+                        onChange={(e) => setPageForm(p => ({ ...p, meta_description: e.target.value }))}
+                        rows={2}
+                        placeholder="Short SEO description (under 160 characters)"
+                      />
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">Display Order</Label>
+                      <Input
+                        type="number"
+                        value={pageForm.display_order}
+                        onChange={(e) => setPageForm(p => ({ ...p, display_order: parseInt(e.target.value) || 0 }))}
+                        className="h-9"
+                      />
+                    </div>
+                    <div className="space-y-2 pt-5">
+                      <label className="flex items-center gap-2 text-xs font-medium text-slate-600">
+                        <input type="checkbox" checked={pageForm.show_in_header} onChange={(e) => setPageForm(p => ({ ...p, show_in_header: e.target.checked }))} className="rounded" />
+                        Show in header nav
+                      </label>
+                      <label className="flex items-center gap-2 text-xs font-medium text-slate-600">
+                        <input type="checkbox" checked={pageForm.show_in_footer} onChange={(e) => setPageForm(p => ({ ...p, show_in_footer: e.target.checked }))} className="rounded" />
+                        Show in footer
+                      </label>
+                      <label className="flex items-center gap-2 text-xs font-medium text-slate-600">
+                        <input type="checkbox" checked={pageForm.is_published} onChange={(e) => setPageForm(p => ({ ...p, is_published: e.target.checked }))} className="rounded" />
+                        Published
+                      </label>
+                    </div>
+                  </div>
+                  <div className="bg-blue-50 border border-blue-100 rounded-lg p-3 text-xs text-blue-700">
+                    💡 After creating, edit the page's text and images from the <strong>Pages</strong> tab. The new slug will appear there as a tab.
+                  </div>
+                  <div className="flex gap-2 pt-2">
+                    <Button onClick={handleSavePage} disabled={savePageMutation.isPending} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white h-9">
+                      {savePageMutation.isPending ? <RefreshCw className="w-3.5 h-3.5 animate-spin mr-1" /> : <Save className="w-3.5 h-3.5 mr-1" />}
+                      {editingPage ? "Update Page" : "Create Page"}
+                    </Button>
+                    <Button variant="outline" onClick={resetPageForm} className="h-9">Cancel</Button>
+                  </div>
+                </div>
+              )}
+
+              {cmsPagesLoading ? (
+                <div className="flex items-center justify-center py-20"><RefreshCw className="w-6 h-6 text-slate-400 animate-spin" /></div>
+              ) : cmsPages.length === 0 ? (
+                <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
+                  <Layout className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                  <p className="font-medium text-slate-500">No custom pages yet</p>
+                  <p className="text-sm text-slate-400">Create a page to add a new URL like /our-impact.</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {cmsPages.map((p) => (
+                    <div key={p.id} className="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <Layout className="w-4 h-4 text-blue-600" />
+                            <h3 className="font-semibold text-slate-900">{p.title}</h3>
+                            {!p.is_published && <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">Draft</span>}
+                            {p.show_in_header && <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-600">Header</span>}
+                            {p.show_in_footer && <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-green-50 text-green-600">Footer</span>}
+                          </div>
+                          <p className="text-xs text-slate-400 font-mono mb-1">/{p.slug}</p>
+                          {p.meta_description && <p className="text-sm text-slate-500 line-clamp-2">{p.meta_description}</p>}
+                        </div>
+                        <div className="flex gap-1 ml-4">
+                          <button onClick={() => window.open(`/${p.slug}`, "_blank")} className="p-1.5 rounded-md text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors" title="View">
+                            <Eye className="w-3.5 h-3.5" />
+                          </button>
+                          <button onClick={() => openEditPage(p)} className="p-1.5 rounded-md text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors" title="Edit">
+                            <Edit className="w-3.5 h-3.5" />
+                          </button>
+                          <button onClick={() => { if (confirm(`Delete page /${p.slug}? Its content blocks will remain in the database.`)) deletePageMutation.mutate(p.id); }} className="p-1.5 rounded-md text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors" title="Delete">
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         ) : activeView === "downloads" ? (
           /* Downloads View */
           <div className="flex-1 overflow-y-auto p-6">
