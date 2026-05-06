@@ -4,8 +4,9 @@ import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import acesLogoFallback from "@/assets/aces-logo.webp";
 import { useImage } from "@/hooks/useSiteContent";
+import { usePublishedPages } from "@/hooks/usePages";
 
-const navItems = [
+const baseNavItems = [
   { label: "AI Center", href: "/ai-center", highlight: true },
   { label: "Services", href: "/services" },
   { label: "Events", href: "/events" },
@@ -17,6 +18,13 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { imageUrl: acesLogo, altText: logoAlt } = useImage("home", "header", "logo", acesLogoFallback);
+  const { data: cmsPages } = usePublishedPages();
+  const navItems = [
+    ...baseNavItems,
+    ...((cmsPages || [])
+      .filter((p) => p.show_in_header)
+      .map((p) => ({ label: p.nav_label || p.title, href: `/${p.slug}`, highlight: false }))),
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
