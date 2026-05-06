@@ -41,6 +41,7 @@ import {
   GripVertical,
   Copy,
   Key,
+  Layout,
 } from "lucide-react";
 import {
   useAllContent,
@@ -49,6 +50,7 @@ import {
   useUpdateImage,
   useUploadImage,
 } from "@/hooks/useSiteContent";
+import { useAllPages, type CmsPage } from "@/hooks/usePages";
 import acesLogo from "@/assets/aces-logo.webp";
 import fallbackHero from "@/assets/hero-educators.jpg";
 import fallbackTeacher from "@/assets/teacher-classroom.jpg";
