@@ -860,6 +860,7 @@ export default function Admin() {
 
   const sidebarItems = [
     { key: "pages" as const, label: "Pages", icon: FileText },
+    { key: "site-pages" as const, label: "Site Pages", icon: Layout },
     { key: "submissions" as const, label: "Submissions", icon: Inbox },
     { key: "team" as const, label: "Team", icon: Users },
     { key: "events" as const, label: "Events", icon: CalendarDays },
