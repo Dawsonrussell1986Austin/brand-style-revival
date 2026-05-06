@@ -525,6 +525,105 @@ export default function Admin() {
     saveEventMutation.mutate({ ...eventForm, id: editingEvent?.id });
   };
 
+  // ============= CMS Pages state =============
+  const { data: cmsPages = [], isLoading: cmsPagesLoading, refetch: refetchCmsPages } = useAllPages();
+  const [showPageForm, setShowPageForm] = useState(false);
+  const [editingPage, setEditingPage] = useState<CmsPage | null>(null);
+  const [pageForm, setPageForm] = useState({
+    slug: "",
+    title: "",
+    nav_label: "",
+    meta_description: "",
+    show_in_header: true,
+    show_in_footer: true,
+    display_order: 0,
+    is_published: true,
+  });
+
+  const reservedSlugs = [
+    "", "about", "ai-center", "services", "events", "resources", "contact",
+    "thank-you", "blog", "admin", "center-for-a-i",
+  ];
+
+  const resetPageForm = () => {
+    setPageForm({
+      slug: "", title: "", nav_label: "", meta_description: "",
+      show_in_header: true, show_in_footer: true, display_order: 0, is_published: true,
+    });
+    setEditingPage(null);
+    setShowPageForm(false);
+  };
+
+  const openEditPage = (p: CmsPage) => {
+    setEditingPage(p);
+    setPageForm({
+      slug: p.slug,
+      title: p.title,
+      nav_label: p.nav_label,
+      meta_description: p.meta_description || "",
+      show_in_header: p.show_in_header,
+      show_in_footer: p.show_in_footer,
+      display_order: p.display_order,
+      is_published: p.is_published,
+    });
+    setShowPageForm(true);
+  };
+
+  const savePageMutation = useMutation({
+    mutationFn: async (form: typeof pageForm & { id?: string }) => {
+      const payload = {
+        slug: form.slug,
+        title: form.title,
+        nav_label: form.nav_label || form.title,
+        meta_description: form.meta_description,
+        show_in_header: form.show_in_header,
+        show_in_footer: form.show_in_footer,
+        display_order: form.display_order,
+        is_published: form.is_published,
+      };
+      if (form.id) {
+        const { error } = await supabase.from("pages").update(payload).eq("id", form.id);
+        if (error) throw error;
+      } else {
+        const { error } = await supabase.from("pages").insert(payload);
+        if (error) throw error;
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cms-pages"] });
+      refetchCmsPages();
+      toast.success(editingPage ? "Page updated!" : "Page created!");
+      resetPageForm();
+    },
+    onError: (e: any) => toast.error(e.message),
+  });
+
+  const deletePageMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("pages").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cms-pages"] });
+      refetchCmsPages();
+      toast.success("Page deleted");
+    },
+    onError: (e: any) => toast.error(e.message),
+  });
+
+  const handleSavePage = () => {
+    if (!pageForm.slug || !pageForm.title) {
+      toast.error("Slug and title are required");
+      return;
+    }
+    const cleanSlug = pageForm.slug.toLowerCase().replace(/[^a-z0-9-]/g, "-").replace(/^-|-$/g, "");
+    if (reservedSlugs.includes(cleanSlug)) {
+      toast.error(`"/${cleanSlug}" is reserved by an existing page`);
+      return;
+    }
+    savePageMutation.mutate({ ...pageForm, slug: cleanSlug, id: editingPage?.id });
+  };
+
   // Downloads state
   interface DownloadRecord {
     id: string;
