@@ -928,7 +928,11 @@ export default function Admin() {
 
   // Get pages that have content, ordered to match site navigation
   const pageOrder = ["home", "ai-center", "services", "events", "resources", "about", "contact"];
-  const allPages = new Set([...(allContent?.map((c) => c.page) || []), ...(allImages?.map((i) => i.page) || [])]);
+  const allPages = new Set<string>([
+    ...(allContent?.map((c) => c.page) || []),
+    ...(allImages?.map((i) => i.page) || []),
+    ...cmsPages.map((p) => p.slug),
+  ]);
   const pages = pageOrder.filter((p) => allPages.has(p)).concat(
     [...allPages].filter((p) => !pageOrder.includes(p)).sort()
   );
