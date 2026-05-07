@@ -30,9 +30,10 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import heroImage from "@/assets/curriculum-hero.jpg";
-import dashboardImage from "@/assets/curriculum-dashboard.jpg";
-import setupImage from "@/assets/curriculum-setup.jpg";
+import acesAiLogo from "@/assets/aces-ai-logo.png";
+import setupImage from "@/assets/curriculum-setup.png";
+import unitsImage from "@/assets/curriculum-units.png";
+import auditImage from "@/assets/curriculum-audit.png";
 
 type LeadFormType = "Get More Information" | "Schedule a Demo" | "Request Info";
 
@@ -313,13 +314,13 @@ export default function CurriculumCreator() {
                 transition={{ duration: 0.6 }}
                 className="lg:col-span-5"
               >
-                <div className="inline-flex items-center justify-center w-32 h-32 rounded-full border-4 border-aces-green bg-white shadow-md mb-6">
-                  <div className="text-center">
-                    <div className="font-heading font-bold text-aces-blue text-xl leading-tight">aces</div>
-                    <div className="text-[10px] font-semibold text-aces-navy leading-tight">Center for AI</div>
-                    <div className="text-[9px] text-aces-green font-bold mt-0.5">PDSI</div>
-                  </div>
-                </div>
+                <img
+                  src={acesAiLogo}
+                  alt="ACES Center for Artificial Intelligence"
+                  className="w-32 h-32 mb-6"
+                  width={256}
+                  height={256}
+                />
 
                 <p className="text-aces-green font-bold tracking-wider uppercase text-sm mb-3">
                   ACES Center for AI
@@ -365,14 +366,16 @@ export default function CurriculumCreator() {
                 className="lg:col-span-7"
               >
                 <div className="relative">
-                  <img
-                    src={heroImage}
-                    alt="Educator using the ACES Curriculum Creator platform"
-                    className="w-full h-auto rounded-2xl"
-                    loading="eager"
-                    width={1280}
-                    height={960}
-                  />
+                  <div className="rounded-2xl overflow-hidden border border-border shadow-xl bg-white">
+                    <img
+                      src={setupImage}
+                      alt="ACES Curriculum Creator — Course Set Up screen"
+                      className="w-full h-auto"
+                      loading="eager"
+                      width={1920}
+                      height={1080}
+                    />
+                  </div>
                   <div className="lg:absolute lg:-bottom-16 lg:right-0 lg:w-[420px] mt-6 lg:mt-0 bg-white rounded-2xl shadow-2xl border border-border p-6 md:p-8">
                     <h2 className="font-heading text-xl md:text-2xl font-bold text-aces-navy mb-5">
                       Request More Information
@@ -426,39 +429,40 @@ export default function CurriculumCreator() {
               <div>
                 <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md">
                   <img
-                    src={dashboardImage}
-                    alt="ACES Curriculum Creator dashboard with course library"
+                    src={unitsImage}
+                    alt="ACES Curriculum Creator — Units (UbD) screen"
                     className="w-full h-auto"
                     loading="lazy"
-                    width={1280}
-                    height={960}
+                    width={1920}
+                    height={1080}
                   />
                 </div>
                 <h3 className="font-heading font-bold text-aces-navy text-xl mt-5 mb-1">
-                  Dashboard
+                  Units (UbD)
                 </h3>
                 <p className="text-sm text-muted-foreground">
-                  Organize courses, track progress, and stay aligned.
+                  Build backward-designed units with AI-generated assessment ideas
+                  grounded in your standards.
                 </p>
               </div>
 
               <div>
                 <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md">
                   <img
-                    src={setupImage}
-                    alt="ACES Curriculum Creator course setup screen"
+                    src={auditImage}
+                    alt="ACES Curriculum Creator — Three-Framework Audit screen"
                     className="w-full h-auto"
                     loading="lazy"
-                    width={1280}
-                    height={960}
+                    width={1920}
+                    height={1080}
                   />
                 </div>
                 <h3 className="font-heading font-bold text-aces-navy text-xl mt-5 mb-1">
-                  Course Set Up
+                  Three-Framework Audit
                 </h3>
                 <p className="text-sm text-muted-foreground">
-                  Provide context; the AI uses it to build aligned, culturally
-                  responsive curriculum.
+                  See real-time alignment across CSDE, UbD, and UDL — for your
+                  own professional reflection.
                 </p>
               </div>
             </div>
