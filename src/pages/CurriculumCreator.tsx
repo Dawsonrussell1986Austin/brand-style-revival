@@ -30,7 +30,9 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import heroImage from "@/assets/ai-center-hero.jpg";
+import heroImage from "@/assets/curriculum-hero.jpg";
+import dashboardImage from "@/assets/curriculum-dashboard.jpg";
+import setupImage from "@/assets/curriculum-setup.jpg";
 
 type LeadFormType = "Get More Information" | "Schedule a Demo" | "Request Info";
 
@@ -303,12 +305,13 @@ export default function CurriculumCreator() {
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-aces-green/10 rounded-full blur-3xl" />
 
           <div className="relative container mx-auto px-4 py-12 md:py-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Left */}
+            <div className="grid lg:grid-cols-12 gap-10 items-start">
+              {/* Left: heading */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
+                className="lg:col-span-5"
               >
                 <div className="inline-flex items-center justify-center w-32 h-32 rounded-full border-4 border-aces-green bg-white shadow-md mb-6">
                   <div className="text-center">
@@ -351,30 +354,31 @@ export default function CurriculumCreator() {
                     </a>
                   </Button>
                 </div>
-
-                <div className="mt-12 rounded-2xl overflow-hidden shadow-xl border border-border">
-                  <img
-                    src={heroImage}
-                    alt="Educator using the ACES Curriculum Creator platform"
-                    className="w-full h-auto"
-                    loading="eager"
-                  />
-                </div>
               </motion.div>
 
-              {/* Right: Form */}
+              {/* Right: hero image + form */}
               <motion.div
                 id="get-info"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
-                className="lg:sticky lg:top-28"
+                className="lg:col-span-7"
               >
-                <div className="bg-white rounded-2xl shadow-2xl border border-border p-8 md:p-10">
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-aces-navy mb-6">
-                    Request More Information
-                  </h2>
-                  <LeadForm formType="Get More Information" submitLabel="Send Request" />
+                <div className="relative">
+                  <img
+                    src={heroImage}
+                    alt="Educator using the ACES Curriculum Creator platform"
+                    className="w-full h-auto rounded-2xl"
+                    loading="eager"
+                    width={1280}
+                    height={960}
+                  />
+                  <div className="lg:absolute lg:-bottom-16 lg:right-0 lg:w-[420px] mt-6 lg:mt-0 bg-white rounded-2xl shadow-2xl border border-border p-6 md:p-8">
+                    <h2 className="font-heading text-xl md:text-2xl font-bold text-aces-navy mb-5">
+                      Request More Information
+                    </h2>
+                    <LeadForm formType="Get More Information" submitLabel="Send Request" />
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -382,7 +386,7 @@ export default function CurriculumCreator() {
         </section>
 
         {/* WHY EDUCATORS USE IT */}
-        <section className="py-16 md:py-20 bg-background">
+        <section className="py-16 md:py-20 lg:pt-32 bg-background">
           <div className="container mx-auto px-4">
             <h2 className="text-center font-heading text-3xl md:text-4xl font-bold text-aces-navy mb-12">
               Why educators use it
@@ -420,16 +424,15 @@ export default function CurriculumCreator() {
             </h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               <div>
-                <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md aspect-[4/3] flex items-center justify-center p-6">
-                  <div className="text-center">
-                    <Sparkles className="w-12 h-12 text-aces-blue mx-auto mb-3" />
-                    <p className="font-semibold text-aces-navy">
-                      Curriculum Dashboard
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Course library &amp; progress at a glance
-                    </p>
-                  </div>
+                <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md">
+                  <img
+                    src={dashboardImage}
+                    alt="ACES Curriculum Creator dashboard with course library"
+                    className="w-full h-auto"
+                    loading="lazy"
+                    width={1280}
+                    height={960}
+                  />
                 </div>
                 <h3 className="font-heading font-bold text-aces-navy text-xl mt-5 mb-1">
                   Dashboard
@@ -440,14 +443,15 @@ export default function CurriculumCreator() {
               </div>
 
               <div>
-                <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md aspect-[4/3] flex items-center justify-center p-6">
-                  <div className="text-center">
-                    <FileText className="w-12 h-12 text-aces-green mx-auto mb-3" />
-                    <p className="font-semibold text-aces-navy">Course Set Up</p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Build aligned outcomes, tasks &amp; activities
-                    </p>
-                  </div>
+                <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md">
+                  <img
+                    src={setupImage}
+                    alt="ACES Curriculum Creator course setup screen"
+                    className="w-full h-auto"
+                    loading="lazy"
+                    width={1280}
+                    height={960}
+                  />
                 </div>
                 <h3 className="font-heading font-bold text-aces-navy text-xl mt-5 mb-1">
                   Course Set Up
@@ -530,38 +534,23 @@ export default function CurriculumCreator() {
         {/* BOTTOM CTA / SECOND FORM */}
         <section className="py-16 md:py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto rounded-2xl overflow-hidden bg-gradient-to-r from-aces-green via-aces-blue to-aces-blue p-8 md:p-12 shadow-xl">
-              <div className="grid lg:grid-cols-2 gap-10 items-center">
-                <div>
-                  <Sparkles className="w-8 h-8 text-white/90 mb-4" />
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-white leading-tight">
-                    Ready to learn more about the ACES Curriculum Creator?
-                  </h2>
-                  <ul className="mt-6 space-y-2">
-                    {[
-                      "Standards-aligned in minutes, not weeks",
-                      "Built on UDL, UbD, and CSDE frameworks",
-                      "Designed with and for Connecticut educators",
-                    ].map((t) => (
-                      <li key={t} className="flex items-start gap-2 text-white/90 text-sm">
-                        <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" />
-                        <span>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg">
-                  <h3 className="font-heading font-bold text-aces-navy text-xl mb-4">
-                    Schedule a Demo
-                  </h3>
-                  <LeadForm
-                    formType="Schedule a Demo"
-                    submitLabel="Request Info"
-                    compact
-                  />
-                </div>
+            <div className="max-w-6xl mx-auto rounded-2xl overflow-hidden bg-gradient-to-r from-aces-green via-aces-blue to-aces-blue px-8 md:px-12 py-8 md:py-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <Sparkles className="w-8 h-8 text-white/90 shrink-0" />
+                <h2 className="font-heading text-xl md:text-2xl font-bold text-white leading-tight">
+                  Ready to learn more about the ACES Curriculum Creator?
+                </h2>
               </div>
+              <Button
+                asChild
+                size="lg"
+                className="bg-white text-aces-blue hover:bg-white/90 font-semibold rounded-md shrink-0"
+              >
+                <a href="#get-info">
+                  Request Info
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </a>
+              </Button>
             </div>
           </div>
         </section>
