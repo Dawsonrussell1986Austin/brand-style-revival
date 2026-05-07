@@ -30,7 +30,9 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import heroImage from "@/assets/ai-center-hero.jpg";
+import heroImage from "@/assets/curriculum-hero.jpg";
+import dashboardImage from "@/assets/curriculum-dashboard.jpg";
+import setupImage from "@/assets/curriculum-setup.jpg";
 
 type LeadFormType = "Get More Information" | "Schedule a Demo" | "Request Info";
 
