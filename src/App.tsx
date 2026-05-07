@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import AdminAuth from "./pages/AdminAuth";
 import DynamicPage from "./pages/DynamicPage";
+import CurriculumCreator from "./pages/CurriculumCreator";
 
 declare global {
   interface Window {
@@ -73,6 +74,7 @@ const App = () => {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/auth" element={<AdminAuth />} />
+            <Route path="/curriculum-creator" element={<CurriculumCreator />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="/:slug" element={<DynamicPage />} />
             <Route path="*" element={<NotFound />} />
