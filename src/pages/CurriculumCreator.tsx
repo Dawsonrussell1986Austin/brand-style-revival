@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -36,6 +36,26 @@ import unitsImage from "@/assets/curriculum-units.png";
 import auditImage from "@/assets/curriculum-audit.png";
 
 type LeadFormType = "Get More Information" | "Schedule a Demo" | "Request Info";
+
+const ADVERTISER_ID = "91a68c22-c504-4e16-8588-1f817ed6f937";
+const PIXELS = {
+  visits: "408b59d8-d752-4b41-bca7-d1bc86e52632",
+  sendRequest: "5098e121-e099-4a32-9c66-71e35ff6ea8f",
+  contact: "dd8eb578-4955-4407-83fe-c0a1038a7e97",
+  getMoreInfo: "01594d68-80ab-47a0-a318-e2487896ba9d",
+  scheduleDemo: "018360a5-afca-4525-9003-440612f65064",
+} as const;
+
+function trackPixel(pixelId: string) {
+  if (typeof window === "undefined") return;
+  window.__adcloudiq__ = window.__adcloudiq__ || [];
+  window.__adcloudiq__.push(function () {
+    (window.__adcloudiq__ as any).track({
+      advertiserId: ADVERTISER_ID,
+      pixelId,
+    });
+  });
+}
 
 const ROLE_OPTIONS = [
   "Teacher",
@@ -106,6 +126,10 @@ function LeadForm({
         source: `curriculum-creator:${formType}`,
       });
       if (error) throw error;
+
+      // Fire JamLoop conversion pixels for form submission
+      trackPixel(PIXELS.sendRequest);
+      trackPixel(PIXELS.contact);
 
       // Fire-and-forget email notification
       supabase.functions
@@ -289,6 +313,11 @@ const principles = [
 ];
 
 export default function CurriculumCreator() {
+  // Fire JamLoop "Visits" pixel on landing page view
+  useEffect(() => {
+    trackPixel(PIXELS.visits);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
@@ -341,7 +370,9 @@ export default function CurriculumCreator() {
                     size="lg"
                     className="bg-aces-blue hover:bg-aces-blue/90 text-white font-semibold rounded-md"
                   >
-                    <a href="#get-info">Get More Information</a>
+                    <a href="#get-info" onClick={() => trackPixel(PIXELS.getMoreInfo)}>
+                      Get More Information
+                    </a>
                   </Button>
                   <Button
                     asChild
@@ -349,7 +380,7 @@ export default function CurriculumCreator() {
                     variant="outline"
                     className="border-aces-blue text-aces-blue hover:bg-aces-blue/5 font-semibold rounded-md"
                   >
-                    <a href="#get-info">
+                    <a href="#get-info" onClick={() => trackPixel(PIXELS.scheduleDemo)}>
                       <Calendar className="w-4 h-4 mr-2" />
                       Schedule a Demo
                     </a>
@@ -550,7 +581,7 @@ export default function CurriculumCreator() {
                 size="lg"
                 className="bg-white text-aces-blue hover:bg-white/90 font-semibold rounded-md shrink-0"
               >
-                <a href="#get-info">
+                <a href="#get-info" onClick={() => trackPixel(PIXELS.getMoreInfo)}>
                   Request Info
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
