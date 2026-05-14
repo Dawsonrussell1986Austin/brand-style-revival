@@ -313,6 +313,11 @@ const principles = [
 ];
 
 export default function CurriculumCreator() {
+  // Fire JamLoop "Visits" pixel on landing page view
+  useEffect(() => {
+    trackPixel(PIXELS.visits);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
