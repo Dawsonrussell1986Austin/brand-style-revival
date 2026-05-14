@@ -581,8 +581,8 @@ export default function CurriculumCreator() {
                 size="lg"
                 className="bg-white text-aces-blue hover:bg-white/90 font-semibold rounded-md shrink-0"
               >
-                <a href="#get-info">
-                  <span onClick={() => trackPixel(PIXELS.getMoreInfo)}>Request Info</span>
+                <a href="#get-info" onClick={() => trackPixel(PIXELS.getMoreInfo)}>
+                  Request Info
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
               </Button>
