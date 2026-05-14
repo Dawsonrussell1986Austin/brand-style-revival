@@ -370,7 +370,9 @@ export default function CurriculumCreator() {
                     size="lg"
                     className="bg-aces-blue hover:bg-aces-blue/90 text-white font-semibold rounded-md"
                   >
-                    <a href="#get-info">Get More Information</a>
+                    <a href="#get-info" onClick={() => trackPixel(PIXELS.getMoreInfo)}>
+                      Get More Information
+                    </a>
                   </Button>
                   <Button
                     asChild
@@ -378,7 +380,7 @@ export default function CurriculumCreator() {
                     variant="outline"
                     className="border-aces-blue text-aces-blue hover:bg-aces-blue/5 font-semibold rounded-md"
                   >
-                    <a href="#get-info">
+                    <a href="#get-info" onClick={() => trackPixel(PIXELS.scheduleDemo)}>
                       <Calendar className="w-4 h-4 mr-2" />
                       Schedule a Demo
                     </a>
@@ -580,7 +582,7 @@ export default function CurriculumCreator() {
                 className="bg-white text-aces-blue hover:bg-white/90 font-semibold rounded-md shrink-0"
               >
                 <a href="#get-info">
-                  Request Info
+                  <span onClick={() => trackPixel(PIXELS.getMoreInfo)}>Request Info</span>
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
               </Button>
