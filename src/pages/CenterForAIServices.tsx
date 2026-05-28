@@ -15,6 +15,7 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/home/ai-hero-classroom.jpg";
 import pathwayImg from "@/assets/home/hero-classroom.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 
 const principles = [
   {
@@ -96,6 +97,8 @@ const supportCards = [
 ];
 
 export default function CenterForAIServices() {
+  const { imageUrl: heroSrc, altText: heroAlt } = useImage("center-for-ai-services", "hero", "hero_image", heroImg);
+  const { imageUrl: pathwaySrc, altText: pathwayAlt } = useImage("center-for-ai-services", "pathway", "image", pathwayImg);
   return (
     <div className="min-h-screen bg-background">
       <SEO
@@ -135,7 +138,7 @@ export default function CenterForAIServices() {
               className="relative"
             >
               <div className="rounded-3xl overflow-hidden shadow-2xl bg-card p-3">
-                <img src={heroImg} alt="Educators working together in a classroom" className="w-full aspect-[4/3] object-cover rounded-2xl" />
+                <img src={heroSrc} alt={heroAlt || "Educators working together in a classroom"} className="w-full aspect-[4/3] object-cover rounded-2xl" />
                 <p className="text-center text-sm font-medium text-muted-foreground mt-3 mb-1">
                   Educator-led AI starts in real learning rooms.
                 </p>
@@ -224,7 +227,7 @@ export default function CenterForAIServices() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-xl">
-                <img src={pathwayImg} alt="Small-group educator planning" className="w-full aspect-[4/3] object-cover" />
+                <img src={pathwaySrc} alt={pathwayAlt || "Small-group educator planning"} className="w-full aspect-[4/3] object-cover" />
               </div>
               <p className="text-center text-sm font-medium text-muted-foreground mt-4">
                 Small-group planning gives AI work a human center.

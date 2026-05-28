@@ -258,6 +258,8 @@ const About = () => {
   const { imageUrl: johnImg } = useImage("about", "team", "john_gustafson", johnGustafsonFallback);
   const { imageUrl: kimImg } = useImage("about", "team", "kim_cellini", kimCelliniFallback);
   const { imageUrl: alisonImg } = useImage("about", "team", "alison_zanardi", alisonZanardiFallback);
+  const { imageUrl: heroAboutImg, altText: heroAboutAlt } = useImage("about", "hero", "hero_image", heroAbout);
+  const { imageUrl: partnerImage, altText: partnerAlt } = useImage("about", "partner", "image", partnerImg);
 
   // Map CMS images to team members
   const cmsImageMap: Record<string, string> = {
@@ -348,8 +350,8 @@ const About = () => {
                 className="w-full max-w-xl bg-card rounded-2xl shadow-xl p-3"
               >
                 <img
-                  src={heroAbout}
-                  alt="ACES PDSI team gathered together"
+                  src={heroAboutImg}
+                  alt={heroAboutAlt || "ACES PDSI team gathered together"}
                   className="w-full h-auto aspect-[4/3] object-cover rounded-xl"
                 />
               </motion.div>
@@ -442,8 +444,8 @@ const About = () => {
                 className="bg-card rounded-3xl p-3 shadow-lg"
               >
                 <img
-                  src={partnerImg}
-                  alt="Educators collaborating in a professional learning session"
+                  src={partnerImage}
+                  alt={partnerAlt || "Educators collaborating in a professional learning session"}
                   className="w-full aspect-[4/3] object-cover rounded-2xl"
                 />
               </motion.div>

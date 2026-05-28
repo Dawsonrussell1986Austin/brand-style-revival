@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/accordion";
 import heroImg from "@/assets/arc/arc-learning.jpg";
 import expectImg from "@/assets/arc/arc-team.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 
 const overview = [
   { icon: Compass, title: "Program overview", body: "A structured route to Connecticut educator certification for candidates ready to bring prior experience into the classroom." },
@@ -59,6 +60,8 @@ const faqs = [
 ];
 
 export default function ARC() {
+  const { imageUrl: heroSrc, altText: heroAlt } = useImage("arc", "hero", "hero_image", heroImg);
+  const { imageUrl: expectSrc, altText: expectAlt } = useImage("arc", "expect", "image", expectImg);
   return (
     <div className="min-h-screen bg-background">
       <SEO
@@ -101,7 +104,7 @@ export default function ARC() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="bg-card rounded-3xl shadow-xl border border-border p-4 flex flex-col"
             >
-              <img src={heroImg} alt="Educator candidate reviewing materials with a mentor" className="w-full flex-1 object-cover rounded-2xl aspect-[4/3]" />
+              <img src={heroSrc} alt={heroAlt || "Educator candidate reviewing materials with a mentor"} className="w-full flex-1 object-cover rounded-2xl aspect-[4/3]" />
             </motion.div>
           </div>
 
@@ -181,7 +184,7 @@ export default function ARC() {
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-10">
             <div>
               <div className="rounded-3xl overflow-hidden shadow-xl bg-card p-3">
-                <img src={expectImg} alt="ACES educators supporting ARC candidates" className="w-full aspect-[4/3] object-cover rounded-2xl" />
+                <img src={expectSrc} alt={expectAlt || "ACES educators supporting ARC candidates"} className="w-full aspect-[4/3] object-cover rounded-2xl" />
               </div>
             </div>
             <div>

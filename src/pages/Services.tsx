@@ -116,7 +116,7 @@ const highlights = [
 ];
 
 export default function Services() {
-  const { imageUrl: heroImage } = useImage("services", "hero", "hero_image", heroImageFallback);
+  const { imageUrl: heroImage } = useImage("services", "hero", "hero_image", aiHero);
   // AdCloudIQ tracking pixel
   useEffect(() => {
     // Load the SDK script
@@ -208,7 +208,7 @@ export default function Services() {
               className="bg-secondary/40 rounded-2xl p-4 md:p-6 flex items-center justify-center min-h-[420px]"
             >
               <img
-                src={aiHero}
+                src={heroImage}
                 alt="Educators collaborating in a library"
                 className="w-full h-full max-h-[520px] object-cover rounded-xl shadow-lg"
               />
