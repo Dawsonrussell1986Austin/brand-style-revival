@@ -82,8 +82,8 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/admin/auth" element={<AdminAuth />} />
+            <Route path="/staff-portal-9472" element={<Admin />} />
+            <Route path="/staff-portal-9472/login" element={<AdminAuth />} />
             <Route path="/curriculum-creator" element={<CurriculumCreator />} />
             <Route path="/regional-forums" element={<Navigate to="/pdsi-services/regional-forums" replace />} />
             <Route path="/center-for-ai-services" element={<CenterForAIServices />} />

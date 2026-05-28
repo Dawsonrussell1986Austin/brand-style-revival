@@ -15,6 +15,8 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /staff-portal-9472
+Disallow: /admin
 
 # Sitemap
 Sitemap: https://acespdsi.org/sitemap.xml
