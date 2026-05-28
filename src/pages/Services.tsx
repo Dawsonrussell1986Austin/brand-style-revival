@@ -486,33 +486,34 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 section-brand relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-aces-green/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-aces-blue/20 rounded-full blur-3xl" />
-        
-        <div className="container mx-auto px-4 relative">
+      {/* Bottom CTA — photo card */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="bg-white border border-border rounded-2xl shadow-sm overflow-hidden grid md:grid-cols-[260px_1fr] gap-0"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white mb-6">
-              Ready to Transform Your District?
-            </h2>
-            <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed">
-              Let's work together to build capacity and drive lasting impact. Our team is ready to customize a solution for your needs.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-aces-navy hover:bg-white/90 shadow-xl px-8">
-                Contact Us Today
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                Schedule a Consultation
-              </Button>
+            <div className="h-48 md:h-auto">
+              <img src={partnerBallroom} alt="ACES PDSI partnership" className="w-full h-full object-cover" />
+            </div>
+            <div className="p-8 md:p-10 flex flex-col justify-center">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-aces-navy mb-3 leading-tight">
+                Need a learning plan for your school or district?
+              </h2>
+              <p className="text-muted-foreground text-base leading-relaxed mb-6 max-w-2xl">
+                ACES PDSI can help teams plan customized professional learning, connect
+                event participation to school goals, and build support that lasts.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild size="lg" className="bg-aces-green hover:bg-aces-green/90 text-white rounded-full px-7">
+                  <Link to="/contact">Talk With Our Team</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 border-aces-navy text-aces-navy hover:bg-aces-navy hover:text-white">
+                  <Link to="/events">View Events</Link>
+                </Button>
+              </div>
             </div>
           </motion.div>
         </div>
