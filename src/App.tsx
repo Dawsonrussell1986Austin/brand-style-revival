@@ -85,7 +85,7 @@ const App = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/auth" element={<AdminAuth />} />
             <Route path="/curriculum-creator" element={<CurriculumCreator />} />
-            <Route path="/regional-forums" element={<RegionalForums />} />
+            <Route path="/regional-forums" element={<Navigate to="/pdsi-services/regional-forums" replace />} />
             <Route path="/center-for-ai-services" element={<CenterForAIServices />} />
             <Route path="/center-for-ai-services/ai-ready-schools" element={<AIReadySchools />} />
             <Route path="/center-for-ai-services/innovative-tools" element={<InnovativeTools />} />
