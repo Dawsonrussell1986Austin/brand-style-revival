@@ -114,6 +114,12 @@ const specialistsTeam: TeamMember[] = [
     bio: "Combines early childhood and special education expertise to support inclusive practices.",
     fullBio: "Mary Stone is a Professional Learning Specialist with expertise in early childhood and special education. She supports educators in creating inclusive classrooms where all young learners can thrive academically, socially, and emotionally.",
     image: maryStoneFallback
+  },
+  {
+    name: "Alyson Stanisci",
+    role: "Early Childhood, Instructional Leadership",
+    bio: "Supports educators and school systems through coaching, professional learning, and program development across preschool and elementary settings.",
+    fullBio: "Alyson Stanisci is a Professional Learning Specialist at ACES PDSI with expertise in early childhood education, instructional leadership, and program development. She brings extensive experience supporting educators and school systems through coaching, professional learning, curriculum implementation, and systems coordination across preschool and elementary settings. Her areas of expertise include early childhood programming, restorative practices, SRBI support, professional development facilitation, and grant-funded program management. Alyson is especially skilled in building collaborative systems that support high-quality instruction, strengthening transitions and family partnerships, and helping educators create responsive, student-centered learning environments."
   }
 ];
 
