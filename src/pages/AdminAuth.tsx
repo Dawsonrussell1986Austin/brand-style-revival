@@ -77,7 +77,7 @@ export default function AdminAuth() {
 
     try {
       if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -86,7 +86,13 @@ export default function AdminAuth() {
         });
 
         if (error) throw error;
-        toast.success("Account created! Please check your email to verify, or contact an admin to grant you access.");
+        if (data.session) {
+          toast.success("Account created! Redirecting...");
+          navigate("/staff-portal-9472");
+        } else {
+          toast.success("Account created! Please sign in.");
+          setIsSignUp(false);
+        }
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({
           email,
