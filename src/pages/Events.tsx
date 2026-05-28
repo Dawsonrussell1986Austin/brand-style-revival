@@ -491,7 +491,7 @@ const Events = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="bg-secondary rounded-2xl p-4 md:p-6 flex items-center justify-center min-h-[300px]"
             >
-              <img src={heroEvents} alt="ACES PDSI team gathered together" className="w-full h-full object-cover rounded-xl max-h-[460px]" />
+              <img src={heroEventsSrc} alt={heroEventsAlt || "ACES PDSI team gathered together"} className="w-full h-full object-cover rounded-xl max-h-[460px]" />
             </motion.div>
           </div>
         </div>
@@ -701,7 +701,7 @@ const Events = () => {
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="bg-white rounded-2xl border border-border p-5 md:p-6 shadow-sm grid md:grid-cols-[260px_1fr] gap-6 items-center">
-            <img src={ctaImg} alt="ACES PDSI learning event" className="w-full h-48 md:h-full object-cover rounded-xl" />
+            <img src={ctaImgSrc} alt={ctaImgAlt || "ACES PDSI learning event"} className="w-full h-48 md:h-full object-cover rounded-xl" />
             <div className="p-2 md:p-4">
               <h3 className="font-heading font-bold text-2xl md:text-3xl text-aces-navy mb-3 leading-snug">
                 Need a learning plan for your school or district?
