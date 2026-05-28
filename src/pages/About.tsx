@@ -8,8 +8,8 @@ import { Users, Target, Lightbulb, Heart, Mail, X, Compass, Handshake, TrendingU
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useImage } from "@/hooks/useSiteContent";
-import heroAbout from "@/assets/home/hero-classroom.jpg";
-import partnerImg from "@/assets/home/featured-play.jpg";
+import heroAbout from "@/assets/home/about-team.png";
+import partnerImg from "@/assets/home/partner-ballroom.jpg";
 
 // Team headshot imports (fallbacks)
 import michelleGohagonFallback from "@/assets/team/michelle-gohagon.png";
