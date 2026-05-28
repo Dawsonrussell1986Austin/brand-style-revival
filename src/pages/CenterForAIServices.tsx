@@ -13,8 +13,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/home/hero-classroom.jpg";
-import pathwayImg from "@/assets/home/partner-ballroom.jpg";
+import heroImg from "@/assets/home/featured-rigor.jpg";
+import pathwayImg from "@/assets/home/hero-classroom.jpg";
 
 const principles = [
   {
@@ -295,15 +295,15 @@ export default function CenterForAIServices() {
               </p>
               <div className="grid grid-cols-2 gap-3">
                 {workspaceItems.map((label) => (
-                  <div key={label} className="bg-muted/40 rounded-xl px-4 py-3 border border-border">
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="w-2 h-2 rounded-full bg-accent" />
-                      <span className="text-sm font-semibold text-foreground">{label}</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Shared, reviewed, and ready for teams.</p>
+                  <div key={label} className="bg-accent/5 rounded-full px-5 py-3 border border-accent/20 flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0" />
+                    <span className="text-sm font-semibold text-foreground">{label}</span>
                   </div>
                 ))}
               </div>
+              <p className="text-xs text-muted-foreground mt-4">
+                Shared, reviewed, and ready for teams.
+              </p>
             </div>
           </div>
         </div>
