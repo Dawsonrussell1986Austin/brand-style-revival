@@ -31,12 +31,20 @@ export function HeroV2() {
             support meaningful learning, and help schools grow with clarity, care, and
             practical innovation.
           </p>
-          <Link
-            to="/about"
-            className="inline-flex items-center justify-center px-10 py-3.5 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-base transition-all shadow-lg hover:shadow-xl"
-          >
-            About Us
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              to="/about"
+              className="inline-flex items-center justify-center px-10 py-3.5 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-base transition-all shadow-lg hover:shadow-xl"
+            >
+              About Us
+            </Link>
+            <Link
+              to="/workshops-events"
+              className="inline-flex items-center justify-center px-10 py-3.5 rounded-full bg-transparent border-2 border-primary-foreground/40 hover:border-primary-foreground/70 hover:bg-primary-foreground/10 text-primary-foreground font-semibold text-base transition-all"
+            >
+              View Workshops
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
