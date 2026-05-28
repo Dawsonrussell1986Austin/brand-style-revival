@@ -4,6 +4,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
+import { Link } from "react-router-dom";
+import aboutTeam from "@/assets/home/about-team.png";
+import partnerBallroom from "@/assets/home/partner-ballroom.jpg";
+import heroClassroom from "@/assets/home/hero-classroom.jpg";
+import featuredAi from "@/assets/home/featured-ai.jpg";
+import featuredPlay from "@/assets/home/featured-play.jpg";
+import featuredRigor from "@/assets/home/featured-rigor.jpg";
 
 declare global {
   interface Window {
@@ -22,7 +29,11 @@ import {
   GraduationCap,
   Building,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Calendar,
+  Clock,
+  Sparkles,
+  Compass
 } from "lucide-react";
 import heroImageFallback from "@/assets/teacher-classroom.jpg";
 import { useImage } from "@/hooks/useSiteContent";
