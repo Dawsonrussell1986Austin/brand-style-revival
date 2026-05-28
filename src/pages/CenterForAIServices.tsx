@@ -13,8 +13,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/home/hero-classroom.jpg";
-import pathwayImg from "@/assets/home/partner-ballroom.jpg";
+import heroImg from "@/assets/home/featured-rigor.jpg";
+import pathwayImg from "@/assets/home/hero-classroom.jpg";
 
 const principles = [
   {
