@@ -349,8 +349,8 @@ export default function CurriculumCreator() {
                 className="lg:col-span-5"
               >
                 <img
-                  src={acesAiLogo}
-                  alt="ACES Center for Artificial Intelligence"
+                  src={logoSrc}
+                  alt={logoAlt || "ACES Center for Artificial Intelligence"}
                   className="w-32 h-32 mb-6"
                   width={256}
                   height={256}
@@ -404,8 +404,8 @@ export default function CurriculumCreator() {
                 <div className="relative">
                   <div className="rounded-2xl overflow-hidden border border-border shadow-xl bg-white">
                     <img
-                      src={setupImage}
-                      alt="ACES Curriculum Creator — Course Set Up screen"
+                      src={setupSrc}
+                      alt={setupAlt || "ACES Curriculum Creator — Course Set Up screen"}
                       className="w-full h-auto"
                       loading="eager"
                       width={1920}
@@ -465,8 +465,8 @@ export default function CurriculumCreator() {
               <div>
                 <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md">
                   <img
-                    src={unitsImage}
-                    alt="ACES Curriculum Creator — Units (UbD) screen"
+                    src={unitsSrc}
+                    alt={unitsAlt || "ACES Curriculum Creator — Units (UbD) screen"}
                     className="w-full h-auto"
                     loading="lazy"
                     width={1920}
@@ -485,8 +485,8 @@ export default function CurriculumCreator() {
               <div>
                 <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md">
                   <img
-                    src={auditImage}
-                    alt="ACES Curriculum Creator — Three-Framework Audit screen"
+                    src={auditSrc}
+                    alt={auditAlt || "ACES Curriculum Creator — Three-Framework Audit screen"}
                     className="w-full h-auto"
                     loading="lazy"
                     width={1920}
