@@ -17,9 +17,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/home/ai-hero-classroom.jpg";
-import expectImg from "@/assets/home/partner-ballroom.jpg";
-import supportImg from "@/assets/home/hero-classroom.jpg";
+import heroImg from "@/assets/arc/arc-learning.jpg";
+import expectImg from "@/assets/arc/arc-team.jpg";
+import supportImg from "@/assets/arc/arc-learning.jpg";
 
 const pathway = [
   { step: "01", icon: TrendingUp, title: "Explore", body: "Understand the pathway, eligibility expectations, and fit." },
