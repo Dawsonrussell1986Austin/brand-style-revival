@@ -523,9 +523,6 @@ const Events = () => {
             </div>
             <div className="bg-white rounded-2xl border border-border p-6 shadow-sm">
               <h3 className="font-heading font-bold text-aces-navy text-lg mb-2">Upcoming at a glance</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Workshop listings are designed as scannable cards with clear dates, format, location, and registration calls to action.
-              </p>
               <ClipboardCheck className="w-8 h-8 text-aces-green" />
             </div>
           </div>
@@ -539,9 +536,6 @@ const Events = () => {
             <h2 className="font-heading font-bold text-3xl md:text-4xl text-aces-navy mb-2">
               Featured event listings
             </h2>
-            <p className="text-base text-muted-foreground max-w-2xl">
-              A clean card system supports workshops, series, seminars, and district-facing learning opportunities.
-            </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">
@@ -612,9 +606,6 @@ const Events = () => {
             <div className="space-y-6">
               <div className="bg-white rounded-2xl border border-border p-6 shadow-sm">
                 <h3 className="font-heading font-bold text-aces-navy text-lg mb-2">Calendar view</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  A compact calendar pattern helps visitors see event rhythm without crowding the page.
-                </p>
                 <MiniCalendar events={resolvedUpcoming} currentMonth={currentMonth} onMonthChange={setCurrentMonth} />
               </div>
               <div className="bg-white rounded-2xl border border-border p-6 shadow-sm">
