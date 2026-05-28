@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { useEvents } from "@/hooks/useEvents";
-import heroEvents from "@/assets/home/about-team.png";
+import heroEvents from "@/assets/home/events-hero.jpg";
 import ctaImg from "@/assets/home/partner-ballroom.jpg";
 import imgAi from "@/assets/home/featured-ai.jpg";
 import imgPlay from "@/assets/home/featured-play.jpg";
