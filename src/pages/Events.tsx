@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { useEvents } from "@/hooks/useEvents";
+import { useImage } from "@/hooks/useSiteContent";
 import heroEvents from "@/assets/home/events-hero.jpg";
 import ctaImg from "@/assets/home/partner-ballroom.jpg";
 import imgAi from "@/assets/home/featured-ai.jpg";
@@ -389,6 +390,8 @@ const Events = () => {
   const [viewMode, setViewMode] = useState<"list" | "month">("list");
   const [currentMonth, setCurrentMonth] = useState(new Date(2026, 0, 1));
   const { data: dbEvents } = useEvents();
+  const { imageUrl: heroEventsSrc, altText: heroEventsAlt } = useImage("events", "hero", "hero_image", heroEvents);
+  const { imageUrl: ctaImgSrc, altText: ctaImgAlt } = useImage("events", "cta", "image", ctaImg);
 
   // Use DB events if available, otherwise fall back to hardcoded
   const resolvedEvents: Event[] = useMemo(() => {
