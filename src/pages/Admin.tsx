@@ -79,6 +79,18 @@ import fallbackForumsHero from "@/assets/home/featured-rigor.jpg";
 import fallbackForumsFlow from "@/assets/home/partner-ballroom.jpg";
 import fallbackForumsPhoto1 from "@/assets/home/events-hero.jpg";
 import fallbackForumsPhoto2 from "@/assets/home/hero-classroom.jpg";
+import fallbackAboutHero from "@/assets/home/about-team.png";
+import fallbackAboutPartner from "@/assets/home/partner-ballroom.jpg";
+import fallbackArcHero from "@/assets/arc/arc-learning.jpg";
+import fallbackArcExpect from "@/assets/arc/arc-team.jpg";
+import fallbackEventsHero from "@/assets/home/events-hero.jpg";
+import fallbackEventsCta from "@/assets/home/partner-ballroom.jpg";
+import fallbackCFAIHero from "@/assets/home/ai-hero-classroom.jpg";
+import fallbackCFAIPathway from "@/assets/home/hero-classroom.jpg";
+import fallbackCurriculumLogo from "@/assets/aces-ai-logo.png";
+import fallbackCurriculumSetup from "@/assets/curriculum-setup.png";
+import fallbackCurriculumUnits from "@/assets/curriculum-units.png";
+import fallbackCurriculumAudit from "@/assets/curriculum-audit.png";
 
 interface ContentItem {
   id: string;
@@ -108,6 +120,9 @@ const pageRoutes: Record<string, string> = {
   events: "/events",
   resources: "/resources",
   "ai-center": "/ai-center",
+  "center-for-ai-services": "/center-for-ai-services",
+  "curriculum-creator": "/curriculum-creator",
+  arc: "/arc",
   "ai-ready-schools": "/center-for-ai-services/ai-ready-schools",
   "innovative-tools": "/center-for-ai-services/innovative-tools",
   "research-ethics": "/center-for-ai-services/research-ethics",
@@ -122,6 +137,9 @@ const pageLabels: Record<string, string> = {
   events: "Events",
   resources: "Resources",
   "ai-center": "AI Center",
+  "center-for-ai-services": "Center for AI Services",
+  "curriculum-creator": "Curriculum Creator",
+  arc: "ARC (Alternate Routes)",
   "ai-ready-schools": "AI-Ready Schools",
   "innovative-tools": "Innovative Tools",
   "research-ethics": "Research & Ethics",
@@ -130,6 +148,15 @@ const pageLabels: Record<string, string> = {
 
 const sectionLabels: Record<string, string> = {
   hero: "Hero Section",
+  header: "Header / Logo",
+  footer: "Footer / Logo",
+  promo: "Promo Banner",
+  news: "News & Insights",
+  team: "Team Members",
+  partner: "Partner Section",
+  expect: "What to Expect",
+  pathway: "Pathway Section",
+  screens: "Product Screens",
   cta: "Call to Action",
   services: "Services",
   testimonials: "Testimonials",
@@ -302,6 +329,8 @@ function ContentField({
 // Image editor field
 // Fallback images map: page/section/key -> static asset path
 const defaultImageMap: Record<string, string> = {
+  "home/header/logo": acesLogo,
+  "home/footer/logo": acesLogo,
   "home/hero/hero_image": fallbackHero,
   "home/professional_learning/teacher_classroom": fallbackTeacher,
   "home/testimonials/testimonial_1": fallbackTest1,
@@ -313,8 +342,20 @@ const defaultImageMap: Record<string, string> = {
   "ai-center/hero/hero_image": fallbackAIHero,
   "ai-center/workshops/workshop_image": fallbackWorkshop,
   "ai-center/certifications/certification_image": fallbackCert,
-  "services/hero/hero_image": fallbackTeacher,
+  "services/hero/hero_image": fallbackCFAIHero,
   "contact/hero/hero_image": fallbackTeacher,
+  "about/hero/hero_image": fallbackAboutHero,
+  "about/partner/image": fallbackAboutPartner,
+  "arc/hero/hero_image": fallbackArcHero,
+  "arc/expect/image": fallbackArcExpect,
+  "events/hero/hero_image": fallbackEventsHero,
+  "events/cta/image": fallbackEventsCta,
+  "center-for-ai-services/hero/hero_image": fallbackCFAIHero,
+  "center-for-ai-services/pathway/image": fallbackCFAIPathway,
+  "curriculum-creator/header/logo": fallbackCurriculumLogo,
+  "curriculum-creator/hero/setup_image": fallbackCurriculumSetup,
+  "curriculum-creator/screens/units_image": fallbackCurriculumUnits,
+  "curriculum-creator/screens/audit_image": fallbackCurriculumAudit,
   "about/team/michelle_gohagon": fallbackMichelle,
   "about/team/rosaria_giannetti": fallbackRosaria,
   "about/team/jessica_white": fallbackJessica,
