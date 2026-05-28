@@ -3,10 +3,13 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Users, Target, Lightbulb, Heart, Mail, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Users, Target, Lightbulb, Heart, Mail, X, Compass, Handshake, TrendingUp, Sparkles, Ear, PenTool, LifeBuoy, RefreshCw } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useImage } from "@/hooks/useSiteContent";
+import heroAbout from "@/assets/home/hero-classroom.jpg";
+import partnerImg from "@/assets/home/featured-play.jpg";
 
 // Team headshot imports (fallbacks)
 import michelleGohagonFallback from "@/assets/team/michelle-gohagon.png";
@@ -290,93 +293,213 @@ const About = () => {
       />
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
-          <div className="absolute inset-0 dot-pattern" />
-          <div className="absolute top-32 right-[10%] w-72 h-72 rounded-full bg-accent/5 blur-3xl" />
-          <div className="absolute bottom-20 left-[5%] w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
-          
-          <div className="container mx-auto px-4 relative">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-4xl mx-auto text-center"
-            >
-              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-base font-semibold mb-6">
-                Our Story
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
-                About Us
-              </h1>
-              <p className="text-lg font-medium text-muted-foreground max-w-2xl mx-auto">
-                Supporting educators and districts across Connecticut and beyond since 1992.
-              </p>
-            </motion.div>
+        {/* Hero Section - Split layout */}
+        <section className="relative pt-24 overflow-hidden">
+          <div className="grid lg:grid-cols-2">
+            {/* Left: Blue panel */}
+            <div className="relative bg-primary text-primary-foreground px-6 md:px-12 lg:px-16 py-16 lg:py-24">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="max-w-xl ml-auto lg:mr-8"
+              >
+                <span className="block text-xs font-bold tracking-[0.2em] text-primary-foreground/80 mb-5">
+                  ABOUT ACES PDSI
+                </span>
+                <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-5">
+                  About ACES PDSI
+                </h1>
+                <p className="font-heading font-semibold text-xl md:text-2xl leading-snug mb-6 text-primary-foreground">
+                  Grounding in Pedagogy.<br />Growing in Innovation.
+                </p>
+                <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed mb-8">
+                  Professional learning should feel practical, human, and responsive to the schools it serves. This page introduces the mission, values, and partnership approach behind ACES PDSI.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold transition-all shadow-lg"
+                  >
+                    View Services
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-foreground hover:bg-foreground/90 text-background font-semibold transition-all shadow-lg"
+                  >
+                    Contact Us
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right: Photo card on light bg */}
+            <div className="relative bg-secondary/40 px-6 md:px-12 py-16 lg:py-24 flex items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="w-full max-w-xl bg-card rounded-2xl shadow-xl p-3"
+              >
+                <img
+                  src={heroAbout}
+                  alt="ACES PDSI team gathered together"
+                  className="w-full h-auto aspect-[4/3] object-cover rounded-xl"
+                />
+              </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* Main Content Section */}
+        {/* Our Mission */}
+        <section className="py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto bg-card rounded-3xl border border-border shadow-sm p-8 md:p-12">
+              <div className="grid md:grid-cols-3 gap-10">
+                <div className="md:col-span-2">
+                  <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-5">
+                    Our Mission
+                  </h2>
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                    ACES Professional Development and School Improvement (PDSI) seeks to deliver high-quality, responsive, equity-centered professional learning that empowers educators to innovate and foster the holistic growth of students. Through partnerships with educational leaders and communities, we aim to build joyful, data-informed, forward-thinking environments that ensure equitable outcomes and learning experiences where educators thrive so that their learners can achieve.
+                  </p>
+                </div>
+                <aside className="bg-secondary/50 rounded-2xl p-6">
+                  <h3 className="font-heading font-bold text-xl text-foreground mb-3">
+                    Grounded practice.<br />Thoughtful innovation.
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+                    The About page should feel like a trusted educator partner: calm, capable, inclusive, and connected to real professional learning.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Partnership", "Equity", "Data-informed", "Educator thriving"].map((tag) => (
+                      <span key={tag} className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground bg-card border border-border rounded-full px-3 py-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-aces-green" />
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* What Guides the Work */}
+        <section className="py-16 md:py-20 bg-secondary/40">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-3">
+                What Guides the Work
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mb-10">
+                The visual system should stay grounded in real educator work while making the innovation layer feel useful and humane.
+              </p>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {[
+                  { icon: Compass, title: "Equity-centered learning", desc: "Professional learning that keeps equitable outcomes and student growth in view." },
+                  { icon: Handshake, title: "Responsive partnership", desc: "Support shaped around real district needs, constraints, and goals." },
+                  { icon: TrendingUp, title: "Practical innovation", desc: "New tools and ideas tested through classroom practice, reflection, and care." },
+                  { icon: Sparkles, title: "Educator thriving", desc: "Learning conditions where educators feel supported, capable, and ready to lead." },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="bg-card rounded-2xl border border-border p-6 shadow-sm"
+                  >
+                    <div className="w-12 h-12 rounded-full border-2 border-aces-green/40 flex items-center justify-center mb-5">
+                      <item.icon className="w-5 h-5 text-aces-green" />
+                    </div>
+                    <h3 className="font-heading font-bold text-lg text-foreground mb-3 leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                      {item.desc}
+                    </p>
+                    <div className="w-10 h-0.5 bg-aces-green rounded-full" />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How We Partner With Schools */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="prose prose-lg max-w-none"
+                className="bg-card rounded-3xl p-3 shadow-lg"
               >
-                <div className="space-y-8">
-                  <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
-                    <p className="text-foreground leading-relaxed text-lg">
-                      The ACES Professional Development & School Improvement (PDSI) supports schools, districts, and educational organizations across the greater New Haven area, South Central Region, and beyond through research-based professional learning, coaching, and school improvement services. Our work includes curriculum and instructional support, leadership development, school climate and restorative practices, play-based and developmentally appropriate learning, and data-informed planning and implementation. PDSI partners closely with educators and leaders to design learning experiences and improvement efforts that are practical, sustainable, and responsive to local needs.
-                    </p>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl gradient-aces flex items-center justify-center flex-shrink-0">
-                        <Lightbulb className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-heading font-bold text-foreground mb-3">The Center for AI</h3>
-                        <p className="text-muted-foreground text-base font-medium leading-relaxed">
-                          As this work expanded, particularly at the intersection of leadership, instructional design, systems improvement, and innovation, it led to the development of the ACES Center for Artificial Intelligence. The Center for AI builds on PDSI's systems-oriented approach by supporting districts in understanding and applying artificial intelligence through leadership readiness, ethical use, instructional design, and organizational decision-making. Services include role-specific professional learning, strategic planning, policy guidance, and support for integrating AI in ways that align with instructional goals and district values.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl gradient-aces flex items-center justify-center flex-shrink-0">
-                        <Users className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-heading font-bold text-foreground mb-3">Collaborative Partnership</h3>
-                        <p className="text-muted-foreground text-base font-medium leading-relaxed">
-                          Today, PDSI and the ACES Center for AI work collaboratively and in partnership to support educators, leaders, and districts. Together, we offer integrated services that connect instructional improvement, school climate, data use, and emerging technologies helping organizations move beyond isolated initiatives toward coherent, aligned systems. While rooted in South Central Connecticut, this collaborative work is growing beyond the region and increasingly supporting organizations nationwide.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl gradient-aces flex items-center justify-center flex-shrink-0">
-                        <Heart className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-heading font-bold text-foreground mb-3">Our Mission</h3>
-                        <p className="text-muted-foreground text-base font-medium leading-relaxed">
-                          Grounded in equity and driven by impact, our work helps schools move from planning to practice, supporting educators in creating learning environments where all students can thrive academically, socially, and emotionally.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={partnerImg}
+                  alt="Educators collaborating in a professional learning session"
+                  className="w-full aspect-[4/3] object-cover rounded-2xl"
+                />
               </motion.div>
+
+              <div>
+                <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+                  How We Partner With Schools
+                </h2>
+                <p className="text-muted-foreground text-base md:text-lg mb-8 leading-relaxed">
+                  ACES PDSI work should read as a practical pathway: listen carefully, design with context, support implementation, and refine through evidence.
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { n: "01", title: "Listen", desc: "Clarify needs, goals, learner realities, and district context." },
+                    { n: "02", title: "Design", desc: "Shape professional learning, technical assistance, and resources around the work." },
+                    { n: "03", title: "Support", desc: "Coach, model, facilitate, and help teams apply ideas in real settings." },
+                    { n: "04", title: "Refine", desc: "Use feedback, data, and reflection to adjust and move forward." },
+                  ].map((step) => (
+                    <div key={step.n} className="bg-secondary/50 rounded-2xl p-5">
+                      <div className="flex items-baseline gap-3 mb-2">
+                        <span className="text-sm font-bold text-aces-green">{step.n}</span>
+                        <h3 className="font-heading font-bold text-lg text-foreground">{step.title}</h3>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Banner */}
+        <section className="relative bg-primary text-primary-foreground overflow-hidden">
+          <div className="container mx-auto px-4 py-14 md:py-16">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 max-w-6xl mx-auto">
+              <div className="max-w-2xl">
+                <h2 className="font-heading font-bold text-2xl md:text-3xl mb-2 leading-tight">
+                  Ready to build the next phase of professional learning?
+                </h2>
+                <p className="text-primary-foreground/85 text-sm md:text-base">
+                  Partner with ACES PDSI to design learning that fits your district's reality and ambitions.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 flex-shrink-0">
+                <Link
+                  to="/services"
+                  className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold transition-all shadow-lg"
+                >
+                  PDSI Services
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-background hover:bg-background/90 text-foreground font-semibold transition-all shadow-lg"
+                >
+                  Contact
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -463,63 +586,6 @@ const About = () => {
           </section>
         )}
 
-        {/* Values Section */}
-        <section className="py-16 md:py-24 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-                What Guides Us
-              </h2>
-              <p className="text-muted-foreground text-lg font-medium max-w-2xl mx-auto">
-                Our core principles shape everything we do.
-              </p>
-            </motion.div>
-
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-              {[
-                {
-                  icon: Target,
-                  title: "Practical & Sustainable",
-                  description: "We design learning experiences and improvement efforts that are responsive to local needs and built to last."
-                },
-                {
-                  icon: Users,
-                  title: "Partnership-Driven",
-                  description: "We work closely with educators and leaders, building collaborative relationships that drive meaningful change."
-                },
-                {
-                  icon: Heart,
-                  title: "Equity-Centered",
-                  description: "Our work is grounded in equity, ensuring all students can thrive academically, socially, and emotionally."
-                }
-              ].map((value, index) => (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-background rounded-2xl p-8 border border-border text-center"
-                >
-                  <div className="w-14 h-14 rounded-xl gradient-aces flex items-center justify-center mx-auto mb-5">
-                    <value.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-xl font-heading font-bold text-foreground mb-3">
-                    {value.title}
-                  </h3>
-                  <p className="text-muted-foreground text-base font-medium">
-                    {value.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
       
