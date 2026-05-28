@@ -1856,6 +1856,8 @@ export default function Admin() {
               )}
             </div>
           </div>
+        ) : activeView === "seo" ? (
+          <SeoAeoPanel />
         ) : (
           <>
         {/* Preview Panel */}
