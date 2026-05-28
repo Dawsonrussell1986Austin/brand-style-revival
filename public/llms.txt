@@ -1,0 +1,20 @@
+# ACES PDSI
+
+> Professional Development & School Improvement from ACES — supporting K-12 educators with AI literacy, curriculum, and instructional services.
+
+ACES PDSI partners with schools and districts to deliver professional learning, the Center for AI in Education, custom curriculum tools, and live events that help educators integrate AI and modern instructional practices.
+
+## Pages
+
+- [Home](/): Overview of ACES PDSI services and the Center for AI in Education.
+- [About](/about): Who we are, our mission, and the team behind ACES PDSI.
+- [Services](/services): Professional development, coaching, and school improvement offerings.
+- [Center for AI in Education](/ai-center): AI literacy programs, frameworks, and supports for schools.
+- [Events](/events): Upcoming workshops, institutes, and convenings for educators.
+- [Resources](/resources): Free tools, templates, and downloads for teachers and leaders.
+- [Curriculum Creator](/curriculum-creator): AI-powered curriculum design platform for districts.
+- [Contact](/contact): Get in touch with the ACES PDSI team.
+
+## Optional
+
+- [Thank You](/thank-you): Confirmation page shown after form submissions.
