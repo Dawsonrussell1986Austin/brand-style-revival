@@ -42,6 +42,7 @@ import {
   Copy,
   Key,
   Layout,
+  Globe,
 } from "lucide-react";
 import {
   useAllContent,
@@ -51,6 +52,7 @@ import {
   useUploadImage,
 } from "@/hooks/useSiteContent";
 import { useAllPages, type CmsPage } from "@/hooks/usePages";
+import { useSiteSettings, useUpdateSiteSetting } from "@/hooks/useSiteSettings";
 import acesLogo from "@/assets/aces-logo.webp";
 import fallbackHero from "@/assets/home/hero-classroom.jpg";
 import fallbackTeacher from "@/assets/teacher-classroom.jpg";
