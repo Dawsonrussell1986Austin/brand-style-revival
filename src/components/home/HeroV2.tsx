@@ -9,9 +9,9 @@ export function HeroV2() {
         <img
           src={heroImg}
           alt="ACES educators collaborating in a professional learning session"
-          className="w-full h-full object-cover object-center opacity-40"
+          className="w-full h-full object-cover object-center opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-primary/10" />
       </div>
 
       <div className="relative container mx-auto px-4 py-20 md:py-28 lg:py-32">
