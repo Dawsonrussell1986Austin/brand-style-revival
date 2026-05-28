@@ -72,6 +72,13 @@ import fallbackMary from "@/assets/team/mary-stone.png";
 import fallbackJohn from "@/assets/team/john-gustafson.png";
 import fallbackKim from "@/assets/team/kim-cellini.png";
 import fallbackAlison from "@/assets/team/alison-zanardi.png";
+import fallbackAIReadyHero from "@/assets/home/ai-hero-classroom.jpg";
+import fallbackInnovativeHero from "@/assets/home/featured-ai.jpg";
+import fallbackEthicsHero from "@/assets/home/hero-classroom.jpg";
+import fallbackForumsHero from "@/assets/home/featured-rigor.jpg";
+import fallbackForumsFlow from "@/assets/home/partner-ballroom.jpg";
+import fallbackForumsPhoto1 from "@/assets/home/events-hero.jpg";
+import fallbackForumsPhoto2 from "@/assets/home/hero-classroom.jpg";
 
 interface ContentItem {
   id: string;
@@ -315,6 +322,13 @@ const defaultImageMap: Record<string, string> = {
   "about/team/john_gustafson": fallbackJohn,
   "about/team/kim_cellini": fallbackKim,
   "about/team/alison_zanardi": fallbackAlison,
+  "ai-ready-schools/hero/image": fallbackAIReadyHero,
+  "innovative-tools/hero/image": fallbackInnovativeHero,
+  "research-ethics/hero/image": fallbackEthicsHero,
+  "regional-forums/hero/image": fallbackForumsHero,
+  "regional-forums/flow/image": fallbackForumsFlow,
+  "regional-forums/photos/photo_1_image": fallbackForumsPhoto1,
+  "regional-forums/photos/photo_2_image": fallbackForumsPhoto2,
 };
 
 function getDefaultImage(item: ImageItem): string | null {
