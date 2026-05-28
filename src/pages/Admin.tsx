@@ -871,21 +871,21 @@ export default function Admin() {
   useEffect(() => {
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.user) { navigate("/admin/auth"); return; }
+      if (!session?.user) { navigate("/staff-portal-9472/login"); return; }
       const { data: roles } = await supabase
         .from("user_roles").select("role")
         .eq("user_id", session.user.id).in("role", ["admin", "editor"]);
       if (!roles || roles.length === 0) {
         toast.error("You don't have admin access");
         await supabase.auth.signOut();
-        navigate("/admin/auth");
+        navigate("/staff-portal-9472/login");
         return;
       }
       setUser(session.user);
     };
     checkAuth();
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event) => { if (event === "SIGNED_OUT") navigate("/admin/auth"); }
+      (event) => { if (event === "SIGNED_OUT") navigate("/staff-portal-9472/login"); }
     );
     return () => subscription.unsubscribe();
   }, [navigate]);
@@ -903,7 +903,7 @@ export default function Admin() {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    navigate("/admin/auth");
+    navigate("/staff-portal-9472/login");
   };
 
   const handleSaveContent = async (item: ContentItem, newValue: string) => {
