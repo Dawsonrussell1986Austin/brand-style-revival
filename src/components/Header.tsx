@@ -33,6 +33,7 @@ const baseNavItems: NavItem[] = [
       { label: "AI-Ready Schools", href: "/center-for-ai-services/ai-ready-schools" },
       { label: "Innovative Tools", href: "/center-for-ai-services/innovative-tools" },
       { label: "Research & Ethics", href: "/center-for-ai-services/research-ethics" },
+      { label: "Curriculum Creator", href: "/curriculum-creator" },
     ],
   },
   { label: "ARC", href: "/arc" },

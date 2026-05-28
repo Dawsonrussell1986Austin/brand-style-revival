@@ -16,6 +16,7 @@ const footerLinks = {
   aiCenter: [
     { label: "AI-Ready Schools", href: "/center-for-ai-services/ai-ready-schools" },
     { label: "Innovative Tools", href: "/center-for-ai-services/innovative-tools" },
+    { label: "Curriculum Creator", href: "/curriculum-creator" },
     { label: "Research & Ethics", href: "/center-for-ai-services/research-ethics" },
     { label: "Regional Forums", href: "/pdsi-services/regional-forums" },
   ],
