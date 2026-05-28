@@ -210,6 +210,46 @@ const getCategoryColor = (category?: string) => {
 
 const allEvents = [...upcomingEvents, ...pastEvents];
 
+const MiniCalendar = ({ events, currentMonth, onMonthChange }: { events: Event[]; currentMonth: Date; onMonthChange: (d: Date) => void; }) => {
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const dow = ["S","M","T","W","T","F","S"];
+  const year = currentMonth.getFullYear();
+  const month = currentMonth.getMonth();
+  const first = new Date(year, month, 1).getDay();
+  const days = new Date(year, month + 1, 0).getDate();
+  const cells: (number | null)[] = [];
+  for (let i = 0; i < first; i++) cells.push(null);
+  for (let i = 1; i <= days; i++) cells.push(i);
+  const eventDays = new Set(
+    events
+      .filter(e => e.date.getFullYear() === year && e.date.getMonth() === month)
+      .map(e => e.date.getDate())
+  );
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-3">
+        <button onClick={() => onMonthChange(new Date(year, month - 1, 1))} className="p-1 hover:bg-secondary rounded">
+          <ChevronLeft className="w-4 h-4 text-aces-navy" />
+        </button>
+        <span className="text-sm font-bold text-aces-navy">{monthNames[month]} {year}</span>
+        <button onClick={() => onMonthChange(new Date(year, month + 1, 1))} className="p-1 hover:bg-secondary rounded">
+          <ChevronRight className="w-4 h-4 text-aces-navy" />
+        </button>
+      </div>
+      <div className="grid grid-cols-7 gap-1 text-center">
+        {dow.map((d, i) => (
+          <div key={i} className="text-[11px] font-bold text-muted-foreground py-1">{d}</div>
+        ))}
+        {cells.map((d, i) => (
+          <div key={i} className={`text-xs py-1.5 rounded ${d == null ? "" : eventDays.has(d) ? "bg-aces-green text-white font-bold" : "text-aces-navy"}`}>
+            {d ?? ""}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const MonthCalendarView = ({ events, currentMonth, onMonthChange }: { 
   events: Event[]; 
   currentMonth: Date;
