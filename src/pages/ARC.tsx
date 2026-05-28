@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/accordion";
 import heroImg from "@/assets/arc/arc-learning.jpg";
 import expectImg from "@/assets/arc/arc-team.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 
 const overview = [
   { icon: Compass, title: "Program overview", body: "A structured route to Connecticut educator certification for candidates ready to bring prior experience into the classroom." },
