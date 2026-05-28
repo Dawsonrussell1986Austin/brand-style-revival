@@ -52,7 +52,7 @@ import {
 } from "@/hooks/useSiteContent";
 import { useAllPages, type CmsPage } from "@/hooks/usePages";
 import acesLogo from "@/assets/aces-logo.webp";
-import fallbackHero from "@/assets/hero-educators.jpg";
+import fallbackHero from "@/assets/home/hero-classroom.jpg";
 import fallbackTeacher from "@/assets/teacher-classroom.jpg";
 import fallbackTest1 from "@/assets/testimonial-1.jpg";
 import fallbackTest2 from "@/assets/testimonial-2.jpg";
@@ -313,7 +313,8 @@ const defaultImageMap: Record<string, string> = {
   "ai-center/hero/hero_image": fallbackAIHero,
   "ai-center/workshops/workshop_image": fallbackWorkshop,
   "ai-center/certifications/certification_image": fallbackCert,
-  "services/hero/hero_image": fallbackCTA,
+  "services/hero/hero_image": fallbackTeacher,
+  "contact/hero/hero_image": fallbackTeacher,
   "about/team/michelle_gohagon": fallbackMichelle,
   "about/team/rosaria_giannetti": fallbackRosaria,
   "about/team/jessica_white": fallbackJessica,
