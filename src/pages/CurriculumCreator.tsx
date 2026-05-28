@@ -30,6 +30,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { useImage } from "@/hooks/useSiteContent";
 import acesAiLogo from "@/assets/aces-ai-logo.png";
 import setupImage from "@/assets/curriculum-setup.png";
 import unitsImage from "@/assets/curriculum-units.png";
