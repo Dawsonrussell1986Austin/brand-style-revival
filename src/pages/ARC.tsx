@@ -19,7 +19,6 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/arc/arc-learning.jpg";
 import expectImg from "@/assets/arc/arc-team.jpg";
-import supportImg from "@/assets/arc/arc-learning.jpg";
 
 const pathway = [
   { step: "01", icon: TrendingUp, title: "Explore", body: "Understand the pathway, eligibility expectations, and fit." },
@@ -48,15 +47,6 @@ const audiences = [
   { title: "Aspiring educators", body: "A welcoming entry point for people ready to move toward a new step." },
   { title: "Career changers", body: "A structured way to connect prior experience to a future in the classroom." },
   { title: "District leaders", body: "A clear staffing view of how ACES can support educator pathways." },
-];
-
-const contentBlocks = [
-  "Hero headline with full page title",
-  "Four-stage certification pathway",
-  "Cards for mentorship, readiness, and classroom preparation",
-  "Candidate-friendly CTA buttons",
-  "District partner support section",
-  "Contact link that routes visitors to ACES PDSI",
 ];
 
 export default function ARC() {
