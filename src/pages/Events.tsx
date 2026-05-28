@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, MapPin, Calendar, Monitor, Clock, CalendarDays, Users, Building2, ClipboardCheck } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, Calendar, Monitor, Clock, CalendarDays, Users, Building2, ClipboardCheck, BookOpen, HeartHandshake, Compass, Layers, FileText, Calculator, Sparkles, GraduationCap, Zap, ShieldCheck, UserCog, Cpu } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
@@ -490,6 +490,51 @@ const Events = () => {
             >
               <img src={heroEvents} alt="ACES PDSI team gathered together" className="w-full h-full object-cover rounded-xl max-h-[460px]" />
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Browse by theme — 11 categories */}
+      <section className="py-12 md:py-16 bg-secondary/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mb-8">
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-accent">Browse by theme</span>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-aces-navy mt-3 mb-3">Workshop & event categories</h2>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              Explore eleven focus areas across PDSI and the Center for AI Services. Each category groups upcoming and recurring learning opportunities for educators and leaders.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {[
+              { icon: BookOpen, title: "Classroom Foundations" },
+              { icon: HeartHandshake, title: "Restorative Practices" },
+              { icon: Compass, title: "Leadership" },
+              { icon: Layers, title: "MTSS" },
+              { icon: FileText, title: "Literacy" },
+              { icon: Calculator, title: "Math" },
+              { icon: Sparkles, title: "AI Foundations & Literacy" },
+              { icon: GraduationCap, title: "Teaching & Learning with AI" },
+              { icon: Zap, title: "AI Productivity & Efficiency" },
+              { icon: ShieldCheck, title: "AI Leadership Strategy & Impact" },
+              { icon: UserCog, title: "AI Role-Specific" },
+            ].map((cat, i) => (
+              <motion.a
+                key={cat.title}
+                href="#events"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.03 }}
+                className="group bg-card rounded-2xl p-5 border border-border shadow-sm hover:shadow-md hover:border-aces-green/40 transition-all flex items-start gap-3"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/15 transition-colors">
+                  <cat.icon className="w-5 h-5 text-primary group-hover:text-accent transition-colors" />
+                </div>
+                <div>
+                  <h3 className="font-heading font-bold text-aces-navy text-sm leading-snug">{cat.title}</h3>
+                </div>
+              </motion.a>
+            ))}
           </div>
         </div>
       </section>

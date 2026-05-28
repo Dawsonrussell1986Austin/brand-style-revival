@@ -25,6 +25,9 @@ import CurriculumCreator from "./pages/CurriculumCreator";
 import RegionalForums from "./pages/RegionalForums";
 import CenterForAIServices from "./pages/CenterForAIServices";
 import ARC from "./pages/ARC";
+import AIReadySchools from "./pages/AIReadySchools";
+import InnovativeTools from "./pages/InnovativeTools";
+import ResearchEthics from "./pages/ResearchEthics";
 
 declare global {
   interface Window {
@@ -65,11 +68,15 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
-            <Route path="/ai-center" element={<AICenter />} />
+            <Route path="/ai-center" element={<Navigate to="/center-for-ai-services" replace />} />
             <Route path="/center-for-a-i" element={<Navigate to="/ai-center" replace />} />
             <Route path="/center-for-a-i/*" element={<Navigate to="/ai-center" replace />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/events" element={<Events />} />
+            <Route path="/services" element={<Navigate to="/pdsi-services" replace />} />
+            <Route path="/pdsi-services" element={<Services />} />
+            <Route path="/pdsi-services/regional-forums" element={<RegionalForums />} />
+            <Route path="/events" element={<Navigate to="/workshops-events" replace />} />
+            <Route path="/workshops-events" element={<Events />} />
+            <Route path="/workshops-events/:slug" element={<EventDetail />} />
             <Route path="/events/:slug" element={<EventDetail />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
@@ -80,6 +87,9 @@ const App = () => {
             <Route path="/curriculum-creator" element={<CurriculumCreator />} />
             <Route path="/regional-forums" element={<RegionalForums />} />
             <Route path="/center-for-ai-services" element={<CenterForAIServices />} />
+            <Route path="/center-for-ai-services/ai-ready-schools" element={<AIReadySchools />} />
+            <Route path="/center-for-ai-services/innovative-tools" element={<InnovativeTools />} />
+            <Route path="/center-for-ai-services/research-ethics" element={<ResearchEthics />} />
             <Route path="/arc" element={<ARC />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="/:slug" element={<DynamicPage />} />

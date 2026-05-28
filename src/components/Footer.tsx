@@ -1,25 +1,25 @@
-import { Instagram, Linkedin, Facebook, MapPin, Clock, Phone, Mail } from "lucide-react";
+import { Instagram, Linkedin, Facebook, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import acesLogoFallback from "@/assets/aces-logo.webp";
 import { useImage } from "@/hooks/useSiteContent";
 import { usePublishedPages } from "@/hooks/usePages";
 
 const footerLinks = {
-  services: [
-    { label: "AI Integration", href: "/ai-center" },
-    { label: "Instructional Coaching", href: "/services" },
-    { label: "Curriculum Development", href: "/services" },
-    { label: "School Improvement", href: "/services" },
-    { label: "Leadership Development", href: "/services" },
+  explore: [
+    { label: "About", href: "/about" },
+    { label: "Workshops & Events", href: "/workshops-events" },
+    { label: "PDSI Services", href: "/pdsi-services" },
+    { label: "Center for AI Services", href: "/center-for-ai-services" },
+    { label: "ARC", href: "/arc" },
+    { label: "Educational Resources", href: "/resources" },
   ],
-  resources: [
-    { label: "Resources", href: "/resources" },
-    { label: "Events", href: "/events" },
-    { label: "AI Center", href: "/ai-center" },
+  aiCenter: [
+    { label: "AI-Ready Schools", href: "/center-for-ai-services/ai-ready-schools" },
+    { label: "Innovative Tools", href: "/center-for-ai-services/innovative-tools" },
+    { label: "Research & Ethics", href: "/center-for-ai-services/research-ethics" },
+    { label: "Regional Forums", href: "/pdsi-services/regional-forums" },
   ],
   company: [
-    { label: "About Us", href: "/about" },
-    { label: "Our Team", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
 };
@@ -47,9 +47,17 @@ export function Footer() {
                 className="h-16 w-auto"
               />
             </Link>
-            <p className="text-muted-foreground mb-6 text-base font-medium leading-relaxed">
-              Transforming education through innovation, collaboration, and excellence.
+            <p className="text-muted-foreground mb-4 text-base font-medium leading-relaxed">
+              ACES PDSI partners with educators and school leaders to strengthen teaching, support meaningful learning, and help schools grow with clarity, care, and practical innovation.
             </p>
+            <a
+              href="https://www.aces.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors mb-6"
+            >
+              Part of ACES — aces.org <ExternalLink className="w-3.5 h-3.5" />
+            </a>
             <div className="flex gap-2">
               {socialLinks.map((social) => (
                 <a
@@ -69,9 +77,9 @@ export function Footer() {
           {/* Links */}
           <div className="sm:col-span-2 lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
             <div>
-              <h4 className="font-heading font-bold text-foreground mb-4 text-base">Services</h4>
+              <h4 className="font-heading font-bold text-foreground mb-4 text-base">Explore</h4>
               <ul className="space-y-2.5">
-                {footerLinks.services.map((link) => (
+                {footerLinks.explore.map((link) => (
                   <li key={link.label}>
                     <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
                   </li>
@@ -79,9 +87,9 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="font-heading font-bold text-foreground mb-4 text-base">Resources</h4>
+              <h4 className="font-heading font-bold text-foreground mb-4 text-base">AI Center</h4>
               <ul className="space-y-2.5">
-                {footerLinks.resources.map((link) => (
+                {footerLinks.aiCenter.map((link) => (
                   <li key={link.label}>
                     <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
                   </li>
@@ -124,10 +132,6 @@ export function Footer() {
               <li className="flex items-center gap-3 text-base font-medium">
                 <Mail className="w-4 h-4 text-muted-foreground" />
                 <a href="mailto:info@acespdsi.org" className="text-muted-foreground hover:text-foreground transition-colors">info@acespdsi.org</a>
-              </li>
-              <li className="flex items-center gap-3 text-muted-foreground text-base font-medium">
-                <Clock className="w-4 h-4" />
-                Mon–Fri: 8:00 AM – 4:30 PM
               </li>
             </ul>
           </div>
