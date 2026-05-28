@@ -314,6 +314,10 @@ const principles = [
 ];
 
 export default function CurriculumCreator() {
+  const { imageUrl: logoSrc, altText: logoAlt } = useImage("curriculum-creator", "header", "logo", acesAiLogo);
+  const { imageUrl: setupSrc, altText: setupAlt } = useImage("curriculum-creator", "hero", "setup_image", setupImage);
+  const { imageUrl: unitsSrc, altText: unitsAlt } = useImage("curriculum-creator", "screens", "units_image", unitsImage);
+  const { imageUrl: auditSrc, altText: auditAlt } = useImage("curriculum-creator", "screens", "audit_image", auditImage);
   // Fire JamLoop "Visits" pixel on landing page view
   useEffect(() => {
     trackPixel(PIXELS.visits);
