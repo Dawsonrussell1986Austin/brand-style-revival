@@ -19,7 +19,6 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/arc/arc-learning.jpg";
 import expectImg from "@/assets/arc/arc-team.jpg";
-import supportImg from "@/assets/arc/arc-learning.jpg";
 
 const pathway = [
   { step: "01", icon: TrendingUp, title: "Explore", body: "Understand the pathway, eligibility expectations, and fit." },
@@ -50,15 +49,6 @@ const audiences = [
   { title: "District leaders", body: "A clear staffing view of how ACES can support educator pathways." },
 ];
 
-const contentBlocks = [
-  "Hero headline with full page title",
-  "Four-stage certification pathway",
-  "Cards for mentorship, readiness, and classroom preparation",
-  "Candidate-friendly CTA buttons",
-  "District partner support section",
-  "Contact link that routes visitors to ACES PDSI",
-];
-
 export default function ARC() {
   return (
     <div className="min-h-screen bg-background">
@@ -78,9 +68,6 @@ export default function ARC() {
               transition={{ duration: 0.5 }}
               className="bg-gradient-to-br from-primary to-primary/80 rounded-3xl p-10 md:p-12 text-primary-foreground flex flex-col justify-center"
             >
-              <div className="text-xs font-bold tracking-[0.2em] uppercase text-accent mb-5">
-                ARC Page
-              </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-5">
                 Alternate Routes to Certification (ARC)
               </h1>
@@ -102,10 +89,7 @@ export default function ARC() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="bg-card rounded-3xl shadow-xl border border-border p-4 flex flex-col"
             >
-              <img src={heroImg} alt="Certification preparation in real learning spaces" className="w-full flex-1 object-cover rounded-2xl aspect-[4/3]" />
-              <p className="text-sm font-medium text-muted-foreground mt-4 px-2 pb-1">
-                Certification preparation in real learning spaces.
-              </p>
+              <img src={heroImg} alt="Educators collaborating in a school library" className="w-full flex-1 object-cover rounded-2xl aspect-[4/3]" />
             </motion.div>
           </div>
         </div>
@@ -158,7 +142,7 @@ export default function ARC() {
               Built for aspiring educators
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              This page can help visitors quickly understand the supports that make the certification pathway feel structured, practical, and human.
+              Supports that make the certification pathway feel structured, practical, and human.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -193,9 +177,6 @@ export default function ARC() {
               <div className="rounded-3xl overflow-hidden shadow-xl bg-card p-3">
                 <img src={expectImg} alt="ACES educators and partners" className="w-full aspect-[4/3] object-cover rounded-2xl" />
               </div>
-              <p className="text-xs font-medium text-muted-foreground mt-3 px-2">
-                Real ACES educators and partners, pictured as source photography.
-              </p>
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-5 leading-tight">
@@ -230,9 +211,9 @@ export default function ARC() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-3 leading-tight">
               Made for candidates and district partners
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Use this section to show that ARC is a practical, guided option. The cards can become live WordPress blocks, while the photography stays as approved source imagery.
-            </p>
+              <p className="text-muted-foreground leading-relaxed">
+                ARC is a practical, guided option for candidates, career changers, and district partners.
+              </p>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
             {audiences.map((a, i) => (
@@ -258,37 +239,8 @@ export default function ARC() {
         </div>
       </section>
 
-      {/* Content blocks */}
-      <section className="pb-16 md:pb-20">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-6 items-stretch">
-            <div className="rounded-3xl overflow-hidden shadow-md bg-card p-3 flex flex-col">
-              <img src={supportImg} alt="Facilitator-led learning supports the ARC pathway" className="w-full flex-1 object-cover rounded-2xl aspect-[4/3]" />
-              <p className="text-xs font-medium text-muted-foreground mt-3 px-2 pb-1">
-                Facilitator-led learning supports the ARC pathway.
-              </p>
-            </div>
-            <div className="bg-card rounded-3xl p-8 md:p-10 border border-border shadow-md">
-              <h3 className="text-xl md:text-2xl font-heading font-bold text-foreground mb-6">
-                Page content blocks to build in WordPress
-              </h3>
-              <ul className="space-y-4">
-                {contentBlocks.map((b) => (
-                  <li key={b} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-accent flex items-center justify-center mt-0.5">
-                      <Check className="w-3 h-3 text-accent-foreground" />
-                    </div>
-                    <span className="text-foreground">{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="pb-20">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-br from-primary to-primary/80 rounded-3xl p-10 md:p-12 text-primary-foreground flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div className="max-w-2xl">
@@ -296,7 +248,7 @@ export default function ARC() {
                 Ready to begin the ARC pathway?
               </h2>
               <p className="text-primary-foreground/80">
-                Use this page to guide candidates from interest to clear next steps with a calm, supportive experience.
+                Take the next step toward the classroom with a calm, supportive experience.
               </p>
             </div>
             <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-7 flex-shrink-0">
