@@ -368,9 +368,6 @@ const About = () => {
                   <h3 className="font-heading font-bold text-xl text-foreground mb-3">
                     Grounded practice.<br />Thoughtful innovation.
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-                    The About page should feel like a trusted educator partner: calm, capable, inclusive, and connected to real professional learning.
-                  </p>
                   <div className="flex flex-wrap gap-2">
                     {["Partnership", "Equity", "Data-informed", "Educator thriving"].map((tag) => (
                       <span key={tag} className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground bg-card border border-border rounded-full px-3 py-1.5">
