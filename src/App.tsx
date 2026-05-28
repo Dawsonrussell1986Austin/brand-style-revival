@@ -24,6 +24,7 @@ import DynamicPage from "./pages/DynamicPage";
 import CurriculumCreator from "./pages/CurriculumCreator";
 import RegionalForums from "./pages/RegionalForums";
 import CenterForAIServices from "./pages/CenterForAIServices";
+import ARC from "./pages/ARC";
 
 declare global {
   interface Window {
@@ -79,6 +80,7 @@ const App = () => {
             <Route path="/curriculum-creator" element={<CurriculumCreator />} />
             <Route path="/regional-forums" element={<RegionalForums />} />
             <Route path="/center-for-ai-services" element={<CenterForAIServices />} />
+            <Route path="/arc" element={<ARC />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="/:slug" element={<DynamicPage />} />
             <Route path="*" element={<NotFound />} />
