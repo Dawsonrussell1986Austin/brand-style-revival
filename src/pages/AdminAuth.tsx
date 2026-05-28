@@ -27,7 +27,7 @@ export default function AdminAuth() {
         .in("role", ["admin", "editor"]);
       
       if (data && data.length > 0) {
-        navigate("/admin");
+        navigate("/staff-portal-9472");
       }
     };
 
@@ -58,7 +58,7 @@ export default function AdminAuth() {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/admin/auth?reset=true`,
+        redirectTo: `${window.location.origin}/staff-portal-9472/login?reset=true`,
       });
 
       if (error) throw error;
@@ -81,7 +81,7 @@ export default function AdminAuth() {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/admin`,
+            emailRedirectTo: `${window.location.origin}/staff-portal-9472`,
           },
         });
 
@@ -108,7 +108,7 @@ export default function AdminAuth() {
         }
 
         toast.success("Welcome back!");
-        navigate("/admin");
+        navigate("/staff-portal-9472");
       }
     } catch (error: any) {
       toast.error(error.message);
@@ -132,7 +132,7 @@ export default function AdminAuth() {
                 toast.error(error.message);
               } else {
                 toast.success("Password updated successfully! You can now sign in.");
-                window.history.replaceState({}, '', '/admin/auth');
+                window.history.replaceState({}, '', '/staff-portal-9472/login');
               }
             }
           }
