@@ -258,6 +258,8 @@ const About = () => {
   const { imageUrl: johnImg } = useImage("about", "team", "john_gustafson", johnGustafsonFallback);
   const { imageUrl: kimImg } = useImage("about", "team", "kim_cellini", kimCelliniFallback);
   const { imageUrl: alisonImg } = useImage("about", "team", "alison_zanardi", alisonZanardiFallback);
+  const { imageUrl: heroAboutImg, altText: heroAboutAlt } = useImage("about", "hero", "hero_image", heroAbout);
+  const { imageUrl: partnerImage, altText: partnerAlt } = useImage("about", "partner", "image", partnerImg);
 
   // Map CMS images to team members
   const cmsImageMap: Record<string, string> = {
