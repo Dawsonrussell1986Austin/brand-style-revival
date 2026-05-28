@@ -101,7 +101,6 @@ export default function CenterForAIServices() {
       <SEO
         title="Center for AI Services | ACES PDSI"
         description="Responsible AI for real school practice. ACES helps educators and leaders build AI literacy, design workflows, and create tools that keep people, pedagogy, and student growth at the center."
-        canonical="https://www.acespdsi.org/center-for-ai-services"
       />
       <Header />
 
