@@ -350,8 +350,8 @@ const About = () => {
                 className="w-full max-w-xl bg-card rounded-2xl shadow-xl p-3"
               >
                 <img
-                  src={heroAbout}
-                  alt="ACES PDSI team gathered together"
+                  src={heroAboutImg}
+                  alt={heroAboutAlt || "ACES PDSI team gathered together"}
                   className="w-full h-auto aspect-[4/3] object-cover rounded-xl"
                 />
               </motion.div>
@@ -444,8 +444,8 @@ const About = () => {
                 className="bg-card rounded-3xl p-3 shadow-lg"
               >
                 <img
-                  src={partnerImg}
-                  alt="Educators collaborating in a professional learning session"
+                  src={partnerImage}
+                  alt={partnerAlt || "Educators collaborating in a professional learning session"}
                   className="w-full aspect-[4/3] object-cover rounded-2xl"
                 />
               </motion.div>
