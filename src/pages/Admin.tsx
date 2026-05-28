@@ -909,7 +909,8 @@ export default function Admin() {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    navigate("/staff-portal-9472/login");
+    // Re-trigger auto-login by reloading
+    window.location.reload();
   };
 
   const handleSaveContent = async (item: ContentItem, newValue: string) => {
