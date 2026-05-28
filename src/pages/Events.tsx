@@ -1,13 +1,16 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Search, ChevronLeft, ChevronRight, ChevronDown, MapPin, Calendar, Monitor, ArrowRight, CalendarDays, Clock, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { ChevronLeft, ChevronRight, MapPin, Calendar, Monitor, Clock, CalendarDays, Users, Building2, ClipboardCheck } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { useEvents } from "@/hooks/useEvents";
+import heroEvents from "@/assets/home/about-team.png";
+import ctaImg from "@/assets/home/partner-ballroom.jpg";
+import imgAi from "@/assets/home/featured-ai.jpg";
+import imgPlay from "@/assets/home/featured-play.jpg";
+import imgRigor from "@/assets/home/featured-rigor.jpg";
 
 declare global {
   interface Window {
@@ -207,6 +210,46 @@ const getCategoryColor = (category?: string) => {
 
 const allEvents = [...upcomingEvents, ...pastEvents];
 
+const MiniCalendar = ({ events, currentMonth, onMonthChange }: { events: Event[]; currentMonth: Date; onMonthChange: (d: Date) => void; }) => {
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const dow = ["S","M","T","W","T","F","S"];
+  const year = currentMonth.getFullYear();
+  const month = currentMonth.getMonth();
+  const first = new Date(year, month, 1).getDay();
+  const days = new Date(year, month + 1, 0).getDate();
+  const cells: (number | null)[] = [];
+  for (let i = 0; i < first; i++) cells.push(null);
+  for (let i = 1; i <= days; i++) cells.push(i);
+  const eventDays = new Set(
+    events
+      .filter(e => e.date.getFullYear() === year && e.date.getMonth() === month)
+      .map(e => e.date.getDate())
+  );
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-3">
+        <button onClick={() => onMonthChange(new Date(year, month - 1, 1))} className="p-1 hover:bg-secondary rounded">
+          <ChevronLeft className="w-4 h-4 text-aces-navy" />
+        </button>
+        <span className="text-sm font-bold text-aces-navy">{monthNames[month]} {year}</span>
+        <button onClick={() => onMonthChange(new Date(year, month + 1, 1))} className="p-1 hover:bg-secondary rounded">
+          <ChevronRight className="w-4 h-4 text-aces-navy" />
+        </button>
+      </div>
+      <div className="grid grid-cols-7 gap-1 text-center">
+        {dow.map((d, i) => (
+          <div key={i} className="text-[11px] font-bold text-muted-foreground py-1">{d}</div>
+        ))}
+        {cells.map((d, i) => (
+          <div key={i} className={`text-xs py-1.5 rounded ${d == null ? "" : eventDays.has(d) ? "bg-aces-green text-white font-bold" : "text-aces-navy"}`}>
+            {d ?? ""}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const MonthCalendarView = ({ events, currentMonth, onMonthChange }: { 
   events: Event[]; 
   currentMonth: Date;
@@ -341,7 +384,8 @@ const MonthCalendarView = ({ events, currentMonth, onMonthChange }: {
 };
 
 const Events = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  // mini calendar inline helper below
+  const [activeCategory, setActiveCategory] = useState<string>("All");
   const [viewMode, setViewMode] = useState<"list" | "month">("list");
   const [currentMonth, setCurrentMonth] = useState(new Date(2026, 0, 1));
   const { data: dbEvents } = useEvents();
@@ -366,8 +410,10 @@ const Events = () => {
   }, [dbEvents]);
 
   const now = new Date();
-  const resolvedUpcoming = resolvedEvents.filter(e => e.date >= now).sort((a, b) => a.date.getTime() - b.date.getTime());
-  const resolvedPast = resolvedEvents.filter(e => e.date < now).sort((a, b) => b.date.getTime() - a.date.getTime());
+  const allUpcoming = resolvedEvents.filter(e => e.date >= now).sort((a, b) => a.date.getTime() - b.date.getTime());
+  const categories = ["All", ...Array.from(new Set(resolvedEvents.map(e => e.category).filter(Boolean) as string[]))];
+  const resolvedUpcoming = activeCategory === "All" ? allUpcoming : allUpcoming.filter(e => e.category === activeCategory);
+  const eventImages = [imgAi, imgPlay, imgRigor];
 
   // AdCloudIQ tracking pixel
   useEffect(() => {
@@ -409,367 +455,231 @@ const Events = () => {
         }}
       />
       <Header />
-      
-      {/* Hero Section */}
-      <section className="relative pt-20 min-h-[50vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 section-brand" />
-        
-        {/* Decorative elements */}
-        <div className="absolute top-1/3 right-10 w-72 h-72 bg-aces-green/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-aces-blue/20 rounded-full blur-3xl" />
-        <div className="absolute inset-0 dot-pattern opacity-10" />
-        
-        <div className="relative container mx-auto px-4 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+
+      {/* Hero — split panel */}
+      <section className="pt-24 bg-background">
+        <div className="container mx-auto px-4 py-10 md:py-14">
+          <div className="grid lg:grid-cols-2 gap-6 items-stretch">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 flex flex-col justify-center"
             >
-              <CalendarDays className="w-4 h-4 text-aces-green" />
-              <span className="text-base text-white/90 font-semibold">Professional Development Events</span>
+              <span className="text-xs font-bold tracking-[0.2em] text-accent mb-5">WORKSHOPS & EVENTS</span>
+              <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-5">
+                Learning that feels practical from the first session.
+              </h1>
+              <p className="text-base md:text-lg text-primary-foreground/85 leading-relaxed mb-7 max-w-lg">
+                Upcoming ACES PDSI workshops and events help educators connect new ideas to real classroom practice. Find learning opportunities that are clear, useful, and built for school teams.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a href="#events" className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-sm transition-all shadow-lg">
+                  View Events
+                </a>
+                <Link to="/contact" className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/30 text-primary-foreground font-semibold text-sm transition-all">
+                  Request Support
+                </Link>
+              </div>
             </motion.div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6">
-              Upcoming{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-aces-green to-white">
-                Events
-              </span>
-            </h1>
-            
-            <p className="text-lg md:text-xl font-medium text-white/90 leading-relaxed max-w-2xl mx-auto">
-              Join us for professional development workshops, certification courses, and community learning opportunities designed for educators.
-            </p>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-secondary rounded-2xl p-4 md:p-6 flex items-center justify-center min-h-[300px]"
+            >
+              <img src={heroEvents} alt="ACES PDSI team gathered together" className="w-full h-full object-cover rounded-xl max-h-[460px]" />
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Quick Stats */}
-      <section className="py-8 bg-white border-b border-border relative -mt-8">
+      {/* Intro + side card with filter pills */}
+      <section className="py-12 md:py-16 bg-background" id="events">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              <h2 className="font-heading font-bold text-3xl md:text-4xl text-aces-navy mb-3">
+                Find your next learning opportunity
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+                Use this page to scan upcoming workshops, trainings, and professional learning events. Filter by focus area to find what fits your team.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all ${
+                      activeCategory === cat
+                        ? "bg-aces-green text-white border-aces-green"
+                        : "bg-white text-aces-navy border-border hover:border-aces-green"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl border border-border p-6 shadow-sm">
+              <h3 className="font-heading font-bold text-aces-navy text-lg mb-2">Upcoming at a glance</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                Workshop listings are designed as scannable cards with clear dates, format, location, and registration calls to action.
+              </p>
+              <ClipboardCheck className="w-8 h-8 text-aces-green" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured event listings + Calendar sidebar */}
+      <section className="py-12 md:py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="mb-8">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-aces-navy mb-2">
+              Featured event listings
+            </h2>
+            <p className="text-base text-muted-foreground max-w-2xl">
+              A clean card system supports workshops, series, seminars, and district-facing learning opportunities.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* Event list 2/3 */}
+            <div className="lg:col-span-2 space-y-5">
+              {resolvedUpcoming.length === 0 && (
+                <div className="bg-white rounded-2xl border border-border p-8 text-center text-muted-foreground">
+                  No events match this filter yet — check back soon.
+                </div>
+              )}
+              {resolvedUpcoming.map((event, index) => {
+                const dateInfo = formatDate(event.date);
+                const img = eventImages[index % eventImages.length];
+                return (
+                  <motion.article
+                    key={event.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className="group bg-white rounded-2xl border border-border hover:border-aces-green/50 shadow-sm hover:shadow-md transition-all overflow-hidden"
+                  >
+                    <div className="grid grid-cols-[80px_1fr] md:grid-cols-[90px_140px_1fr_auto] gap-4 p-4 md:p-5 items-center">
+                      {/* Date chip */}
+                      <div className="bg-secondary rounded-xl p-3 flex flex-col items-center justify-center text-center min-h-[80px]">
+                        <span className="text-xs font-bold tracking-wider text-aces-navy/70">{dateInfo.month}</span>
+                        <span className="text-2xl md:text-3xl font-bold text-aces-navy leading-none mt-1">{dateInfo.day}</span>
+                      </div>
+                      {/* Image */}
+                      <div className="hidden md:block">
+                        <img src={img} alt="" className="w-full h-[100px] object-cover rounded-lg" />
+                      </div>
+                      {/* Details */}
+                      <div className="col-span-2 md:col-span-1 space-y-1.5">
+                        {event.category && (
+                          <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-aces-green">
+                            {event.category}
+                          </span>
+                        )}
+                        <h3 className="font-heading text-lg md:text-xl font-bold text-aces-navy group-hover:text-aces-blue transition-colors leading-snug">
+                          {event.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground line-clamp-2">{event.description}</p>
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground pt-1">
+                          <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{formatTime(event.date)} – {event.endTime}</span>
+                          <span className="flex items-center gap-1.5">
+                            {event.type === "virtual" ? <Monitor className="w-3.5 h-3.5" /> : <MapPin className="w-3.5 h-3.5" />}
+                            {event.location}
+                          </span>
+                        </div>
+                      </div>
+                      {/* CTA */}
+                      <div className="col-span-2 md:col-span-1 flex md:justify-end">
+                        <Link
+                          to={`/events/${event.slug}`}
+                          className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-aces-green hover:bg-aces-green/90 text-white font-semibold text-sm transition-all"
+                        >
+                          Register
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+
+            {/* Calendar sidebar 1/3 */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-2xl border border-border p-6 shadow-sm">
+                <h3 className="font-heading font-bold text-aces-navy text-lg mb-2">Calendar view</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  A compact calendar pattern helps visitors see event rhythm without crowding the page.
+                </p>
+                <MiniCalendar events={resolvedUpcoming} currentMonth={currentMonth} onMonthChange={setCurrentMonth} />
+              </div>
+              <div className="bg-white rounded-2xl border border-border p-6 shadow-sm">
+                <ClipboardCheck className="w-8 h-8 text-aces-green mb-3" />
+                <h3 className="font-heading font-bold text-aces-navy text-lg mb-2">Registration pattern</h3>
+                <p className="text-sm text-muted-foreground">
+                  Use one clear action per card. Keep buttons green and large enough for touch screens.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ways to learn */}
+      <section className="py-16 md:py-20 bg-secondary/40">
+        <div className="container mx-auto px-4">
+          <div className="mb-10 max-w-2xl">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-aces-navy mb-3">
+              Ways to learn with ACES PDSI
+            </h2>
+            <p className="text-base text-muted-foreground">
+              We support one-time workshops, multi-session series, coaching labs, and regional convenings.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { icon: CalendarDays, value: "50+", label: "Events Yearly" },
-              { icon: Users, value: "2,000+", label: "Attendees" },
-              { icon: Clock, value: "100+", label: "PD Hours" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + i * 0.1 }}
-                className="text-center py-4"
-              >
-                <stat.icon className="w-6 h-6 text-aces-blue mx-auto mb-2" />
-                <div className="text-2xl font-bold font-heading text-aces-navy">{stat.value}</div>
-                <div className="text-base font-medium text-muted-foreground">{stat.label}</div>
-              </motion.div>
+              { icon: CalendarDays, title: "Workshops", desc: "Focused sessions that turn strong ideas into classroom-ready moves." },
+              { icon: Clock, title: "Learning Series", desc: "Multi-session structures for deeper practice and implementation." },
+              { icon: Users, title: "Coaching Labs", desc: "Guided planning, modeling, reflection, and practical follow-through." },
+              { icon: Building2, title: "District Support", desc: "Custom professional learning designed around local goals." },
+            ].map((item) => (
+              <div key={item.title} className="bg-white rounded-2xl border border-border p-6 hover:shadow-md transition-all">
+                <item.icon className="w-8 h-8 text-aces-green mb-4" />
+                <h3 className="font-heading font-bold text-aces-navy text-lg mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">{item.desc}</p>
+                <div className="w-10 h-0.5 bg-aces-green rounded-full" />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Events Content */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-secondary/30 to-background">
+      {/* CTA card */}
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          {/* Search and Filter Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-2xl shadow-lg border border-border p-6 mb-10"
-          >
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-              <div className="relative flex-1 w-full md:max-w-md">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder="Search for events..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-12 h-12 text-base rounded-xl border-border focus:border-aces-blue"
-                />
-              </div>
-              <div className="flex items-center gap-4">
-                <Button className="gradient-aces text-white font-semibold px-8 h-12 rounded-xl btn-glow">
-                  FIND EVENTS
-                </Button>
-                <div className="hidden md:flex items-center bg-secondary rounded-xl p-1">
-                  <button
-                    onClick={() => setViewMode("list")}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                      viewMode === "list"
-                        ? "bg-white text-aces-navy shadow-sm"
-                        : "text-muted-foreground hover:text-aces-navy"
-                    }`}
-                  >
-                    List
-                  </button>
-                  <button
-                    onClick={() => setViewMode("month")}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                      viewMode === "month"
-                        ? "bg-white text-aces-navy shadow-sm"
-                        : "text-muted-foreground hover:text-aces-navy"
-                    }`}
-                  >
-                    Month
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Navigation Controls - Only show for list view */}
-          {viewMode === "list" && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex items-center gap-4 mb-10"
-            >
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-aces-navy">
-                Upcoming Events
-              </h2>
-            </motion.div>
-          )}
-
-          {/* Month Calendar View */}
-          {viewMode === "month" && (
-            <MonthCalendarView 
-              events={resolvedEvents} 
-              currentMonth={currentMonth}
-              onMonthChange={setCurrentMonth}
-            />
-          )}
-
-          {/* Upcoming Events - List View */}
-          {viewMode === "list" && (
-          <div className="grid gap-6 mb-16">
-            {resolvedUpcoming.map((event, index) => {
-              const dateInfo = formatDate(event.date);
-              return (
-                <Link to={`/events/${event.slug}`} key={event.id}>
-                  <motion.article
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    className="group bg-white rounded-2xl border border-border hover:border-aces-green/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="grid grid-cols-1 md:grid-cols-[100px_1fr] lg:grid-cols-[120px_1fr_280px] gap-0">
-                      {/* Date Badge */}
-                      <div className="bg-gradient-to-br from-aces-green to-aces-blue p-4 md:p-6 flex md:flex-col items-center md:justify-center text-center gap-3 md:gap-0">
-                        <span className="text-sm font-medium text-white/80 uppercase tracking-wider">
-                          {dateInfo.month}
-                        </span>
-                        <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-none md:my-1">
-                          {dateInfo.day}
-                        </span>
-                        <span className="text-sm text-white/70">{dateInfo.year}</span>
-                      </div>
-
-                      {/* Event Details */}
-                      <div className="p-6 lg:p-8 space-y-4">
-                        <div className="flex flex-wrap items-center gap-3">
-                          {event.category && (
-                            <span className={`text-sm font-bold px-3 py-1 rounded-full ${getCategoryColor(event.category)}`}>
-                              {event.category}
-                            </span>
-                          )}
-                          <div className="flex items-center gap-2 text-base font-medium text-muted-foreground">
-                            <Clock className="w-4 h-4" />
-                            {formatTime(event.date)} - {event.endTime}
-                          </div>
-                        </div>
-                        
-                        <h3 className="font-heading text-xl md:text-2xl font-bold text-aces-navy group-hover:text-aces-blue transition-colors cursor-pointer">
-                          {event.title}
-                        </h3>
-                        
-                        <div className="flex items-start gap-2 text-base font-medium">
-                          {event.type === "virtual" ? (
-                            <div className="flex items-center gap-2 bg-blue-50 text-aces-blue px-3 py-1.5 rounded-lg">
-                              <Monitor className="h-4 w-4" />
-                              <span className="font-semibold">Virtual Event</span>
-                            </div>
-                          ) : (
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                              <MapPin className="h-4 w-4 text-aces-green flex-shrink-0" />
-                              <span>
-                                <span className="font-bold text-aces-navy">{event.location}</span>
-                                {event.address && <span className="font-medium text-muted-foreground"> • {event.address}</span>}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                        
-                        <p className="text-muted-foreground text-base font-medium leading-relaxed line-clamp-2">
-                          {event.description}
-                        </p>
-                        
-                        <motion.div 
-                          className="flex items-center text-aces-green font-semibold text-base pt-2 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                          whileHover={{ x: 5 }}
-                        >
-                          View Event Details <ArrowRight className="ml-2 w-4 h-4" />
-                        </motion.div>
-                      </div>
-
-                      {/* Event Image */}
-                      <div className="hidden lg:block p-4">
-                        <div className="h-full aspect-[4/3] bg-gradient-to-br from-secondary via-aces-green/10 to-aces-blue/10 rounded-xl flex items-center justify-center relative overflow-hidden">
-                          <div className="absolute inset-0 dot-pattern opacity-30" />
-                          <Calendar className="h-16 w-16 text-aces-green/30" />
-                        </div>
-                      </div>
-                    </div>
-                  </motion.article>
+          <div className="bg-white rounded-2xl border border-border p-5 md:p-6 shadow-sm grid md:grid-cols-[260px_1fr] gap-6 items-center">
+            <img src={ctaImg} alt="ACES PDSI learning event" className="w-full h-48 md:h-full object-cover rounded-xl" />
+            <div className="p-2 md:p-4">
+              <h3 className="font-heading font-bold text-2xl md:text-3xl text-aces-navy mb-3 leading-snug">
+                Need a learning plan for your school or district?
+              </h3>
+              <p className="text-base text-muted-foreground mb-5 max-w-xl">
+                ACES PDSI can help teams plan customized professional learning, connect event participation to school goals, and build support that lasts.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link to="/contact" className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-aces-green hover:bg-aces-green/90 text-white font-semibold text-sm transition-all">
+                  Contact PDSI
                 </Link>
-              );
-            })}
+                <Link to="/services" className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-white hover:bg-secondary border border-aces-navy text-aces-navy font-semibold text-sm transition-all">
+                  View Services
+                </Link>
+              </div>
+            </div>
           </div>
-          )}
-
-          {/* Past Events */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-center gap-4 mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold font-heading text-aces-navy">
-                Latest Past Events
-              </h2>
-              <div className="flex-1 h-px bg-border" />
-            </div>
-
-            <div className="grid gap-6">
-              {resolvedPast.map((event, index) => {
-                const dateInfo = formatDate(event.date);
-                return (
-                  <Link to={`/events/${event.slug}`}>
-                    <motion.article
-                      key={event.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="group bg-white rounded-2xl border border-border hover:border-aces-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                    >
-                    <div className="grid grid-cols-1 md:grid-cols-[100px_1fr] lg:grid-cols-[120px_1fr_280px] gap-0">
-                      {/* Date Badge */}
-                      <div className="bg-gradient-to-br from-aces-navy to-aces-blue p-4 md:p-6 flex md:flex-col items-center md:justify-center text-center gap-3 md:gap-0">
-                        <span className="text-sm font-medium text-white/80 uppercase tracking-wider">
-                          {dateInfo.month}
-                        </span>
-                        <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-none md:my-1">
-                          {dateInfo.day}
-                        </span>
-                        <span className="text-sm text-white/70">{dateInfo.year}</span>
-                      </div>
-
-                      {/* Event Details */}
-                      <div className="p-6 lg:p-8 space-y-4">
-                        <div className="flex flex-wrap items-center gap-3">
-                          {event.category && (
-                            <span className={`text-sm font-bold px-3 py-1 rounded-full ${getCategoryColor(event.category)}`}>
-                              {event.category}
-                            </span>
-                          )}
-                          <div className="flex items-center gap-2 text-base font-medium text-muted-foreground">
-                            <Clock className="w-4 h-4" />
-                            {formatTime(event.date)} - {event.endTime}
-                          </div>
-                        </div>
-                        
-                        <h3 className="font-heading text-xl md:text-2xl font-bold text-aces-navy group-hover:text-aces-blue transition-colors cursor-pointer">
-                          {event.title}
-                        </h3>
-                        
-                        <div className="flex items-start gap-2 text-base font-medium">
-                          {event.type === "virtual" ? (
-                            <div className="flex items-center gap-2 bg-blue-50 text-aces-blue px-3 py-1.5 rounded-lg">
-                              <Monitor className="h-4 w-4" />
-                              <span className="font-semibold">Virtual Event</span>
-                            </div>
-                          ) : (
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                              <MapPin className="h-4 w-4 text-aces-green flex-shrink-0" />
-                              <span>
-                                <span className="font-bold text-aces-navy">{event.location}</span>
-                                {event.address && <span className="font-medium text-muted-foreground"> • {event.address}</span>}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                        
-                        <p className="text-muted-foreground text-base font-medium leading-relaxed line-clamp-2">
-                          {event.description}
-                        </p>
-                        
-                        <motion.div 
-                          className="flex items-center text-aces-blue font-semibold text-base pt-2 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                          whileHover={{ x: 5 }}
-                        >
-                          View Event Details <ArrowRight className="ml-2 w-4 h-4" />
-                        </motion.div>
-                      </div>
-
-                      {/* Event Image */}
-                      <div className="hidden lg:block p-4">
-                        <div className="h-full aspect-[4/3] bg-gradient-to-br from-secondary via-aces-blue/5 to-aces-green/10 rounded-xl flex items-center justify-center relative overflow-hidden">
-                          <div className="absolute inset-0 dot-pattern opacity-30" />
-                          <Calendar className="h-16 w-16 text-aces-blue/20" />
-                        </div>
-                      </div>
-                    </div>
-                    </motion.article>
-                  </Link>
-                );
-              })}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 section-brand relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-aces-green/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-aces-blue/20 rounded-full blur-3xl" />
-        
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white mb-6">
-              Want to Host an Event with ACES?
-            </h2>
-            <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed">
-              Partner with us to bring professional development and learning opportunities to your district.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-aces-navy hover:bg-white/90 shadow-xl px-8">
-                Contact Us
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                Learn About Partnerships
-              </Button>
-            </div>
-          </motion.div>
         </div>
       </section>
 
