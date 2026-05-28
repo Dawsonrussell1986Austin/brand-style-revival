@@ -1,11 +1,8 @@
 import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { PartnerSection } from "@/components/PartnerSection";
-import { ProfessionalLearning } from "@/components/ProfessionalLearning";
-import { ServicesSection } from "@/components/ServicesSection";
-import { NewsSection } from "@/components/NewsSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { CTASection } from "@/components/CTASection";
+import { HeroV2 } from "@/components/home/HeroV2";
+import { ServiceGridV2 } from "@/components/home/ServiceGridV2";
+import { FeaturedContentV2 } from "@/components/home/FeaturedContentV2";
+import { TestimonialsV2 } from "@/components/home/TestimonialsV2";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 
@@ -28,13 +25,10 @@ const Index = () => {
       />
       <Header />
       <main>
-        <Hero />
-        <PartnerSection />
-        <ProfessionalLearning />
-        <ServicesSection />
-        <NewsSection />
-        <TestimonialsSection />
-        <CTASection />
+        <HeroV2 />
+        <ServiceGridV2 />
+        <FeaturedContentV2 />
+        <TestimonialsV2 />
       </main>
       <Footer />
     </div>
