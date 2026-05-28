@@ -4,6 +4,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
+import { Link } from "react-router-dom";
+import aboutTeam from "@/assets/home/about-team.png";
+import partnerBallroom from "@/assets/home/partner-ballroom.jpg";
+import heroClassroom from "@/assets/home/hero-classroom.jpg";
+import featuredAi from "@/assets/home/featured-ai.jpg";
+import featuredPlay from "@/assets/home/featured-play.jpg";
+import featuredRigor from "@/assets/home/featured-rigor.jpg";
 
 declare global {
   interface Window {
@@ -22,7 +29,11 @@ import {
   GraduationCap,
   Building,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Calendar,
+  Clock,
+  Sparkles,
+  Compass
 } from "lucide-react";
 import heroImageFallback from "@/assets/teacher-classroom.jpg";
 import { useImage } from "@/hooks/useSiteContent";
@@ -148,114 +159,229 @@ export default function Services() {
       />
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative pt-20 min-h-[70vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src={heroImage} 
-            alt="Educators collaborating" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-aces-navy/95 via-aces-navy/80 to-aces-navy/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-aces-navy/60 to-transparent" />
-        </div>
-        
-        {/* Decorative elements */}
-        <div className="absolute top-1/4 right-10 w-72 h-72 bg-aces-green/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-aces-blue/10 rounded-full blur-3xl" />
-        
-        <div className="relative container mx-auto px-4 py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-2xl"
-          >
-            <motion.div 
+      {/* Split Hero — mockup style */}
+      <section className="pt-20 bg-background">
+        <div className="container mx-auto px-4 py-8 md:py-12">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+            {/* Left blue panel */}
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+              transition={{ duration: 0.5 }}
+              className="relative bg-aces-navy rounded-2xl p-8 md:p-12 lg:p-14 overflow-hidden flex flex-col justify-center min-h-[420px]"
             >
-              <span className="w-2 h-2 bg-aces-green rounded-full animate-pulse" />
-              <span className="text-base text-white/90 font-semibold">Professional Development Services</span>
+              <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-aces-blue/20 rounded-full blur-3xl" />
+              <div className="relative">
+                <span className="text-xs md:text-sm font-bold text-white/70 tracking-[0.2em] uppercase mb-5 block">
+                  PDSI Services
+                </span>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight mb-5">
+                  Professional learning that meets schools where they are.
+                </h1>
+                <p className="text-base md:text-lg text-white/85 leading-relaxed mb-8 max-w-xl">
+                  ACES PDSI partners with districts to design coaching, curriculum,
+                  and leadership support that's grounded in pedagogy and built for
+                  the realities of today's classrooms.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild size="lg" className="bg-aces-green hover:bg-aces-green/90 text-white rounded-full px-7">
+                    <Link to="/contact">Talk With Our Team</Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="rounded-full px-7 border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white">
+                    <Link to="/events">View Events</Link>
+                  </Button>
+                </div>
+              </div>
             </motion.div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6 leading-tight">
-              Building Capacity,<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-aces-green via-white to-aces-secondary-blue">
-                Driving Impact
-              </span>
-            </h1>
-            
-            <p className="text-lg md:text-xl font-medium text-white/90 mb-8 leading-relaxed">
-              Innovating today, transforming tomorrow. Partner with ACES for research-based professional learning that makes a lasting difference.
-            </p>
-            
-            <div className="flex flex-wrap gap-4 mb-10">
-              {highlights.map((item, i) => (
-                <motion.div
-                  key={item}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + i * 0.1 }}
-                  className="flex items-center gap-2 text-white/90 text-base font-medium"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-aces-green" />
-                  {item}
-                </motion.div>
-              ))}
-            </div>
-            
-          </motion.div>
+
+            {/* Right photo card */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-secondary/40 rounded-2xl p-4 md:p-6 flex items-center justify-center min-h-[420px]"
+            >
+              <img
+                src={aboutTeam}
+                alt="ACES PDSI team and educators"
+                className="w-full h-full max-h-[520px] object-cover rounded-xl shadow-lg"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-24 bg-gradient-to-b from-secondary/30 to-background relative">
-        <div className="absolute inset-0 dot-pattern opacity-50" />
-        
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="inline-block text-base font-bold text-aces-blue uppercase tracking-wider mb-3">What We Offer</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-aces-navy mb-4">
-              Our Services
+      {/* Intro + Side card */}
+      <section className="py-12 md:py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-3 gap-8 items-start">
+            <div className="lg:col-span-2">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-aces-navy mb-4">
+                Find the right partnership for your team
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6 max-w-2xl">
+                Browse our full menu of services — from instructional coaching and
+                curriculum design to AI integration and alternate routes to certification.
+                Each engagement is customized to your district's goals.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["All", "Coaching", "Curriculum", "AI & Innovation", "Leadership", "Certification"].map((tag, i) => (
+                  <span
+                    key={tag}
+                    className={`px-4 py-1.5 rounded-full text-sm font-semibold border ${
+                      i === 0
+                        ? "bg-aces-green text-white border-aces-green"
+                        : "bg-white text-aces-navy border-border"
+                    }`}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white border border-border rounded-2xl p-6 shadow-sm">
+              <h3 className="font-heading font-bold text-aces-navy text-lg mb-2">
+                Custom-built for your district
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                Every service can be scoped as a single workshop, a multi-session series,
+                or a long-term partnership. Tell us what you need.
+              </p>
+              <Sparkles className="w-8 h-8 text-aces-secondary-blue" strokeWidth={1.5} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured services as listing cards */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="mb-10">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-aces-navy mb-3">
+              Featured services
             </h2>
-            <p className="text-muted-foreground text-lg font-medium max-w-2xl mx-auto">
-              Comprehensive professional development solutions designed to empower educators and transform schools.
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl">
+              A clean, scannable view of the partnerships districts ask for most often.
             </p>
-          </motion.div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {services.map((service, index) => (
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 items-start">
+            <div className="lg:col-span-2 space-y-5">
+              {services.slice(0, 5).map((service, idx) => {
+                const photos = [featuredAi, featuredPlay, featuredRigor, aboutTeam, partnerBallroom];
+                return (
+                  <motion.div
+                    key={service.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05 }}
+                    className="bg-white border border-border rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-lg transition-all flex flex-col md:flex-row gap-4 md:gap-5"
+                  >
+                    {/* icon tile */}
+                    <div className="hidden md:flex w-20 h-20 rounded-xl bg-secondary/60 flex-col items-center justify-center shrink-0">
+                      <service.icon className="w-7 h-7 text-aces-green" strokeWidth={1.5} />
+                    </div>
+                    {/* photo */}
+                    <div className="w-full md:w-32 h-32 md:h-20 rounded-xl overflow-hidden shrink-0">
+                      <img src={photos[idx]} alt={service.title} className="w-full h-full object-cover" />
+                    </div>
+                    {/* content */}
+                    <div className="flex-1 min-w-0">
+                      <span className="inline-block text-xs font-bold text-aces-green uppercase tracking-wider mb-1">
+                        Service
+                      </span>
+                      <h3 className="font-heading font-bold text-aces-navy text-lg md:text-xl mb-1 leading-snug">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-3">
+                        {service.description}
+                      </p>
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground font-medium">
+                        <span className="flex items-center gap-1.5">
+                          <Clock className="w-3.5 h-3.5 text-aces-secondary-blue" />
+                          Flexible scheduling
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <Compass className="w-3.5 h-3.5 text-aces-secondary-blue" />
+                          District-wide
+                        </span>
+                      </div>
+                    </div>
+                    {/* CTA */}
+                    <div className="flex md:items-center">
+                      <Button asChild size="sm" className="bg-aces-green hover:bg-aces-green/90 text-white rounded-full px-5">
+                        <Link to="/contact">Learn More</Link>
+                      </Button>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* sidebar: more services + calendar-style */}
+            <aside className="bg-white border border-border rounded-2xl p-6 shadow-sm sticky top-24">
+              <h3 className="font-heading font-bold text-aces-navy text-lg mb-4">
+                More services
+              </h3>
+              <ul className="space-y-3 mb-6">
+                {services.slice(5).map((s) => (
+                  <li key={s.title} className="flex items-start gap-3">
+                    <s.icon className="w-5 h-5 text-aces-green shrink-0 mt-0.5" strokeWidth={1.5} />
+                    <span className="text-sm font-semibold text-aces-navy leading-snug">{s.title}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="border-t border-border pt-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Calendar className="w-5 h-5 text-aces-green" strokeWidth={1.5} />
+                  <h4 className="font-heading font-bold text-aces-navy">Ready to talk?</h4>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  Book a discovery call and we'll tailor a plan for your team.
+                </p>
+                <Button asChild size="sm" className="w-full bg-aces-navy hover:bg-aces-navy/90 text-white rounded-full">
+                  <Link to="/contact">Talk With Our Team</Link>
+                </Button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* Ways to partner — 4 icon cards */}
+      <section className="py-16 md:py-20 bg-secondary/40">
+        <div className="container mx-auto px-4">
+          <div className="mb-10 max-w-2xl">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-aces-navy mb-3">
+              Ways to partner with ACES PDSI
+            </h2>
+            <p className="text-muted-foreground text-base md:text-lg">
+              Every engagement is shaped around your district's goals — from a single
+              workshop to a multi-year partnership.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {[
+              { icon: Calendar, title: "Workshops", desc: "Focused sessions that turn strong ideas into classroom-ready moves." },
+              { icon: Clock, title: "Learning Series", desc: "Multi-session structures for deeper practice and implementation." },
+              { icon: Users, title: "Coaching Labs", desc: "Guided planning, modeling, reflection, and practical follow-through." },
+              { icon: Building, title: "District Support", desc: "Custom professional learning designed around local goals." },
+            ].map((c, i) => (
               <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
+                key={c.title}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="group relative bg-white rounded-2xl p-8 border border-border hover:border-aces-blue/30 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+                transition={{ delay: i * 0.05 }}
+                className="bg-white rounded-2xl p-6 border border-border shadow-sm hover:shadow-lg transition-all"
               >
-                {/* Gradient accent */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
-                
-                {/* Icon */}
-                <div className={`w-14 h-14 mb-6 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg`}>
-                  <service.icon className="w-7 h-7 text-white" />
-                </div>
-                
-                <h3 className="text-xl font-bold font-heading text-aces-navy mb-3 group-hover:text-aces-blue transition-colors">
-                  {service.title}
-                </h3>
-                
-                <p className="text-muted-foreground text-base font-medium leading-relaxed">
-                  {service.description}
-                </p>
+                <c.icon className="w-9 h-9 text-aces-secondary-blue mb-4" strokeWidth={1.5} />
+                <h3 className="font-heading font-bold text-aces-navy text-lg mb-2">{c.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">{c.desc}</p>
+                <div className="w-10 h-0.5 bg-aces-green rounded-full" />
               </motion.div>
             ))}
           </div>
@@ -360,33 +486,34 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 section-brand relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-aces-green/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-aces-blue/20 rounded-full blur-3xl" />
-        
-        <div className="container mx-auto px-4 relative">
+      {/* Bottom CTA — photo card */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="bg-white border border-border rounded-2xl shadow-sm overflow-hidden grid md:grid-cols-[260px_1fr] gap-0"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white mb-6">
-              Ready to Transform Your District?
-            </h2>
-            <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed">
-              Let's work together to build capacity and drive lasting impact. Our team is ready to customize a solution for your needs.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-aces-navy hover:bg-white/90 shadow-xl px-8">
-                Contact Us Today
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                Schedule a Consultation
-              </Button>
+            <div className="h-48 md:h-auto">
+              <img src={partnerBallroom} alt="ACES PDSI partnership" className="w-full h-full object-cover" />
+            </div>
+            <div className="p-8 md:p-10 flex flex-col justify-center">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-aces-navy mb-3 leading-tight">
+                Need a learning plan for your school or district?
+              </h2>
+              <p className="text-muted-foreground text-base leading-relaxed mb-6 max-w-2xl">
+                ACES PDSI can help teams plan customized professional learning, connect
+                event participation to school goals, and build support that lasts.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild size="lg" className="bg-aces-green hover:bg-aces-green/90 text-white rounded-full px-7">
+                  <Link to="/contact">Talk With Our Team</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 border-aces-navy text-aces-navy hover:bg-aces-navy hover:text-white">
+                  <Link to="/events">View Events</Link>
+                </Button>
+              </div>
             </div>
           </motion.div>
         </div>
