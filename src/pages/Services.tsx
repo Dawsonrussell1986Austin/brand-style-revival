@@ -11,6 +11,7 @@ import heroClassroom from "@/assets/home/hero-classroom.jpg";
 import featuredAi from "@/assets/home/featured-ai.jpg";
 import featuredPlay from "@/assets/home/featured-play.jpg";
 import featuredRigor from "@/assets/home/featured-rigor.jpg";
+import aiHero from "@/assets/home/ai-hero-classroom.jpg";
 
 declare global {
   interface Window {
@@ -33,7 +34,13 @@ import {
   Calendar,
   Clock,
   Sparkles,
-  Compass
+  Compass,
+  BookOpen,
+  BarChart3,
+  LifeBuoy,
+  Wrench,
+  Laptop,
+  Network
 } from "lucide-react";
 import heroImageFallback from "@/assets/teacher-classroom.jpg";
 import { useImage } from "@/hooks/useSiteContent";
