@@ -72,6 +72,13 @@ import fallbackMary from "@/assets/team/mary-stone.png";
 import fallbackJohn from "@/assets/team/john-gustafson.png";
 import fallbackKim from "@/assets/team/kim-cellini.png";
 import fallbackAlison from "@/assets/team/alison-zanardi.png";
+import fallbackAIReadyHero from "@/assets/home/ai-hero-classroom.jpg";
+import fallbackInnovativeHero from "@/assets/home/featured-ai.jpg";
+import fallbackEthicsHero from "@/assets/home/hero-classroom.jpg";
+import fallbackForumsHero from "@/assets/home/featured-rigor.jpg";
+import fallbackForumsFlow from "@/assets/home/partner-ballroom.jpg";
+import fallbackForumsPhoto1 from "@/assets/home/events-hero.jpg";
+import fallbackForumsPhoto2 from "@/assets/home/hero-classroom.jpg";
 
 interface ContentItem {
   id: string;
@@ -101,6 +108,10 @@ const pageRoutes: Record<string, string> = {
   events: "/events",
   resources: "/resources",
   "ai-center": "/ai-center",
+  "ai-ready-schools": "/center-for-ai-services/ai-ready-schools",
+  "innovative-tools": "/center-for-ai-services/innovative-tools",
+  "research-ethics": "/center-for-ai-services/research-ethics",
+  "regional-forums": "/pdsi-services/regional-forums",
 };
 
 const pageLabels: Record<string, string> = {
@@ -111,6 +122,10 @@ const pageLabels: Record<string, string> = {
   events: "Events",
   resources: "Resources",
   "ai-center": "AI Center",
+  "ai-ready-schools": "AI-Ready Schools",
+  "innovative-tools": "Innovative Tools",
+  "research-ethics": "Research & Ethics",
+  "regional-forums": "Regional Forums",
 };
 
 const sectionLabels: Record<string, string> = {
@@ -126,6 +141,15 @@ const sectionLabels: Record<string, string> = {
   certifications: "Certification Programs",
   workbooks: "Premium Workbooks",
   free_tools: "Free Tools & Templates",
+  checklist: "Readiness Checklist",
+  themes: "Themes",
+  tools: "Tools",
+  model: "Forum Model",
+  flow: "Forum Flow",
+  focus: "Focus Areas",
+  network: "Regional Network",
+  photos: "Photo Moments",
+  seo: "SEO Metadata",
 };
 
 // Define display order for sections (lower = higher on page)
@@ -298,6 +322,13 @@ const defaultImageMap: Record<string, string> = {
   "about/team/john_gustafson": fallbackJohn,
   "about/team/kim_cellini": fallbackKim,
   "about/team/alison_zanardi": fallbackAlison,
+  "ai-ready-schools/hero/image": fallbackAIReadyHero,
+  "innovative-tools/hero/image": fallbackInnovativeHero,
+  "research-ethics/hero/image": fallbackEthicsHero,
+  "regional-forums/hero/image": fallbackForumsHero,
+  "regional-forums/flow/image": fallbackForumsFlow,
+  "regional-forums/photos/photo_1_image": fallbackForumsPhoto1,
+  "regional-forums/photos/photo_2_image": fallbackForumsPhoto2,
 };
 
 function getDefaultImage(item: ImageItem): string | null {
