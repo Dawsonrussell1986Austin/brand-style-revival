@@ -101,6 +101,10 @@ const pageRoutes: Record<string, string> = {
   events: "/events",
   resources: "/resources",
   "ai-center": "/ai-center",
+  "ai-ready-schools": "/center-for-ai-services/ai-ready-schools",
+  "innovative-tools": "/center-for-ai-services/innovative-tools",
+  "research-ethics": "/center-for-ai-services/research-ethics",
+  "regional-forums": "/pdsi-services/regional-forums",
 };
 
 const pageLabels: Record<string, string> = {
@@ -111,6 +115,10 @@ const pageLabels: Record<string, string> = {
   events: "Events",
   resources: "Resources",
   "ai-center": "AI Center",
+  "ai-ready-schools": "AI-Ready Schools",
+  "innovative-tools": "Innovative Tools",
+  "research-ethics": "Research & Ethics",
+  "regional-forums": "Regional Forums",
 };
 
 const sectionLabels: Record<string, string> = {
@@ -126,6 +134,15 @@ const sectionLabels: Record<string, string> = {
   certifications: "Certification Programs",
   workbooks: "Premium Workbooks",
   free_tools: "Free Tools & Templates",
+  checklist: "Readiness Checklist",
+  themes: "Themes",
+  tools: "Tools",
+  model: "Forum Model",
+  flow: "Forum Flow",
+  focus: "Focus Areas",
+  network: "Regional Network",
+  photos: "Photo Moments",
+  seo: "SEO Metadata",
 };
 
 // Define display order for sections (lower = higher on page)
