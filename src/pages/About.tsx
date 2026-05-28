@@ -3,10 +3,13 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Users, Target, Lightbulb, Heart, Mail, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Users, Target, Lightbulb, Heart, Mail, X, Compass, Handshake, TrendingUp, Sparkles, Ear, PenTool, LifeBuoy, RefreshCw } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useImage } from "@/hooks/useSiteContent";
+import heroAbout from "@/assets/home/hero-classroom.jpg";
+import partnerImg from "@/assets/home/featured-play.jpg";
 
 // Team headshot imports (fallbacks)
 import michelleGohagonFallback from "@/assets/team/michelle-gohagon.png";
