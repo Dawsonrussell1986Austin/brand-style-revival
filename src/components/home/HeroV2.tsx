@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import heroImg from "@/assets/home/hero-classroom.jpg";
+import heroImgFallback from "@/assets/home/hero-classroom.jpg";
+import { useImage } from "@/hooks/useSiteContent";
 
 export function HeroV2() {
+  const { imageUrl: heroImg, altText: heroAlt } = useImage(
+    "home",
+    "hero",
+    "hero_image",
+    heroImgFallback
+  );
   return (
     <section className="relative bg-primary text-primary-foreground overflow-hidden pt-24">
       <div className="absolute inset-0">
         <img
           src={heroImg}
-          alt="ACES educators collaborating in a professional learning session"
+          alt={heroAlt || "ACES educators collaborating in a professional learning session"}
           className="w-full h-full object-cover object-center opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-primary/10" />
