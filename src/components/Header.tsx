@@ -81,22 +81,22 @@ export function Header() {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-2">
             {navItems.map((item) => {
-              const linkClass = `px-3 py-2 text-sm font-medium rounded-lg transition-colors inline-flex items-center ${
+              const linkClass = `px-3 py-2 text-base font-semibold rounded-lg transition-colors inline-flex items-center ${
                 isActive(item.href)
-                  ? "text-accent font-semibold"
+                  ? "text-accent font-bold"
                   : item.highlight
-                    ? "text-accent font-semibold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    ? "text-accent font-bold"
+                    : "text-foreground/80 hover:text-foreground hover:bg-secondary"
               }`;
               if (item.children && item.children.length > 0) {
                 return (
                   <div key={item.label} className="relative group">
                     <Link to={item.href} className={linkClass}>
-                      {item.highlight && <Sparkles className="inline w-3.5 h-3.5 mr-1.5" />}
+                      {item.highlight && <Sparkles className="inline w-4 h-4 mr-1.5" />}
                       {item.label}
-                      <ChevronDown className="w-3.5 h-3.5 ml-1 opacity-70" />
+                      <ChevronDown className="w-4 h-4 ml-1 opacity-70" />
                     </Link>
                     <div className="absolute left-0 top-full pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible focus-within:opacity-100 focus-within:visible transition-opacity z-50">
                       <div className="bg-white border border-border rounded-xl shadow-lg py-2">
@@ -104,10 +104,10 @@ export function Header() {
                           <Link
                             key={child.href}
                             to={child.href}
-                            className={`block px-4 py-2 text-sm transition-colors ${
+                            className={`block px-4 py-2.5 text-base font-medium transition-colors ${
                               isActive(child.href)
-                                ? "text-accent font-semibold bg-accent/5"
-                                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                                ? "text-accent font-bold bg-accent/5"
+                                : "text-foreground/80 hover:text-foreground hover:bg-secondary"
                             }`}
                           >
                             {child.label}
@@ -120,13 +120,13 @@ export function Header() {
               }
               return (
                 <Link key={item.label} to={item.href} className={linkClass}>
-                  {item.highlight && <Sparkles className="inline w-3.5 h-3.5 mr-1.5" />}
+                  {item.highlight && <Sparkles className="inline w-4 h-4 mr-1.5" />}
                   {item.label}
                 </Link>
               );
             })}
             <Link to="/contact">
-              <Button className="ml-3 gradient-aces text-white font-semibold px-5 rounded-full btn-glow">
+              <Button className="ml-3 gradient-aces text-white font-bold text-base px-6 py-5 rounded-full btn-glow">
                 Talk With Our Team
               </Button>
             </Link>
@@ -156,14 +156,14 @@ export function Header() {
                   <div key={item.label}>
                     <Link
                       to={item.href}
-                      className={`block px-4 py-3 text-sm font-medium rounded-lg ${
+                      className={`block px-4 py-3 text-base font-semibold rounded-lg ${
                         isActive(item.href) || item.highlight
                           ? "text-accent bg-accent/5"
-                          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                          : "text-foreground/85 hover:text-foreground hover:bg-secondary"
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item.highlight && <Sparkles className="inline w-3.5 h-3.5 mr-2" />}
+                      {item.highlight && <Sparkles className="inline w-4 h-4 mr-2" />}
                       {item.label}
                     </Link>
                     {item.children && item.children.length > 0 && (
@@ -172,10 +172,10 @@ export function Header() {
                           <Link
                             key={child.href}
                             to={child.href}
-                            className={`block px-3 py-2 text-sm rounded-lg ${
+                            className={`block px-3 py-2 text-[15px] font-medium rounded-lg ${
                               isActive(child.href)
-                                ? "text-accent font-semibold bg-accent/5"
-                                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                                ? "text-accent font-bold bg-accent/5"
+                                : "text-foreground/80 hover:text-foreground hover:bg-secondary"
                             }`}
                             onClick={() => setMobileMenuOpen(false)}
                           >
@@ -188,7 +188,7 @@ export function Header() {
                 ))}
                 <div className="pt-2 px-4">
                   <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                    <Button className="w-full gradient-aces text-white font-semibold rounded-full">
+                    <Button className="w-full gradient-aces text-white font-bold text-base rounded-full py-5">
                       Talk With Our Team
                     </Button>
                   </Link>
