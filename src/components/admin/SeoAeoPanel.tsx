@@ -139,9 +139,9 @@ export function SeoAeoPanel() {
       await updateContent.mutateAsync({
         page: selectedPage,
         section: "seo",
-        content_key: fieldKey,
-        content_value: pageDraft[fieldKey] ?? "",
-      } as any);
+        key: fieldKey,
+        value: pageDraft[fieldKey] ?? "",
+      });
       toast.success("Saved");
     } catch (err: any) {
       toast.error(err.message || "Failed to save");
