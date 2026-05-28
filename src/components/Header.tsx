@@ -156,14 +156,14 @@ export function Header() {
                   <div key={item.label}>
                     <Link
                       to={item.href}
-                      className={`block px-4 py-3 text-sm font-medium rounded-lg ${
+                      className={`block px-4 py-3 text-base font-semibold rounded-lg ${
                         isActive(item.href) || item.highlight
                           ? "text-accent bg-accent/5"
-                          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                          : "text-foreground/85 hover:text-foreground hover:bg-secondary"
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item.highlight && <Sparkles className="inline w-3.5 h-3.5 mr-2" />}
+                      {item.highlight && <Sparkles className="inline w-4 h-4 mr-2" />}
                       {item.label}
                     </Link>
                     {item.children && item.children.length > 0 && (
@@ -172,10 +172,10 @@ export function Header() {
                           <Link
                             key={child.href}
                             to={child.href}
-                            className={`block px-3 py-2 text-sm rounded-lg ${
+                            className={`block px-3 py-2 text-[15px] font-medium rounded-lg ${
                               isActive(child.href)
-                                ? "text-accent font-semibold bg-accent/5"
-                                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                                ? "text-accent font-bold bg-accent/5"
+                                : "text-foreground/80 hover:text-foreground hover:bg-secondary"
                             }`}
                             onClick={() => setMobileMenuOpen(false)}
                           >
@@ -188,7 +188,7 @@ export function Header() {
                 ))}
                 <div className="pt-2 px-4">
                   <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                    <Button className="w-full gradient-aces text-white font-semibold rounded-full">
+                    <Button className="w-full gradient-aces text-white font-bold text-base rounded-full py-5">
                       Talk With Our Team
                     </Button>
                   </Link>
