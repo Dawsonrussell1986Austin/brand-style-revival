@@ -344,6 +344,7 @@ const MonthCalendarView = ({ events, currentMonth, onMonthChange }: {
 };
 
 const Events = () => {
+  // ok
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [viewMode, setViewMode] = useState<"list" | "month">("list");
   const [currentMonth, setCurrentMonth] = useState(new Date(2026, 0, 1));
