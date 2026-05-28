@@ -455,7 +455,7 @@ function ImageField({
 export default function Admin() {
   const [user, setUser] = useState<any>(null);
   const [selectedPage, setSelectedPage] = useState<string>("home");
-  const [activeView, setActiveView] = useState<"pages" | "site-pages" | "submissions" | "team" | "events" | "downloads">("pages");
+  const [activeView, setActiveView] = useState<"pages" | "site-pages" | "submissions" | "team" | "events" | "downloads" | "seo">("pages");
   const [teamMembers, setTeamMembers] = useState<any[]>([]);
   const [teamLoading, setTeamLoading] = useState(false);
   const [inviteEmail, setInviteEmail] = useState("");
@@ -1043,6 +1043,7 @@ export default function Admin() {
     { key: "team" as const, label: "Team", icon: Users },
     { key: "events" as const, label: "Events", icon: CalendarDays },
     { key: "downloads" as const, label: "Downloads", icon: Download },
+    { key: "seo" as const, label: "SEO & AEO", icon: Globe },
   ];
 
   return (
