@@ -869,25 +869,31 @@ export default function Admin() {
 
   // Auth check
   useEffect(() => {
-    const checkAuth = async () => {
+    const ensureSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.user) { navigate("/staff-portal-9472/login"); return; }
-      const { data: roles } = await supabase
-        .from("user_roles").select("role")
-        .eq("user_id", session.user.id).in("role", ["admin", "editor"]);
-      if (!roles || roles.length === 0) {
-        toast.error("You don't have admin access");
-        await supabase.auth.signOut();
-        navigate("/staff-portal-9472/login");
+      if (session?.user) {
+        setUser(session.user);
         return;
       }
-      setUser(session.user);
+      // No session — auto-login as the shared admin via edge function
+      try {
+        const { data, error } = await supabase.functions.invoke("portal-auto-login");
+        if (error || !data?.token_hash) {
+          throw error || new Error("Login token missing");
+        }
+        const { data: verified, error: verifyError } = await supabase.auth.verifyOtp({
+          token_hash: data.token_hash,
+          type: "magiclink",
+        });
+        if (verifyError || !verified?.user) {
+          throw verifyError || new Error("Verification failed");
+        }
+        setUser(verified.user);
+      } catch (e: any) {
+        toast.error("Unable to open admin portal: " + (e?.message || "unknown error"));
+      }
     };
-    checkAuth();
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event) => { if (event === "SIGNED_OUT") navigate("/staff-portal-9472/login"); }
-    );
-    return () => subscription.unsubscribe();
+    ensureSession();
   }, [navigate]);
 
   // Expand all sections for current page by default
@@ -903,7 +909,8 @@ export default function Admin() {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    navigate("/staff-portal-9472/login");
+    // Re-trigger auto-login by reloading
+    window.location.reload();
   };
 
   const handleSaveContent = async (item: ContentItem, newValue: string) => {

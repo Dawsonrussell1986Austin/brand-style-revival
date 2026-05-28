@@ -19,7 +19,6 @@ import ThankYou from "./pages/ThankYou";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
-import AdminAuth from "./pages/AdminAuth";
 import DynamicPage from "./pages/DynamicPage";
 import CurriculumCreator from "./pages/CurriculumCreator";
 import RegionalForums from "./pages/RegionalForums";
@@ -83,7 +82,6 @@ const App = () => {
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/staff-portal-9472" element={<Admin />} />
-            <Route path="/staff-portal-9472/login" element={<AdminAuth />} />
             <Route path="/curriculum-creator" element={<CurriculumCreator />} />
             <Route path="/regional-forums" element={<Navigate to="/pdsi-services/regional-forums" replace />} />
             <Route path="/center-for-ai-services" element={<CenterForAIServices />} />
