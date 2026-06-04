@@ -1,8 +1,11 @@
 import { Header } from "@/components/Header";
-import { HeroV2 } from "@/components/home/HeroV2";
-import { ServiceGridV2 } from "@/components/home/ServiceGridV2";
-import { FeaturedContentV2 } from "@/components/home/FeaturedContentV2";
-import { TestimonialsV2 } from "@/components/home/TestimonialsV2";
+import {
+  ModernHero,
+  StatsStrip,
+  BentoPrograms,
+  FeatureTestimonial,
+  FinalCTA,
+} from "@/components/home/ModernHome";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 
@@ -24,11 +27,12 @@ const Index = () => {
         }}
       />
       <Header />
-      <main>
-        <HeroV2 />
-        <ServiceGridV2 />
-        <FeaturedContentV2 />
-        <TestimonialsV2 />
+      <main className="bg-[#F5F7FA]">
+        <ModernHero />
+        <StatsStrip />
+        <BentoPrograms />
+        <FeatureTestimonial />
+        <FinalCTA />
       </main>
       <Footer />
     </div>
