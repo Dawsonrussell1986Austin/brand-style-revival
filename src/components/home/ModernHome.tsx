@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Calendar, BookOpen, ArrowRight, Sparkles } from "lucide-react";
 import heroImg from "@/assets/home/hero-classroom.jpg";
-import arcImg from "@/assets/teacher-classroom.jpg";
 
 const serif = { fontFamily: "'DM Serif Display', serif" } as const;
 const body = { fontFamily: "'Fira Sans', sans-serif" } as const;
