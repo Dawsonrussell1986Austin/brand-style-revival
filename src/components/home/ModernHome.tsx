@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Calendar, BookOpen, ArrowRight, Sparkles } from "lucide-react";
 import heroImg from "@/assets/home/hero-classroom.jpg";
-import arcImg from "@/assets/teacher-classroom.jpg";
 
 const serif = { fontFamily: "'DM Serif Display', serif" } as const;
 const body = { fontFamily: "'Fira Sans', sans-serif" } as const;
@@ -168,15 +167,8 @@ export function BentoPrograms() {
         {/* ARC */}
         <Link
           to="/arc"
-          className="md:col-span-6 bg-white rounded-[2rem] p-6 border border-gray-100 shadow-sm flex items-center gap-6 group hover:shadow-md hover:-translate-y-0.5 transition-all"
+          className="md:col-span-6 bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm flex items-center justify-between gap-6 group hover:shadow-md hover:-translate-y-0.5 transition-all"
         >
-          <div className="w-28 h-full min-h-[140px] shrink-0 overflow-hidden rounded-xl">
-            <img
-              src={arcImg}
-              alt="ARC certification candidates"
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-            />
-          </div>
           <div>
             <h3 className="text-2xl mb-1 text-[#112532]" style={serif}>
               ARC
@@ -185,6 +177,9 @@ export function BentoPrograms() {
               The Alternate Route to Certification for passionate educators
               entering the field.
             </p>
+          </div>
+          <div className="w-10 h-10 border border-[#09578B]/20 rounded-full flex items-center justify-center text-[#09578B] group-hover:bg-[#09578B] group-hover:text-white transition-colors shrink-0">
+            <ArrowRight className="w-4 h-4" />
           </div>
         </Link>
 
