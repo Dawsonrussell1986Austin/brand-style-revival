@@ -126,7 +126,7 @@ export function Header() {
               );
             })}
             <Link to="/contact">
-              <Button className="ml-3 gradient-aces text-white font-bold text-base px-6 py-5 rounded-full btn-glow">
+              <Button className="ml-3 bg-[#007F61] hover:bg-[#006b52] text-white font-semibold text-base px-6 py-5 rounded-xl shadow-md hover:shadow-lg transition-all">
                 Talk With Our Team
               </Button>
             </Link>
@@ -188,7 +188,7 @@ export function Header() {
                 ))}
                 <div className="pt-2 px-4">
                   <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                    <Button className="w-full gradient-aces text-white font-bold text-base rounded-full py-5">
+                    <Button className="w-full bg-[#007F61] hover:bg-[#006b52] text-white font-semibold text-base rounded-xl py-5">
                       Talk With Our Team
                     </Button>
                   </Link>

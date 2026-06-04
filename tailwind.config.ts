@@ -19,9 +19,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Brand fonts: Roboto Slab + Source Sans Pro
-        sans: ["Source Sans 3", "Source Sans Pro", "ui-sans-serif", "system-ui", "sans-serif"],
-        heading: ["Roboto Slab", "ui-serif", "Georgia", "serif"],
+        // Brand fonts (modernized): DM Serif Display headings + Fira Sans body
+        sans: ["Fira Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["'DM Serif Display'", "ui-serif", "Georgia", "serif"],
+        body: ["Fira Sans", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

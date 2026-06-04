@@ -46,7 +46,7 @@
     --input: 210 14% 89%;
     --ring: 202 88% 29%;
 
-    --radius: 0.5rem;
+    --radius: 0.875rem;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 204 52% 13%;
@@ -93,32 +93,41 @@
   /* Card Styles */
   .card-elevated {
     background: hsl(0 0% 100%);
-    border: 1px solid hsl(210 14% 89%);
-    box-shadow: 
+    border: 1px solid hsl(210 14% 92%);
+    border-radius: 1.5rem;
+    box-shadow:
       0 1px 2px hsla(204, 52%, 13%, 0.04),
-      0 4px 12px hsla(204, 52%, 13%, 0.06);
+      0 8px 24px hsla(204, 52%, 13%, 0.06);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
   }
   
   .card-elevated:hover {
-    border-color: hsl(202 88% 29% / 0.3);
-    box-shadow: 
-      0 4px 12px hsla(204, 52%, 13%, 0.08),
-      0 12px 32px hsla(204, 52%, 13%, 0.1);
+    border-color: hsl(202 88% 29% / 0.25);
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 16px hsla(204, 52%, 13%, 0.08),
+      0 24px 48px hsla(204, 52%, 13%, 0.12);
   }
   
   .card-feature {
     background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 14% 98%) 100%);
-    border: 1px solid hsl(210 14% 89%);
+    border: 1px solid hsl(210 14% 92%);
+    border-radius: 1.75rem;
     box-shadow: 0 4px 20px hsla(204, 52%, 13%, 0.08);
   }
   
   /* Section backgrounds */
   .section-alt {
-    background: linear-gradient(180deg, hsl(210 14% 97%) 0%, hsl(0 0% 100%) 100%);
+    background: linear-gradient(180deg, hsl(210 20% 97%) 0%, hsl(0 0% 100%) 100%);
   }
   
   .section-brand {
     background: linear-gradient(135deg, hsl(204 52% 13%) 0%, hsl(202 88% 22%) 100%);
+  }
+
+  /* Modern bento utility — rounded oversized panel */
+  .bento {
+    border-radius: 2rem;
   }
   
   /* Button styles */
