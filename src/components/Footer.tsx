@@ -36,8 +36,8 @@ export function Footer() {
   const { data: cmsPages } = usePublishedPages();
   const cmsFooterPages = (cmsPages || []).filter((p) => p.show_in_footer);
   return (
-    <footer className="bg-secondary pt-16 pb-8">
-      <div className="container mx-auto px-4">
+    <footer className="bg-[#112532] text-white/85 pt-20 pb-10">
+      <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-4">
@@ -48,14 +48,14 @@ export function Footer() {
                 className="h-16 w-auto"
               />
             </Link>
-            <p className="text-muted-foreground mb-4 text-base font-medium leading-relaxed">
+            <p className="text-white/70 mb-4 text-base leading-relaxed">
               ACES PDSI partners with educators and school leaders to strengthen teaching, support meaningful learning, and help schools grow with clarity, care, and practical innovation.
             </p>
             <a
               href="https://www.aces.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors mb-6"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#2399A4] hover:text-white transition-colors mb-6"
             >
               Part of ACES — aces.org <ExternalLink className="w-3.5 h-3.5" />
             </a>
@@ -66,10 +66,10 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-background flex items-center justify-center hover:bg-primary/10 transition-colors"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#2399A4] transition-colors"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-4 h-4 text-muted-foreground" />
+                  <social.icon className="w-4 h-4 text-white" />
                 </a>
               ))}
             </div>
@@ -78,36 +78,36 @@ export function Footer() {
           {/* Links */}
           <div className="sm:col-span-2 lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
             <div>
-              <h4 className="font-heading font-bold text-foreground mb-4 text-base">Explore</h4>
+              <h4 className="font-heading text-white mb-4 text-lg">Explore</h4>
               <ul className="space-y-2.5">
                 {footerLinks.explore.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
+                    <Link to={link.href} className="text-white/70 hover:text-white transition-colors text-base">{link.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="font-heading font-bold text-foreground mb-4 text-base">AI Center</h4>
+              <h4 className="font-heading text-white mb-4 text-lg">AI Center</h4>
               <ul className="space-y-2.5">
                 {footerLinks.aiCenter.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
+                    <Link to={link.href} className="text-white/70 hover:text-white transition-colors text-base">{link.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="font-heading font-bold text-foreground mb-4 text-base">Company</h4>
+              <h4 className="font-heading text-white mb-4 text-lg">Company</h4>
               <ul className="space-y-2.5">
                 {footerLinks.company.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.href} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">{link.label}</Link>
+                    <Link to={link.href} className="text-white/70 hover:text-white transition-colors text-base">{link.label}</Link>
                   </li>
                 ))}
                 {cmsFooterPages.map((page) => (
                   <li key={page.id}>
-                    <Link to={`/${page.slug}`} className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium">
+                    <Link to={`/${page.slug}`} className="text-white/70 hover:text-white transition-colors text-base">
                       {page.nav_label || page.title}
                     </Link>
                   </li>
@@ -118,32 +118,32 @@ export function Footer() {
 
           {/* Contact */}
           <div className="sm:col-span-2 lg:col-span-3">
-            <h4 className="font-heading font-bold text-foreground mb-4 text-base">Contact</h4>
+            <h4 className="font-heading text-white mb-4 text-lg">Contact</h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-muted-foreground text-base font-medium">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <a href="https://maps.google.com/?q=205+Skiff+St+Hamden+CT+06517" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+              <li className="flex items-start gap-3 text-white/70 text-base">
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#2399A4]" />
+                <a href="https://maps.google.com/?q=205+Skiff+St+Hamden+CT+06517" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                   205 Skiff St, Hamden, CT 06517
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-base font-medium">
-                <Phone className="w-4 h-4 text-muted-foreground" />
-                <a href="tel:+12034074400" className="text-muted-foreground hover:text-foreground transition-colors">(203) 407-4400</a>
+              <li className="flex items-center gap-3 text-base">
+                <Phone className="w-4 h-4 text-[#2399A4]" />
+                <a href="tel:+12034074400" className="text-white/70 hover:text-white transition-colors">(203) 407-4400</a>
               </li>
-              <li className="flex items-center gap-3 text-base font-medium">
-                <Mail className="w-4 h-4 text-muted-foreground" />
-                <a href="mailto:info@acespdsi.org" className="text-muted-foreground hover:text-foreground transition-colors">info@acespdsi.org</a>
+              <li className="flex items-center gap-3 text-base">
+                <Mail className="w-4 h-4 text-[#2399A4]" />
+                <a href="mailto:info@acespdsi.org" className="text-white/70 hover:text-white transition-colors">info@acespdsi.org</a>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-base font-medium text-muted-foreground">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-white/60">
             © {new Date().getFullYear()} ACES PDSI. All rights reserved.
           </p>
-          <p className="text-base font-medium text-muted-foreground italic">
+          <p className="text-sm text-white/60 italic tracking-wider">
             Advocacy • Commitment • Excellence • Service
           </p>
         </div>
