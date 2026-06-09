@@ -14,3 +14,6 @@ verify_jwt = false
 
 [functions.notify-curriculum-lead]
 verify_jwt = false
+
+[functions.portal-auto-login]
+verify_jwt = false
