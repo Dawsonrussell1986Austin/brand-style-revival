@@ -7,26 +7,29 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { GoogleAnalytics } from "./components/GoogleAnalytics";
-import Index from "./pages/Index";
-import About from "./pages/About";
-import AICenter from "./pages/AICenter";
-import Services from "./pages/Services";
-import Events from "./pages/Events";
 import EventDetail from "./pages/EventDetail";
-import Resources from "./pages/Resources";
-import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import DynamicPage from "./pages/DynamicPage";
-import CurriculumCreator from "./pages/CurriculumCreator";
-import RegionalForums from "./pages/RegionalForums";
-import CenterForAIServices from "./pages/CenterForAIServices";
 import ARC from "./pages/ARC";
-import AIReadySchools from "./pages/AIReadySchools";
-import InnovativeTools from "./pages/InnovativeTools";
-import ResearchEthics from "./pages/ResearchEthics";
+// Redesign pages
+import RIndex from "./redesign/pages-tsx/RIndex";
+import RAbout from "./redesign/pages-tsx/RAbout";
+import REvents from "./redesign/pages-tsx/REvents";
+import RServices from "./redesign/pages-tsx/RServices";
+import RRegionalForums from "./redesign/pages-tsx/RRegionalForums";
+import RAICenter from "./redesign/pages-tsx/RAICenter";
+import RAILiteracy from "./redesign/pages-tsx/RAILiteracy";
+import RAIInnovation from "./redesign/pages-tsx/RAIInnovation";
+import RAIResearch from "./redesign/pages-tsx/RAIResearch";
+import RCurriculumCreator from "./redesign/pages-tsx/RCurriculumCreator";
+import RResources from "./redesign/pages-tsx/RResources";
+import RContact from "./redesign/pages-tsx/RContact";
+import RBlogAI from "./redesign/pages-tsx/RBlogAI";
+import RBlogPlay from "./redesign/pages-tsx/RBlogPlay";
+import RBlogRooted from "./redesign/pages-tsx/RBlogRooted";
 
 declare global {
   interface Window {
@@ -65,29 +68,32 @@ const App = () => {
           <ScrollToTop />
           <GoogleAnalytics />
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/" element={<RIndex />} />
+            <Route path="/about" element={<RAbout />} />
             <Route path="/ai-center" element={<Navigate to="/center-for-ai-services" replace />} />
-            <Route path="/center-for-a-i" element={<Navigate to="/ai-center" replace />} />
-            <Route path="/center-for-a-i/*" element={<Navigate to="/ai-center" replace />} />
+            <Route path="/center-for-a-i" element={<Navigate to="/center-for-ai-services" replace />} />
+            <Route path="/center-for-a-i/*" element={<Navigate to="/center-for-ai-services" replace />} />
             <Route path="/services" element={<Navigate to="/pdsi-services" replace />} />
-            <Route path="/pdsi-services" element={<Services />} />
-            <Route path="/pdsi-services/regional-forums" element={<RegionalForums />} />
+            <Route path="/pdsi-services" element={<RServices />} />
+            <Route path="/pdsi-services/regional-forums" element={<RRegionalForums />} />
             <Route path="/events" element={<Navigate to="/workshops-events" replace />} />
-            <Route path="/workshops-events" element={<Events />} />
+            <Route path="/workshops-events" element={<REvents />} />
             <Route path="/workshops-events/:slug" element={<EventDetail />} />
             <Route path="/events/:slug" element={<EventDetail />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/resources" element={<RResources />} />
+            <Route path="/contact" element={<RContact />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/blog/saving-time-with-ai" element={<RBlogAI />} />
+            <Route path="/blog/everyone-loves-to-play" element={<RBlogPlay />} />
+            <Route path="/blog/rooted-in-relationships-and-rigor" element={<RBlogRooted />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/staff-portal-9472" element={<Admin />} />
-            <Route path="/curriculum-creator" element={<CurriculumCreator />} />
+            <Route path="/curriculum-creator" element={<RCurriculumCreator />} />
             <Route path="/regional-forums" element={<Navigate to="/pdsi-services/regional-forums" replace />} />
-            <Route path="/center-for-ai-services" element={<CenterForAIServices />} />
-            <Route path="/center-for-ai-services/ai-ready-schools" element={<AIReadySchools />} />
-            <Route path="/center-for-ai-services/innovative-tools" element={<InnovativeTools />} />
-            <Route path="/center-for-ai-services/research-ethics" element={<ResearchEthics />} />
+            <Route path="/center-for-ai-services" element={<RAICenter />} />
+            <Route path="/center-for-ai-services/ai-ready-schools" element={<RAILiteracy />} />
+            <Route path="/center-for-ai-services/innovative-tools" element={<RAIInnovation />} />
+            <Route path="/center-for-ai-services/research-ethics" element={<RAIResearch />} />
             <Route path="/arc" element={<ARC />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="/:slug" element={<DynamicPage />} />
