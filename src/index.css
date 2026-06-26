@@ -65,11 +65,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-  }
-  
-  h1, h2, h3, h4 {
-    @apply font-heading;
+    @apply bg-background text-foreground antialiased;
   }
 
   ::selection {

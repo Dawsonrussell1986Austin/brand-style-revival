@@ -19,10 +19,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Brand fonts (modernized): DM Serif Display headings + Fira Sans body
-        sans: ["Fira Sans", "ui-sans-serif", "system-ui", "sans-serif"],
-        heading: ["'DM Serif Display'", "ui-serif", "Georgia", "serif"],
-        body: ["Fira Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+        // Frontend typography is now Plus Jakarta Sans (redesign). Admin keeps Inter via scoped class.
+        sans: ["'Plus Jakarta Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["'Plus Jakarta Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ["'Plus Jakarta Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
