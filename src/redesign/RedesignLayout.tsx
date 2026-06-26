@@ -1,0 +1,144 @@
+import { useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+type Props = {
+  children: React.ReactNode;
+  /** Optional per-page init function (e.g. carousel/filter scripts) */
+  pageInit?: () => void;
+};
+
+const NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/workshops-events", label: "Workshops & Events" },
+];
+
+export function RedesignLayout({ children, pageInit }: Props) {
+  const navigate = useNavigate();
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // Intercept clicks on internal links within the rendered HTML body
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    function onClick(e: MouseEvent) {
+      const a = (e.target as HTMLElement)?.closest("a") as HTMLAnchorElement | null;
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (!href) return;
+      if (a.target === "_blank" || href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      if (href.startsWith("#")) return; // in-page anchor
+      e.preventDefault();
+      navigate(href);
+    }
+    root.addEventListener("click", onClick);
+    return () => root.removeEventListener("click", onClick);
+  }, [navigate]);
+
+  // Run shared aces.js behaviors + per-page init after mount
+  useEffect(() => {
+    // (Re)run global behaviors by injecting the script — it self-initializes
+    const s = document.createElement("script");
+    s.src = "/redesign-assets/aces.js";
+    s.async = false;
+    document.body.appendChild(s);
+    let cleanupPage: (() => void) | undefined;
+    if (pageInit) {
+      // Defer so DOM is in place
+      const t = setTimeout(() => {
+        try { pageInit(); } catch (err) { console.error("pageInit failed", err); }
+      }, 0);
+      cleanupPage = () => clearTimeout(t);
+    }
+    return () => {
+      s.remove();
+      cleanupPage?.();
+      // Remove mobile nav node injected by aces.js, if any
+      document.querySelectorAll(".mobnav").forEach((n) => n.remove());
+      document.body.classList.remove("nav-locked", "bio-locked");
+      document.documentElement.classList.remove("has-reveal");
+    };
+  }, [pageInit]);
+
+  return (
+    <div ref={rootRef}>
+      <header>
+        <div className="wrap nav">
+          <a className="brand" href="https://aces.org" target="_blank" rel="noopener" aria-label="ACES home — aces.org">
+            <img className="logo" src="/redesign-assets/aces-logo.jpg" alt="ACES — Area Cooperative Educational Services" />
+          </a>
+          <nav className="links">
+            {NAV_LINKS.map((l) => (
+              <Link key={l.href} to={l.href}>{l.label}</Link>
+            ))}
+            <div className="hasmenu">
+              <Link to="/pdsi-services">PDSI Services
+                <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="submenu">
+                <Link className="subitem" to="/pdsi-services/regional-forums">Regional Forums</Link>
+              </div>
+            </div>
+            <div className="hasmenu">
+              <Link to="/center-for-ai-services">Center for Artificial Intelligence
+                <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="submenu">
+                <Link className="subitem" to="/center-for-ai-services/ai-ready-schools">AI Literacy &amp; Learning</Link>
+                <Link className="subitem" to="/center-for-ai-services/innovative-tools">Innovation &amp; Design</Link>
+                <Link className="subitem" to="/center-for-ai-services/research-ethics">Research &amp; Ethical Standards</Link>
+                <Link className="subitem" to="/curriculum-creator">Curriculum Creator</Link>
+              </div>
+            </div>
+            <Link to="/resources">Educational Resources</Link>
+            <Link to="/contact">Contact</Link>
+          </nav>
+        </div>
+      </header>
+
+      {children}
+
+      <footer className="foot">
+        <div className="wrap">
+          <div className="foot-grid">
+            <div>
+              <div className="logochip"><img src="/redesign-assets/aces-logo.jpg" alt="ACES — Area Cooperative Educational Services" /></div>
+              <h5>PDSI Mission</h5>
+              <p className="desc desc-wide">ACES Professional Development and School Improvement (PDSI) seeks to deliver high-quality, responsive, equity-centered professional learning that empowers educators to innovate and foster the holistic growth of students. Through partnerships with educational leaders and communities, we aim to build joyful, data-informed, forward-thinking environments that ensure equitable outcomes and learning experiences where educators thrive so that their learners can achieve.</p>
+              <div className="social">
+                <a href="https://www.facebook.com/acespdsi" target="_blank" rel="noopener" aria-label="Facebook">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div>
+              <h5>Explore</h5>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/workshops-events">Workshops &amp; Events</Link></li>
+                <li><Link to="/pdsi-services">PDSI Services</Link></li>
+                <li><Link to="/pdsi-services/regional-forums">Regional Forums</Link></li>
+                <li><Link to="/center-for-ai-services">Center for Artificial Intelligence</Link></li>
+                <li><Link to="/resources">Educational Resources</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h5>Contact Us</h5>
+              <div className="contact">
+                205 Skiff Street<br />Hamden, CT 06517<br /><br />
+                <b>(860) 834-6147</b><br />
+                <a href="mailto:mgohagon@aces.org">mgohagon@aces.org</a>
+              </div>
+            </div>
+          </div>
+          <div className="foot-bot">
+            <span>© 2026 ACES Professional Development &amp; School Improvement. All rights reserved.</span>
+            <span>Area Cooperative Educational Services · Hamden, CT</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
