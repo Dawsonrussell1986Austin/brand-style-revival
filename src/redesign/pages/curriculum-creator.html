@@ -1,3 +1,28 @@
+<style>
+  /* Curriculum Creator — page-specific */
+  .cc-shot{max-width:1080px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 60px 110px -54px rgba(10,34,54,.62)}
+  .cc-shot img{display:block;width:100%;height:auto}
+  .cc-shotcap{text-align:center;font-size:13.5px;color:var(--muted);font-weight:600;margin-top:18px}
+  .fw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .fwcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 32px;transition:.2s}
+  .fwcard:hover{transform:translateY(-4px);box-shadow:0 28px 52px -34px rgba(10,34,54,.42);border-color:transparent}
+  .fwcard .abbr{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 16px;border-radius:12px;font-size:16px;font-weight:800;letter-spacing:.04em;margin-bottom:20px}
+  .fwcard:nth-child(1) .abbr{background:#E5F0F8;color:var(--blue)}
+  .fwcard:nth-child(2) .abbr{background:#E7F5EE;color:var(--green)}
+  .fwcard:nth-child(3) .abbr{background:#EAF2F8;color:#0c6aa6}
+  .fwcard h3{font-size:21px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:6px}
+  .fwcard .full{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .fwcard p{font-size:15px;color:var(--muted);font-weight:400;line-height:1.62}
+  .steps6{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .feat-list{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:980px){
+    .fw-grid,.steps6,.feat-list{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .fw-grid,.steps6,.feat-list{grid-template-columns:1fr}
+  }
+</style>
+
 <!-- PAGE HERO -->
 <section class="pagehero" style="background:linear-gradient(135deg,#1a7a52,#0a2236)">
   <div class="crumb"><a href="Direction D.html">Home</a><span class="sep">/</span><a href="/center-for-ai-services">Center for Artificial Intelligence</a><span class="sep">/</span><span>Curriculum Creator</span></div>
