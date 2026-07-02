@@ -1,3 +1,23 @@
+<style>
+  .lit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .litcard{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .litcard:hover{transform:translateY(-4px);box-shadow:0 28px 52px -34px rgba(10,34,54,.42)}
+  .litcard .limg{aspect-ratio:16/10;background:linear-gradient(135deg,#0d2a44,#123a5a);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .litcard .limg img{width:100%;height:100%;object-fit:cover;display:block}
+  .litcard .limg.contain img{object-fit:contain;background:#fff}
+  .limg .ph,.vimg .ph{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#7FA8C4;border:1.5px dashed rgba(127,168,196,.5);border-radius:10px;padding:10px 16px}
+  .litcard .lbody{padding:28px 28px 30px;display:flex;flex-direction:column;gap:14px;flex:1}
+  .litcard h3{font-size:21px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+  .litcard p{font-size:15px;color:var(--muted);line-height:1.62;flex:1}
+  .litcard .btn{align-self:flex-start}
+  .vision-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:54px;align-items:center}
+  .vimg{aspect-ratio:4/3;border-radius:20px;background:linear-gradient(135deg,#0d2a44,#123a5a);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .vimg img{width:100%;height:100%;object-fit:cover;display:block}
+  .vimg.contain img{object-fit:contain;background:#fff}
+  @media(max-width:980px){.lit-grid{grid-template-columns:1fr}.vision-grid{grid-template-columns:1fr}}
+</style>
+
+
 <!-- PAGE HERO -->
 <section class="pagehero" style="background:linear-gradient(135deg,#1a7a52,#0a2236)">
   <div class="crumb"><a href="/">Home</a><span class="sep">/</span><a href="/center-for-ai-services">Center for Artificial Intelligence</a><span class="sep">/</span><span>AI Literacy & Learning</span></div>
@@ -8,8 +28,70 @@
   </div>
 </section>
 
+<!-- AI-READY LEARNING COMMUNITIES -->
+<section class="blocks" style="text-align:left;padding:64px 0">
+  <div class="wrap">
+    <div class="section-narrow">
+      <span class="kicker">Our belief</span>
+      <h2 style="font-size:44px;margin-top:16px">Building AI-Ready <b>Learning Communities.</b></h2>
+      <p class="lead" style="margin-top:18px">AI literacy is not just for students. It is essential for educators, school leaders, and district teams who are preparing learners for a rapidly changing world. At the ACES Center for AI, we believe AI literacy is developed through shared learning, thoughtful implementation, and a commitment to keeping human thinking at the center of every decision.</p>
+      <p class="lead" style="margin-top:16px">Our work helps schools build the knowledge, instructional practices, and leadership capacity needed to integrate AI responsibly across classrooms, schools, and districts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THREE PROGRAM BOXES -->
+<section class="features" style="padding:70px 0 30px">
+  <div class="wrap">
+    <div class="lit-grid">
+
+      <article class="litcard">
+        <div class="limg" id="lit-img-pl"><img src="/redesign-assets/prof-learning.jpeg" alt="Educators collaborating around a table during an ACES professional learning session"></div>
+        <div class="lbody">
+          <h3>Professional Learning</h3>
+          <p>Develop the confidence and practical skills needed to integrate AI into teaching, leadership, and school improvement. Our workshops, coaching, and district learning experiences support educators and leaders at every stage of implementation.</p>
+          <a class="btn btn-blue" href="/workshops-events">Explore Professional Learning →</a>
+        </div>
+      </article>
+
+      <article class="litcard">
+        <div class="limg contain" id="lit-img-k12"><img src="/redesign-assets/k12-curriculum.png" alt="Prompting Progression Across Grade Levels — Kindergarten, Grade 6, and Grade 9 examples"></div>
+        <div class="lbody">
+          <h3>K–12 AI Literacy Curriculum</h3>
+          <p>A comprehensive, standards-aligned curriculum that develops AI literacy from Kindergarten through Grade 12. Students build knowledge and skills through authentic learning experiences, ethical inquiry, and progressively sophisticated applications of AI.</p>
+          <a class="btn btn-blue" href="#" data-needs-url="ai-literacy-site">Explore the K–12 Curriculum →</a>
+        </div>
+      </article>
+
+      <article class="litcard">
+        <div class="limg contain" id="lit-img-hs"><img src="/redesign-assets/hs-foundations.png" alt="High School AI Foundations course scope and sequence overview"></div>
+        <div class="lbody">
+          <h3>High School AI Foundations Course</h3>
+          <p>A full secondary course that prepares students to understand artificial intelligence through computer science, data science, systems thinking, ethics, innovation, and human-centered design.</p>
+          <a class="btn btn-blue" href="#" data-needs-url="ai-literacy-site">Explore the High School Course →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- VISION FOR AN AI-READY GRADUATE -->
+<section class="blocks" style="text-align:left;padding:64px 0">
+  <div class="wrap">
+    <div class="vision-grid">
+      <div>
+        <span class="kicker">Our north star</span>
+        <h2 style="font-size:44px;margin-top:16px">Our Vision for an <b>AI-Ready Graduate.</b></h2>
+        <p class="lead" style="margin-top:18px">Every learning experience developed by the ACES Center for AI is grounded in a shared vision of the knowledge, skills, and dispositions students need to thrive in an AI-enabled world. While AI technologies will continue to evolve, the ability to think critically, exercise sound judgment, communicate effectively, and lead responsibly will remain essential. Our AI literacy work is designed to cultivate these enduring capacities while ensuring that human thinking remains primary.</p>
+      </div>
+      <div class="vimg contain" id="lit-img-vision" style="aspect-ratio:4/5"><img src="/redesign-assets/vision-graduate.jpg" alt="Vision of an ACES AI-Ready Graduate — Human Thinking Remains Primary, surrounded by eight learner dispositions"></div>
+    </div>
+  </div>
+</section>
+
 <!-- OVERVIEW -->
-<section class="features">
+<section class="features" style="padding-top:70px">
   <div class="wrap">
     <div class="section-narrow" style="margin-bottom:50px">
       <span class="kicker">What this pillar includes</span>
@@ -49,5 +131,7 @@
     </div>
   </div>
 </section>
+
+<!-- FOOTER -->
 
 <!-- FOOTER -->
