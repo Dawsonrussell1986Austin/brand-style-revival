@@ -1,5 +1,22 @@
+<style>
+  .res-row{display:grid;grid-template-columns:1fr 1.05fr;gap:50px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+  .res-row .rimg{align-self:stretch;min-height:320px}
+  .res-row .rimg img{width:100%;height:100%;object-fit:cover;display:block}
+  .res-row .rbody{padding:44px 48px 44px 0;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+  .res-row .rbody h3{font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+  .res-row .rbody p{font-size:16px;color:var(--muted);line-height:1.68}
+  .res-row.rev{grid-template-columns:1.05fr 1fr}
+  .res-row.rev .rbody{padding:44px 0 44px 48px}
+  .res-duo{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .res-cell{background:#fff;border:1px solid var(--line);border-radius:22px;padding:40px 44px}
+  .res-cell h3{font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:14px}
+  .res-cell p{font-size:16px;color:var(--muted);line-height:1.68}
+  @media(max-width:980px){.res-row,.res-row.rev,.res-duo{grid-template-columns:1fr}.res-row .rbody,.res-row.rev .rbody{padding:30px 28px}.res-row.rev .rbody{order:2}}
+</style>
+
+
 <!-- PAGE HERO -->
-<section class="pagehero" style="background:linear-gradient(135deg,#1a7a52,#0a2236)">
+<section class="pagehero" style="background:linear-gradient(100deg,rgba(7,26,43,.92) 0%,rgba(10,34,54,.72) 55%,rgba(10,34,54,.45) 100%),url('/redesign-assets/ai-research-hero.png') center 32%/cover no-repeat">
   <div class="crumb"><a href="/">Home</a><span class="sep">/</span><a href="/center-for-ai-services">Center for Artificial Intelligence</a><span class="sep">/</span><span>Research & Ethical Standards</span></div>
   <div class="inner">
     <span class="kicker">Pillar 3</span>
@@ -8,30 +25,122 @@
   </div>
 </section>
 
-<!-- OVERVIEW -->
-<section class="features">
+<!-- BUILDING TRUST IN AI -->
+<section class="blocks" style="text-align:left;padding:64px 0">
   <div class="wrap">
-    <div class="section-narrow" style="margin-bottom:50px">
-      <span class="kicker">What this pillar includes</span>
-      <h2 style="font-size:44px;margin-top:16px">Responsible AI, grounded in evidence.</h2>
-      <p class="lead" style="margin-top:16px">This pillar gives schools the governance and guardrails to adopt AI with integrity, protecting students and staff while keeping decisions grounded in research.</p>
+    <div class="section-narrow">
+      <span class="kicker">Why it matters</span>
+      <h2 style="font-size:44px;margin-top:16px">Building Trust <b>in AI.</b></h2>
+      <p class="lead" style="margin-top:18px">Artificial intelligence is transforming education at an unprecedented pace, creating new opportunities for teaching, learning, leadership, and school operations. As AI becomes increasingly integrated into classrooms and district systems, schools need more than access to new technologies. They need trusted guidance that helps them make informed, responsible decisions about how AI is selected, implemented, and evaluated.</p>
+      <p class="lead" style="margin-top:16px">At the ACES Center for AI, we help schools build the leadership, governance, and decision-making structures needed to navigate this rapidly evolving landscape with confidence. Through applied research, ethical frameworks, strategic planning, and collaborative partnerships, we support districts in implementing AI in ways that are innovative, transparent, and centered on the needs of students, educators, and communities.</p>
     </div>
-    <div class="cards3">
-      <div class="vcard">
-        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7z"/></svg></div>
-        <h3>Governance & Policy</h3>
-        <p>Clear frameworks and sample policy language to guide safe, equitable AI use across your organization.</p>
+  </div>
+</section>
+
+<!-- HOW WE SUPPORT -->
+<section class="features" style="padding:76px 0">
+  <div class="wrap">
+    <div class="section-narrow" style="margin-bottom:46px">
+      <span class="kicker">Our services</span>
+      <h2 style="font-size:44px;margin-top:16px">How We Support Responsible <b>AI Implementation.</b></h2>
+    </div>
+
+    <div class="res-row">
+      <div class="rimg" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:20px"><img src="/redesign-assets/ai-governance.png" alt="Governance &amp; Guidance — Creating Clear Expectations: ethics, privacy, instruction, communication, and decision-making" style="object-fit:contain"></div>
+      <div class="rbody">
+        <h3>AI Governance &amp; Policy Development</h3>
+        <p>Develop clear, practical guidance that supports responsible AI use across your district. We partner with leadership teams to facilitate AI committees, create governance structures, develop guidance documents, and establish implementation plans that reflect your district's values and goals.</p>
+        <a class="btn btn-blue" href="/contact">Partner With Us</a>
       </div>
-      <div class="vcard">
-        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 7h14M7 7l-3 6h6zM17 7l-3 6h6z"/></svg></div>
-        <h3>Ethics & Risk Management</h3>
-        <p>Practical guidance on privacy, bias, transparency, and the responsible handling of AI in schools.</p>
+    </div>
+
+    <div class="res-row rev" style="margin-top:26px">
+      <div class="rbody">
+        <h3>AI Readiness &amp; Strategic Planning</h3>
+        <p>Prepare your district for thoughtful, sustainable AI implementation through strategic planning, readiness assessments, and leadership development. As CoSN Certified Regional Trainers, we support district and school leaders in building the knowledge, governance structures, and implementation strategies needed to lead AI initiatives with confidence.</p>
       </div>
-      <div class="vcard">
-        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div>
-        <h3>Evidence-Based Decisions</h3>
-        <p>Research and evaluation that help leaders make informed, defensible choices about AI adoption.</p>
+      <div class="rimg"><img src="/redesign-assets/ai-readiness.jpeg" alt="District leaders working in teams at an AI readiness planning session"></div>
+    </div>
+
+    <div class="res-duo" style="margin-top:26px">
+      <div class="res-cell">
+        <h3>Ethical AI Consulting</h3>
+        <p>Navigate the complex questions surrounding artificial intelligence with confidence. We help districts address privacy, bias, accessibility, transparency, academic integrity, vendor evaluation, and responsible AI decision-making through collaborative consulting and practical guidance.</p>
       </div>
+      <div class="res-cell">
+        <h3>Research &amp; Evaluation</h3>
+        <p>Bridge research and practice through applied studies, implementation support, and evaluation. We help schools translate emerging AI research into meaningful action while studying the impact of AI initiatives on teaching, learning, and leadership.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADVANCING THE FIELD -->
+<section class="blocks" style="text-align:left;padding:72px 0">
+  <div class="wrap">
+    <div class="section-narrow" style="margin-bottom:46px">
+      <span class="kicker">Thought leadership</span>
+      <h2 style="font-size:44px;margin-top:16px">Advancing <b>the Field.</b></h2>
+      <p class="lead" style="margin-top:18px">The ACES Center for AI is committed to shaping the future of AI in education through research, collaboration, and the open exchange of ideas. We bring together educators, researchers, industry leaders, and policymakers to explore emerging questions, share practical insights, and advance responsible AI implementation across schools and districts.</p>
+    </div>
+
+    <div class="res-cell" style="display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+      <h3 style="margin-bottom:0">Future-proof Education: AI and Beyond</h3>
+      <p>This podcast explores how artificial intelligence is transforming education, from school operations and instructional design to AI literacy, equity, assessment, and responsible implementation. Hosted by Bob Hutchins and Dr. Jessica White, with recurring conversations featuring national leaders and partners, the podcast helps educators and administrators think practically about what AI makes possible and what human expertise must continue to protect.</p>
+      <a class="btn btn-blue" href="https://podcasts.apple.com/us/podcast/future-proof-education-ai-and-beyond/id1799034057" target="_blank" rel="noopener">Listen to the Podcast</a>
+    </div>
+
+    <div class="res-row" style="margin-top:26px">
+      <div class="rimg"><img src="/redesign-assets/harvard-series.png" alt="ACES leaders at Harvard's Division of Continuing Education, Professional &amp; Executive Development"></div>
+      <div class="rbody">
+        <span style="display:inline-block;background:#E7F5EE;color:var(--green);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:20px">Coming Soon!</span>
+        <h3>Harvard Learning Series</h3>
+        <p>In partnership with Brattle Square Studio at Harvard's Division of Continuing Education, this series brings together leading voices in education, technology, and research to explore human-centered approaches to AI, leadership, and the future of learning.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS & FRAMEWORKS -->
+<section class="features" style="padding:72px 0">
+  <div class="wrap">
+    <div class="res-row rev">
+      <div class="rbody">
+        <span class="kicker">Publications &amp; Frameworks</span>
+        <h3 style="margin-top:4px">From research to <b style="font-weight:700">meaningful action.</b></h3>
+        <p>From practical implementation guides to emerging research and thought pieces, the Center develops resources that help educators and district leaders translate complex AI topics into meaningful action.</p>
+        <a class="btn btn-blue" href="/resources">View Our Resources</a>
+      </div>
+      <div class="rimg" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:26px"><img src="/redesign-assets/ai-playbook.png" alt="The ACES District AI Playbook — A Practical Guide for AI-Ready Districts" style="object-fit:contain"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED RESOURCE -->
+<section class="blocks" style="text-align:left;padding:64px 0">
+  <div class="wrap">
+    <div class="res-cell" style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;border-left:5px solid var(--green)">
+      <span class="kicker">Featured Resource</span>
+      <h3 style="margin-bottom:0">Designing Assessments in an AI-Influenced World</h3>
+      <p>As artificial intelligence becomes part of everyday teaching and learning, educators need new ways to think about assessment. Rather than focusing on whether AI is allowed or prohibited, this framework helps educators begin with the purpose of the assessment, the evidence of learning that matters most, and the thinking that should remain visible and human.</p>
+      <p>Designed as a conversation tool rather than a compliance checklist, the framework supports thoughtful assessment design that promotes meaningful learning while recognizing the evolving role of AI in education.</p>
+      <a class="btn btn-green" href="/redesign-assets/Designing Assessments in an AI-Influenced World.pdf" target="_blank" rel="noopener">Download the Framework</a>
+    </div>
+  </div>
+</section>
+
+<!-- AI SEAL OF APPROVAL -->
+<section class="features" style="padding:72px 0">
+  <div class="wrap">
+    <div class="section-narrow">
+      <span style="display:inline-block;background:#E7F5EE;color:var(--green);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:20px;margin-bottom:18px">Coming Soon</span>
+      <h2 style="font-size:44px">AI Seal of <b>Approval.</b></h2>
+      <p style="font-size:18px;font-weight:600;color:var(--ink);margin-top:14px">Setting the Standard for Responsible AI in Education</p>
+      <p class="lead" style="margin-top:16px">As artificial intelligence becomes increasingly integrated into teaching and learning, school leaders need confidence that the tools they adopt are safe, effective, and aligned with educational priorities. The ACES Center for AI is developing the AI Seal of Approval, a comprehensive evaluation and recognition process designed to help districts identify AI tools that meet rigorous standards for educational quality, responsible AI practices, and implementation readiness.</p>
+      <p class="lead" style="margin-top:16px">The Seal of Approval will provide schools with a trusted framework for evaluating AI technologies through an educational lens, considering factors such as instructional value, privacy and security, accessibility, transparency, ethical design, and alignment with the needs of students and educators.</p>
+      <p class="lead" style="margin-top:16px">Whether districts are exploring new AI platforms or vendors are seeking independent educational review, the AI Seal of Approval will serve as a mark of quality, trust, and responsible innovation.</p>
     </div>
   </div>
 </section>
@@ -40,16 +149,14 @@
 <section class="cta" style="padding-top:0">
   <div class="wrap">
     <div class="cta-inner" style="background:linear-gradient(135deg,#1a7a52,#0a2236)">
-      <h2>Adopt AI with confidence and integrity.</h2>
-      <p>We'll help you put the right policies, ethics, and evidence in place.</p>
+      <h2>Partner With the ACES Center for <b>AI.</b></h2>
+      <p>Whether you're developing district guidance, implementing responsible AI practices, evaluating emerging technologies, or exploring research partnerships, we're ready to help your team build AI systems that are innovative, ethical, and sustainable.</p>
       <div class="cta-cta">
-        <a class="btn btn-white" href="/contact">Talk With Our Team</a>
+        <a class="btn btn-white" href="/contact">Contact the Center for AI</a>
         <a class="btn btn-line" href="/center-for-ai-services">Back to the Center</a>
       </div>
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
 
 <!-- FOOTER -->
