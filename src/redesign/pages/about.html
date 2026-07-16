@@ -1,8 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · ACES PDSI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/aces.css">
+<style>
+  .mlist{background:#0A2236;padding:56px 0}
+  .mlist-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  .mlist h2{font-size:32px;color:#fff;letter-spacing:-.02em;font-weight:700}
+  .mlist h2 b{color:#5fb7e8}
+  .mlist p{font-size:15.5px;color:#9FB6C8;margin-top:8px;line-height:1.6}
+  .mlist-form{display:flex;gap:12px}
+  .mlist-form input{flex:1;height:52px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);padding:0 18px;font-size:15px;color:#fff;font-family:inherit;outline:none}
+  .mlist-form input::placeholder{color:#7FA8C4}
+  .mlist-form input:focus{border-color:#5fb7e8}
+  .mlist-form{flex-wrap:wrap}
+  .mlist-ok{color:#7fe0b2;font-size:16px;font-weight:700}
+  .mlist-err{width:100%;color:#f0b3a6;font-size:13.5px;font-weight:600}
+  @media(max-width:860px){.mlist-inner{grid-template-columns:1fr}.mlist-form{flex-direction:column}.mlist-form .btn{align-self:flex-start}}
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="https://aces.org" target="_blank" rel="noopener" aria-label="ACES home — aces.org">
+      <img class="logo" src="assets/aces-logo.jpg" alt="ACES — Area Cooperative Educational Services">
+    </a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Workshops &amp; Events</a>
+      <a href="regional-forums.html">Regional Forums</a>
+      <div class="hasmenu">
+        <a href="ai-center.html">Center for Artificial Intelligence <svg class="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="submenu">
+          <a class="subitem" href="ai-literacy.html">AI Literacy &amp; Learning</a>
+          <a class="subitem" href="ai-innovation.html">Innovation &amp; Design</a>
+          <a class="subitem" href="ai-research.html">Research &amp; Ethical Standards</a>
+          <a class="subitem" href="curriculum-creator.html">Curriculum Creator</a>
+        </div>
+      </div>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
 <!-- PAGE HERO -->
 <section class="pagehero photo">
   <div class="bg"></div>
   <div class="inner">
-    <div class="crumb"><a href="/">Home</a><span class="sep">/</span><span>About</span></div>
+    <div class="crumb"><a href="index.html">Home</a><span class="sep">/</span><span>About</span></div>
     <h1>About ACES <b>PDSI</b></h1>
     <p>Professional learning should feel practical, human, and responsive to the schools it serves. This page introduces the mission, values, and partnership approach behind ACES PDSI.</p>
   </div>
@@ -17,7 +70,7 @@
         <h2><b>Educators</b> serving educators.</h2>
         <p>ACES PDSI is part of Area Cooperative Educational Services — a regional educational service center serving school districts across south-central Connecticut. Our team of former teachers, coaches, and school leaders brings classroom-tested expertise to every partnership.</p>
       </div>
-      <div class="img-col"><img src="/redesign-assets/whoweare.jpg" alt="The ACES PDSI team at a STEM Century book celebration"></div>
+      <div class="img-col"><img src="assets/whoweare.jpg" alt="The ACES PDSI team at a STEM Century book celebration"></div>
     </div>
   </div>
 </section>
@@ -120,8 +173,8 @@
         <div class="role">Early Childhood</div>
         <span class="more">Read full bio <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         <p class="biofull" hidden>Michelle Dellacamera is a Professional Learning Specialist at ACES PDSI, bringing nearly 40 years of dedicated experience in Early Childhood education. Her extensive background supports high-quality services for children and families in Connecticut. Michelle is passionate about enhancing Early Childhood programs and staff, focusing on professional development, quality service provision, and supporting educators in obtaining key credentials.</p></button>
-      <button class="person" data-name="Nicole Beauchamp" data-email="nbeauchamp@aces.org" data-role="Mathematics" data-fulltitle="Professional Learning Specialist · Mathematics" data-photo="/redesign-assets/nicole-beauchamp.jpg">
-        <div class="ph3"><img src="/redesign-assets/nicole-beauchamp.jpg" alt="Nicole Beauchamp" loading="lazy"></div>
+      <button class="person" data-name="Nicole Beauchamp" data-email="nbeauchamp@aces.org" data-role="Mathematics" data-fulltitle="Professional Learning Specialist · Mathematics" data-photo="assets/nicole-beauchamp.jpg">
+        <div class="ph3"><img src="assets/nicole-beauchamp.jpg" alt="Nicole Beauchamp" loading="lazy"></div>
         <h4>Nicole Beauchamp</h4>
         <div class="role">Mathematics</div>
         <span class="more">Read full bio <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
@@ -191,11 +244,70 @@
       <h2>Let's build a <b>plan</b> for your school.</h2>
       <p>Share your goals with us, and we'll help connect you to the right expertise in coaching, curriculum, leadership, or AI.</p>
       <div class="cta-cta">
-        <a class="btn btn-white" href="/contact">Talk With Our Team</a>
+        <a class="btn btn-white" href="contact.html">Talk With Our Team</a>
         <a class="btn btn-line" href="tel:8608346147">Call (860) 834-6147</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- MAILING LIST -->
+<section class="mlist" data-screen-label="Join our mailing list">
+  <div class="wrap">
+    <div class="mlist-inner">
+      <div>
+        <h2>Join our <b>mailing list.</b></h2>
+        <p>Get upcoming workshops, AI resources, and Center for AI news delivered to your inbox.</p>
+      </div>
+      <form class="mlist-form" name="mailing-list" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="var f=this;fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(function(){f.innerHTML='<p class=\'mlist-ok\'>Thanks — you&#39;re on the list!</p>'}).catch(function(){f.querySelector('.mlist-err').hidden=false});return false">
+        <input type="hidden" name="form-name" value="mailing-list">
+        <p hidden><input name="bot-field"></p>
+        <input type="email" name="email" placeholder="Your email address" required>
+        <button class="btn btn-green" type="submit">Subscribe</button>
+        <p class="mlist-err" hidden>Something went wrong — please try again.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logochip"><img src="assets/aces-logo.jpg" alt="ACES — Area Cooperative Educational Services"></div>
+        <h5>PDSI Mission</h5>
+        <p class="desc desc-wide">ACES Professional Development and School Improvement (PDSI) seeks to deliver high-quality, responsive, equity-centered professional learning that empowers educators to innovate and foster the holistic growth of students. Through partnerships with educational leaders and communities, we aim to build joyful, data-informed, forward-thinking environments that ensure equitable outcomes and learning experiences where educators thrive so that their learners can achieve.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/acespdsi" target="_blank" rel="noopener" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Workshops &amp; Events</a></li>
+          <li><a href="ai-center.html">Center for Artificial Intelligence</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact Us</h5>
+        <div class="contact">
+          205 Skiff Street<br>Hamden, CT 06517<br><br>
+          <b>(860) 834-6147</b><br>
+          <a href="mailto:mgohagon@aces.org">mgohagon@aces.org</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 ACES Professional Development &amp; School Improvement. All rights reserved.</span>
+      <span>Area Cooperative Educational Services · Hamden, CT</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/aces.js"></script>
+</body>
+</html>
