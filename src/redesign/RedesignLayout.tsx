@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 type Props = {
   children: React.ReactNode;
@@ -32,7 +33,40 @@ export function RedesignLayout({ children, pageInit }: Props) {
       navigate(href);
     }
     root.addEventListener("click", onClick);
-    return () => root.removeEventListener("click", onClick);
+
+    // Intercept mailing-list subscribe forms embedded in raw HTML pages
+    async function onSubmit(e: SubmitEvent) {
+      const form = e.target as HTMLFormElement | null;
+      if (!form || form.getAttribute("name") !== "mailing-list") return;
+      e.preventDefault();
+      e.stopPropagation();
+      const fd = new FormData(form);
+      const email = String(fd.get("email") || "").trim();
+      const err = form.querySelector(".mlist-err") as HTMLElement | null;
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 255) {
+        if (err) { err.textContent = "Please enter a valid email."; err.hidden = false; }
+        return;
+      }
+      try {
+        const { error } = await supabase.from("contact_submissions").insert({
+          name: "Mailing List Subscriber",
+          email,
+          message: "Mailing list subscription",
+          source: "mailing-list",
+        });
+        if (error) throw error;
+        form.innerHTML = "<p class='mlist-ok'>Thanks — you're on the list!</p>";
+      } catch (ex) {
+        console.error("mailing-list subscribe error", ex);
+        if (err) { err.textContent = "Something went wrong — please try again."; err.hidden = false; }
+      }
+    }
+    root.addEventListener("submit", onSubmit as unknown as EventListener, true);
+
+    return () => {
+      root.removeEventListener("click", onClick);
+      root.removeEventListener("submit", onSubmit as unknown as EventListener, true);
+    };
   }, [navigate]);
 
   // Run shared aces.js behaviors + per-page init after mount
