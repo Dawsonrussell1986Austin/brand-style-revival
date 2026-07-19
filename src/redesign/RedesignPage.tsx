@@ -14,6 +14,14 @@ type Props = {
 // HTML page exports so only the body content renders inside <RedesignLayout>.
 function sanitize(raw: string): string {
   let out = raw;
+  // Preserve any <style> blocks from <head> — pages ship page-specific CSS there.
+  const headStyles: string[] = [];
+  const headMatch = out.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
+  if (headMatch) {
+    const styleRe = /<style[^>]*>[\s\S]*?<\/style>/gi;
+    let m: RegExpExecArray | null;
+    while ((m = styleRe.exec(headMatch[1])) !== null) headStyles.push(m[0]);
+  }
   // Drop everything outside <body>...</body> if present
   const bodyMatch = out.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
   if (bodyMatch) out = bodyMatch[1];
@@ -25,7 +33,8 @@ function sanitize(raw: string): string {
   out = out.replace(/<\/?(html|head|body)[^>]*>/gi, "");
   // Remove <template> blocks (bundler thumbnails etc.)
   out = out.replace(/<template[\s\S]*?<\/template>/gi, "");
-  return out;
+  // Reinject preserved head <style> blocks at the top of the body content.
+  return headStyles.join("\n") + out;
 }
 
 export function RedesignPage({ html, pageInit, title, description, url }: Props) {
