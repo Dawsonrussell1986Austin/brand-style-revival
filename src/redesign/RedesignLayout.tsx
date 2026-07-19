@@ -14,6 +14,24 @@ const NAV_LINKS = [
   { href: "/workshops-events", label: "Workshops & Events" },
 ];
 
+const HTML_TO_ROUTE: Record<string, string> = {
+  "index.html": "/",
+  "about.html": "/about",
+  "events.html": "/workshops-events",
+  "services.html": "/pdsi-services",
+  "regional-forums.html": "/pdsi-services/regional-forums",
+  "ai-center.html": "/center-for-ai-services",
+  "ai-literacy.html": "/center-for-ai-services/ai-ready-schools",
+  "ai-innovation.html": "/center-for-ai-services/innovative-tools",
+  "ai-research.html": "/center-for-ai-services/research-ethics",
+  "curriculum-creator.html": "/curriculum-creator",
+  "resources.html": "/resources",
+  "contact.html": "/contact",
+  "blog-ai.html": "/blog/saving-time-with-ai",
+  "blog-play.html": "/blog/everyone-loves-to-play",
+  "blog-rooted.html": "/blog/rooted-in-relationships-and-rigor",
+};
+
 export function RedesignLayout({ children, pageInit }: Props) {
   const navigate = useNavigate();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -30,6 +48,20 @@ export function RedesignLayout({ children, pageInit }: Props) {
       if (a.target === "_blank" || href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
       if (href.startsWith("#")) return; // in-page anchor
       e.preventDefault();
+      // Strip any query/hash, resolve legacy .html hrefs to real routes
+      const [pathPart, rest] = [href.split(/[?#]/)[0], href.slice(href.split(/[?#]/)[0].length)];
+      const key = pathPart.replace(/^\.?\//, "");
+      const mapped = HTML_TO_ROUTE[key];
+      if (mapped) {
+        navigate(mapped + rest);
+        return;
+      }
+      // If it still ends in .html with no mapping, drop the extension
+      if (pathPart.endsWith(".html")) {
+        const slug = "/" + key.replace(/\.html$/, "");
+        navigate(slug + rest);
+        return;
+      }
       navigate(href);
     }
     root.addEventListener("click", onClick);
