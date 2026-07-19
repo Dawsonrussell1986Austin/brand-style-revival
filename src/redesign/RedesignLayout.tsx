@@ -165,6 +165,20 @@ export function RedesignLayout({ children, pageInit }: Props) {
       {children}
 
       <footer className="foot">
+        {/* Global mailing list (blue band, full width) */}
+        <div className="foot-mlist">
+          <div className="wrap foot-mlist-inner">
+            <div className="foot-mlist-copy">
+              <h3>Join our <b>mailing list.</b></h3>
+              <p>Get upcoming workshops, AI resources, and Center for AI news delivered to your inbox.</p>
+            </div>
+            <form className="foot-mlist-form mlist-form" name="mailing-list" method="POST">
+              <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required />
+              <button type="submit" className="btn btn-green">Subscribe</button>
+              <p className="mlist-err" hidden>Something went wrong — please try again.</p>
+            </form>
+          </div>
+        </div>
         <div className="wrap">
           <div className="foot-grid">
             <div>

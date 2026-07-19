@@ -28,6 +28,8 @@ function sanitize(raw: string): string {
   // Remove any embedded <header>...</header> and <footer>...</footer> blocks
   out = out.replace(/<header[\s\S]*?<\/header>/gi, "");
   out = out.replace(/<footer[\s\S]*?<\/footer>/gi, "");
+  // Remove per-page mailing-list section (moved to global footer)
+  out = out.replace(/<section[^>]*class="[^"]*\bmlist\b[^"]*"[^>]*>[\s\S]*?<\/section>/gi, "");
   // Remove doctype / html / head remnants just in case
   out = out.replace(/<!DOCTYPE[^>]*>/gi, "");
   out = out.replace(/<\/?(html|head|body)[^>]*>/gi, "");

@@ -704,3 +704,18 @@ body.nav-locked{overflow:hidden}
   .article .body p{font-size:16.5px}
   .compare{grid-template-columns:1fr}
 }
+
+/* Footer global mailing-list band */
+.foot-mlist{background:#0a2236;border-bottom:1px solid rgba(255,255,255,.06);padding:44px 0}
+.foot-mlist-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.foot-mlist-copy h3{color:#fff;font-size:26px;letter-spacing:-.02em;font-weight:700;line-height:1.2}
+.foot-mlist-copy h3 b{color:#5fb7e8;font-weight:700}
+.foot-mlist-copy p{color:#9FB6C8;font-size:14.5px;margin-top:8px;line-height:1.6;max-width:520px}
+.foot-mlist-form{display:flex;gap:12px;flex-wrap:wrap;width:100%}
+.foot-mlist-form input{flex:1;min-width:220px;height:52px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);padding:0 18px;font-size:15px;color:#fff;font-family:inherit;outline:none}
+.foot-mlist-form input::placeholder{color:#7FA8C4}
+.foot-mlist-form input:focus{border-color:#5fb7e8}
+.foot-mlist-form .btn{height:52px;padding:0 26px;white-space:nowrap}
+.foot-mlist .mlist-err{width:100%;color:#f0b3a6;font-size:13.5px;font-weight:600}
+.foot-mlist .mlist-ok{color:#7fe0b2;font-size:16px;font-weight:700}
+@media(max-width:860px){.foot-mlist-inner{grid-template-columns:1fr}.foot-mlist-form{flex-direction:column}.foot-mlist-form .btn{align-self:flex-start}}
