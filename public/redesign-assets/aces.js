@@ -185,6 +185,76 @@
   function init() {
     buildMobileNav();
     setupReveal();
+    setupBioModal();
+  }
+
+  /* ---------- Bio modal ---------- */
+  function setupBioModal() {
+    if (document.getElementById("bio-modal")) return;
+    var modal = document.createElement("div");
+    modal.id = "bio-modal";
+    modal.setAttribute("hidden", "");
+    modal.innerHTML =
+      '<div class="bm-backdrop" data-bm-close></div>' +
+      '<div class="bm-panel" role="dialog" aria-modal="true" aria-labelledby="bm-name">' +
+        '<button class="bm-close" aria-label="Close" data-bm-close>&times;</button>' +
+        '<div class="bm-photo"><img alt="" id="bm-photo"></div>' +
+        '<div class="bm-body">' +
+          '<h3 id="bm-name"></h3>' +
+          '<div class="bm-role" id="bm-role"></div>' +
+          '<a class="bm-email" id="bm-email" href="#"></a>' +
+          '<div class="bm-bio" id="bm-bio"></div>' +
+        '</div>' +
+      '</div>';
+    var style = document.createElement("style");
+    style.textContent =
+      '#bio-modal[hidden]{display:none}' +
+      '#bio-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}' +
+      '#bio-modal .bm-backdrop{position:absolute;inset:0;background:rgba(10,34,54,.55);backdrop-filter:blur(2px)}' +
+      '#bio-modal .bm-panel{position:relative;background:#fff;border-radius:18px;max-width:720px;width:100%;max-height:88vh;overflow:auto;display:grid;grid-template-columns:220px 1fr;gap:0;box-shadow:0 30px 80px -20px rgba(10,34,54,.5)}' +
+      '#bio-modal .bm-photo{background:#eef2f6}' +
+      '#bio-modal .bm-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block;min-height:260px}' +
+      '#bio-modal .bm-body{padding:28px 30px 30px}' +
+      '#bio-modal .bm-body h3{margin:0 0 4px;font-size:22px;font-weight:600}' +
+      '#bio-modal .bm-role{color:#5a6b7a;font-size:14px;margin-bottom:10px}' +
+      '#bio-modal .bm-email{display:inline-block;font-size:13.5px;color:var(--blue,#0a5cd6);margin-bottom:14px;text-decoration:none}' +
+      '#bio-modal .bm-email:hover{text-decoration:underline}' +
+      '#bio-modal .bm-bio{font-size:15px;line-height:1.65;color:#1c2b39}' +
+      '#bio-modal .bm-close{position:absolute;top:10px;right:12px;background:none;border:0;font-size:28px;line-height:1;cursor:pointer;color:#0a2236;z-index:2}' +
+      '@media(max-width:640px){#bio-modal .bm-panel{grid-template-columns:1fr}#bio-modal .bm-photo img{min-height:220px}}';
+    document.head.appendChild(style);
+    document.body.appendChild(modal);
+
+    function open(btn) {
+      var name = btn.getAttribute("data-name") || "";
+      var role = btn.getAttribute("data-fulltitle") || btn.getAttribute("data-role") || "";
+      var email = btn.getAttribute("data-email") || "";
+      var photo = btn.getAttribute("data-photo") || "";
+      var bioEl = btn.querySelector(".biofull");
+      document.getElementById("bm-name").textContent = name;
+      document.getElementById("bm-role").textContent = role;
+      var emailEl = document.getElementById("bm-email");
+      if (email) { emailEl.textContent = email; emailEl.href = "mailto:" + email; emailEl.style.display = ""; }
+      else { emailEl.style.display = "none"; }
+      var img = document.getElementById("bm-photo");
+      img.src = photo; img.alt = name;
+      document.getElementById("bm-bio").innerHTML = bioEl ? bioEl.innerHTML : "";
+      modal.removeAttribute("hidden");
+      document.body.style.overflow = "hidden";
+    }
+    function close() {
+      modal.setAttribute("hidden", "");
+      document.body.style.overflow = "";
+    }
+    document.addEventListener("click", function (e) {
+      var closer = e.target.closest("[data-bm-close]");
+      if (closer) { close(); return; }
+      var btn = e.target.closest(".person");
+      if (btn) { e.preventDefault(); open(btn); }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !modal.hasAttribute("hidden")) close();
+    });
   }
 
   if (document.readyState === "loading") {
