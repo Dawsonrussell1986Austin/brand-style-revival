@@ -138,14 +138,6 @@ export function RedesignLayout({ children, pageInit }: Props) {
               <Link key={l.href} to={l.href}>{l.label}</Link>
             ))}
             <div className="hasmenu">
-              <Link to="/pdsi-services">PDSI Services
-                <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
-              </Link>
-              <div className="submenu">
-                <Link className="subitem" to="/pdsi-services/regional-forums">Regional Forums</Link>
-              </div>
-            </div>
-            <div className="hasmenu">
               <Link to="/center-for-ai-services">Center for Artificial Intelligence
                 <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
               </Link>
@@ -156,7 +148,6 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <Link className="subitem" to="/curriculum-creator">Curriculum Creator</Link>
               </div>
             </div>
-            <Link to="/resources">Educational Resources</Link>
             <Link to="/contact">Contact</Link>
           </nav>
         </div>
@@ -197,10 +188,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/workshops-events">Workshops &amp; Events</Link></li>
-                <li><Link to="/pdsi-services">PDSI Services</Link></li>
-                <li><Link to="/pdsi-services/regional-forums">Regional Forums</Link></li>
                 <li><Link to="/center-for-ai-services">Center for Artificial Intelligence</Link></li>
-                <li><Link to="/resources">Educational Resources</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>
