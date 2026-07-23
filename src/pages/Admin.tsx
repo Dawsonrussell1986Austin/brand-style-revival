@@ -877,10 +877,28 @@ export default function Admin() {
       }
       // No session — auto-login as the shared admin via edge function
       try {
-        const { data, error } = await supabase.functions.invoke("portal-auto-login");
-        if (error || !data?.token_hash) {
-          throw error || new Error("Login token missing");
+        let data: any = null;
+        try {
+          const res = await supabase.functions.invoke("portal-auto-login");
+          if (res.error) throw res.error;
+          data = res.data;
+        } catch (invokeErr) {
+          // Fallback: some browser extensions (ad/privacy blockers) block the
+          // Supabase JS client's fetch. Try a plain fetch as a second attempt.
+          const SUPABASE_URL = (import.meta as any).env.VITE_SUPABASE_URL;
+          const SUPABASE_KEY = (import.meta as any).env.VITE_SUPABASE_PUBLISHABLE_KEY;
+          const r = await fetch(`${SUPABASE_URL}/functions/v1/portal-auto-login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              apikey: SUPABASE_KEY,
+              Authorization: `Bearer ${SUPABASE_KEY}`,
+            },
+          });
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          data = await r.json();
         }
+        if (!data?.token_hash) throw new Error("Login token missing");
         const { data: verified, error: verifyError } = await supabase.auth.verifyOtp({
           token_hash: data.token_hash,
           type: "magiclink",
@@ -890,7 +908,11 @@ export default function Admin() {
         }
         setUser(verified.user);
       } catch (e: any) {
-        toast.error("Unable to open admin portal: " + (e?.message || "unknown error"));
+        toast.error(
+          "Unable to open admin portal. If you're on Chrome, an ad blocker or privacy extension is likely blocking the login request. Try opening this page in an Incognito window (with extensions disabled) or pause your ad blocker for this site.",
+          { duration: 15000 }
+        );
+        console.error("Portal login failed:", e);
       }
     };
     ensureSession();
