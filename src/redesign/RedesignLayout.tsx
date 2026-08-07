@@ -128,6 +128,22 @@ export function RedesignLayout({ children, pageInit }: Props) {
 
   return (
     <div ref={rootRef}>
+      <div className="topbanner">
+        <div className="wrap">
+          <span className="tb-kicker">Call for Proposals: ACES AI Conference 2026</span>
+          <span className="tb-copy">
+            Have an idea, strategy, or innovative practice to share? Join the conversation and help shape the future of human-centered learning in an AI era.
+          </span>
+          <a
+            className="tb-cta"
+            href="https://tinyurl.com/ACESAIConference"
+            target="_blank"
+            rel="noopener"
+          >
+            Submit by August 14, 2026 →
+          </a>
+        </div>
+      </div>
       <header>
         <div className="wrap nav">
           <a className="brand" href="https://aces.org" target="_blank" rel="noopener" aria-label="ACES home — aces.org">
