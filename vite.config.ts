@@ -16,7 +16,7 @@ const PRERENDER_ROUTES = [
     title: "ACES AI Conference 2026 | Register Today",
     description:
       "Join CT educators and leaders Sept 25, 2026 in Bristol, CT for the ACES AI Conference: keynotes, breakouts, and an Innovation Lab. Register today.",
-    image: `${SITE_URL}/redesign-assets/ai-conference-hero.jpg`,
+    image: `${SITE_URL}/redesign-assets/og-ai-conference.jpg`,
   },
 ];
 
