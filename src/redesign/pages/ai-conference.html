@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <style>
-  .conf-hero{position:relative;background:linear-gradient(135deg,#08203a 0%,#0A2236 45%,#123f63 100%);color:#fff;padding:96px 0 84px;overflow:hidden}
+  .conf-hero{position:relative;color:#fff;padding:104px 0 92px;overflow:hidden;background:#08203a}
+  .conf-hero .conf-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 70%;opacity:.9}
+  .conf-hero .conf-scrim{position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,24,44,.97) 0%,rgba(8,32,58,.92) 42%,rgba(10,42,72,.62) 70%,rgba(12,50,84,.3) 100%)}
+  .conf-seal{width:96px;height:auto;margin-bottom:22px;filter:drop-shadow(0 8px 22px rgba(0,0,0,.45))}
   .conf-hero:before{content:"";position:absolute;width:520px;height:520px;right:-120px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(95,183,232,.35),transparent 65%)}
   .conf-hero .wrap{position:relative}
   .conf-kicker{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:999px;background:rgba(95,183,232,.16);border:1px solid rgba(95,183,232,.4);color:#9fd6f5;font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
@@ -31,6 +34,8 @@
   .conf-strand{background:#0A2236;color:#fff;border-radius:18px;padding:28px;border:1px solid rgba(255,255,255,.08)}
   .conf-strand h3{font-size:19px;font-weight:800;color:#7fc9f2;margin-bottom:8px}
   .conf-strand p{font-size:15.5px;color:#b9cdda;line-height:1.6}
+  .conf-photo{height:340px;background:url("/redesign-assets/ai-conference-hero.jpg") center 35%/cover no-repeat;position:relative}
+  .conf-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,34,54,.55),rgba(10,34,54,.15) 40%,rgba(10,34,54,.85))}
   .conf-final{background:linear-gradient(135deg,#0A2236,#15486f);color:#fff;padding:84px 0;text-align:center}
   .conf-final h2{font-size:clamp(30px,4.4vw,46px);font-weight:300;letter-spacing:-.02em;margin-bottom:14px}
   .conf-final h2 b{font-weight:800;color:#7fc9f2}
@@ -44,7 +49,10 @@
 </head><body>
 
 <section class="conf-hero">
+  <img class="conf-bg" src="/redesign-assets/ai-conference-hero.jpg" alt="Educators collaborating at an ACES AI convening">
+  <div class="conf-scrim"></div>
   <div class="wrap">
+    <img class="conf-seal" src="/redesign-assets/aces-ai-seal.png" alt="ACES Center for Artificial Intelligence seal">
     <span class="conf-kicker">ACES Center for Artificial Intelligence</span>
     <h1>ACES AI Conference <b>2026</b></h1>
     <p class="conf-sub">Designing Human-Centered Learning in an AI Era. Join educators, leaders, and innovators from across Connecticut for a day of inspiration, collaboration, and practical strategies to design the future of learning with AI.</p>
@@ -108,6 +116,8 @@
     </div>
   </div>
 </section>
+
+<section class="conf-photo" aria-hidden="true"></section>
 
 <section class="conf-final">
   <div class="wrap">
