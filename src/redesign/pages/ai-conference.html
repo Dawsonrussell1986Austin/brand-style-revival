@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<style>
+  .conf-hero{position:relative;background:linear-gradient(135deg,#08203a 0%,#0A2236 45%,#123f63 100%);color:#fff;padding:96px 0 84px;overflow:hidden}
+  .conf-hero:before{content:"";position:absolute;width:520px;height:520px;right:-120px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(95,183,232,.35),transparent 65%)}
+  .conf-hero .wrap{position:relative}
+  .conf-kicker{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:999px;background:rgba(95,183,232,.16);border:1px solid rgba(95,183,232,.4);color:#9fd6f5;font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .conf-hero h1{font-size:clamp(38px,6vw,66px);line-height:1.03;letter-spacing:-.03em;font-weight:300;margin:20px 0 14px;max-width:16ch}
+  .conf-hero h1 b{font-weight:800;color:#7fc9f2}
+  .conf-sub{font-size:19px;line-height:1.6;color:#cfe1ee;max-width:60ch;font-weight:400}
+  .conf-meta{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 34px}
+  .conf-chip{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);font-size:15px;font-weight:600;color:#eaf4fb}
+  .conf-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .conf-btn{display:inline-flex;align-items:center;gap:10px;padding:17px 34px;border-radius:999px;background:#4aa63c;color:#fff;font-weight:800;font-size:17px;text-decoration:none;box-shadow:0 14px 34px rgba(74,166,60,.34);transition:transform .18s ease,box-shadow .18s ease}
+  .conf-btn:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(74,166,60,.45)}
+  .conf-btn-ghost{display:inline-flex;align-items:center;padding:17px 30px;border-radius:999px;border:2px solid rgba(255,255,255,.4);color:#fff;font-weight:700;font-size:16px;text-decoration:none}
+  .conf-btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+  .conf-note{font-size:14px;color:#9FB6C8;margin-top:14px}
+  .conf-band{background:#4aa63c;color:#fff;padding:16px 0;text-align:center;font-weight:800;letter-spacing:.05em;font-size:15.5px;text-transform:uppercase}
+  .conf-sec{padding:76px 0}
+  .conf-sec.alt{background:#F4F8FB}
+  .conf-h2{font-size:clamp(28px,3.6vw,40px);font-weight:300;letter-spacing:-.02em;color:#0A2236;margin-bottom:10px}
+  .conf-h2 b{font-weight:800}
+  .conf-lead{font-size:17px;color:#4d6b80;max-width:62ch;line-height:1.65}
+  .conf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:38px}
+  .conf-card{background:#fff;border:1px solid #e2ecf3;border-radius:18px;padding:28px;transition:transform .18s ease,box-shadow .18s ease}
+  .conf-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(10,34,54,.1)}
+  .conf-card .num{font-size:13px;font-weight:800;color:#4aa63c;letter-spacing:.1em;text-transform:uppercase}
+  .conf-card h3{font-size:20px;font-weight:700;color:#0A2236;margin:10px 0 8px}
+  .conf-card p{font-size:15.5px;color:#5a7488;line-height:1.6}
+  .conf-strand{background:#0A2236;color:#fff;border-radius:18px;padding:28px;border:1px solid rgba(255,255,255,.08)}
+  .conf-strand h3{font-size:19px;font-weight:800;color:#7fc9f2;margin-bottom:8px}
+  .conf-strand p{font-size:15.5px;color:#b9cdda;line-height:1.6}
+  .conf-final{background:linear-gradient(135deg,#0A2236,#15486f);color:#fff;padding:84px 0;text-align:center}
+  .conf-final h2{font-size:clamp(30px,4.4vw,46px);font-weight:300;letter-spacing:-.02em;margin-bottom:14px}
+  .conf-final h2 b{font-weight:800;color:#7fc9f2}
+  .conf-final p{font-size:18px;color:#cfe1ee;max-width:60ch;margin:0 auto 30px;line-height:1.6}
+  .conf-contact{margin-top:26px;font-size:15px;color:#9FB6C8}
+  .conf-contact a{color:#7fc9f2;text-decoration:none}
+  .conf-cfp{border:2px dashed #4aa63c;background:#fff;border-radius:18px;padding:30px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-top:38px}
+  .conf-cfp h3{font-size:22px;font-weight:800;color:#0A2236}
+  .conf-cfp p{font-size:15.5px;color:#5a7488;margin-top:6px;max-width:56ch}
+</style>
+</head><body>
+
+<section class="conf-hero">
+  <div class="wrap">
+    <span class="conf-kicker">ACES Center for Artificial Intelligence</span>
+    <h1>ACES AI Conference <b>2026</b></h1>
+    <p class="conf-sub">Designing Human-Centered Learning in an AI Era. Join educators, leaders, and innovators from across Connecticut for a day of inspiration, collaboration, and practical strategies to design the future of learning with AI.</p>
+    <div class="conf-meta">
+      <div class="conf-chip">September 25, 2026</div>
+      <div class="conf-chip">8:30 AM – 3:30 PM</div>
+      <div class="conf-chip">DoubleTree by Hilton, Bristol, CT</div>
+    </div>
+    <div class="conf-cta">
+      <a class="conf-btn" href="https://catalog.protraxx.com/ClassDetails/448333?CustomerId=254" target="_blank" rel="noopener">Register Today →</a>
+      <a class="conf-btn-ghost" href="#highlights">See What's Inside</a>
+    </div>
+    <p class="conf-note">Educators. Leaders. Innovators. One day. Big impact. Seats are limited — secure yours now.</p>
+  </div>
+</section>
+
+<div class="conf-band">One Day · Four Strands · Statewide Connection</div>
+
+<section class="conf-sec" id="highlights">
+  <div class="wrap">
+    <h2 class="conf-h2">Conference <b>Highlights</b></h2>
+    <p class="conf-lead">A full day built for practitioners — bold ideas in the morning, usable strategies you can bring back to your school by Monday.</p>
+    <div class="conf-grid">
+      <div class="conf-card"><div class="num">Keynotes</div><h3>Inspiring Keynotes</h3><p>Thought leaders sharing a bold, human-centered vision for AI in education.</p></div>
+      <div class="conf-card"><div class="num">Sessions</div><h3>Breakout Sessions</h3><p>Choose from topics across four powerful strands, designed for every role.</p></div>
+      <div class="conf-card"><div class="num">Hands-On</div><h3>Innovation Lab</h3><p>Explore tools, ideas, and solutions in a fully interactive maker space.</p></div>
+      <div class="conf-card"><div class="num">Community</div><h3>Network &amp; Connect</h3><p>Collaborate with colleagues and partners from districts across the state.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="conf-sec alt">
+  <div class="wrap">
+    <h2 class="conf-h2">Conference <b>Strands</b></h2>
+    <p class="conf-lead">Build your own day. Follow one strand deeply or mix and match across all four.</p>
+    <div class="conf-grid">
+      <div class="conf-strand"><h3>Designing Systems</h3><p>Leadership, policy, governance, and sustainable implementation.</p></div>
+      <div class="conf-strand"><h3>Designing Learning</h3><p>Curriculum, instruction, assessment, and learning experiences.</p></div>
+      <div class="conf-strand"><h3>Designing Human Agency</h3><p>Equity, ethics, communication, and student empowerment.</p></div>
+      <div class="conf-strand"><h3>Designing Intelligent Tools</h3><p>Tools, platforms, and innovations that enhance human potential.</p></div>
+    </div>
+
+    <div class="conf-cfp">
+      <div>
+        <h3>Call for Proposals</h3>
+        <p>Have an idea, strategy, or innovative practice to share? Help shape the future of human-centered learning in an AI era.</p>
+      </div>
+      <a class="conf-btn" href="https://tinyurl.com/ACESAIConference" target="_blank" rel="noopener">Submit a Proposal →</a>
+    </div>
+  </div>
+</section>
+
+<section class="conf-sec">
+  <div class="wrap">
+    <h2 class="conf-h2">Who Should <b>Attend</b></h2>
+    <p class="conf-lead">Teachers, instructional coaches, curriculum leaders, principals, superintendents, technology directors, and anyone guiding how AI shows up in schools.</p>
+    <div class="conf-grid">
+      <div class="conf-card"><div class="num">Take Away</div><h3>Practical Strategies</h3><p>Classroom-ready approaches you can implement immediately — not theory.</p></div>
+      <div class="conf-card"><div class="num">Take Away</div><h3>District Playbooks</h3><p>Policy and governance guidance for safe, sustainable AI implementation.</p></div>
+      <div class="conf-card"><div class="num">Take Away</div><h3>A Statewide Network</h3><p>Connections with CT colleagues solving the same challenges you are.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="conf-final">
+  <div class="wrap">
+    <h2>Save your seat for <b>September 25</b></h2>
+    <p>Registration is open now through ProTraxx. Bring a team — the districts that move fastest on AI are the ones that learn together.</p>
+    <a class="conf-btn" href="https://catalog.protraxx.com/ClassDetails/448333?CustomerId=254" target="_blank" rel="noopener">Register Now →</a>
+    <div class="conf-contact">Questions? <a href="mailto:jewhite@aces.org">jewhite@aces.org</a> · <a href="tel:8603280666">(860) 328-0666</a></div>
+  </div>
+</section>
+
+</body></html>
