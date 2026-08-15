@@ -453,7 +453,7 @@ body.bio-locked{overflow:hidden}
   /* events — two-column layout */
   .ev-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:38px;align-items:start;width:100%}
   .ev-main{width:100%}
-  .ev-main .evrow{grid-template-columns:104px minmax(0,1fr) auto;gap:24px;padding:24px 26px;width:100%}
+  .ev-main .evrow{grid-template-columns:104px minmax(0,1fr) min-content;gap:24px;padding:24px 26px;width:100%}
   .ev-empty{display:none;text-align:center;padding:60px 30px;border:1px dashed var(--line);border-radius:18px;background:#fff;color:var(--muted)}
   .ev-empty h3{font-size:20px;color:var(--ink);font-weight:700;margin-bottom:8px}
 
