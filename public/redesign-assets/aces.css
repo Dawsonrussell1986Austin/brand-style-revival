@@ -532,10 +532,10 @@ a.up-item:hover .up-body h4{color:#7FC4F0}
   .detail,.formwrap{grid-template-columns:1fr}
   .detail.rev .img-col{order:0}
   .kgrid{grid-template-columns:1fr 1fr}
-  .evrow{grid-template-columns:90px 1fr;gap:20px}
+  .evrow{grid-template-columns:90px minmax(0,1fr);gap:20px}
   .cat-grid .chip{flex-basis:calc((100% - 16px)/2)}
   .evrow .act{grid-column:1 / -1;flex-direction:row;align-items:center}
-  .ev-main .evrow{grid-template-columns:90px 1fr}
+  .ev-main .evrow{grid-template-columns:90px minmax(0,1fr)}
   .ev-layout{grid-template-columns:1fr;gap:30px}
   .ev-aside{position:static;order:-1}
   .upcoming{max-width:none}
