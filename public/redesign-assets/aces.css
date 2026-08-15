@@ -422,7 +422,7 @@ body.bio-locked{overflow:hidden}
   .evrow .when .d{font-size:34px;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.03em}
   .evrow .when .m{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-top:4px}
   .evrow .when .yr{font-size:12px;color:var(--muted);font-weight:600}
-  .evrow .info{min-width:0}
+  .evrow .info{min-width:0;width:100%;overflow:hidden}
   .evrow .info h3{font-size:23px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:6px}
   .evrow .info p{font-size:14.5px;color:var(--muted);font-weight:400}
   .evrow .info .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
