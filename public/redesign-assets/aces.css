@@ -450,11 +450,11 @@ body.bio-locked{overflow:hidden}
 .chip.allbtn{font-weight:700}
 .fgroup.allrow{border-top:1px solid var(--line);padding-top:16px;margin-top:2px}
 
-/* events — two-column layout */
-.ev-layout{display:grid;grid-template-columns:1fr 340px;gap:38px;align-items:start}
-.ev-main .evrow{grid-template-columns:104px 1fr auto;gap:24px;padding:24px 26px}
-.ev-empty{display:none;text-align:center;padding:60px 30px;border:1px dashed var(--line);border-radius:18px;background:#fff;color:var(--muted)}
-.ev-empty h3{font-size:20px;color:var(--ink);font-weight:700;margin-bottom:8px}
+  /* events — two-column layout */
+  .ev-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:38px;align-items:start}
+  .ev-main .evrow{grid-template-columns:104px minmax(0,1fr) auto;gap:24px;padding:24px 26px}
+  .ev-empty{display:none;text-align:center;padding:60px 30px;border:1px dashed var(--line);border-radius:18px;background:#fff;color:var(--muted)}
+  .ev-empty h3{font-size:20px;color:var(--ink);font-weight:700;margin-bottom:8px}
 
 /* events — upcoming callout */
 .ev-aside{position:sticky;top:96px}
