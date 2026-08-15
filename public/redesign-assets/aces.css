@@ -415,8 +415,8 @@ body.bio-locked{overflow:hidden}
 }
 
   /* events list */
-  .evlist{display:flex;flex-direction:column;gap:18px}
-  .evrow{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:30px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 30px;transition:.2s}
+  .evlist{display:flex;flex-direction:column;gap:18px;width:100%}
+  .evrow{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:30px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 30px;transition:.2s;width:100%;box-sizing:border-box}
   .evrow:hover{box-shadow:0 24px 50px -34px rgba(10,34,54,.4);border-color:transparent;transform:translateY(-3px)}
   .evrow .when{text-align:center;border-right:1px solid var(--line);padding-right:24px}
   .evrow .when .d{font-size:34px;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.03em}
