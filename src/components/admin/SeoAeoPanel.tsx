@@ -58,22 +58,25 @@ const PER_PAGE_KEYS = [
   { key: "jsonld_type", label: "JSON-LD primary type (Article, Service, FAQPage, Breadcrumb)" },
 ];
 
-const PAGE_LIST = [
-  "home",
-  "about",
-  "services",
-  "events",
-  "resources",
-  "ai-center",
-  "arc",
-  "curriculum-creator",
-  "center-for-ai-services",
-  "contact",
-  "ai-ready-schools",
-  "innovative-tools",
-  "research-ethics",
-  "regional-forums",
-];
+/** Admin page key -> live URL path (used for the sitemap + canonical defaults). */
+const PAGE_PATHS: Record<string, string> = {
+  home: "/",
+  about: "/about",
+  services: "/pdsi-services",
+  events: "/workshops-events",
+  resources: "/resources",
+  "center-for-ai-services": "/center-for-ai-services",
+  "ai-ready-schools": "/center-for-ai-services/ai-ready-schools",
+  "innovative-tools": "/center-for-ai-services/innovative-tools",
+  "research-ethics": "/center-for-ai-services/research-ethics",
+  "regional-forums": "/pdsi-services/regional-forums",
+  "curriculum-creator": "/curriculum-creator",
+  "ai-conference-2026": "/ai-conference-2026",
+  arc: "/arc",
+  contact: "/contact",
+};
+
+const PAGE_LIST = Object.keys(PAGE_PATHS);
 
 export function SeoAeoPanel() {
   const { data: settings, isLoading } = useSiteSettings();
@@ -117,7 +120,7 @@ export function SeoAeoPanel() {
   const baseUrl = draft.site_url || "https://www.acespdsi.org";
   const sitemap = generateSitemap(
     baseUrl,
-    PAGE_LIST,
+    PAGE_LIST.map((p) => PAGE_PATHS[p]),
     (events || []).map((e: any) => ({ slug: e.slug, updated_at: e.updated_at }))
   );
 
@@ -421,25 +424,21 @@ export function SeoAeoPanel() {
 
 function generateSitemap(
   baseUrl: string,
-  pages: string[],
+  paths: string[],
   events: { slug: string; updated_at?: string }[]
 ) {
   const today = new Date().toISOString().split("T")[0];
   const urls: string[] = [];
-  // Root
-  urls.push(
-    `  <url>\n    <loc>${baseUrl}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>`
-  );
-  for (const page of pages) {
-    if (page === "home") continue;
+  for (const path of paths) {
+    const isHome = path === "/";
     urls.push(
-      `  <url>\n    <loc>${baseUrl}/${page}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>`
+      `  <url>\n    <loc>${baseUrl}${path}</loc>\n    <changefreq>${isHome ? "weekly" : "monthly"}</changefreq>\n    <priority>${isHome ? "1.0" : "0.8"}</priority>\n  </url>`
     );
   }
   for (const ev of events) {
     const lm = (ev.updated_at || today).split("T")[0];
     urls.push(
-      `  <url>\n    <loc>${baseUrl}/events/${ev.slug}</loc>\n    <lastmod>${lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`
+      `  <url>\n    <loc>${baseUrl}/workshops-events/${ev.slug}</loc>\n    <lastmod>${lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`
     );
   }
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`;
