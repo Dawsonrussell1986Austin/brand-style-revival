@@ -22,6 +22,7 @@ import RServices from "./redesign/pages-tsx/RServices";
 import RRegionalForums from "./redesign/pages-tsx/RRegionalForums";
 import RAICenter from "./redesign/pages-tsx/RAICenter";
 import RAIConference from "./redesign/pages-tsx/RAIConference";
+import RWiredWednesdays from "./redesign/pages-tsx/RWiredWednesdays";
 import RAILiteracy from "./redesign/pages-tsx/RAILiteracy";
 import RAIInnovation from "./redesign/pages-tsx/RAIInnovation";
 import RAIResearch from "./redesign/pages-tsx/RAIResearch";
@@ -98,6 +99,7 @@ const App = () => {
             <Route path="/arc" element={<ARC />} />
             <Route path="/ai-conference-2026" element={<RAIConference />} />
             <Route path="/ai-conference" element={<Navigate to="/ai-conference-2026" replace />} />
+            <Route path="/wired-wednesdays" element={<RWiredWednesdays />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="/:slug" element={<DynamicPage />} />
             <Route path="*" element={<NotFound />} />
