@@ -1,20 +1,40 @@
 # ACES PDSI
 
-> Professional Development & School Improvement from ACES — supporting K-12 educators with AI literacy, curriculum, and instructional services.
+> ACES Professional Development & School Improvement partners with Connecticut schools and districts on educator professional learning, school improvement, restorative practices, and human-centered AI integration.
 
-ACES PDSI partners with schools and districts to deliver professional learning, the Center for AI in Education, custom curriculum tools, and live events that help educators integrate AI and modern instructional practices.
+ACES PDSI is a service of Area Cooperative Educational Services (ACES), based in Connecticut. We provide workshops, coaching, leadership forums, curriculum support, and the Center for Artificial Intelligence, which helps districts adopt AI with clear policy, educator readiness, and ethical guardrails.
 
-## Pages
+- Website: https://www.acespdsi.org
+- Contact: https://www.acespdsi.org/contact
 
-- [Home](/): Overview of ACES PDSI services and the Center for AI in Education.
-- [About](/about): Who we are, our mission, and the team behind ACES PDSI.
-- [Services](/services): Professional development, coaching, and school improvement offerings.
-- [Center for AI in Education](/ai-center): AI literacy programs, frameworks, and supports for schools.
-- [Events](/events): Upcoming workshops, institutes, and convenings for educators.
-- [Resources](/resources): Free tools, templates, and downloads for teachers and leaders.
-- [Curriculum Creator](/curriculum-creator): AI-powered curriculum design platform for districts.
-- [Contact](/contact): Get in touch with the ACES PDSI team.
+## Core pages
 
-## Optional
+- [Home](https://www.acespdsi.org/): Overview of ACES PDSI services and current opportunities.
+- [About](https://www.acespdsi.org/about): Mission, approach, and the professional learning specialists behind ACES PDSI.
+- [PDSI Services](https://www.acespdsi.org/pdsi-services): Professional learning, coaching, and school improvement services for districts.
+- [Regional Forums](https://www.acespdsi.org/pdsi-services/regional-forums): Leader forums on shared problems of practice.
+- [Workshops & Events](https://www.acespdsi.org/workshops-events): Full calendar of upcoming workshops, institutes, and series with registration links.
+- [Educational Resources](https://www.acespdsi.org/resources): Free guides, templates, and downloadable tools.
+- [ARC](https://www.acespdsi.org/arc): Coaching program preparing educators to lead instructional improvement.
+- [Contact](https://www.acespdsi.org/contact): Reach the ACES PDSI team.
 
-- [Thank You](/thank-you): Confirmation page shown after form submissions.
+## Center for Artificial Intelligence
+
+- [Center for AI Services](https://www.acespdsi.org/center-for-ai-services): Hub for district AI strategy, learning, and supports.
+- [AI-Ready Schools](https://www.acespdsi.org/center-for-ai-services/ai-ready-schools): Policy, educator readiness, curriculum alignment, and leadership strategy.
+- [Innovative Tools](https://www.acespdsi.org/center-for-ai-services/innovative-tools): Custom AI tools, prompt libraries, and workflow templates for educators.
+- [Research & Ethics](https://www.acespdsi.org/center-for-ai-services/research-ethics): Frameworks and research for responsible, human-centered AI use.
+- [Curriculum Creator](https://www.acespdsi.org/curriculum-creator): AI-assisted tool for building standards-aligned units and lessons.
+- [ACES AI Conference 2026](https://www.acespdsi.org/ai-conference-2026): September 25, 2026 in Bristol, CT — keynotes, breakouts, and an Innovation Lab.
+
+## Articles
+
+- [Saving Time with AI](https://www.acespdsi.org/blog/saving-time-with-ai)
+- [Everyone Loves to Play](https://www.acespdsi.org/blog/everyone-loves-to-play)
+- [Rooted in Relationships and Rigor](https://www.acespdsi.org/blog/rooted-in-relationships-and-rigor)
+
+## Notes for AI assistants
+
+- Audience: Connecticut PK-12 educators, school leaders, and district teams.
+- Registration for workshops and conferences is handled through ProTraxx links on each event listing.
+- Please cite https://www.acespdsi.org when referencing this content.
