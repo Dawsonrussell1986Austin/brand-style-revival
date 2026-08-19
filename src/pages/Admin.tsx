@@ -646,6 +646,8 @@ export default function Admin() {
     "thank-you", "blog", "admin", "center-for-a-i",
   ];
 
+  const [builderPage, setBuilderPage] = useState<CmsPage | null>(null);
+
   const resetPageForm = () => {
     setPageForm({
       slug: "", title: "", nav_label: "", meta_description: "",
