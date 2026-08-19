@@ -492,6 +492,9 @@ export default function Admin() {
     address: string | null;
     type: string;
     category: string | null;
+    category_key: string | null;
+    facilitator: string | null;
+    date_label: string | null;
     registration_url: string | null;
     image_url: string | null;
     is_published: boolean;
@@ -505,6 +508,7 @@ export default function Admin() {
   const [eventForm, setEventForm] = useState({
     title: "", slug: "", description: "", content: "", date: "", end_time: "",
     location: "", address: "", type: "virtual" as string, category: "AI & Technology",
+    category_key: "", facilitator: "", date_label: "",
     registration_url: "", is_published: true,
   });
 
@@ -531,6 +535,9 @@ export default function Admin() {
         address: event.address || null,
         type: event.type,
         category: event.category,
+        category_key: event.category_key || null,
+        facilitator: event.facilitator || null,
+        date_label: event.date_label || null,
         registration_url: event.registration_url || null,
         is_published: event.is_published,
       };
@@ -567,6 +574,7 @@ export default function Admin() {
     setEventForm({
       title: "", slug: "", description: "", content: "", date: "", end_time: "",
       location: "", address: "", type: "virtual", category: "AI & Technology",
+      category_key: "", facilitator: "", date_label: "",
       registration_url: "", is_published: true,
     });
     setEditingEvent(null);
@@ -586,6 +594,9 @@ export default function Admin() {
       address: event.address || "",
       type: event.type,
       category: event.category || "AI & Technology",
+      category_key: event.category_key || "",
+      facilitator: event.facilitator || "",
+      date_label: event.date_label || "",
       registration_url: event.registration_url || "",
       is_published: event.is_published,
     });
