@@ -54,11 +54,15 @@ export type Database = {
         Row: {
           address: string | null
           category: string | null
+          category_key: string | null
           content: string
           created_at: string
           date: string
+          date_label: string | null
           description: string
+          display_order: number
           end_time: string
+          facilitator: string | null
           id: string
           image_url: string | null
           is_published: boolean
@@ -72,11 +76,15 @@ export type Database = {
         Insert: {
           address?: string | null
           category?: string | null
+          category_key?: string | null
           content?: string
           created_at?: string
           date: string
+          date_label?: string | null
           description?: string
+          display_order?: number
           end_time?: string
+          facilitator?: string | null
           id?: string
           image_url?: string | null
           is_published?: boolean
@@ -90,11 +98,15 @@ export type Database = {
         Update: {
           address?: string | null
           category?: string | null
+          category_key?: string | null
           content?: string
           created_at?: string
           date?: string
+          date_label?: string | null
           description?: string
+          display_order?: number
           end_time?: string
+          facilitator?: string | null
           id?: string
           image_url?: string | null
           is_published?: boolean
