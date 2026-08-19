@@ -152,6 +152,63 @@ export type Database = {
         }
         Relationships: []
       }
+      page_blocks: {
+        Row: {
+          block_type: string
+          body: string | null
+          created_at: string
+          cta_label: string | null
+          cta_url: string | null
+          display_order: number
+          heading: string | null
+          id: string
+          image_alt: string | null
+          image_url: string | null
+          is_published: boolean
+          items: Json
+          page_slug: string
+          settings: Json
+          subheading: string | null
+          updated_at: string
+        }
+        Insert: {
+          block_type?: string
+          body?: string | null
+          created_at?: string
+          cta_label?: string | null
+          cta_url?: string | null
+          display_order?: number
+          heading?: string | null
+          id?: string
+          image_alt?: string | null
+          image_url?: string | null
+          is_published?: boolean
+          items?: Json
+          page_slug: string
+          settings?: Json
+          subheading?: string | null
+          updated_at?: string
+        }
+        Update: {
+          block_type?: string
+          body?: string | null
+          created_at?: string
+          cta_label?: string | null
+          cta_url?: string | null
+          display_order?: number
+          heading?: string | null
+          id?: string
+          image_alt?: string | null
+          image_url?: string | null
+          is_published?: boolean
+          items?: Json
+          page_slug?: string
+          settings?: Json
+          subheading?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       pages: {
         Row: {
           created_at: string
