@@ -179,7 +179,9 @@ export function RedesignLayout({ children, pageInit }: Props) {
         </div>
       </header>
 
-      {children}
+      <main id="maincontent" tabIndex={-1}>
+        {children}
+      </main>
 
       <footer className="foot">
         {/* Global mailing list (blue band, full width) */}
