@@ -480,6 +480,20 @@ export default function Admin() {
   const uploadImage = useUploadImage();
 
   // Events state
+  const EVENT_CATEGORIES = [
+    { key: "ai-foundations", label: "AI Foundations" },
+    { key: "ai-leadership", label: "AI Leadership, Strategy & Impact" },
+    { key: "ai-productivity", label: "AI Professional Productivity" },
+    { key: "ai-role", label: "AI Role-Specific" },
+    { key: "ai-teaching", label: "AI Teaching & Learning" },
+    { key: "foundations", label: "Classroom Foundations" },
+    { key: "leadership", label: "Leadership" },
+    { key: "literacy", label: "Literacy" },
+    { key: "math", label: "Mathematics" },
+    { key: "mtss", label: "MTSS & Supporting Tier 1 Instruction" },
+    { key: "restorative", label: "Restorative Practices" },
+  ];
+
   interface EventRecord {
     id: string;
     slug: string;
