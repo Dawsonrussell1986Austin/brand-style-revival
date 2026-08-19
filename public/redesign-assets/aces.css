@@ -739,3 +739,27 @@ body.nav-locked{overflow:hidden}
 .ev-filterselect select{appearance:none;-webkit-appearance:none;min-width:280px;max-width:100%;font:inherit;font-size:16px;font-weight:600;color:var(--ink);background:#fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230A2236' stroke-width='2.4'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center;border:1.5px solid #CCD9E4;border-radius:14px;padding:13px 46px 13px 18px;cursor:pointer;box-shadow:0 6px 20px -14px rgba(10,34,54,.28);transition:.2s}
 .ev-filterselect select:hover{border-color:var(--blue)}
 .ev-filterselect select:focus-visible{outline:3px solid rgba(0,102,178,.35);outline-offset:2px;border-color:var(--blue)}
+
+/* ===== Accessibility (WCAG 2.1 AA) ===== */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,
+summary:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid #0a66c2;
+  outline-offset:2px;
+  border-radius:4px;
+}
+.skiplink{
+  position:absolute;left:-9999px;top:0;z-index:999;
+  background:#09578b;color:#fff;padding:12px 18px;font-weight:700;border-radius:0 0 8px 0;
+}
+.skiplink:focus{left:0}
+.visually-hidden{
+  position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.btn.is-disabled,[aria-disabled="true"]{cursor:not-allowed;opacity:.72}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
