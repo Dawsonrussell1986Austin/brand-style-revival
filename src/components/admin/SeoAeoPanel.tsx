@@ -72,7 +72,7 @@ const PAGE_PATHS: Record<string, string> = {
   "regional-forums": "/pdsi-services/regional-forums",
   "curriculum-creator": "/curriculum-creator",
   "ai-conference-2026": "/ai-conference-2026",
-  "wired-wednesdays": "/wired-wednesdays",
+  "wired-wednesdays": "/workshops-events/wired-wednesdays",
   arc: "/arc",
   contact: "/contact",
 };
