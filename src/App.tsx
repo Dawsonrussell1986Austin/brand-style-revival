@@ -99,7 +99,8 @@ const App = () => {
             <Route path="/arc" element={<ARC />} />
             <Route path="/ai-conference-2026" element={<RAIConference />} />
             <Route path="/ai-conference" element={<Navigate to="/ai-conference-2026" replace />} />
-            <Route path="/wired-wednesdays" element={<RWiredWednesdays />} />
+            <Route path="/workshops-events/wired-wednesdays" element={<RWiredWednesdays />} />
+            <Route path="/wired-wednesdays" element={<Navigate to="/workshops-events/wired-wednesdays" replace />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="/:slug" element={<DynamicPage />} />
             <Route path="*" element={<NotFound />} />

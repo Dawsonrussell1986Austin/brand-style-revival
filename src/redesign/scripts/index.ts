@@ -8,6 +8,8 @@ export function run() {
   var prev = document.getElementById('cPrev');
   var next = document.getElementById('cNext');
   var dotsWrap = document.getElementById('cDots');
+  if (!cards.length || !prev || !next || !dotsWrap) return;
+  dotsWrap.innerHTML = '';
   var active = Math.min(1, cards.length - 1); // start with a card centered, neighbours on both sides
 
   // dots
@@ -49,8 +51,15 @@ export function run() {
     if (e.key === 'ArrowRight') { next.click(); }
   });
 
-  if (document.readyState === 'complete') layout();
-  else window.addEventListener('load', layout);
+  // Re-measure once images/fonts settle — stale offsets are what broke the arrows.
+  Array.prototype.slice.call(track.querySelectorAll('img')).forEach(function (img) {
+    if (!img.complete) img.addEventListener('load', layout);
+  });
+  if (window.ResizeObserver) {
+    try { new ResizeObserver(function () { layout(); }).observe(track.parentElement); } catch (e) {}
+  }
+  window.addEventListener('load', layout);
+  requestAnimationFrame(layout);
   layout();
 })();
 

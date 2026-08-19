@@ -480,6 +480,20 @@ export default function Admin() {
   const uploadImage = useUploadImage();
 
   // Events state
+  const EVENT_CATEGORIES = [
+    { key: "ai-foundations", label: "AI Foundations" },
+    { key: "ai-leadership", label: "AI Leadership, Strategy & Impact" },
+    { key: "ai-productivity", label: "AI Professional Productivity" },
+    { key: "ai-role", label: "AI Role-Specific" },
+    { key: "ai-teaching", label: "AI Teaching & Learning" },
+    { key: "foundations", label: "Classroom Foundations" },
+    { key: "leadership", label: "Leadership" },
+    { key: "literacy", label: "Literacy" },
+    { key: "math", label: "Mathematics" },
+    { key: "mtss", label: "MTSS & Supporting Tier 1 Instruction" },
+    { key: "restorative", label: "Restorative Practices" },
+  ];
+
   interface EventRecord {
     id: string;
     slug: string;
@@ -492,6 +506,9 @@ export default function Admin() {
     address: string | null;
     type: string;
     category: string | null;
+    category_key: string | null;
+    facilitator: string | null;
+    date_label: string | null;
     registration_url: string | null;
     image_url: string | null;
     is_published: boolean;
@@ -505,6 +522,7 @@ export default function Admin() {
   const [eventForm, setEventForm] = useState({
     title: "", slug: "", description: "", content: "", date: "", end_time: "",
     location: "", address: "", type: "virtual" as string, category: "AI & Technology",
+    category_key: "", facilitator: "", date_label: "",
     registration_url: "", is_published: true,
   });
 
@@ -531,6 +549,9 @@ export default function Admin() {
         address: event.address || null,
         type: event.type,
         category: event.category,
+        category_key: event.category_key || null,
+        facilitator: event.facilitator || null,
+        date_label: event.date_label || null,
         registration_url: event.registration_url || null,
         is_published: event.is_published,
       };
@@ -567,6 +588,7 @@ export default function Admin() {
     setEventForm({
       title: "", slug: "", description: "", content: "", date: "", end_time: "",
       location: "", address: "", type: "virtual", category: "AI & Technology",
+      category_key: "", facilitator: "", date_label: "",
       registration_url: "", is_published: true,
     });
     setEditingEvent(null);
@@ -586,6 +608,9 @@ export default function Admin() {
       address: event.address || "",
       type: event.type,
       category: event.category || "AI & Technology",
+      category_key: event.category_key || "",
+      facilitator: event.facilitator || "",
+      date_label: event.date_label || "",
       registration_url: event.registration_url || "",
       is_published: event.is_published,
     });
@@ -1499,14 +1524,27 @@ export default function Admin() {
                     <div>
                       <Label className="text-xs font-semibold text-slate-500">Category</Label>
                       <select
-                        value={eventForm.category}
-                        onChange={(e) => setEventForm(p => ({ ...p, category: e.target.value }))}
+                        value={eventForm.category_key || ""}
+                        onChange={(e) => {
+                          const key = e.target.value;
+                          const found = EVENT_CATEGORIES.find(c => c.key === key);
+                          setEventForm(p => ({ ...p, category_key: key, category: found ? found.label : p.category }));
+                        }}
                         className="h-9 w-full px-3 rounded-md border border-slate-200 text-sm bg-white"
                       >
-                        <option value="AI & Technology">AI & Technology</option>
-                        <option value="Leadership">Leadership</option>
-                        <option value="Social-Emotional">Social-Emotional</option>
+                        <option value="">— Select a category —</option>
+                        {EVENT_CATEGORIES.map(c => (
+                          <option key={c.key} value={c.key}>{c.label}</option>
+                        ))}
                       </select>
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">Facilitator</Label>
+                      <Input value={eventForm.facilitator} onChange={(e) => setEventForm(p => ({ ...p, facilitator: e.target.value }))} className="h-9" placeholder="e.g., Dr. Jessica White" />
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">Date Label (optional)</Label>
+                      <Input value={eventForm.date_label} onChange={(e) => setEventForm(p => ({ ...p, date_label: e.target.value }))} className="h-9" placeholder="e.g., Two-Day Series · Sep 16 & 30" />
                     </div>
                     <div className="col-span-2">
                       <Label className="text-xs font-semibold text-slate-500">Location</Label>
