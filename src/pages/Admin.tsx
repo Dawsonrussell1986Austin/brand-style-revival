@@ -1510,14 +1510,27 @@ export default function Admin() {
                     <div>
                       <Label className="text-xs font-semibold text-slate-500">Category</Label>
                       <select
-                        value={eventForm.category}
-                        onChange={(e) => setEventForm(p => ({ ...p, category: e.target.value }))}
+                        value={eventForm.category_key || ""}
+                        onChange={(e) => {
+                          const key = e.target.value;
+                          const found = EVENT_CATEGORIES.find(c => c.key === key);
+                          setEventForm(p => ({ ...p, category_key: key, category: found ? found.label : p.category }));
+                        }}
                         className="h-9 w-full px-3 rounded-md border border-slate-200 text-sm bg-white"
                       >
-                        <option value="AI & Technology">AI & Technology</option>
-                        <option value="Leadership">Leadership</option>
-                        <option value="Social-Emotional">Social-Emotional</option>
+                        <option value="">— Select a category —</option>
+                        {EVENT_CATEGORIES.map(c => (
+                          <option key={c.key} value={c.key}>{c.label}</option>
+                        ))}
                       </select>
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">Facilitator</Label>
+                      <Input value={eventForm.facilitator} onChange={(e) => setEventForm(p => ({ ...p, facilitator: e.target.value }))} className="h-9" placeholder="e.g., Dr. Jessica White" />
+                    </div>
+                    <div>
+                      <Label className="text-xs font-semibold text-slate-500">Date Label (optional)</Label>
+                      <Input value={eventForm.date_label} onChange={(e) => setEventForm(p => ({ ...p, date_label: e.target.value }))} className="h-9" placeholder="e.g., Two-Day Series · Sep 16 & 30" />
                     </div>
                     <div className="col-span-2">
                       <Label className="text-xs font-semibold text-slate-500">Location</Label>
