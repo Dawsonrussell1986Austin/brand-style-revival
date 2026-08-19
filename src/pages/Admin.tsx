@@ -53,6 +53,7 @@ import {
 } from "@/hooks/useSiteContent";
 import { useAllPages, type CmsPage } from "@/hooks/usePages";
 import { SeoAeoPanel } from "@/components/admin/SeoAeoPanel";
+import { PageBuilderPanel } from "@/components/admin/PageBuilderPanel";
 import acesLogo from "@/assets/aces-logo.webp";
 import fallbackHero from "@/assets/home/hero-classroom.jpg";
 import fallbackTeacher from "@/assets/teacher-classroom.jpg";
