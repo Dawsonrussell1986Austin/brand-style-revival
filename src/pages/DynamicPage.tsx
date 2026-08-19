@@ -4,6 +4,8 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { usePageBySlug } from "@/hooks/usePages";
 import { usePageContent, usePageImages } from "@/hooks/useSiteContent";
+import { usePageBlocks } from "@/hooks/usePageBlocks";
+import { PageBlocksRenderer } from "@/components/PageBlocks";
 import NotFound from "./NotFound";
 
 export default function DynamicPage() {
@@ -11,6 +13,7 @@ export default function DynamicPage() {
   const { data: page, isLoading } = usePageBySlug(slug);
   const { data: contentItems } = usePageContent(slug || "");
   const { data: imageItems } = usePageImages(slug || "");
+  const { data: blocks = [] } = usePageBlocks(slug || "");
 
   if (isLoading) {
     return (
@@ -60,6 +63,9 @@ export default function DynamicPage() {
             </p>
           )}
         </section>
+
+        {/* Admin-built layout blocks */}
+        {blocks.length > 0 && <PageBlocksRenderer blocks={blocks} />}
 
         {/* Sections */}
         {Array.from(sections.entries()).map(([sectionKey, { content, images }]) => {
