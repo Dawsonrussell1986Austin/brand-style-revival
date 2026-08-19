@@ -53,6 +53,7 @@ import {
 } from "@/hooks/useSiteContent";
 import { useAllPages, type CmsPage } from "@/hooks/usePages";
 import { SeoAeoPanel } from "@/components/admin/SeoAeoPanel";
+import { PageBuilderPanel } from "@/components/admin/PageBuilderPanel";
 import acesLogo from "@/assets/aces-logo.webp";
 import fallbackHero from "@/assets/home/hero-classroom.jpg";
 import fallbackTeacher from "@/assets/teacher-classroom.jpg";
@@ -644,6 +645,8 @@ export default function Admin() {
     "", "about", "ai-center", "services", "events", "resources", "contact",
     "thank-you", "blog", "admin", "center-for-a-i",
   ];
+
+  const [builderPage, setBuilderPage] = useState<CmsPage | null>(null);
 
   const resetPageForm = () => {
     setPageForm({
@@ -1680,6 +1683,14 @@ export default function Admin() {
           /* Site Pages View — admin-managed dynamic pages */
           <div className="flex-1 overflow-y-auto p-6">
             <div className="max-w-4xl mx-auto">
+            {builderPage ? (
+              <PageBuilderPanel
+                slug={builderPage.slug}
+                title={builderPage.title}
+                onClose={() => setBuilderPage(null)}
+              />
+            ) : (
+            <>
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-slate-900">Site Pages</h2>
@@ -1810,6 +1821,9 @@ export default function Admin() {
                           {p.meta_description && <p className="text-sm text-slate-500 line-clamp-2">{p.meta_description}</p>}
                         </div>
                         <div className="flex gap-1 ml-4">
+                          <button onClick={() => setBuilderPage(p)} className="p-1.5 rounded-md text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors" title="Layout builder">
+                            <Layout className="w-3.5 h-3.5" />
+                          </button>
                           <button onClick={() => window.open(`/${p.slug}`, "_blank")} className="p-1.5 rounded-md text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors" title="View">
                             <Eye className="w-3.5 h-3.5" />
                           </button>
@@ -1825,6 +1839,8 @@ export default function Admin() {
                   ))}
                 </div>
               )}
+            </>
+            )}
             </div>
           </div>
         ) : activeView === "downloads" ? (

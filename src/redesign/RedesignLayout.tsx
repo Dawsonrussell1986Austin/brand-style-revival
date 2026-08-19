@@ -128,6 +128,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
 
   return (
     <div ref={rootRef}>
+      <a className="skiplink" href="#maincontent">Skip to main content</a>
       <div className="topbanner">
         <div className="wrap">
           <span className="tb-kicker">Call for Proposals: ACES AI Conference 2026</span>
@@ -149,7 +150,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
           <a className="brand" href="https://aces.org" target="_blank" rel="noopener" aria-label="ACES home — aces.org">
             <img className="logo" src="/redesign-assets/aces-logo.jpg" alt="ACES — Area Cooperative Educational Services" />
           </a>
-          <nav className="links">
+          <nav className="links" aria-label="Primary">
             {NAV_LINKS.map((l) => (
               <Link key={l.href} to={l.href}>{l.label}</Link>
             ))}
@@ -178,7 +179,9 @@ export function RedesignLayout({ children, pageInit }: Props) {
         </div>
       </header>
 
-      {children}
+      <main id="maincontent" tabIndex={-1}>
+        {children}
+      </main>
 
       <footer className="foot">
         {/* Global mailing list (blue band, full width) */}
