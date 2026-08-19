@@ -128,6 +128,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
 
   return (
     <div ref={rootRef}>
+      <a className="skiplink" href="#maincontent">Skip to main content</a>
       <div className="topbanner">
         <div className="wrap">
           <span className="tb-kicker">Call for Proposals: ACES AI Conference 2026</span>
