@@ -150,7 +150,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
           <a className="brand" href="https://aces.org" target="_blank" rel="noopener" aria-label="ACES home — aces.org">
             <img className="logo" src="/redesign-assets/aces-logo.jpg" alt="ACES — Area Cooperative Educational Services" />
           </a>
-          <nav className="links">
+          <nav className="links" aria-label="Primary">
             {NAV_LINKS.map((l) => (
               <Link key={l.href} to={l.href}>{l.label}</Link>
             ))}
