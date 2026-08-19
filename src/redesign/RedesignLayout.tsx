@@ -11,7 +11,6 @@ type Props = {
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/workshops-events", label: "Workshops & Events" },
 ];
 
 const HTML_TO_ROUTE: Record<string, string> = {
@@ -25,7 +24,7 @@ const HTML_TO_ROUTE: Record<string, string> = {
   "ai-innovation.html": "/center-for-ai-services/innovative-tools",
   "ai-research.html": "/center-for-ai-services/research-ethics",
   "curriculum-creator.html": "/curriculum-creator",
-  "wired-wednesdays.html": "/wired-wednesdays",
+  "wired-wednesdays.html": "/workshops-events/wired-wednesdays",
   "resources.html": "/resources",
   "contact.html": "/contact",
   "blog-ai.html": "/blog/saving-time-with-ai",
@@ -155,6 +154,15 @@ export function RedesignLayout({ children, pageInit }: Props) {
               <Link key={l.href} to={l.href}>{l.label}</Link>
             ))}
             <div className="hasmenu">
+              <Link to="/workshops-events">Workshops &amp; Events
+                <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="submenu">
+                <Link className="subitem" to="/workshops-events">All Workshops &amp; Events</Link>
+                <Link className="subitem" to="/workshops-events/wired-wednesdays">Wired Wednesdays Webinars</Link>
+              </div>
+            </div>
+            <div className="hasmenu">
               <Link to="/center-for-ai-services">Center for Artificial Intelligence
                 <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
               </Link>
@@ -162,7 +170,6 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <Link className="subitem" to="/center-for-ai-services/ai-ready-schools">AI Literacy &amp; Learning</Link>
                 <Link className="subitem" to="/center-for-ai-services/innovative-tools">Innovation &amp; Design</Link>
                 <Link className="subitem" to="/center-for-ai-services/research-ethics">Research &amp; Ethical Standards</Link>
-                <Link className="subitem" to="/wired-wednesdays">Wired Wednesdays Webinars</Link>
                 <Link className="subitem" to="/curriculum-creator">Curriculum Creator</Link>
               </div>
             </div>

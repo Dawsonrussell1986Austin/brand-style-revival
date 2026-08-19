@@ -10,6 +10,8 @@ export function run() {
     var prev = document.getElementById(ids.prev);
     var next = document.getElementById(ids.next);
     var dotsWrap = document.getElementById(ids.dots);
+    if (!prev || !next || !dotsWrap) return;
+    dotsWrap.innerHTML = '';
     var active = Math.min(1, cards.length - 1);
 
     cards.forEach(function (_, i) {
@@ -48,8 +50,14 @@ export function run() {
 
     var rt;
     window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(layout, 120); });
-    if (document.readyState === 'complete') layout();
-    else window.addEventListener('load', layout);
+    Array.prototype.slice.call(track.querySelectorAll('img')).forEach(function (img) {
+      if (!img.complete) img.addEventListener('load', layout);
+    });
+    if (window.ResizeObserver) {
+      try { new ResizeObserver(function () { layout(); }).observe(track.parentElement); } catch (e) {}
+    }
+    window.addEventListener('load', layout);
+    requestAnimationFrame(layout);
     layout();
   }
 
