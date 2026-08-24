@@ -17,7 +17,14 @@ type NavItem = {
 
 const baseNavItems: NavItem[] = [
   { label: "About", href: "/about" },
-  { label: "Workshops & Events", href: "/workshops-events" },
+  {
+    label: "Workshops & Events",
+    href: "/workshops-events",
+    children: [
+      { label: "AI Conference 2026", href: "/ai-conference-2026" },
+      { label: "Wired Wednesdays", href: "/workshops-events/wired-wednesdays" },
+    ],
+  },
   {
     label: "PDSI Services",
     href: "/pdsi-services",
