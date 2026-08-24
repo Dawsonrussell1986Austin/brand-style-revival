@@ -52,7 +52,22 @@
   .conf-session h3{font-size:19px;font-weight:800;color:#0A2236;margin:0 0 10px;line-height:1.25}
   .conf-session .speaker{font-size:15px;font-weight:600;color:#15486f;margin-bottom:12px}
   .conf-session p{font-size:15px;color:#5a7488;line-height:1.6;margin:0}
+  .conf-speakers{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:38px}
+  .conf-spk{background:#fff;border:1px solid #e2ecf3;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+  .conf-spk img{width:100%;height:280px;object-fit:cover;object-position:center 20%;background:#0A2236}
+  .conf-spk .body{padding:24px}
+  .conf-spk h3{font-size:19px;font-weight:800;color:#0A2236;margin:0 0 4px}
+  .conf-spk .role{font-size:14.5px;color:#4aa63c;font-weight:700;margin-bottom:12px}
+  .conf-spk p{font-size:14.5px;color:#5a7488;line-height:1.6;margin:0}
+  .conf-keynote-box{background:#0A2236;color:#fff;border-radius:20px;padding:36px;margin-top:10px}
+  .conf-keynote-box h3{font-size:clamp(22px,2.6vw,30px);font-weight:300;letter-spacing:-.02em;margin:0 0 8px}
+  .conf-keynote-box h3 b{font-weight:800;color:#7fc9f2}
+  .conf-keynote-box .when{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7fc9f2;margin-bottom:14px}
+  .conf-keynote-box p{font-size:16px;color:#cfe1ee;line-height:1.68;max-width:78ch}
+  .conf-lab{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:32px}
+  .conf-tbd{font-size:14px;color:#7d94a6;margin-top:22px;font-style:italic}
 </style>
+
 </head><body>
 
 <section class="conf-hero">
@@ -80,8 +95,10 @@
 
 <section class="conf-sec" id="highlights">
   <div class="wrap">
-    <h2 class="conf-h2">Conference <b>Highlights</b></h2>
-    <p class="conf-lead">A full day built for practitioners — bold ideas in the morning, usable strategies you can bring back to your school by Monday.</p>
+    <h2 class="conf-h2">About the <b>Day</b></h2>
+    <p class="conf-lead">AI is already in Connecticut classrooms. What it does for learning depends on the people who design it into the school day. On September 25, the ACES Center for AI brings teachers, coaches, and school and district leaders together for a full day on keeping people at the center of that design.</p>
+    <p class="conf-lead" style="margin-top:14px">The morning opens with <i>Intelligence, Amplified: Four Voices, One Future</i>, a 90-minute keynote experience connecting industry, education, and student perspectives. Breakout sessions follow in three blocks, chosen through a statewide call for proposals and led by Connecticut educators, with a hands-on Innovation Lab running all day.</p>
+
     <div class="conf-grid">
       <div class="conf-card"><div class="num">Keynotes</div><h3>Inspiring Keynotes</h3><p>Thought leaders sharing a bold, human-centered vision for AI in education.</p></div>
       <div class="conf-card"><div class="num">Sessions</div><h3>Breakout Sessions</h3><p>Choose from topics across four powerful strands, designed for every role.</p></div>
@@ -91,7 +108,53 @@
   </div>
 </section>
 
-<section class="conf-sec alt">
+<section class="conf-sec alt" id="keynote">
+  <div class="wrap">
+    <h2 class="conf-h2">The Keynote <b>Experience</b></h2>
+    <p class="conf-lead">One stage, four perspectives, and an animatronic host.</p>
+    <div class="conf-keynote-box">
+      <div class="when">Ballroom · 9:00 – 10:30 a.m.</div>
+      <h3>Intelligence, Amplified: <b>Four Voices, One Future</b></h3>
+      <p>SparkE, a character created by Garner Holt Productions, joins virtually as the thread between speakers. The morning moves from an opening conversation on AI and animatronics with the Garner Holt team, to an industry keynote from Dr. Joshua Hunsberger, to an educator keynote from Dr. Keri MacLean, to a learner segment with Dr. Frank LaBanca and one of his Chase Academy students. A live panel closes the morning on the human possibilities behind artificial intelligence.</p>
+    </div>
+    <div class="conf-speakers">
+      <div class="conf-spk">
+        <img src="/redesign-assets/conf-sparke.jpg" alt="SparkE, an animatronic character created by Garner Holt Productions">
+        <div class="body">
+          <h3>Garner Holt Productions + SparkE</h3>
+          <div class="role">Industry opening</div>
+          <p>SparkE, an animatronic character from Garner Holt Productions, hosts the keynote virtually. The Garner Holt team opens the morning in conversation with SparkE about where AI meets animatronics, then SparkE carries the program from voice to voice.</p>
+        </div>
+      </div>
+      <div class="conf-spk">
+        <img src="/redesign-assets/conf-hunsberger.jpg" alt="Portrait of Dr. Joshua Hunsberger">
+        <div class="body">
+          <h3>Dr. Joshua Hunsberger</h3>
+          <div class="role">Founder and Principal, Joshua Hunsberger LLC</div>
+          <p>An innovation strategist building partnerships across biotechnology, artificial intelligence, immersive technologies, and workforce development. He serves on the leadership team of a $160 million National Science Foundation Regional Innovation Engine, has helped secure or lead more than $30 million in funded initiatives, and holds a PhD in Neuroscience from Yale with more than 45 peer-reviewed publications. His work builds regional hubs where students, educators, and industry turn emerging technology into new career paths.</p>
+        </div>
+      </div>
+      <div class="conf-spk">
+        <img src="/redesign-assets/conf-maclean.jpg" alt="Portrait of Dr. Keri MacLean">
+        <div class="body">
+          <h3>Dr. Keri MacLean</h3>
+          <div class="role">Assistant Superintendent, Cromwell Public Schools</div>
+          <p>A Connecticut public school educator with 26 years of experience, from high school English teacher to Secondary ELA Curriculum Supervisor to Director of Curriculum, including 14 years in central office administration. She holds degrees from Siena College and Wesleyan University and a doctorate from Southern Connecticut State University. Her work centers on strategic planning, curriculum design, and administrative coaching.</p>
+        </div>
+      </div>
+      <div class="conf-spk">
+        <img src="/redesign-assets/conf-labanca.jpg" alt="Portrait of Dr. Frank LaBanca">
+        <div class="body">
+          <h3>Dr. Frank LaBanca</h3>
+          <div class="role">Principal, ACES Chase Academy Interdistrict Magnet School</div>
+          <p>An award-winning educator, researcher, and school leader, and the 2026 Magnet Schools of America National Principal of the Year. He was Founding Principal of Danbury Westside Middle School Academy Magnet and Director of the Center for 21st Century Skills, leading STEM programs in 50 middle and high schools. His honors include the RadioShack National Teacher Award, Google Certified Innovator designation, and the CAS Outstanding Principal Award. He takes the stage with one of his Chase Academy students.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="conf-sec">
   <div class="wrap">
     <h2 class="conf-h2">Conference <b>Strands</b></h2>
     <p class="conf-lead">Build your own day. Follow one strand deeply or mix and match across all four.</p>
@@ -104,10 +167,10 @@
   </div>
 </section>
 
-<section class="conf-sec">
+<section class="conf-sec alt">
   <div class="wrap">
     <h2 class="conf-h2">Who Should <b>Attend</b></h2>
-    <p class="conf-lead">Teachers, instructional coaches, curriculum leaders, principals, superintendents, technology directors, and anyone guiding how AI shows up in schools.</p>
+    <p class="conf-lead">Teachers, instructional coaches, school leaders, district leaders, technology leaders, and student support professionals, PreK through grade 12.</p>
     <div class="conf-grid">
       <div class="conf-card"><div class="num">Take Away</div><h3>Practical Strategies</h3><p>Classroom-ready approaches you can implement immediately — not theory.</p></div>
       <div class="conf-card"><div class="num">Take Away</div><h3>District Playbooks</h3><p>Policy and governance guidance for safe, sustainable AI implementation.</p></div>
@@ -116,44 +179,108 @@
   </div>
 </section>
 
-<section class="conf-sec alt" id="sessions">
+<section class="conf-sec" id="sessions">
   <div class="wrap">
-    <h2 class="conf-h2">Sessions You'll <b>Walk Away From</b></h2>
-    <p class="conf-lead">Hear from Connecticut educators and leaders who are already doing this work — and leave with ideas you can use on Monday.</p>
+
+    <h2 class="conf-h2">Breakout <b>Sessions</b></h2>
+    <p class="conf-lead">Sessions run in 3 blocks of 6 concurrent rooms across the four strands. Proposals came in through a statewide call, and the slate below is led by Connecticut educators and leaders doing this work right now.</p>
     <div class="conf-grid">
       <div class="conf-session">
-        <span class="track">Elementary</span>
+        <span class="track">Designing Learning</span>
         <h3>Beyond the Tool: From AI Tools to AI Thinking in the Classroom</h3>
-        <div class="speaker">Lauren Sweeney, Norwalk</div>
+        <div class="speaker">Lauren Sweeney, Norwalk Public Schools</div>
         <p>Watch how fifth graders test and revise their own writing prompts with AI, then walk away with strategies for weaving AI thinking into any elementary subject.</p>
       </div>
       <div class="conf-session">
-        <span class="track">Secondary</span>
+        <span class="track">Designing Learning</span>
         <h3>AI as a Thinking Partner in Secondary Education</h3>
-        <div class="speaker">Lisa Lassen, Amity</div>
+        <div class="speaker">Lisa Lassen, Amity Regional District No. 5</div>
         <p>Amity's team shows how students in grades 7-12 use AI feedback as a mirror for their own thinking, with the district guidelines that keep the practice honest.</p>
       </div>
       <div class="conf-session">
-        <span class="track">Student Agency</span>
+        <span class="track">Designing Human Agency</span>
         <h3>CTRL+Human: Putting Students in Charge of AI-Enhanced Learning</h3>
-        <div class="speaker">Joanne Mumley, Wolcott</div>
+        <div class="speaker">Joanne Mumley, Wolcott Public Schools</div>
         <p>A 2026 Presidential AI Challenge state winner shares 3 classroom routines (Be the Bot, Hot Seat, Sandbox) that put students in the decision-maker's seat with AI.</p>
       </div>
       <div class="conf-session">
-        <span class="track">Middle School</span>
+        <span class="track">Designing Learning</span>
         <h3>AI Under the Hood: Bringing the 5 Big Ideas to Life for Middle Schoolers</h3>
-        <div class="speaker">Cheryl Tokarski, STEMACT</div>
+        <div class="speaker">Cheryl Tokarski, STEM Alliance of Connecticut</div>
         <p>Get hands-on with a free, open-source curriculum that teaches middle schoolers how AI actually works, and join a statewide network of educators building it together.</p>
       </div>
       <div class="conf-session">
-        <span class="track">District Systems</span>
+        <span class="track">Designing Systems</span>
         <h3>AI Powered, Human-Centered: A Systems Approach to District Implementation</h3>
-        <div class="speaker">Thomas Scarice, Westport</div>
+        <div class="speaker">Thomas Scarice, Westport Public Schools</div>
         <p>Westport's superintendent walks through how his district built AI into strategic planning, instruction, and operations over a full year, and hands you the roadmap.</p>
+      </div>
+      <div class="conf-session">
+        <span class="track">Designing Systems</span>
+        <h3>Building AI Champions</h3>
+        <div class="speaker">TJ Neville, Farmington Public Schools</div>
+        <p>How one district grows internal capacity by developing teacher leaders who carry AI practice back into their buildings.</p>
+      </div>
+      <div class="conf-session">
+        <span class="track">Designing Human Agency</span>
+        <h3>Agency First, AI Second: Strategic Frameworks for Human-Centered District Innovation</h3>
+        <div class="speaker">Michelle Eckler, Stratford Public Schools</div>
+        <p>Frameworks that keep educator and student agency at the front of district innovation decisions instead of letting the tools set the agenda.</p>
+      </div>
+      <div class="conf-session">
+        <span class="track">Designing Human Agency</span>
+        <h3>Teacher as Creative Director</h3>
+        <div class="speaker">Alan Grazioso, independent consultant and executive producer</div>
+        <p>A producer's take on the teacher's new role: directing the creative work while AI handles production, and what that shift asks of instruction.</p>
+      </div>
+      <div class="conf-session">
+        <span class="track">Designing Human Agency</span>
+        <h3>Engineering Intent: How to Scaffold Cognitive Thinking in the AI Era</h3>
+        <div class="speaker">Module Downer, Stamford Public Schools</div>
+        <p>Practical scaffolds that keep the cognitive lift with students when AI is available for every step of the task.</p>
+      </div>
+      <div class="conf-session">
+        <span class="track">Designing Systems</span>
+        <h3>AI and Curriculum Writing: How District-Created Gems Transformed Curriculum Writing and Feedback</h3>
+        <div class="speaker">Andrea Drewry, Amity Region 5</div>
+        <p>Inside the custom district-built assistants that changed how Amity writes curriculum and gives feedback to writing teams.</p>
+      </div>
+      <div class="conf-session">
+        <span class="track">Designing Intelligent Tools</span>
+        <h3>Exploring Ozobots in the Classroom</h3>
+        <div class="speaker">Megan DaCosta, Windsor Public Schools</div>
+        <p>A hands-on look at bringing robotics and computational thinking into everyday classroom routines.</p>
+      </div>
+    </div>
+    <p class="conf-tbd">Session slate is under review. Final titles, blocks, and room assignments will be posted before the event.</p>
+  </div>
+</section>
+
+<section class="conf-sec alt">
+
+  <div class="wrap">
+    <h2 class="conf-h2">Innovation <b>Lab</b></h2>
+    <p class="conf-lead">Spruce Room, all day. The Innovation Lab runs through all 3 breakout blocks with live demonstrations and Innovation Sparks.</p>
+    <div class="conf-lab">
+      <div class="conf-card">
+        <div class="num">Block 2</div>
+        <h3>ACES Innovation Showcase</h3>
+        <p>A walkthrough of what the Center is building: Curriculum Creator, the AI Literacy Curriculum, the AI Foundations Course, Coaching Companion, Intervention Studio, and the road ahead.</p>
+      </div>
+      <div class="conf-card">
+        <div class="num">Block 3</div>
+        <h3>Design Studio</h3>
+        <p>Build something together through a compact version of the ACES AI Design Lab process — collaborative, hands-on, and grounded in a real problem of practice.</p>
+      </div>
+      <div class="conf-card">
+        <div class="num">All Day</div>
+        <h3>Demos &amp; Innovation Sparks</h3>
+        <p>Drop in between sessions to test tools, trade ideas with colleagues, and see emerging classroom technology up close.</p>
       </div>
     </div>
   </div>
 </section>
+
 
 <section class="conf-photo" aria-hidden="true"></section>
 
