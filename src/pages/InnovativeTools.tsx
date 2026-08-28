@@ -13,7 +13,7 @@ const PAGE = "innovative-tools";
 const toolDefaults = [
   { icon: Wrench, title: "Custom AI Tools", body: "Purpose-built tools shaped around the way ACES educators and partner districts actually work." },
   { icon: Sparkles, title: "Prompt Libraries", body: "Reusable prompt sets for planning, communication, reflection, and classroom support." },
-  { icon: Code2, title: "Curriculum Creator", body: "An AI-assisted drafting space for unit and lesson resources that stay teacher-led." },
+  { icon: Code2, title: "Curriculum Studio", body: "An AI-assisted drafting space for unit and lesson resources that stay teacher-led." },
   { icon: Layers, title: "Workflow Templates", body: "Lightweight templates that make AI easier to fold into everyday educator practice." },
 ];
 

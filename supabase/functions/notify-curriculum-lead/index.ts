@@ -39,7 +39,7 @@ Deno.serve(async (req) => {
       email = "",
       organization = "",
       role = "",
-      formType = "Curriculum Creator",
+      formType = "Curriculum Studio",
     } = body ?? {};
 
     if (!email || !firstName) {

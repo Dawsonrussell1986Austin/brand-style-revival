@@ -141,7 +141,7 @@ const pageLabels: Record<string, string> = {
   resources: "Resources",
   "ai-center": "AI Center",
   "center-for-ai-services": "Center for AI Services",
-  "curriculum-creator": "Curriculum Creator",
+  "curriculum-creator": "Curriculum Studio",
   arc: "ARC (Alternate Routes)",
   "ai-ready-schools": "AI-Ready Schools",
   "innovative-tools": "Innovative Tools",
