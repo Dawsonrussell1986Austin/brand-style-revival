@@ -24,7 +24,7 @@ ACES PDSI is a service of Area Cooperative Educational Services (ACES), based in
 - [AI-Ready Schools](https://www.acespdsi.org/center-for-ai-services/ai-ready-schools): Policy, educator readiness, curriculum alignment, and leadership strategy.
 - [Innovative Tools](https://www.acespdsi.org/center-for-ai-services/innovative-tools): Custom AI tools, prompt libraries, and workflow templates for educators.
 - [Research & Ethics](https://www.acespdsi.org/center-for-ai-services/research-ethics): Frameworks and research for responsible, human-centered AI use.
-- [Curriculum Creator](https://www.acespdsi.org/curriculum-creator): AI-assisted tool for building standards-aligned units and lessons.
+- [Curriculum Studio](https://www.acespdsi.org/curriculum-creator): AI-assisted tool for building standards-aligned units and lessons.
 - [ACES AI Conference 2026](https://www.acespdsi.org/ai-conference-2026): September 25, 2026 in Bristol, CT — keynotes, breakouts, and an Innovation Lab.
 
 ## Articles

@@ -63,8 +63,8 @@ INSERT INTO seo_seed VALUES
 ('arc','robots','index,follow'),
 ('arc','jsonld_type','Service'),
 
-('curriculum-creator','title','AI Curriculum Creator for Educators'),
-('curriculum-creator','description','Build standards-aligned units and lessons faster with the ACES Curriculum Creator, an AI-assisted tool designed with Connecticut educators.'),
+('curriculum-creator','title','AI Curriculum Studio for Educators'),
+('curriculum-creator','description','Build standards-aligned units and lessons faster with the ACES Curriculum Studio, an AI-assisted tool designed with Connecticut educators.'),
 ('curriculum-creator','canonical','/curriculum-creator'),
 ('curriculum-creator','og_image','https://www.acespdsi.org/redesign-assets/curriculum-creator.png'),
 ('curriculum-creator','robots','index,follow'),

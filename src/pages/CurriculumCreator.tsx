@@ -116,7 +116,7 @@ function LeadForm({
     setSubmitting(true);
     try {
       const fullName = `${data.firstName.trim()} ${data.lastName.trim()}`.trim();
-      const message = `[${formType}] Submitted from Curriculum Creator landing page.`;
+      const message = `[${formType}] Submitted from Curriculum Studio landing page.`;
 
       const { error } = await supabase.from("contact_submissions").insert({
         name: fullName,
@@ -148,7 +148,7 @@ function LeadForm({
 
       navigate("/thank-you");
     } catch (err) {
-      console.error("Curriculum Creator form error:", err);
+      console.error("Curriculum Studio form error:", err);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
@@ -326,8 +326,8 @@ export default function CurriculumCreator() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title="ACES Curriculum Creator — Build Better Curriculum, Faster"
-        description="The ACES Curriculum Creator helps educators design standards-aligned curriculum grounded in UDL, UbD, and CSDE principles—powered by AI."
+        title="ACES Curriculum Studio — Build Better Curriculum, Faster"
+        description="The ACES Curriculum Studio helps educators design standards-aligned curriculum grounded in UDL, UbD, and CSDE principles—powered by AI."
         url="/curriculum-creator"
         keywords="curriculum creator, AI curriculum, UDL, UbD, CSDE, standards-aligned curriculum, ACES PDSI"
       />
@@ -364,7 +364,7 @@ export default function CurriculumCreator() {
                   <span className="text-aces-green">Faster.</span>
                 </h1>
                 <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
-                  The ACES Curriculum Creator helps educators design
+                  The ACES Curriculum Studio helps educators design
                   standards-aligned curriculum grounded in UDL, UbD, and CSDE
                   principles.
                 </p>
@@ -405,7 +405,7 @@ export default function CurriculumCreator() {
                   <div className="rounded-2xl overflow-hidden border border-border shadow-xl bg-white">
                     <img
                       src={setupSrc}
-                      alt={setupAlt || "ACES Curriculum Creator — Course Set Up screen"}
+                      alt={setupAlt || "ACES Curriculum Studio — Course Set Up screen"}
                       className="w-full h-auto"
                       loading="eager"
                       width={1920}
@@ -466,7 +466,7 @@ export default function CurriculumCreator() {
                 <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md">
                   <img
                     src={unitsSrc}
-                    alt={unitsAlt || "ACES Curriculum Creator — Units (UbD) screen"}
+                    alt={unitsAlt || "ACES Curriculum Studio — Units (UbD) screen"}
                     className="w-full h-auto"
                     loading="lazy"
                     width={1920}
@@ -486,7 +486,7 @@ export default function CurriculumCreator() {
                 <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-md">
                   <img
                     src={auditSrc}
-                    alt={auditAlt || "ACES Curriculum Creator — Three-Framework Audit screen"}
+                    alt={auditAlt || "ACES Curriculum Studio — Three-Framework Audit screen"}
                     className="w-full h-auto"
                     loading="lazy"
                     width={1920}
@@ -578,7 +578,7 @@ export default function CurriculumCreator() {
               <div className="flex items-center gap-4">
                 <Sparkles className="w-8 h-8 text-white/90 shrink-0" />
                 <h2 className="font-heading text-xl md:text-2xl font-bold text-white leading-tight">
-                  Ready to learn more about the ACES Curriculum Creator?
+                  Ready to learn more about the ACES Curriculum Studio?
                 </h2>
               </div>
               <Button

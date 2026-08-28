@@ -170,7 +170,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <Link className="subitem" to="/center-for-ai-services/ai-ready-schools">AI Literacy &amp; Learning</Link>
                 <Link className="subitem" to="/center-for-ai-services/innovative-tools">Innovation &amp; Design</Link>
                 <Link className="subitem" to="/center-for-ai-services/research-ethics">Research &amp; Ethical Standards</Link>
-                <Link className="subitem" to="/curriculum-creator">Curriculum Creator</Link>
+                <Link className="subitem" to="/curriculum-creator">Curriculum Studio</Link>
               </div>
             </div>
             <Link to="/contact">Contact</Link>
