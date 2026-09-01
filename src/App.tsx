@@ -19,6 +19,8 @@ import RIndex from "./redesign/pages-tsx/RIndex";
 import RAbout from "./redesign/pages-tsx/RAbout";
 import REvents from "./redesign/pages-tsx/REvents";
 import RServices from "./redesign/pages-tsx/RServices";
+import RPDSIK12 from "./redesign/pages-tsx/RPDSIK12";
+import RPDSIEarlyChildhood from "./redesign/pages-tsx/RPDSIEarlyChildhood";
 import RPDSI from "./redesign/pages-tsx/RPDSI";
 import RRegionalForums from "./redesign/pages-tsx/RRegionalForums";
 import RAICenter from "./redesign/pages-tsx/RAICenter";
@@ -78,6 +80,8 @@ const App = () => {
             <Route path="/center-for-a-i/*" element={<Navigate to="/center-for-ai-services" replace />} />
             <Route path="/services" element={<Navigate to="/pdsi-services" replace />} />
             <Route path="/pdsi" element={<RPDSI />} />
+            <Route path="/pdsi/early-childhood" element={<RPDSIEarlyChildhood />} />
+            <Route path="/pdsi/k-12-support" element={<RPDSIK12 />} />
             <Route path="/pdsi-services" element={<RServices />} />
             <Route path="/pdsi-services/regional-forums" element={<RRegionalForums />} />
             <Route path="/events" element={<Navigate to="/workshops-events" replace />} />
