@@ -5,6 +5,15 @@
 <title>PDSI · ACES Professional Development &amp; School Improvement</title>
 <link rel="stylesheet" href="/redesign-assets/aces.css">
 <style>
+  .pdsi-hero.photo{text-align:left;padding:0;background:none}
+  .pdsi-hero.photo::before,.pdsi-hero.photo::after{display:none}
+  .pdsi-hero.photo .bg{position:absolute;inset:0;background:linear-gradient(96deg,rgba(7,30,49,.92) 0%,rgba(8,40,65,.80) 44%,rgba(9,52,82,.55) 100%),url('/redesign-assets/pdsi-hero.jpg') center 40%/cover no-repeat}
+  .pdsi-hero.photo .inner{position:relative;z-index:2;padding:104px 40px 92px;max-width:1180px;margin:0 auto;text-align:left}
+  .pdsi-hero.photo .crumb{position:relative;z-index:2}
+  .pdsi-hero.photo h1{font-size:64px;letter-spacing:-.04em;max-width:16ch}
+  .pdsi-hero.photo p{margin:22px 0 0;max-width:640px}
+  .pdsi-hero.photo .kicker{margin-bottom:16px}
+  @media(max-width:860px){.pdsi-hero.photo .inner{padding:74px 22px 64px}.pdsi-hero.photo h1{font-size:34px}.pdsi-hero.photo p{font-size:17px}}
   .pdsi-intro{padding:64px 0 8px}
   .pdsi-intro .lead{font-size:18px;line-height:1.75;color:#3C566B;margin-top:18px;max-width:900px}
   .pdsi-intro .lead + .lead{margin-top:16px}
