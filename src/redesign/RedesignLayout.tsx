@@ -163,6 +163,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <Link className="subitem" to="/workshops-events/wired-wednesdays">Wired Wednesdays Webinars</Link>
               </div>
             </div>
+            <Link to="/pdsi">PDSI</Link>
             <div className="hasmenu">
               <Link to="/center-for-ai-services">Center for Artificial Intelligence
                 <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
@@ -174,7 +175,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <Link className="subitem" to="/curriculum-creator">Curriculum Studio</Link>
               </div>
             </div>
-            <Link to="/pdsi">PDSI</Link>
+
             <Link to="/contact">Contact</Link>
           </nav>
         </div>
