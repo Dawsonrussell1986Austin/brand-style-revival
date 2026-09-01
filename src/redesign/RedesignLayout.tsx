@@ -28,6 +28,8 @@ const HTML_TO_ROUTE: Record<string, string> = {
   "resources.html": "/resources",
   "contact.html": "/contact",
   "pdsi.html": "/pdsi",
+  "pdsi-early-childhood.html": "/pdsi/early-childhood",
+  "pdsi-k12.html": "/pdsi/k-12-support",
   "blog-ai.html": "/blog/saving-time-with-ai",
   "blog-play.html": "/blog/everyone-loves-to-play",
   "blog-rooted.html": "/blog/rooted-in-relationships-and-rigor",
@@ -163,7 +165,16 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <Link className="subitem" to="/workshops-events/wired-wednesdays">Wired Wednesdays Webinars</Link>
               </div>
             </div>
-            <Link to="/pdsi">PDSI</Link>
+            <div className="hasmenu">
+              <Link to="/pdsi">PDSI
+                <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="submenu">
+                <Link className="subitem" to="/pdsi">PDSI Overview</Link>
+                <Link className="subitem" to="/pdsi/early-childhood">Early Childhood</Link>
+                <Link className="subitem" to="/pdsi/k-12-support">K&ndash;12 Support</Link>
+              </div>
+            </div>
             <div className="hasmenu">
               <Link to="/center-for-ai-services">Center for Artificial Intelligence
                 <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
