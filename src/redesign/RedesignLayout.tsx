@@ -27,6 +27,7 @@ const HTML_TO_ROUTE: Record<string, string> = {
   "wired-wednesdays.html": "/workshops-events/wired-wednesdays",
   "resources.html": "/resources",
   "contact.html": "/contact",
+  "pdsi.html": "/pdsi",
   "blog-ai.html": "/blog/saving-time-with-ai",
   "blog-play.html": "/blog/everyone-loves-to-play",
   "blog-rooted.html": "/blog/rooted-in-relationships-and-rigor",
@@ -173,6 +174,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <Link className="subitem" to="/curriculum-creator">Curriculum Studio</Link>
               </div>
             </div>
+            <Link to="/pdsi">PDSI</Link>
             <Link to="/contact">Contact</Link>
           </nav>
         </div>
