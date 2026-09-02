@@ -10,10 +10,26 @@
   .ec-sec{padding:48px 0 72px}
   .ec-sec h2{font-size:32px;letter-spacing:-.02em;font-weight:300;color:#0A2236}
   .ec-sec h2 b{font-weight:800;color:#09578B}
-  .ec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px}
-  .ec-card{background:#fff;border:1px solid #E3EBF2;border-radius:18px;padding:26px;box-shadow:0 8px 26px rgba(10,34,54,.05)}
-  .ec-card h3{font-size:19px;font-weight:800;color:#09578B;letter-spacing:-.01em}
-  .ec-card p{font-size:15.5px;line-height:1.7;color:#3C566B;margin-top:10px}
+  .ec-sub{font-size:16.5px;color:#3C566B;margin-top:12px;max-width:760px;line-height:1.7}
+  .ec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px;align-items:start}
+  .ec-card{background:#fff;border:1px solid #E3EBF2;border-radius:18px;padding:0;box-shadow:0 8px 26px rgba(10,34,54,.05);overflow:hidden}
+  .ec-card[open]{border-color:#9FD0EA;box-shadow:0 14px 34px rgba(10,34,54,.10)}
+  .ec-card summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:24px 26px;font-size:20px;font-weight:800;color:#09578B;letter-spacing:-.01em}
+  .ec-card summary::-webkit-details-marker{display:none}
+  .ec-card summary:focus-visible{outline:3px solid #0F86C8;outline-offset:-3px}
+  .ec-card .num{font-size:13px;font-weight:800;color:#7FA6BF;letter-spacing:.08em}
+  .ec-card .ttl{flex:1}
+  .ec-card .chev{color:#7FA6BF;transition:transform .22s ease;flex:none}
+  .ec-card[open] .chev{transform:rotate(180deg)}
+  .ec-desc{font-size:15.5px;line-height:1.7;color:#3C566B;margin:0;padding:0 26px 4px}
+  .ec-lbl{font-size:12.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#0A2236;margin:18px 0 0;padding:0 26px}
+  .ec-list{margin:10px 0 26px;padding:0 26px 0 46px;color:#3C566B;font-size:15px;line-height:1.85}
+  .ec-studio{padding:72px 0;background:linear-gradient(135deg,#071E31 0%,#0A3D5C 100%);color:#fff}
+  .ec-studio .kicker{color:#9FD0EA}
+  .ec-studio h2{font-size:34px;font-weight:300;letter-spacing:-.02em;color:#fff}
+  .ec-studio h2 b{font-weight:800;color:#7FD1A8}
+  .ec-studio p{font-size:17px;line-height:1.75;color:#C9DCEB;margin-top:18px;max-width:840px}
+  .ec-studio .btn{margin-top:26px}
   .ec-cta{padding:64px 0;background:#F5F9FC;border-top:1px solid #E3EBF2}
   .ec-cta h2{font-size:30px;font-weight:300;color:#0A2236;letter-spacing:-.02em}
   .ec-cta h2 b{font-weight:800;color:#09578B}
@@ -28,38 +44,81 @@
   <div class="inner">
     <span class="kicker">PDSI</span>
     <h1>Early <b>Childhood.</b></h1>
-    <p>Strong starts for every learner &mdash; professional learning, coaching, and customized support for early childhood educators, leaders, and programs.</p>
+    <p>Strong Foundations. Meaningful Learning. Thriving Communities.</p>
   </div>
 </section>
 
 <section class="ec-intro">
   <div class="wrap">
-    <p class="lead">Supporting early childhood educators, leaders, and programs through professional learning, coaching, and customized support designed to strengthen high-quality early learning experiences.</p>
-    <p class="lead">Our team partners with programs across settings &mdash; public preschool, community-based centers, family child care, and district early learning teams &mdash; to build practice that is developmentally grounded, joyful, and sustainable.</p>
+    <p class="lead">ACES Professional Development &amp; School Improvement partners with early childhood educators, leaders, programs, and organizations to strengthen the experiences, environments, and systems that support young children and their families.</p>
+    <p class="lead">Our Early Childhood team brings specialized expertise in child development, early learning, educator practice, program quality, leadership, and systems support. We work alongside early childhood professionals to provide practical, responsive support grounded in developmentally appropriate practice and the unique needs of young children.</p>
+    <p class="lead">Support can range from individual professional learning opportunities to coaching, consultation, program improvement, leadership support, and sustained partnerships.</p>
   </div>
 </section>
 
 <section class="ec-sec">
   <div class="wrap">
-    <h2>How We <b>Support Programs</b></h2>
+    <h2>Explore Our <b>Early Childhood Support</b></h2>
+    <p class="ec-sub">Eight connected areas of support &mdash; one cohesive early childhood service portfolio. Select any area to see the specific topics and services within it.</p>
     <div class="ec-grid">
-      <article class="ec-card">
-        <h3>Professional Learning</h3>
-        <p>Workshops and learning series grounded in developmentally appropriate practice, early language and literacy, early mathematics, play-based learning, and social-emotional development.</p>
-      </article>
-      <article class="ec-card">
-        <h3>Coaching &amp; Job-Embedded Support</h3>
-        <p>On-site and virtual coaching that supports educators in translating new learning into everyday classroom practice, with reflection and follow-through over time.</p>
-      </article>
-      <article class="ec-card">
-        <h3>Program &amp; Leadership Support</h3>
-        <p>Consultation for directors and early learning leaders on program quality, continuous improvement, staff development, and family and community engagement.</p>
-      </article>
-      <article class="ec-card">
-        <h3>Customized Partnerships</h3>
-        <p>Longer-term partnerships designed around a program's goals, context, and staff &mdash; from a single session to sustained, multi-year implementation support.</p>
-      </article>
+      <details class="ec-card">
+        <summary><span class="num">01</span><span class="ttl">Early Learning &amp; Development</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="ec-desc">Support educators in understanding how young children develop and in designing meaningful, developmentally appropriate experiences that build strong foundations for future learning.</p>
+        <p class="ec-lbl">Areas of support include:</p>
+        <ul class="ec-list"><li>Child development and early learning</li><li>Developmentally appropriate practice</li><li>Play-based learning</li><li>Inquiry and exploration</li><li>Early language and literacy</li><li>Early mathematics</li><li>Cognitive development</li><li>Physical development</li><li>Supporting student curiosity and agency</li><li>Observation of children's learning</li><li>Intentional teaching practices</li><li>Transitions and school readiness</li></ul>
+      </details>
+      <details class="ec-card">
+        <summary><span class="num">02</span><span class="ttl">Social-Emotional Development &amp; Behavior</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="ec-desc">Strengthen educator capacity to support children's social-emotional development, relationships, self-regulation, and positive behavior within responsive early learning environments.</p>
+        <p class="ec-lbl">Areas of support include:</p>
+        <ul class="ec-list"><li>Social-emotional development</li><li>Self-regulation</li><li>Relationship-building</li><li>Positive behavior supports</li><li>Understanding and responding to behavior</li><li>Classroom community</li><li>Emotional literacy</li><li>Co-regulation</li><li>Developmentally appropriate behavior guidance</li><li>Trauma-responsive practices</li><li>Restorative and relationship-centered practices</li><li>Supporting children's sense of belonging</li></ul>
+      </details>
+      <details class="ec-card">
+        <summary><span class="num">03</span><span class="ttl">Inclusive Practices &amp; Individualized Support</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="ec-desc">Support early childhood programs in creating environments and experiences that recognize learner variability and provide meaningful access, participation, and belonging for all children.</p>
+        <p class="ec-lbl">Areas of support include:</p>
+        <ul class="ec-list"><li>Inclusive early childhood practices</li><li>Supporting diverse learners</li><li>Differentiation and individualized support</li><li>Universal Design for Learning</li><li>Developmental needs and learner variability</li><li>Classroom accommodations and supports</li><li>Collaboration among educators and specialists</li><li>Supporting children within inclusive environments</li><li>Observation and documentation</li><li>Responsive instructional planning</li><li>Strength-based approaches to supporting children</li></ul>
+      </details>
+      <details class="ec-card">
+        <summary><span class="num">04</span><span class="ttl">Learning Environments &amp; Instructional Practice</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="ec-desc">Help educators create responsive environments and use intentional instructional practices that promote exploration, engagement, relationships, independence, and meaningful learning.</p>
+        <p class="ec-lbl">Areas of support include:</p>
+        <ul class="ec-list"><li>Early childhood learning environments</li><li>Classroom organization and routines</li><li>Learning centers</li><li>Play and exploration</li><li>Intentional teaching</li><li>Questioning and conversation</li><li>Materials and manipulatives</li><li>Supporting student choice and independence</li><li>Developmentally appropriate technology use</li><li>Classroom observation and reflection</li><li>Instructional planning</li><li>Connecting environments to learning goals</li></ul>
+      </details>
+      <details class="ec-card">
+        <summary><span class="num">05</span><span class="ttl">Curriculum &amp; Assessment</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="ec-desc">Support programs and educators in creating coherent approaches to curriculum, observation, documentation, and assessment that inform instruction while remaining responsive to young children's development.</p>
+        <p class="ec-lbl">Areas of support include:</p>
+        <ul class="ec-list"><li>Early childhood curriculum</li><li>Curriculum implementation</li><li>Curriculum review and alignment</li><li>Developmental learning progressions</li><li>Observation and documentation</li><li>Authentic assessment</li><li>Formative assessment</li><li>Using evidence of learning to inform instruction</li><li>Planning meaningful learning experiences</li><li>Standards and framework alignment</li><li>Curriculum adaptation</li><li>Connecting assessment to instructional decisions</li></ul>
+      </details>
+      <details class="ec-card">
+        <summary><span class="num">06</span><span class="ttl">Family &amp; Community Engagement</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="ec-desc">Strengthen partnerships among early childhood programs, families, and communities to support children's development, learning, and well-being.</p>
+        <p class="ec-lbl">Areas of support include:</p>
+        <ul class="ec-list"><li>Family engagement</li><li>Family-school partnerships</li><li>Strength-based family communication</li><li>Supporting families as partners in learning</li><li>Culturally responsive family engagement</li><li>Community partnerships</li><li>Family education and resources</li><li>Supporting transitions</li><li>Building trust and relationships with families</li><li>Engaging families in children's learning and development</li></ul>
+      </details>
+      <details class="ec-card">
+        <summary><span class="num">07</span><span class="ttl">Early Childhood Leadership &amp; Program Quality</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="ec-desc">Support early childhood leaders in developing the people, practices, environments, and systems needed to create and sustain high-quality programs.</p>
+        <p class="ec-lbl">Areas of support include:</p>
+        <ul class="ec-list"><li>Early childhood leadership</li><li>Program improvement</li><li>Program quality</li><li>Reflective supervision</li><li>Staff development</li><li>Building collaborative teams</li><li>Professional learning systems</li><li>Educator retention and support</li><li>Leadership coaching</li><li>Continuous improvement</li><li>Data-informed program decision making</li><li>Strategic planning</li><li>Organizational culture</li></ul>
+      </details>
+      <details class="ec-card">
+        <summary><span class="num">08</span><span class="ttl">Professional Learning &amp; Coaching</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="ec-desc">Build educator and program capacity through professional learning and coaching that connects new knowledge to everyday practice within early childhood settings.</p>
+        <p class="ec-lbl">Areas of support include:</p>
+        <ul class="ec-list"><li>Customized professional learning</li><li>Individual and team coaching</li><li>Job-embedded professional learning</li><li>Reflective practice</li><li>Classroom observation and feedback</li><li>Professional learning communities</li><li>Communities of practice</li><li>New educator support</li><li>Implementation coaching</li><li>Leadership coaching</li><li>Professional learning series</li><li>Sustained implementation support</li></ul>
+      </details>
     </div>
+  </div>
+</section>
+
+<section class="ec-studio">
+  <div class="wrap">
+    <span class="kicker">An ACES Innovation</span>
+    <h2>Early Learning <b>Studio.</b></h2>
+    <p>The ACES Early Learning Studio provides educators with AI-supported tools and resources designed specifically for early childhood practice. The Studio helps educators translate observations, learning goals, and classroom needs into developmentally appropriate ideas and supports while keeping educator expertise and decision-making at the center.</p>
+    <a class="btn btn-green" href="curriculum-creator.html">Explore Early Learning Studio</a>
   </div>
 </section>
 
@@ -67,8 +126,9 @@
   <div class="wrap">
     <span class="kicker">Customized Early Childhood Support</span>
     <h2>Support designed around <b>your program.</b></h2>
-    <p>Every early childhood program has different priorities. Our work begins by understanding yours, then designing professional learning and support that fits your educators, children, and families.</p>
-    <a class="btn btn-green" href="contact.html" style="margin-top:24px">Talk With Us About Early Childhood</a>
+    <p>Every early childhood community is different. Our work begins by understanding the children, educators, families, priorities, and systems that make your program unique.</p>
+    <p>ACES PDSI works collaboratively with early childhood programs and organizations to design professional learning, coaching, consultation, and sustained partnerships that respond to their goals. Support can focus on a specific area of practice or bring multiple areas together as part of a larger program improvement initiative.</p>
+    <a class="btn btn-green" href="contact.html" style="margin-top:24px">Talk With Us About Early Childhood Support</a>
   </div>
 </section>
 
