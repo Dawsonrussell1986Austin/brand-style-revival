@@ -5,6 +5,15 @@
 <title>Early Childhood &middot; ACES PDSI</title>
 <link rel="stylesheet" href="/redesign-assets/aces.css">
 <style>
+  .ec-hero.photo{text-align:left;padding:0;background:none}
+  .ec-hero.photo::before,.ec-hero.photo::after{display:none}
+  .ec-hero.photo .bg{position:absolute;inset:0;background:linear-gradient(96deg,rgba(7,30,49,.92) 0%,rgba(8,40,65,.80) 44%,rgba(9,52,82,.55) 100%),url('/redesign-assets/ec-hero.jpg') center 35%/cover no-repeat}
+  .ec-hero.photo .inner{position:relative;z-index:2;padding:104px 40px 92px;max-width:1180px;margin:0 auto;text-align:left}
+  .ec-hero.photo .crumb{position:relative;z-index:2}
+  .ec-hero.photo h1{font-size:64px;letter-spacing:-.04em;max-width:16ch}
+  .ec-hero.photo p{margin:22px 0 0;max-width:640px}
+  .ec-hero.photo .kicker{margin-bottom:16px}
+  @media(max-width:860px){.ec-hero.photo .inner{padding:74px 22px 64px}.ec-hero.photo h1{font-size:34px}.ec-hero.photo p{font-size:17px}}
   .ec-intro{padding:64px 0 8px}
   .ec-intro .lead{font-size:18px;line-height:1.75;color:#3C566B;margin-top:18px;max-width:900px}
   .ec-sec{padding:48px 0 72px}
