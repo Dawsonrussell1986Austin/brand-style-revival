@@ -136,7 +136,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
         <div className="wrap">
           <span className="tb-kicker">Register for the conference</span>
           <span className="tb-copy">
-            Join us on September 25, 2026 for the ACES AI Conference — keynotes, breakouts, and an Innovation Lab in Bristol, CT.
+            September 25, 2026 — keynotes, breakouts, and an Innovation Lab in Bristol, CT.
           </span>
           <Link
             className="tb-cta"
