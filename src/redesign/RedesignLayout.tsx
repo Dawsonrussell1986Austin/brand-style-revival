@@ -25,6 +25,7 @@ const HTML_TO_ROUTE: Record<string, string> = {
   "ai-research.html": "/center-for-ai-services/research-ethics",
   "curriculum-creator.html": "/curriculum-creator",
   "wired-wednesdays.html": "/workshops-events/wired-wednesdays",
+  "regulated-classroom.html": "/workshops-events/regulated-classroom",
   "resources.html": "/resources",
   "contact.html": "/contact",
   "pdsi.html": "/pdsi",
