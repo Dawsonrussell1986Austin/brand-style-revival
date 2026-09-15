@@ -25,6 +25,7 @@ import RPDSI from "./redesign/pages-tsx/RPDSI";
 import RRegionalForums from "./redesign/pages-tsx/RRegionalForums";
 import RAICenter from "./redesign/pages-tsx/RAICenter";
 import RAIConference from "./redesign/pages-tsx/RAIConference";
+import RRegulatedClassroom from "./redesign/pages-tsx/RRegulatedClassroom";
 import RWiredWednesdays from "./redesign/pages-tsx/RWiredWednesdays";
 import RAILiteracy from "./redesign/pages-tsx/RAILiteracy";
 import RAIInnovation from "./redesign/pages-tsx/RAIInnovation";
@@ -105,6 +106,8 @@ const App = () => {
             <Route path="/arc" element={<ARC />} />
             <Route path="/ai-conference-2026" element={<RAIConference />} />
             <Route path="/ai-conference" element={<Navigate to="/ai-conference-2026" replace />} />
+            <Route path="/workshops-events/regulated-classroom" element={<RRegulatedClassroom />} />
+            <Route path="/regulated-classroom" element={<Navigate to="/workshops-events/regulated-classroom" replace />} />
             <Route path="/workshops-events/wired-wednesdays" element={<RWiredWednesdays />} />
             <Route path="/wired-wednesdays" element={<Navigate to="/workshops-events/wired-wednesdays" replace />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
