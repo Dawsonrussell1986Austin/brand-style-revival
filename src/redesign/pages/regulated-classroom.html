@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<style>
+  .trc-hero{position:relative;color:#fff;padding:96px 0 88px;overflow:hidden;background:#3F5D57}
+  .trc-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,#31504a 0%,#3F5D57 46%,#6FBFA8 130%)}
+  .trc-hero:after{content:"";position:absolute;width:560px;height:560px;right:-160px;top:-200px;border-radius:50%;background:radial-gradient(circle,rgba(217,138,156,.35),transparent 65%)}
+  .trc-hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .85fr;gap:48px;align-items:center}
+  .trc-logo{background:#fff;border-radius:18px;padding:16px 20px;display:inline-block;margin-bottom:22px;box-shadow:0 14px 34px rgba(0,0,0,.25)}
+  .trc-logo img{display:block;width:300px;height:auto}
+  .trc-kicker{display:inline-flex;align-items:center;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#d8f0e7;font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+  .trc-hero h1{font-size:clamp(36px,5.4vw,60px);line-height:1.04;letter-spacing:-.03em;font-weight:300;margin:18px 0 14px;max-width:17ch}
+  .trc-hero h1 b{font-weight:800;color:#a7e2ce}
+  .trc-sub{font-size:18.5px;line-height:1.62;color:#dcece7;max-width:58ch}
+  .trc-meta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 30px}
+  .trc-chip{padding:12px 18px;border-radius:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-size:15px;font-weight:600;color:#f0f8f5}
+  .trc-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .trc-btn{display:inline-flex;align-items:center;gap:10px;padding:17px 34px;border-radius:999px;background:#D98A9C;color:#2e3f3b;font-weight:800;font-size:17px;text-decoration:none;box-shadow:0 14px 34px rgba(217,138,156,.34);transition:transform .18s ease,box-shadow .18s ease}
+  .trc-btn:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(217,138,156,.46)}
+  .trc-btn-ghost{display:inline-flex;align-items:center;padding:17px 30px;border-radius:999px;border:2px solid rgba(255,255,255,.45);color:#fff;font-weight:700;font-size:16px;text-decoration:none}
+  .trc-btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.12)}
+  .trc-art img{width:100%;height:auto;border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .trc-band{background:#6FBFA8;color:#22352f;padding:16px 0;text-align:center;font-weight:800;letter-spacing:.05em;font-size:15.5px;text-transform:uppercase}
+  .trc-sec{padding:74px 0}
+  .trc-sec.alt{background:#F3F8F6}
+  .trc-h2{font-size:clamp(28px,3.6vw,40px);font-weight:300;letter-spacing:-.02em;color:#2E4741;margin-bottom:12px}
+  .trc-h2 b{font-weight:800}
+  .trc-lead{font-size:17px;color:#54706a;max-width:64ch;line-height:1.68}
+  .trc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:36px}
+  .trc-card{background:#fff;border:1px solid #dfece8;border-radius:18px;padding:28px;transition:transform .18s ease,box-shadow .18s ease}
+  .trc-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(46,71,65,.1)}
+  .trc-card .num{font-size:13px;font-weight:800;color:#4f9e88;letter-spacing:.1em;text-transform:uppercase}
+  .trc-card h3{font-size:20px;font-weight:700;color:#2E4741;margin:10px 0 8px}
+  .trc-card p{font-size:15.5px;color:#5f7b75;line-height:1.6;margin:0}
+  .trc-who{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:32px}
+  .trc-who li{list-style:none;background:#fff;border:1px solid #dfece8;border-radius:14px;padding:16px 18px;font-size:15.5px;color:#3f5d57;font-weight:600}
+  .trc-quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;margin-top:36px}
+  .trc-q{background:#2E4741;color:#fff;border-radius:18px;padding:28px;position:relative}
+  .trc-q p{font-size:16.5px;line-height:1.6;color:#e5f1ed;margin:0 0 14px;font-style:italic}
+  .trc-q .who{font-size:14px;font-weight:700;color:#a7e2ce}
+  .trc-pkg{background:#fff;border:2px dashed #6FBFA8;border-radius:18px;padding:30px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-top:36px}
+  .trc-pkg h3{font-size:22px;font-weight:800;color:#2E4741;margin:0}
+  .trc-pkg p{font-size:15.5px;color:#5f7b75;margin-top:6px;max-width:58ch}
+  .trc-pkg a{color:#3f5d57;font-weight:700}
+  .trc-final{background:linear-gradient(135deg,#2E4741,#4f9e88);color:#fff;padding:84px 0;text-align:center}
+  .trc-final h2{font-size:clamp(30px,4.4vw,46px);font-weight:300;letter-spacing:-.02em;margin-bottom:14px}
+  .trc-final h2 b{font-weight:800;color:#d8f0e7}
+  .trc-final p{font-size:18px;color:#e2efeb;max-width:62ch;margin:0 auto 30px;line-height:1.62}
+  .trc-contact{margin-top:24px;font-size:15px;color:#cfe3dd}
+  .trc-contact a{color:#fff}
+  @media(max-width:900px){
+    .trc-hero .wrap{grid-template-columns:1fr;gap:34px}
+    .trc-logo img{width:230px}
+  }
+</style>
+</head><body>
+
+<section class="trc-hero">
+  <div class="wrap">
+    <div>
+      <span class="trc-logo"><img src="/redesign-assets/trc-logo.png" alt="The Regulated Classroom — Let's co-regulate"></span>
+      <div><span class="trc-kicker">Hosted by ACES · Hamden, CT</span></div>
+      <h1>The Regulated Classroom® <b>Train the Trainer</b></h1>
+      <p class="trc-sub">Two days. One powerful shift in how we understand behavior. A nervous-system-informed framework that addresses educator stress and student dysregulation together.</p>
+      <div class="trc-meta">
+        <div class="trc-chip">October 28 &amp; 29, 2026</div>
+        <div class="trc-chip">12 hours, in person</div>
+        <div class="trc-chip">205 Skiff Street, Hamden, CT</div>
+        <div class="trc-chip">PreK–12 educators</div>
+      </div>
+      <div class="trc-cta">
+        <a class="trc-btn" href="https://www.regulatedclassroom.com/shop/p/the-regulated-classroom-train-the-trainer-aces-hamden-ct" target="_blank" rel="noopener">Register Now →</a>
+        <a class="trc-btn-ghost" href="#about">Learn More</a>
+      </div>
+    </div>
+    <div class="trc-art">
+      <img src="/redesign-assets/trc-graphic.png" alt="Train the Trainer, Hamden CT, October 28 and 29, in partnership with ACES">
+    </div>
+  </div>
+</section>
+
+<div class="trc-band">Send 1–3 educators · Build internal capacity · Bring the learning home</div>
+
+<section class="trc-sec" id="about">
+  <div class="wrap">
+    <h2 class="trc-h2">A different way of understanding <b>behavior.</b></h2>
+    <p class="trc-lead">What if the next step in addressing student behavior and educator burnout wasn't another behavior management program — but the nervous system? The Regulated Classroom® is an evidence-based framework that helps educators understand behavior through the lens of the nervous system while intentionally supporting educator regulation, student regulation, connection, and felt safety.</p>
+    <p class="trc-lead" style="margin-top:14px">For schools navigating staff stress and burnout, challenging behaviors, absenteeism, and the increasing demands placed on educators, this work offers a different way forward. Participants gain an understanding of the framework's theories, practices, and tools, with a focus on recognizing personal patterns of stress activation and release. Every participant receives a certificate of completion along with training resources and materials based on the selected package.</p>
+
+    <div class="trc-grid">
+      <div class="trc-card"><div class="num">Two Days</div><h3>12 Hours, In Person</h3><p>An embodied, experiential training on October 28 &amp; 29 at ACES in Hamden, CT.</p></div>
+      <div class="trc-card"><div class="num">Framework</div><h3>4 Core Practices</h3><p>Learn the essential educator capacities and the practices that anchor the framework.</p></div>
+      <div class="trc-card"><div class="num">Capacity</div><h3>Become a Facilitator</h3><p>Leave equipped to deliver a 90-minute introduction to colleagues with the guidebook.</p></div>
+      <div class="trc-card"><div class="num">Take-Aways</div><h3>Resources &amp; Materials</h3><p>Certificate of completion plus training resources and materials by package.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="trc-sec alt">
+  <div class="wrap">
+    <h2 class="trc-h2">Build capacity <b>within your own team.</b></h2>
+    <p class="trc-lead">We recommend sending 1–3 educators from your school or district to become trained facilitators. Instead of bringing in another initiative that lives with a handful of people, you build shared language and capacity inside your own school community — educators with a common understanding of what is happening in the nervous system, what a behavior might be communicating, what a student or classroom needs right now, and just as importantly, what <i>my</i> nervous system needs.</p>
+
+    <h3 style="margin-top:38px;font-size:18px;font-weight:800;color:#2E4741;letter-spacing:.02em">Who should attend</h3>
+    <ul class="trc-who">
+      <li>Principals and assistant principals</li>
+      <li>Superintendents and district leaders</li>
+      <li>Special education and student-services leaders</li>
+      <li>Counselors, social workers, psychologists, behavior staff</li>
+      <li>Instructional and SEL coaches</li>
+      <li>Teachers who influence schoolwide practice</li>
+    </ul>
+  </div>
+</section>
+
+<section class="trc-sec">
+  <div class="wrap">
+    <h2 class="trc-h2">What educators <b>are saying.</b></h2>
+    <div class="trc-quotes">
+      <div class="trc-q"><p>“The ENTIRE district left the training excited, and optimistic.”</p><div class="who">Justin Catapano-Kangas, Principal · Warren, Maine</div></div>
+      <div class="trc-q"><p>“You have restored in me the fire that was starting to fade a bit and for that I am grateful in my heart!”</p><div class="who">Sarah Summerlin, Classroom Teacher</div></div>
+      <div class="trc-q"><p>“For the first time in a while, I feel both rejuvenated and hopeful.”</p><div class="who">Maeve Williams, SEL Director</div></div>
+      <div class="trc-q"><p>“It was truly life changing on both a personal and professional level.”</p><div class="who">Heather Perigny</div></div>
+      <div class="trc-q"><p>“The toolkit provided simple, fun, and engaging activities for both adults and students.”</p><div class="who">Lois, Superintendent</div></div>
+      <div class="trc-q"><p>“I am feeling myself be so much more calm, because I can see a difference in them.”</p><div class="who">Marni, Kindergarten Teacher</div></div>
+    </div>
+
+    <div class="trc-pkg">
+      <div>
+        <h3>Registering with a purchase order?</h3>
+        <p>Email Lily at The Regulated Classroom® with your anticipated number of registrations and she will provide an estimate for your purchase order.</p>
+      </div>
+      <a class="trc-btn" href="mailto:lily@regulatedclassroom.com">Email lily@regulatedclassroom.com</a>
+    </div>
+  </div>
+</section>
+
+<section class="trc-final">
+  <div class="wrap">
+    <h2>Let's <b>co-regulate.</b></h2>
+    <p>Join ACES for The Regulated Classroom® Train the Trainer, October 28 &amp; 29, 2026 in Hamden, CT. Seats are limited — send 1–3 educators and bring the framework back to your colleagues.</p>
+    <a class="trc-btn" href="https://www.regulatedclassroom.com/shop/p/the-regulated-classroom-train-the-trainer-aces-hamden-ct" target="_blank" rel="noopener">Register Now →</a>
+    <p class="trc-contact">Questions about hosting or attending? Email <a href="mailto:mgohagon@aces.org">mgohagon@aces.org</a> or call (860) 834-6147.</p>
+  </div>
+</section>
+
+</body></html>
