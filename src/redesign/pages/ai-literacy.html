@@ -40,7 +40,18 @@
   .vimg{aspect-ratio:4/3;border-radius:20px;background:linear-gradient(135deg,#0d2a44,#123a5a);display:flex;align-items:center;justify-content:center;overflow:hidden}
   .vimg img{width:100%;height:100%;object-fit:cover;display:block}
   .vimg.contain img{object-fit:contain;background:#fff}
+  .recordings-head{max-width:760px;margin-bottom:34px}
+  .recordings-head h2{font-size:44px;margin-top:16px}
+  .recordings-head p{font-size:17px;color:var(--muted);line-height:1.7;margin-top:16px}
+  .recording-card{display:grid;grid-template-columns:180px 1fr auto;gap:30px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:0 22px 48px -38px rgba(10,34,54,.5)}
+  .recording-date{padding:22px;border-radius:16px;background:var(--navy);color:#fff;text-align:center}
+  .recording-date strong{display:block;font-size:22px;line-height:1.2}
+  .recording-date span{display:block;margin-top:5px;font-size:13px;font-weight:700;color:#9FC4DE}
+  .recording-copy h3{font-size:23px;font-weight:700;color:var(--ink);line-height:1.25}
+  .recording-copy p{font-size:15px;color:var(--muted);line-height:1.65;margin-top:10px}
+  #wired-wednesday-recordings{scroll-margin-top:120px}
   @media(max-width:980px){.lit-grid{grid-template-columns:1fr}.vision-grid{grid-template-columns:1fr}}
+  @media(max-width:780px){.recording-card{grid-template-columns:1fr}.recording-date{text-align:left}.recording-card .btn{justify-self:start}}
 </style>
 
 </head>
@@ -139,6 +150,25 @@
       </div>
       <div class="vimg contain" id="lit-img-vision" style="aspect-ratio:4/5"><img src="/redesign-assets/vision-graduate.jpg" alt="Vision of an ACES AI-Ready Graduate — Human Thinking Remains Primary, surrounded by eight learner dispositions"></div>
     </div>
+  </div>
+</section>
+
+<!-- WIRED WEDNESDAY RECORDINGS -->
+<section class="blocks" id="wired-wednesday-recordings" style="text-align:left;padding:72px 0">
+  <div class="wrap">
+    <div class="recordings-head">
+      <span class="kicker">Watch on demand</span>
+      <h2>Wired Wednesday <b>Recordings.</b></h2>
+      <p>Catch up on practical, human-centered conversations about artificial intelligence in education.</p>
+    </div>
+    <article class="recording-card">
+      <div class="recording-date"><strong>September 9</strong><span>2026 · Wired Wednesday</span></div>
+      <div class="recording-copy">
+        <h3>AI in Education: What’s Real, What’s Overhyped, and What Actually Matters</h3>
+        <p>Many educators feel overwhelmed by conflicting messages about AI. This webinar provides a clear, grounded overview of what AI is (and isn’t), how it’s already showing up in schools, and why clarity—not fear or hype—is the starting point for responsible use.</p>
+      </div>
+      <a class="btn btn-blue" href="https://aces-org.zoom.us/rec/play/QO8Qj3x-UOiJ_9efnKxbxLkbQiZ_A9wyO5s9evqqZPavPwnKAqe5NTREcDvSBLzKVgJdhBLPv1R4XnGJ.3TxhQEUggn-AFeOu?accessLevel=meeting&amp;canPlayFromShare=true&amp;from=share_recording_detail&amp;continueMode=true&amp;oldStyle=true&amp;componentName=rec-play&amp;originRequestUrl=https%3A%2F%2Faces-org.zoom.us%2Frec%2Fshare%2FZMYTVsp7zguA9zc_2ZpIoF9i36Od7avVQdYPgnhfXWwu8cUAzrboNL5__CICMtzD.OLETl1NsY2G_oSfu" target="_blank" rel="noopener">Watch Recording →</a>
+    </article>
   </div>
 </section>
 
