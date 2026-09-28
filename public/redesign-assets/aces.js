@@ -73,7 +73,7 @@
     });
     // Auto-close if resized back up to desktop
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 980 && menu.classList.contains("open")) close();
+      if (window.innerWidth > 1180 && menu.classList.contains("open")) close();
     });
 
     // Allow deep-linking the open menu (e.g. for QA): #menu
