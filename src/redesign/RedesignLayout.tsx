@@ -141,7 +141,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
           </span>
           <a
             className="tb-cta"
-            href="https://tinyurl.com/mvr5a5ep"
+            href="https://drive.google.com/file/d/13mMQGrKvmc7h9DN-T9dxr2eOV7alDoJw/view?usp=sharing"
             target="_blank"
             rel="noopener"
           >
