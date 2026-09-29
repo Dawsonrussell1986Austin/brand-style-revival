@@ -135,16 +135,18 @@ export function RedesignLayout({ children, pageInit }: Props) {
       <a className="skiplink" href="#maincontent">Skip to main content</a>
       <div className="topbanner">
         <div className="wrap">
-          <span className="tb-kicker">Register for the conference</span>
+          <span className="tb-kicker">Complimentary District Audit</span>
           <span className="tb-copy">
-            September 25, 2026 — keynotes, breakouts, and an Innovation Lab in Bristol, CT.
+            Digital Learning &amp; AI Impact Audit — see how technology is shaping learning in your district.
           </span>
-          <Link
+          <a
             className="tb-cta"
-            to="/ai-conference-2026"
+            href="https://tinyurl.com/mvr5a5ep"
+            target="_blank"
+            rel="noopener"
           >
-            ACES AI Conference 2026 →
-          </Link>
+            Request Your Audit →
+          </a>
         </div>
       </div>
       <header>
