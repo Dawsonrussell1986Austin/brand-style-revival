@@ -69,6 +69,9 @@ export default function RContact() {
             email: parsed.data.email,
             organization: parsed.data.organization,
             role: parsed.data.role,
+            phone: parsed.data.phone,
+            topic: parsed.data.topic,
+            message: parsed.data.message,
             formType: "Contact",
           },
         })

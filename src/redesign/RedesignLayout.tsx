@@ -91,6 +91,11 @@ export function RedesignLayout({ children, pageInit }: Props) {
           source: "mailing-list",
         });
         if (error) throw error;
+        supabase.functions
+          .invoke("notify-curriculum-lead", {
+            body: { firstName: "Mailing List", lastName: "Subscriber", email, message: "New mailing list subscription", formType: "Mailing List" },
+          })
+          .catch((e) => console.error("notify error", e));
         form.innerHTML = "<p class='mlist-ok'>Thanks — you're on the list!</p>";
       } catch (ex) {
         console.error("mailing-list subscribe error", ex);
