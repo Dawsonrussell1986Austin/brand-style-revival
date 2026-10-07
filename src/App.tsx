@@ -34,6 +34,7 @@ import RCurriculumCreator from "./redesign/pages-tsx/RCurriculumCreator";
 import RResources from "./redesign/pages-tsx/RResources";
 import RContact from "./redesign/pages-tsx/RContact";
 import RBlogAI from "./redesign/pages-tsx/RBlogAI";
+import RBlogStudentAI from "./redesign/pages-tsx/RBlogStudentAI";
 import RBlogPlay from "./redesign/pages-tsx/RBlogPlay";
 import RBlogRooted from "./redesign/pages-tsx/RBlogRooted";
 
@@ -93,6 +94,7 @@ const App = () => {
             <Route path="/contact" element={<RContact />} />
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/blog/saving-time-with-ai" element={<RBlogAI />} />
+            <Route path="/blog/who-decided-your-students-would-get-ai" element={<RBlogStudentAI />} />
             <Route path="/blog/everyone-loves-to-play" element={<RBlogPlay />} />
             <Route path="/blog/rooted-in-relationships-and-rigor" element={<RBlogRooted />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
