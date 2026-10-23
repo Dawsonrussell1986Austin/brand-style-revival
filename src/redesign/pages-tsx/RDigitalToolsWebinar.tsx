@@ -5,25 +5,25 @@ import { RedesignLayout } from "../RedesignLayout";
 import { digitalToolsDescription, digitalToolsSessions } from "../digital-tools-sessions";
 
 const tools = [
-  { name: "Curriculum Studio", category: "Curriculum & planning", image: "/redesign-assets/curriculum-creator.png", alt: "ACES Curriculum Studio course setup screen", description: "See standards-aligned curriculum planning in action, from learning goals to classroom materials." },
-  { name: "Early Learning Studio", category: "Early childhood", image: "/redesign-assets/ec-hero.jpg", alt: "Early childhood educators learning together at ACES", description: "Explore tools designed around early childhood practice, with educator expertise at the center." },
-  { name: "ACES Test Prep", category: "Educator preparation", image: "/redesign-assets/test-prep.png", alt: "ACES test preparation practice question and readiness dashboard", description: "Take a look at personalized practice and preparation for educators working toward certification." },
-  { name: "K–12 AI Literacy Curriculum", category: "AI literacy & learning", image: "/redesign-assets/k12-curriculum.png", alt: "ACES AI literacy prompting progression across grade levels", description: "Discover a progression of AI learning that keeps human thinking, judgment, and responsible use in focus." },
+  { name: "ACES Curriculum Studio", category: "Curriculum & planning", image: "/redesign-assets/curriculum-creator.png", alt: "ACES Curriculum Studio course setup screen", description: "Take a unit from blank page to student-ready. Every unit follows the same backbone: Understanding by Design, with Universal Design for Learning built in, aligned to Connecticut’s curriculum design principles. A three-framework audit shows what’s ready and what’s missing, and leaders review and approve curriculum in one place before it’s published. Units export to Word, ready for the classroom." },
+  { name: "ACES Early Learning Studio", category: "Early childhood", image: "/redesign-assets/ec-hero.jpg", alt: "Early childhood educators learning together at ACES", description: "For birth-to-five programs. Turn what children love into play-based topics of inquiry, with ready-to-use provocations, dramatic play, and sensory experiences. Quick Capture saves observations in the moment, connects them to CT ELDS, and builds each child’s evidence for CT DOTS. Family updates go home in English or Spanish." },
+  { name: "ACES Test Prep", category: "Educator preparation", image: "/redesign-assets/test-prep.png", alt: "ACES test preparation practice question and readiness dashboard", description: "Help the people already in your building earn their certification. Paraeducators, teachers on a DSAP, and educators adding a cross-endorsement get a diagnostic, a personal study plan built around their test date, and lessons in English and Spanish for their Praxis exam." },
+  { name: "ACES K–12 AI Literacy Curriculum", category: "AI literacy & learning", image: "/redesign-assets/k12-curriculum.png", alt: "ACES AI literacy prompting progression across grade levels", description: "Classroom-ready lessons that teach students to question AI, not just use it. Four phases (Navigator, Co-Pilot, Editor, Director) grow with students from kindergarten through grade 12, built on UbD and UDL and aligned to Connecticut’s design principles." },
 ];
 
 export default function RDigitalToolsWebinar() {
   return (
     <>
-      <SEO title="ACES Digital Tools in Action — Free Live Webinar" description={digitalToolsDescription} url="/digital-tools-webinar" />
+      <SEO title="Built for Connecticut Educators: A Live Look at ACES Digital Tools" description={digitalToolsDescription} url="/digital-tools-webinar" />
       <RedesignLayout>
         <div className="dt-webinar">
           <section className="dt-hero" aria-labelledby="dt-title">
             <img className="dt-hero-photo" src="/redesign-assets/ai-innovation-hero-crop.png" alt="" />
             <div className="wrap dt-hero-inner">
               <div className="dt-eyebrow"><Video size={18} aria-hidden="true" /> Free live webinar · November 2026</div>
-              <h1 id="dt-title">ACES Digital Tools<br /><b>in Action.</b></h1>
-              <p className="dt-hero-lead">Built for Connecticut educators.<br />By the people who already serve your schools.</p>
-              <p className="dt-hero-copy">See Curriculum Studio, Early Learning Studio, ACES Test Prep, and the K–12 AI Literacy Curriculum at work—and get your questions answered.</p>
+              <h1 id="dt-title">Built for Connecticut Educators:<br /><b>A Live Look at ACES Digital Tools</b></h1>
+              <p className="dt-hero-lead">Curriculum Studio · Early Learning Studio<br />ACES Test Prep · K–12 AI Literacy Curriculum</p>
+              <p className="dt-hero-copy">{digitalToolsDescription}</p>
               <Button asChild size="lg" className="dt-primary"><a href="#choose-session">Choose your session <ArrowDown aria-hidden="true" /></a></Button>
               <div className="dt-hero-notes"><span><Check size={16} aria-hidden="true" /> Free to attend</span><span><Monitor size={16} aria-hidden="true" /> Live on Zoom</span></div>
             </div>
@@ -59,6 +59,12 @@ export default function RDigitalToolsWebinar() {
                   </article>
                 ))}
               </div>
+            </div>
+          </section>
+
+          <section className="dt-audience" aria-labelledby="dt-audience-title">
+            <div className="wrap"><span className="dt-eyebrow">Who should attend</span><h2 id="dt-audience-title">For the leaders supporting <b>educators.</b></h2>
+              <ul>{["Superintendents and assistant superintendents", "Curriculum and instruction leaders", "Principals", "Early childhood and preschool directors", "Special education and pupil services leaders", "HR and talent leaders", "Teacher leaders"].map((audience) => <li key={audience}><Check size={18} aria-hidden="true" />{audience}</li>)}</ul>
             </div>
           </section>
 

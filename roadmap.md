@@ -1,4 +1,5 @@
 # Current tasks
+- [ ] Incorporate the attached webinar title, tool descriptions, and audience details.
 - [ ] Create an ACES digital tools webinar landing page with four Zoom registration choices.
 - [ ] Link the page from the site and verify dates, registration links, and mobile layout.
 - [x] Add the supplied student AI article and header graphic.

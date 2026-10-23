@@ -5,4 +5,4 @@ export const digitalToolsSessions = [
   { id: "nov13-afternoon", date: "2026-11-13", label: "Friday, November 13", time: "1:30 PM", startsAt: "2026-11-13T13:30:00-05:00", url: "https://aces-org.zoom.us/webinar/register/WN_zBYtdb5OTFmVzkEJffMolg" },
 ] as const;
 
-export const digitalToolsDescription = "See the ACES digital tools in action: Curriculum Studio, Early Learning Studio, ACES Test Prep, and the K–12 AI Literacy Curriculum. Built for Connecticut educators by the people who already serve your schools. In this free live webinar you’ll see each tool at work and get your questions answered. Every session covers the same content, so pick the time that fits your day.";
+export const digitalToolsDescription = "ACES built a set of tools for the work only educators do, and we want to show you how they work. Join us for a free live webinar on Zoom. You’ll see each tool in action, hear how Connecticut schools are using them, and get your questions answered.";

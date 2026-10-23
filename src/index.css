@@ -12,7 +12,7 @@
 .dt-hero::before { content: ""; position: absolute; inset: 0; background: hsl(var(--background) / .90); z-index: -1; }
 .dt-hero-inner { padding-top: 60px; padding-bottom: 56px; }
 .dt-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: hsl(var(--accent)); }
-.dt-webinar h1 { font-size: 62px; line-height: 1.12; font-weight: 300; margin: 20px 0; }
+.dt-webinar h1 { font-size: 48px; line-height: 1.18; font-weight: 300; margin: 20px 0; max-width: 1050px; }
 .dt-webinar h1 b, .dt-webinar h2 b { color: hsl(var(--primary)); font-weight: 800; }
 .dt-hero-lead { font-size: 22px; line-height: 1.5; font-weight: 600; max-width: 660px; }
 .dt-hero-copy { max-width: 620px; margin: 16px 0 24px; font-size: 17px; line-height: 1.7; }
@@ -45,12 +45,16 @@
 .dt-close { padding: 60px 0; text-align: center; }
 .dt-close .dt-eyebrow { justify-content: center; }
 .dt-close p { font-size: 17px; margin: 18px 0 24px; }
+.dt-audience { padding: 54px 0; border-bottom: 1px solid hsl(var(--border)); }
+.dt-audience ul { list-style: none; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 32px; margin-top: 28px; }
+.dt-audience li { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; }
+.dt-audience li svg { flex-shrink: 0; margin-top: 4px; color: hsl(var(--accent)); }
 @media(min-width:1600px) { .dt-hero-inner { padding-top: 64px; padding-bottom: 64px; } }
-@media(max-width:1000px) { .dt-session-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .dt-webinar h1 { font-size: 52px; } }
+@media(max-width:1000px) { .dt-session-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .dt-webinar h1 { font-size: 42px; } }
 @media(max-width:600px) {
   .dt-webinar .wrap { padding-left: 22px; padding-right: 22px; }
   .dt-hero-inner { padding-top: 36px; padding-bottom: 34px; }
-  .dt-webinar h1 { font-size: 38px; }
+  .dt-webinar h1 { font-size: 32px; }
   .dt-hero-lead { font-size: 19px; }
   .dt-hero-copy { font-size: 16px; }
   .dt-webinar h2 { font-size: 32px; }
@@ -61,6 +65,7 @@
   .dt-time { font-size: 24px; }
   .dt-register { padding-left: 8px; padding-right: 8px; font-size: 14px; }
   .dt-tool-grid { grid-template-columns: 1fr; }
+  .dt-audience ul { grid-template-columns: 1fr; }
   .dt-tools { padding: 42px 0; }
   .dt-tools h2 br { display: none; }
 }
