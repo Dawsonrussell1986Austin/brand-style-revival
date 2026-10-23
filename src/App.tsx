@@ -27,6 +27,7 @@ import RAICenter from "./redesign/pages-tsx/RAICenter";
 import RAIConference from "./redesign/pages-tsx/RAIConference";
 import RRegulatedClassroom from "./redesign/pages-tsx/RRegulatedClassroom";
 import RWiredWednesdays from "./redesign/pages-tsx/RWiredWednesdays";
+import RDigitalToolsWebinar from "./redesign/pages-tsx/RDigitalToolsWebinar";
 import RAILiteracy from "./redesign/pages-tsx/RAILiteracy";
 import RAIInnovation from "./redesign/pages-tsx/RAIInnovation";
 import RAIResearch from "./redesign/pages-tsx/RAIResearch";
@@ -88,6 +89,7 @@ const App = () => {
             <Route path="/pdsi-services/regional-forums" element={<RRegionalForums />} />
             <Route path="/events" element={<Navigate to="/workshops-events" replace />} />
             <Route path="/workshops-events" element={<REvents />} />
+            <Route path="/digital-tools-webinar" element={<RDigitalToolsWebinar />} />
             <Route path="/workshops-events/:slug" element={<EventDetail />} />
             <Route path="/events/:slug" element={<EventDetail />} />
             <Route path="/resources" element={<RResources />} />

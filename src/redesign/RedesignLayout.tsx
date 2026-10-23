@@ -172,6 +172,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <Link className="subitem" to="/ai-conference-2026">ACES AI Conference 2026</Link>
                 <Link className="subitem" to="/workshops-events/regulated-classroom">The Regulated Classroom: Train the Trainer</Link>
                 <Link className="subitem" to="/workshops-events/wired-wednesdays">Wired Wednesdays Webinars</Link>
+                <Link className="subitem" to="/digital-tools-webinar">Digital Tools in Action: Free Webinar</Link>
               </div>
             </div>
             <div className="hasmenu">
