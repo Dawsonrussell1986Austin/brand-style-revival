@@ -4,6 +4,68 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scoped ACES digital tools campaign page; colors use the site theme. */
+.dt-webinar { background: hsl(var(--background)); color: hsl(var(--foreground)); }
+.dt-webinar * { letter-spacing: 0; }
+.dt-hero { position: relative; isolation: isolate; overflow: hidden; }
+.dt-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -2; }
+.dt-hero::before { content: ""; position: absolute; inset: 0; background: hsl(var(--background) / .90); z-index: -1; }
+.dt-hero-inner { padding-top: 60px; padding-bottom: 56px; }
+.dt-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: hsl(var(--accent)); }
+.dt-webinar h1 { font-size: 62px; line-height: 1.12; font-weight: 300; margin: 20px 0; }
+.dt-webinar h1 b, .dt-webinar h2 b { color: hsl(var(--primary)); font-weight: 800; }
+.dt-hero-lead { font-size: 22px; line-height: 1.5; font-weight: 600; max-width: 660px; }
+.dt-hero-copy { max-width: 620px; margin: 16px 0 24px; font-size: 17px; line-height: 1.7; }
+.dt-webinar .dt-primary { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); border-radius: 6px; font-size: 16px; min-height: 50px; }
+.dt-webinar .dt-primary:hover { background: hsl(var(--accent) / .9); }
+.dt-hero-notes { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 18px; font-size: 14px; color: hsl(var(--muted-foreground)); }
+.dt-hero-notes span { display: flex; align-items: center; gap: 8px; }
+.dt-sessions { padding: 44px 0 60px; scroll-margin-top: 120px; border-top: 1px solid hsl(var(--border)); }
+.dt-section-heading { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-bottom: 26px; }
+.dt-webinar h2 { font-size: 40px; font-weight: 300; line-height: 1.22; margin-top: 12px; }
+.dt-section-heading > p { font-size: 16px; color: hsl(var(--muted-foreground)); }
+.dt-session-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
+.dt-session { padding: 24px 20px; border: 1px solid hsl(var(--border)); border-radius: 8px; background: hsl(var(--card)); }
+.dt-session > svg { color: hsl(var(--accent)); margin-bottom: 16px; }
+.dt-weekday { color: hsl(var(--muted-foreground)); font-size: 14px; font-weight: 500; }
+.dt-session h3 { font-size: 21px; font-weight: 700; margin-top: 4px; }
+.dt-time { font-size: 26px; font-weight: 600; margin: 14px 0 20px; line-height: 1.4; }
+.dt-time span { display: block; font-size: 13px; font-weight: 500; color: hsl(var(--muted-foreground)); margin-top: 5px; }
+.dt-register { width: 100%; font-size: 15px; min-height: 46px; }
+.dt-tools { padding: 64px 0; background: hsl(var(--secondary)); }
+.dt-tools-intro { max-width: 660px; margin: 18px 0 32px; font-size: 17px; }
+.dt-tool-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 36px 28px; }
+.dt-tool-image { aspect-ratio: 16/9; background: hsl(var(--card)); overflow: hidden; border: 1px solid hsl(var(--border)); border-radius: 6px; }
+.dt-tool-image img { height: 100%; width: 100%; object-fit: contain; }
+.dt-tool:nth-child(2) .dt-tool-image img { object-fit: cover; }
+.dt-tool-copy { display: flex; gap: 18px; margin-top: 22px; }
+.dt-tool-number { font-size: 17px; font-weight: 600; color: hsl(var(--muted-foreground)); border-top: 2px solid hsl(var(--accent)); padding-top: 8px; }
+.dt-tool h3 { font-size: 24px; font-weight: 700; line-height: 1.35; margin: 8px 0; }
+.dt-tool-copy div > p:last-child { font-size: 16px; color: hsl(var(--muted-foreground)); }
+.dt-close { padding: 60px 0; text-align: center; }
+.dt-close .dt-eyebrow { justify-content: center; }
+.dt-close p { font-size: 17px; margin: 18px 0 24px; }
+@media(min-width:1600px) { .dt-hero-inner { padding-top: 64px; padding-bottom: 64px; } }
+@media(max-width:1000px) { .dt-session-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .dt-webinar h1 { font-size: 52px; } }
+@media(max-width:600px) {
+  .dt-webinar .wrap { padding-left: 22px; padding-right: 22px; }
+  .dt-hero-inner { padding-top: 36px; padding-bottom: 34px; }
+  .dt-webinar h1 { font-size: 38px; }
+  .dt-hero-lead { font-size: 19px; }
+  .dt-hero-copy { font-size: 16px; }
+  .dt-webinar h2 { font-size: 32px; }
+  .dt-section-heading { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .dt-session-grid { gap: 12px; }
+  .dt-session { padding: 20px 14px; }
+  .dt-session h3 { font-size: 18px; }
+  .dt-time { font-size: 24px; }
+  .dt-register { padding-left: 8px; padding-right: 8px; font-size: 14px; }
+  .dt-tool-grid { grid-template-columns: 1fr; }
+  .dt-tools { padding: 42px 0; }
+  .dt-tools h2 br { display: none; }
+}
+@media(prefers-reduced-motion: reduce) { html:has(.dt-webinar) { scroll-behavior: auto; } }
+
 @layer base {
   :root {
     /* ACES Brand Colors - From Brand Guidelines */
