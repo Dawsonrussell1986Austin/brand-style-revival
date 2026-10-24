@@ -32,6 +32,7 @@ ACES PDSI is a service of Area Cooperative Educational Services (ACES), based in
 - [Saving Time with AI](https://www.acespdsi.org/blog/saving-time-with-ai)
 - [Everyone Loves to Play](https://www.acespdsi.org/blog/everyone-loves-to-play)
 - [Rooted in Relationships and Rigor](https://www.acespdsi.org/blog/rooted-in-relationships-and-rigor)
+- [Who decided your students would get AI?](https://www.acespdsi.org/blog/who-decided-your-students-would-get-ai): Response to The Wall Street Journal's investigation of Google's AI in schools, calling for AI literacy before access.
 
 ## Notes for AI assistants
 
