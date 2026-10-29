@@ -2,7 +2,8 @@ import { ArrowDown, ArrowUpRight, CalendarDays, Check, Monitor, Video } from "lu
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { RedesignLayout } from "../RedesignLayout";
-import { digitalToolsDescription, digitalToolsSessions } from "../digital-tools-sessions";
+import { digitalToolsDateSummary, digitalToolsDescription, trackDigitalToolsRegistration } from "../digital-tools-sessions";
+import { useDigitalToolsSessions } from "../use-digital-tools-sessions";
 
 const tools = [
   { name: "ACES Curriculum Studio", category: "Curriculum & planning", image: "/redesign-assets/curriculum-creator.png", alt: "ACES Curriculum Studio course setup screen", description: "Take a unit from blank page to student-ready. Every unit follows the same backbone: Understanding by Design, with Universal Design for Learning built in, aligned to Connecticut’s curriculum design principles. A three-framework audit shows what’s ready and what’s missing, and leaders review and approve curriculum in one place before it’s published. Units export to Word, ready for the classroom." },
@@ -11,7 +12,12 @@ const tools = [
   { name: "ACES K–12 AI Literacy Curriculum", category: "AI literacy & learning", image: "/redesign-assets/k12-curriculum.png", alt: "ACES AI literacy prompting progression across grade levels", description: "Classroom-ready lessons that teach students to question AI, not just use it. Four phases (Navigator, Co-Pilot, Editor, Director) grow with students from kindergarten through grade 12, built on UbD and UDL and aligned to Connecticut’s design principles." },
 ];
 
+const toolIds = ["curriculum-studio", "early-learning-studio", "praxis-prep", "ai-literacy"];
+
 export default function RDigitalToolsWebinar() {
+  const sessions = useDigitalToolsSessions();
+  const registrationOpen = sessions.length > 0;
+  const sessionCta = sessions.length === 1 ? "Choose the remaining session" : "Choose your session";
   return (
     <>
       <SEO title="Built for Connecticut Educators: A Live Look at ACES Digital Tools" description={digitalToolsDescription} url="/digital-tools-webinar" />
@@ -20,26 +26,33 @@ export default function RDigitalToolsWebinar() {
           <section className="dt-hero" aria-labelledby="dt-title">
             <img className="dt-hero-photo" src="/redesign-assets/ai-innovation-hero-crop.png" alt="" />
             <div className="wrap dt-hero-inner">
-              <div className="dt-eyebrow"><Video size={18} aria-hidden="true" /> Free live webinar · November 2026</div>
+              <div className="dt-eyebrow"><Video size={18} aria-hidden="true" /> Free live webinar · {digitalToolsDateSummary(sessions)}</div>
               <h1 id="dt-title">Built for Connecticut Educators:<br /><b>A Live Look at ACES Digital Tools</b></h1>
               <p className="dt-hero-lead">Curriculum Studio · Early Learning Studio<br />ACES Test Prep · K–12 AI Literacy Curriculum</p>
               <p className="dt-hero-copy">{digitalToolsDescription}</p>
-              <Button asChild size="lg" className="dt-primary"><a href="#choose-session">Choose your session <ArrowDown aria-hidden="true" /></a></Button>
+              {registrationOpen && <Button asChild size="lg" className="dt-primary"><a href="#choose-session">{sessionCta} <ArrowDown aria-hidden="true" /></a></Button>}
               <div className="dt-hero-notes"><span><Check size={16} aria-hidden="true" /> Free to attend</span><span><Monitor size={16} aria-hidden="true" /> Live on Zoom</span></div>
             </div>
           </section>
 
           <section id="choose-session" className="dt-sessions" aria-labelledby="dt-sessions-title">
             <div className="wrap">
-              <div className="dt-section-heading"><div><span className="dt-eyebrow">Your day. Your choice.</span><h2 id="dt-sessions-title">Save your <b>seat.</b></h2></div><p>Every session covers the same content,<br />so pick the time that fits your day.</p></div>
+              <div className="dt-section-heading"><div><span className="dt-eyebrow">{registrationOpen ? "Your day. Your choice." : "November 2026 webinars"}</span><h2 id="dt-sessions-title">{registrationOpen ? <>Save your <b>seat.</b></> : <>Registration <b>closed.</b></>}</h2></div><p>{registrationOpen ? <>Every session covers the same content,<br />so pick the time that fits your day.</> : "All four sessions have started. Registration is now closed."}</p></div>
+              {!registrationOpen && <p role="status">Contact our team about ACES digital tools: <a className="underline underline-offset-4" href="/contact">Talk With Our Team</a>.</p>}
               <div className="dt-session-grid">
-                {digitalToolsSessions.map((session) => (
+                {sessions.map((session) => (
                   <article className="dt-session" key={session.id}>
                     <CalendarDays size={22} aria-hidden="true" />
                     <p className="dt-weekday">{session.label.split(",")[0]}</p>
                     <h3><time dateTime={session.date}>{session.label.split(", ")[1]}</time></h3>
                     <p className="dt-time"><time dateTime={session.startsAt}>{session.time}</time><span>Eastern Time · 2026</span></p>
-                    <Button asChild className="dt-register"><a href={session.url} target="_blank" rel="noopener noreferrer" aria-label={`Register for ${session.label}, 2026 at ${session.time} Eastern Time`}>Register free <ArrowUpRight aria-hidden="true" /></a></Button>
+                    <Button asChild className="dt-register"><a href={session.url} target="_blank" rel="noopener noreferrer" onClick={(event) => {
+                      if (Date.now() >= Date.parse(session.startsAt)) {
+                        event.preventDefault();
+                        return;
+                      }
+                      trackDigitalToolsRegistration(session);
+                    }} aria-label={`Register for ${session.label}, 2026 at ${session.time} Eastern Time`}>Register free <ArrowUpRight aria-hidden="true" /></a></Button>
                   </article>
                 ))}
               </div>
@@ -53,7 +66,7 @@ export default function RDigitalToolsWebinar() {
               <p className="dt-tools-intro">In this free live webinar you’ll see each tool at work and get your questions answered.</p>
               <div className="dt-tool-grid">
                 {tools.map((tool, i) => (
-                  <article className="dt-tool" key={tool.name}>
+                  <article id={toolIds[i]} className="dt-tool scroll-mt-32" key={tool.name}>
                     <div className="dt-tool-image"><img src={tool.image} alt={tool.alt} loading="lazy" /></div>
                     <div className="dt-tool-copy"><span className="dt-tool-number">0{i + 1}</span><div><p className="dt-eyebrow">{tool.category}</p><h3>{tool.name}</h3><p>{tool.description}</p></div></div>
                   </article>
@@ -69,7 +82,7 @@ export default function RDigitalToolsWebinar() {
           </section>
 
           <section className="dt-close" aria-labelledby="dt-close-title">
-            <div className="wrap"><span className="dt-eyebrow">ACES Center for Artificial Intelligence</span><h2 id="dt-close-title">See what fits <b>your practice.</b></h2><p>Join Connecticut educators for a live look at the ACES digital tools.</p><Button asChild size="lg" className="dt-primary"><a href="#choose-session">Choose your session <ArrowUpRight aria-hidden="true" /></a></Button></div>
+            <div className="wrap"><span className="dt-eyebrow">ACES Center for Artificial Intelligence</span><h2 id="dt-close-title">See what fits <b>your practice.</b></h2><p>{registrationOpen ? "Join Connecticut educators for a live look at the ACES digital tools." : "Registration for the November 2026 webinars is closed."}</p>{registrationOpen && <Button asChild size="lg" className="dt-primary"><a href="#choose-session">{sessionCta} <ArrowUpRight aria-hidden="true" /></a></Button>}</div>
           </section>
         </div>
       </RedesignLayout>
