@@ -3,9 +3,10 @@ import { createRoot } from "react-dom/client";
 import { afterEach, expect, it, vi } from "vitest";
 import { useDigitalToolsSessions } from "./use-digital-tools-sessions";
 
-afterEach(() => vi.useRealTimers());
+afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
 
 it("removes each session at its start while mounted and ends with none", () => {
+  vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
   vi.useFakeTimers();
   vi.setSystemTime(new Date("2026-11-04T14:29:59.999Z"));
   const result: { current: ReturnType<typeof useDigitalToolsSessions> } = { current: [] };

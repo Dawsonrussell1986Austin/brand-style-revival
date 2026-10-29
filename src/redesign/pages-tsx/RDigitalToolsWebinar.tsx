@@ -38,7 +38,7 @@ export default function RDigitalToolsWebinar() {
           <section id="choose-session" className="dt-sessions" aria-labelledby="dt-sessions-title">
             <div className="wrap">
               <div className="dt-section-heading"><div><span className="dt-eyebrow">{registrationOpen ? "Your day. Your choice." : "November 2026 webinars"}</span><h2 id="dt-sessions-title">{registrationOpen ? <>Save your <b>seat.</b></> : <>Registration <b>closed.</b></>}</h2></div><p>{registrationOpen ? <>Every session covers the same content,<br />so pick the time that fits your day.</> : "All four sessions have started. Registration is now closed."}</p></div>
-              {!registrationOpen && <p role="status">Contact our team about ACES digital tools: <a href="/contact">Talk With Our Team</a>.</p>}
+              {!registrationOpen && <p role="status">Contact our team about ACES digital tools: <a className="underline underline-offset-4" href="/contact">Talk With Our Team</a>.</p>}
               <div className="dt-session-grid">
                 {sessions.map((session) => (
                   <article className="dt-session" key={session.id}>
