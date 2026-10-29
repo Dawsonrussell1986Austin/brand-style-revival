@@ -1,4 +1,5 @@
-import { act, renderHook } from "@testing-library/react";
+import { act } from "react";
+import { createRoot } from "react-dom/client";
 import { afterEach, expect, it, vi } from "vitest";
 import { useDigitalToolsSessions } from "./use-digital-tools-sessions";
 
@@ -7,7 +8,10 @@ afterEach(() => vi.useRealTimers());
 it("removes each session at its start while mounted and ends with none", () => {
   vi.useFakeTimers();
   vi.setSystemTime(new Date("2026-11-04T14:29:59.999Z"));
-  const { result, unmount } = renderHook(useDigitalToolsSessions);
+  const result: { current: ReturnType<typeof useDigitalToolsSessions> } = { current: [] };
+  function Probe() { result.current = useDigitalToolsSessions(); return null; }
+  const root = createRoot(document.createElement("div"));
+  act(() => root.render(<Probe />));
   expect(result.current.map(s => s.id)).toEqual(["nov4-morning", "nov4-afternoon", "nov13-morning", "nov13-afternoon"]);
   act(() => vi.advanceTimersByTime(1));
   expect(result.current.map(s => s.id)).toEqual(["nov4-afternoon", "nov13-morning", "nov13-afternoon"]);
@@ -19,6 +23,6 @@ it("removes each session at its start while mounted and ends with none", () => {
     act(() => { vi.setSystemTime(new Date(start)); window.dispatchEvent(new Event("focus")); });
     expect(result.current.map(s => s.id)).toEqual(ids);
   }
-  unmount();
+  act(() => root.unmount());
   expect(vi.getTimerCount()).toBe(0);
 });
