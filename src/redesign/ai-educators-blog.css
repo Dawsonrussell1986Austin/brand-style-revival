@@ -1,0 +1,25 @@
+.student-ai-heading .ai-educators-title { max-width: 1050px; font-size: 44px; }
+.ai-educators-article .body { max-width: 860px; }
+.ai-educators-article .ai-educators-question { margin: 30px 0; padding: 22px 26px; background: var(--tint); border-left: 4px solid var(--blue); color: var(--navy); font-size: 21px; line-height: 1.55; }
+.ai-educators-article .ai-educators-emphasis { color: var(--navy); font-size: 20px; line-height: 1.65; }
+.ai-educators-quote { margin: 34px 0; padding: 26px 28px; border-left: 4px solid var(--green); background: var(--tint); }
+.ai-educators-article .body .ai-educators-quote p { margin: 0; color: var(--navy); font-size: 20px; line-height: 1.65; font-weight: 600; }
+.ai-educators-quote footer { margin-top: 16px; color: var(--muted); font-size: 16px; font-style: italic; }
+.ai-educators-table-scroll { margin: 28px 0 30px; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+.ai-educators-table-scroll:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.ai-educators-table { width: 100%; min-width: 720px; border-collapse: collapse; background: var(--card); text-align: left; }
+.ai-educators-table caption { padding: 16px 18px; color: var(--navy); background: var(--tint); font-size: 16px; font-weight: 700; text-align: left; }
+.ai-educators-table th, .ai-educators-table td { padding: 18px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 16px; line-height: 1.6; }
+.ai-educators-table thead th { color: var(--navy); background: var(--tint); font-weight: 800; }
+.ai-educators-table tbody th { width: 19%; color: var(--navy); }
+.ai-educators-table tbody tr:last-child th, .ai-educators-table tbody tr:last-child td { border-bottom: 0; }
+.ai-educators-article .body .ai-educators-questions { margin: 8px 0 28px; padding-left: 28px; }
+.ai-educators-article .body .ai-educators-questions li { margin-bottom: 16px; padding-left: 8px; font-size: 17px; line-height: 1.7; }
+.ai-educators-article .body .ai-educators-sources li { overflow-wrap: anywhere; }
+@media (max-width: 700px) {
+  .student-ai-heading .ai-educators-title { font-size: 32px; }
+  .ai-educators-article .ai-educators-question { padding: 18px 20px; font-size: 18px; }
+  .ai-educators-quote { padding: 22px 20px; }
+  .ai-educators-article .body .ai-educators-quote p { font-size: 18px; }
+  .ai-educators-table th, .ai-educators-table td { padding: 15px; }
+}
