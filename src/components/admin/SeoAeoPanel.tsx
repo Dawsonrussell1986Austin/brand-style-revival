@@ -74,6 +74,7 @@ const PAGE_PATHS: Record<string, string> = {
   "ai-conference-2026": "/ai-conference-2026",
   "wired-wednesdays": "/workshops-events/wired-wednesdays",
   "blog-who-decided-ai": "/blog/who-decided-your-students-would-get-ai",
+  "blog-future-ai-educators": "/blog/future-of-ai-shaped-by-educators",
   arc: "/arc",
   contact: "/contact",
 };
