@@ -32,6 +32,7 @@ const HTML_TO_ROUTE: Record<string, string> = {
   "pdsi-early-childhood.html": "/pdsi/early-childhood",
   "pdsi-k12.html": "/pdsi/k-12-support",
   "blog-ai.html": "/blog/saving-time-with-ai",
+  "blog-ai-educators.html": "/blog/future-of-ai-shaped-by-educators",
   "blog-play.html": "/blog/everyone-loves-to-play",
   "blog-rooted.html": "/blog/rooted-in-relationships-and-rigor",
 };
