@@ -74,13 +74,16 @@ export default function RContact() {
     setSubmitting(true);
     try {
       const fullName = `${parsed.data.firstName} ${parsed.data.lastName}`.trim();
+      const selectedTopic = parsed.data.topic === SCHOOL_WALKTHROUGH_TOPIC
+        ? walkthroughOptionLabel
+        : parsed.data.topic;
       const { error } = await supabase.from("contact_submissions").insert({
         name: fullName,
         email: parsed.data.email,
         phone: parsed.data.phone || null,
         organization: parsed.data.organization || null,
         role: parsed.data.role || null,
-        message: `[Topic: ${parsed.data.topic || "—"}]\n\n${parsed.data.message}`,
+        message: `[Topic: ${selectedTopic || "—"}]\n\n${parsed.data.message}`,
         source: "contact",
       });
       if (error) throw error;
@@ -101,7 +104,7 @@ export default function RContact() {
             organization: parsed.data.organization,
             role: parsed.data.role,
             phone: parsed.data.phone,
-            topic: parsed.data.topic,
+            topic: selectedTopic,
             message: parsed.data.message,
             formType: "Contact",
           },
