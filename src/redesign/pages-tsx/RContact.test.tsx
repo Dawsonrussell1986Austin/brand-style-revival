@@ -121,7 +121,7 @@ describe("school walkthrough contact requests", () => {
   it("passes an admin-edited walkthrough label to the team without changing analytics", async () => {
     mocks.walkthroughOptionLabel = "School tools guided walkthrough";
     renderContact();
-    expect(screen.getByRole("option", { name: "School tools guided walkthrough" })).toBeSelected();
+    expect((screen.getByRole("option", { name: "School tools guided walkthrough" }) as HTMLOptionElement).selected).toBe(true);
     fillValidForm();
     fireEvent.click(screen.getByRole("button", { name: "Send message" }));
 
