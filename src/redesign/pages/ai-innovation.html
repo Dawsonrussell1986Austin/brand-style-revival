@@ -27,6 +27,12 @@
 <style>
   #solutions .pcard{opacity:1;transform:scale(.96)}
   #solutions .pcard.is-active{transform:scale(1.1)}
+  .walkthrough-request{max-width:1180px;margin:34px auto 0;padding:0 40px}
+  .walkthrough-request-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 30px;border:1px solid var(--line);border-radius:20px;background:var(--tint-2)}
+  .walkthrough-request p{max-width:520px;font-size:17px;font-weight:600;color:var(--ink);line-height:1.5}
+  .walkthrough-request .btn{flex-shrink:0}
+  .walkthrough-request .btn:focus-visible{outline:3px solid var(--blue-br);outline-offset:4px}
+  @media(max-width:720px){.walkthrough-request{padding:0 24px}.walkthrough-request-inner{align-items:flex-start;flex-direction:column;padding:24px}.walkthrough-request .btn{width:100%;justify-content:center;text-align:center}}
 </style>
 </head>
 <body>

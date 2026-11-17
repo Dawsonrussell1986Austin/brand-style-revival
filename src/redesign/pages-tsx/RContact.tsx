@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { useContent } from "@/hooks/useSiteContent";
 import { RedesignLayout } from "../RedesignLayout";
 import { SEO } from "@/components/SEO";
+
+export const SCHOOL_WALKTHROUGH_INTEREST = "school-walkthrough";
+export const SCHOOL_WALKTHROUGH_TOPIC = "School digital tools walkthrough";
 
 const schema = z.object({
   firstName: z.string().trim().min(1, "First name is required").max(100),
@@ -19,7 +23,16 @@ const schema = z.object({
 
 export default function RContact() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const walkthroughRequested = searchParams.get("interest") === SCHOOL_WALKTHROUGH_INTEREST;
+  const { content: walkthroughOptionLabel } = useContent(
+    "contact",
+    "form",
+    "school_walkthrough_option",
+    SCHOOL_WALKTHROUGH_TOPIC,
+  );
   const [submitting, setSubmitting] = useState(false);
+  const submissionInFlight = useRef(false);
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -27,9 +40,17 @@ export default function RContact() {
     phone: "",
     role: "Teacher",
     organization: "",
-    topic: "Instructional coaching",
+    topic: walkthroughRequested ? SCHOOL_WALKTHROUGH_TOPIC : "Instructional coaching",
     message: "",
   });
+
+  useEffect(() => {
+    if (walkthroughRequested) {
+      setForm((current) => current.topic === SCHOOL_WALKTHROUGH_TOPIC
+        ? current
+        : { ...current, topic: SCHOOL_WALKTHROUGH_TOPIC });
+    }
+  }, [walkthroughRequested]);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -40,12 +61,16 @@ export default function RContact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submissionInFlight.current) return;
+
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       const first = Object.values(parsed.error.flatten().fieldErrors)[0]?.[0];
       toast.error(first ?? "Please check the form and try again.");
       return;
     }
+
+    submissionInFlight.current = true;
     setSubmitting(true);
     try {
       const fullName = `${parsed.data.firstName} ${parsed.data.lastName}`.trim();
@@ -60,7 +85,13 @@ export default function RContact() {
       });
       if (error) throw error;
 
-      // Fire-and-forget notification email
+      // Persistence is confirmed. Reuse the installed ACES tag and its consent state;
+      // this event contains no form values or other personal information.
+      if (parsed.data.topic === SCHOOL_WALKTHROUGH_TOPIC && typeof window.gtag === "function") {
+        window.gtag("event", "aces_walkthrough_request");
+      }
+
+      // Fire-and-forget notification email; saved submissions remain available in Admin.
       supabase.functions
         .invoke("notify-curriculum-lead", {
           body: {
@@ -82,6 +113,7 @@ export default function RContact() {
       console.error("Contact submit error", err);
       toast.error("Failed to submit. Please try again.");
     } finally {
+      submissionInFlight.current = false;
       setSubmitting(false);
     }
   };
@@ -107,16 +139,16 @@ export default function RContact() {
               <p style={{ fontSize: 15, color: "var(--muted)", marginBottom: 26 }}>We typically respond within one business day.</p>
               <form onSubmit={handleSubmit}>
                 <div className="field two">
-                  <div className="field"><label>First name</label><input name="firstName" type="text" placeholder="Jordan" value={form.firstName} onChange={onChange} required /></div>
-                  <div className="field"><label>Last name</label><input name="lastName" type="text" placeholder="Rivera" value={form.lastName} onChange={onChange} required /></div>
+                  <div className="field"><label htmlFor="contact-first-name">First name</label><input id="contact-first-name" name="firstName" type="text" placeholder="Jordan" value={form.firstName} onChange={onChange} required /></div>
+                  <div className="field"><label htmlFor="contact-last-name">Last name</label><input id="contact-last-name" name="lastName" type="text" placeholder="Rivera" value={form.lastName} onChange={onChange} required /></div>
                 </div>
                 <div className="field two">
-                  <div className="field"><label>Email</label><input name="email" type="email" placeholder="you@district.org" value={form.email} onChange={onChange} required /></div>
-                  <div className="field"><label>Phone (optional)</label><input name="phone" type="tel" placeholder="(203) 000-0000" value={form.phone} onChange={onChange} /></div>
+                  <div className="field"><label htmlFor="contact-email">Email</label><input id="contact-email" name="email" type="email" placeholder="you@district.org" value={form.email} onChange={onChange} required /></div>
+                  <div className="field"><label htmlFor="contact-phone">Phone (optional)</label><input id="contact-phone" name="phone" type="tel" placeholder="(203) 000-0000" value={form.phone} onChange={onChange} /></div>
                 </div>
                 <div className="field two">
-                  <div className="field"><label>Your role</label>
-                    <select name="role" value={form.role} onChange={onChange}>
+                  <div className="field"><label htmlFor="contact-role">Your role</label>
+                    <select id="contact-role" name="role" value={form.role} onChange={onChange}>
                       <option>Teacher</option>
                       <option>Instructional coach</option>
                       <option>School administrator</option>
@@ -124,20 +156,21 @@ export default function RContact() {
                       <option>Other</option>
                     </select>
                   </div>
-                  <div className="field"><label>District / School</label><input name="organization" type="text" placeholder="Your district or school" value={form.organization} onChange={onChange} /></div>
+                  <div className="field"><label htmlFor="contact-organization">District / School</label><input id="contact-organization" name="organization" type="text" placeholder="Your district or school" value={form.organization} onChange={onChange} /></div>
                 </div>
-                <div className="field"><label>What can we help with?</label>
-                  <select name="topic" value={form.topic} onChange={onChange}>
+                <div className="field"><label htmlFor="contact-topic">What can we help with?</label>
+                  <select id="contact-topic" name="topic" value={form.topic} onChange={onChange}>
                     <option>Instructional coaching</option>
                     <option>Curriculum &amp; assessment</option>
                     <option>Leadership &amp; school improvement</option>
                     <option>Professional learning &amp; workshops</option>
                     <option>Center for AI Services</option>
                     <option>ARC resources / membership</option>
+                    <option value={SCHOOL_WALKTHROUGH_TOPIC}>{walkthroughOptionLabel}</option>
                     <option>Something else</option>
                   </select>
                 </div>
-                <div className="field"><label>Message</label><textarea name="message" placeholder="Tell us about your goals, timeline, and team..." value={form.message} onChange={onChange} required /></div>
+                <div className="field"><label htmlFor="contact-message">Message</label><textarea id="contact-message" name="message" placeholder="Tell us about your goals, timeline, and team..." value={form.message} onChange={onChange} required /></div>
                 <button className="btn btn-green" type="submit" disabled={submitting} style={{ width: "100%", justifyContent: "center" }}>
                   {submitting ? "Sending…" : "Send message"}
                 </button>

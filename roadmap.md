@@ -1,4 +1,9 @@
 # Current tasks
+- [ ] Add an editable school walkthrough CTA beside the Innovative Tools solutions.
+- [ ] Add and preselect the editable walkthrough inquiry while preserving existing contact delivery.
+- [ ] Emit one GA4 walkthrough event only after confirmed persistence, with no personal data.
+- [ ] Test the flow with mocked backend and analytics only; inspect the current notification delivery gap.
+- [ ] Verify preview accessibility and report publishing/deployment boundaries without publishing.
 - [x] Update only digital-tools-webinar session expiry, GA4 click events, and sitelink IDs.
 - [x] Verify timezone boundaries, open-page expiry, all-expired state, links, keyboard and mobile; do not publish.
 - [x] Incorporate the attached webinar title, tool descriptions, and audience details.
