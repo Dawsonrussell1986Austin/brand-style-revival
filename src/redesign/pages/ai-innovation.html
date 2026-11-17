@@ -27,6 +27,12 @@
 <style>
   #solutions .pcard{opacity:1;transform:scale(.96)}
   #solutions .pcard.is-active{transform:scale(1.1)}
+  .walkthrough-request{max-width:1180px;margin:34px auto 0;padding:0 40px}
+  .walkthrough-request-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 30px;border:1px solid var(--line);border-radius:20px;background:var(--tint-2)}
+  .walkthrough-request p{max-width:520px;font-size:17px;font-weight:600;color:var(--ink);line-height:1.5}
+  .walkthrough-request .btn{flex-shrink:0}
+  .walkthrough-request .btn:focus-visible{outline:3px solid var(--blue-br);outline-offset:4px}
+  @media(max-width:720px){.walkthrough-request{padding:0 24px}.walkthrough-request-inner{align-items:flex-start;flex-direction:column;padding:24px}.walkthrough-request .btn{width:100%;justify-content:center;text-align:center}}
 </style>
 </head>
 <body>
@@ -134,6 +140,13 @@
       <button class="cbtn" id="sPrev" aria-label="Previous solution"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
       <div class="cdots" id="sDots"></div>
       <button class="cbtn" id="sNext" aria-label="Next solution"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+
+  <div class="walkthrough-request">
+    <div class="walkthrough-request-inner">
+      <p>See the tools in action and talk through your school's goals with our team.</p>
+      <a class="btn btn-green" href="/contact?interest=school-walkthrough">{{WALKTHROUGH_BUTTON_LABEL}}</a>
     </div>
   </div>
 </section>
