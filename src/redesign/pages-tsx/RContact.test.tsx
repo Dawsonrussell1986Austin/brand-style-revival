@@ -7,6 +7,7 @@ const mocks = vi.hoisted(() => ({
   insert: vi.fn(),
   invoke: vi.fn(),
   navigate: vi.fn(),
+  walkthroughOptionLabel: null as string | null,
 }));
 
 vi.mock("@/integrations/supabase/client", () => ({
@@ -17,8 +18,8 @@ vi.mock("@/integrations/supabase/client", () => ({
 }));
 
 vi.mock("@/hooks/useSiteContent", () => ({
-  useContent: (_page: string, _section: string, _key: string, fallback: string) => ({
-    content: fallback,
+  useContent: (_page: string, _section: string, key: string, fallback: string) => ({
+    content: key === "school_walkthrough_option" ? mocks.walkthroughOptionLabel ?? fallback : fallback,
     isLoading: false,
   }),
 }));
@@ -54,6 +55,7 @@ beforeEach(() => {
   mocks.insert.mockReset();
   mocks.invoke.mockReset();
   mocks.navigate.mockReset();
+  mocks.walkthroughOptionLabel = null;
   mocks.insert.mockResolvedValue({ error: null });
   mocks.invoke.mockResolvedValue({ data: { ok: true }, error: null });
   window.gtag = vi.fn();
@@ -114,6 +116,23 @@ describe("school walkthrough contact requests", () => {
       </MemoryRouter>,
     );
     expect(window.gtag).toHaveBeenCalledTimes(1);
+  });
+
+  it("passes an admin-edited walkthrough label to the team without changing analytics", async () => {
+    mocks.walkthroughOptionLabel = "School tools guided walkthrough";
+    renderContact();
+    expect(screen.getByRole("option", { name: "School tools guided walkthrough" }).selected).toBe(true);
+    fillValidForm();
+    fireEvent.click(screen.getByRole("button", { name: "Send message" }));
+
+    await waitFor(() => expect(mocks.navigate).toHaveBeenCalledWith("/thank-you"));
+    expect(mocks.insert).toHaveBeenCalledWith(expect.objectContaining({
+      message: "[Topic: School tools guided walkthrough]\n\nPlease show us the tools.",
+    }));
+    expect(mocks.invoke).toHaveBeenCalledWith("notify-curriculum-lead", {
+      body: expect.objectContaining({ topic: "School tools guided walkthrough" }),
+    });
+    expect(window.gtag).toHaveBeenCalledExactlyOnceWith("event", "aces_walkthrough_request");
   });
 
   it("does not track a failed persistence request", async () => {
