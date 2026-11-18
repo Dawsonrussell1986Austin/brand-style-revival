@@ -191,6 +191,7 @@ export function RedesignLayout({ children, pageInit }: Props) {
                 <svg className="car" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 9l6 6 6-6" /></svg>
               </Link>
               <div className="submenu">
+                <Link className="subitem" to="/center-for-ai-services">Center for AI Home</Link>
                 <Link className="subitem" to="/center-for-ai-services/ai-ready-schools">AI Literacy &amp; Learning</Link>
                 <Link className="subitem" to="/center-for-ai-services/innovative-tools">Innovation &amp; Design</Link>
                 <Link className="subitem" to="/center-for-ai-services/research-ethics">Research &amp; Ethical Standards</Link>

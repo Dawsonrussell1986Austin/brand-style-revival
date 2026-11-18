@@ -766,3 +766,5 @@ summary:focus-visible,[tabindex]:focus-visible{
     transition-duration:.001ms!important;scroll-behavior:auto!important;
   }
 }
+.impact-vids-4{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.impact-vids-4{grid-template-columns:1fr}}
